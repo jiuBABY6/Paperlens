@@ -1,0 +1,13 @@
+{
+  "kind": "deterministic_failure_injection",
+  "external_model_calls": false,
+  "scenario_count": 6,
+  "scenarios": [
+    {"scenario": "transient_remote_timeout", "expected": "bounded exponential retry then success", "test": "test_remote_retry_is_bounded_and_exponential", "status": "passed"},
+    {"scenario": "non_retryable_protocol_error", "expected": "fail immediately without retry", "test": "test_non_retryable_error_fails_immediately", "status": "passed"},
+    {"scenario": "specialist_node_timeout", "expected": "failed/retryable timeout contract", "test": "test_scheduler_marks_node_timeout_as_retryable_failure", "status": "passed"},
+    {"scenario": "visual_specialist_first_read_incomplete", "expected": "Critic targets one repair and then approves", "test": "test_langgraph_critic_repairs_one_failed_visual_task", "status": "passed"},
+    {"scenario": "qwen_vl_budget_exhausted", "expected": "no model call and structured refusal", "test": "test_qwen_budget_prevents_visual_model_call", "status": "passed"},
+    {"scenario": "process_state_checkpoint", "expected": "persist and reload final channel state by run_id", "test": "test_langgraph_persists_sqlite_checkpoint", "status": "passed"}
+  ]
+}

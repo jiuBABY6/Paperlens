@@ -1,0 +1,15 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.pytest-tmp/
+data/qdrant-test-root*/
+data/uploads/
+data/paperlens.sqlite3
+data/langgraph-checkpoints.sqlite3
+data/langgraph-checkpoints.sqlite3-*
+data/qdrant/
+data/incoming/
+models/*
+!models/.gitkeep

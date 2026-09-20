@@ -1,0 +1,51 @@
+{
+  "dataset": "evals/questions.v2.jsonl",
+  "split": "dev",
+  "case_count": 12,
+  "comparison": [
+    {
+      "name": "legacy_agentic_rag",
+      "source": "evals/report-dev-rag-optimized-cold.json",
+      "task_success_rate": 1.0,
+      "retrieval_recall_at_5": 1.0,
+      "evidence_f1": 0.963,
+      "mean_latency_ms": 8216.2,
+      "p95_latency_ms": 23388.2,
+      "mean_token_usage": 5524.5
+    },
+    {
+      "name": "langgraph_serial",
+      "source": "evals/report-dev-langgraph-serial.json",
+      "task_success_rate": 1.0,
+      "retrieval_recall_at_5": 1.0,
+      "evidence_f1": 0.963,
+      "mean_latency_ms": 6790.6,
+      "p95_latency_ms": 28270.0,
+      "mean_token_usage": 5180.9167
+    },
+    {
+      "name": "langgraph_parallel",
+      "source": "evals/report-dev-langgraph-final.json",
+      "task_success_rate": 1.0,
+      "retrieval_recall_at_5": 1.0,
+      "evidence_f1": 0.963,
+      "mean_latency_ms": 6540.6,
+      "p95_latency_ms": 24273.3,
+      "mean_token_usage": 5128.0833,
+      "mean_agent_count": 2.3333,
+      "node_failure_rate": 0.0
+    }
+  ],
+  "deltas": {
+    "langgraph_parallel_vs_legacy_mean_latency_reduction": 0.2039,
+    "langgraph_parallel_vs_legacy_mean_token_reduction": 0.0717,
+    "langgraph_parallel_vs_legacy_p95_change": 0.0378,
+    "parallel_vs_serial_mean_latency_reduction": 0.0368,
+    "parallel_vs_serial_p95_latency_reduction": 0.1414
+  },
+  "interpretation": [
+    "Three runs preserve identical Dev task success, retrieval recall and evidence F1.",
+    "Parallel scheduling improves the current LangGraph serial run, especially P95 latency.",
+    "Legacy and LangGraph reports were produced at different times and may have different model/cache states; their latency delta is directional rather than a controlled causal benchmark."
+  ]
+}
