@@ -6,51 +6,106 @@ Evidence-Grounded Multimodal Agentic RAG for Scientific Paper Reading。
 
 ## 系统架构与 Agentic RAG 流程
 
+系统分为两个阶段：论文上传时完成解析、离线视觉理解与向量建库；用户提问时由 Query Router 在 Standard RAG 和 LangGraph 多智能体链路之间分流。
+
+### 论文上传、离线解析与索引
+
 ```mermaid
 flowchart TD
-    PDF[上传 PDF] --> PARSE[Docling 结构解析 + PyMuPDF 句子坐标]
-    PARSE --> TEXT[Text Chunk / Sentence / BBox]
-    PARSE --> FIG[Figure Crop / Caption / Nearby Text]
-    PARSE --> TABLE[Table Markdown / Columns / Rows]
-    FIG --> OFFLINE[Qwen-VL 离线 Figure 描述]
+    UPLOAD[上传 PDF] --> VALIDATE[校验扩展名、文件头和大小]
+    VALIDATE --> STAGE[流式保存临时文件<br/>计算 SHA-256]
+    STAGE --> DEDUP{内容哈希去重}
 
-    TEXT --> INDEX[BM25 + BGE-M3 / Qdrant + RRF]
-    OFFLINE --> INDEX
-    TABLE --> INDEX
-    INDEX --> RERANK[BGE CrossEncoder Rerank]
+    DEDUP -->|已有 completed 记录| REUSE[复用已有论文和分析结果]
+    DEDUP -->|已有 processing 记录| PROCESSING[返回 202 processing]
+    DEDUP -->|新论文| RESERVE[创建 paper_id<br/>状态设为 processing]
 
-    QUESTION[用户问题] --> ROUTER{Query Router}
+    RESERVE --> SAVE[保存 source.pdf]
+    SAVE --> PARSER{PaperParser}
+    PARSER --> DOCLING[Docling 结构解析<br/>章节、Figure、Table、OCR]
+    PARSER --> PYMUPDF[PyMuPDF 文本、页码<br/>Sentence 与 BBox]
+    DOCLING --> ALIGN[章节结构与文本坐标对齐]
+    PYMUPDF --> ALIGN
+    DOCLING -. 失败时 .-> FALLBACK[PyMuPDF 降级解析]
+
+    ALIGN --> TEXT[Text Chunk / Sentence<br/>Page / Section / BBox]
+    ALIGN --> FIG[Figure Crop / Caption<br/>Nearby Text / Related Sentences]
+    ALIGN --> TABLE[Table Image / Markdown<br/>Rows / Columns / BBox]
+    FALLBACK --> TEXT
+    FALLBACK --> FIG
+
+    FIG --> FIG_CHECK{可读取的 Picture?}
+    FIG_CHECK -->|是| OFFLINE[Qwen-VL 离线 Figure 理解]
+    FIG_CHECK -->|否或调用不可用| FIG_META[保留原图与元数据<br/>记录 unavailable / error]
+    OFFLINE --> FIG_DESC[Summary / Entities / Relations<br/>Keywords / Uncertainty]
+
+    TEXT --> REPRESENT[统一检索表示]
+    TABLE --> REPRESENT
+    FIG_DESC --> REPRESENT
+    FIG_META --> REPRESENT
+    REPRESENT --> EMBED[BGE-M3 批量生成向量]
+    EMBED --> QDRANT[(Qdrant<br/>论文向量 Collection)]
+
+    REPRESENT --> CARD[DeepSeek 生成阅读卡片]
+    CARD --> CARD_VERIFY[结论绑定候选 Sentence ID]
+    QDRANT --> INDEX_STATUS[记录 vector_indexed<br/>index_version / index_error]
+    CARD_VERIFY --> SQLITE[(SQLite<br/>Paper / Evidence / Card / Status)]
+    INDEX_STATUS --> SQLITE
+    SQLITE --> COMPLETE[状态 completed<br/>允许在线提问]
+
+    PARSER -. 无法恢复的异常 .-> CLEANUP[清理未完成文件和索引<br/>释放上传记录]
+```
+
+离线阶段持久化的是 BGE-M3/Qdrant 稠密向量索引；BM25 在在线检索时根据当前论文的 Chunk 计算词法排名。Docling 失败时系统降级到 PyMuPDF，保留基本文本、页码、Sentence BBox 与图片能力。
+
+### 在线问答与 LangGraph 多智能体编排
+
+```mermaid
+flowchart TD
+    QUESTION[用户问题] --> ROUTER{Query Router<br/>复杂度 + 所需模态}
+
     ROUTER -->|简单文本事实| STANDARD[Standard RAG]
-    ROUTER -->|纯 Figure| FIGURE_ROUTE[Figure 编号精确定位 / Figure Retrieval]
-    ROUTER -->|纯 Table| TABLE_ROUTE[Table 编号精确定位]
-    ROUTER -->|复杂文本或跨模态| SUPERVISOR[LangGraph Supervisor + Query Rewrite]
+    STANDARD --> QUERY_PLAN[Semantic Query + Lexical Query]
+    QUERY_PLAN --> TEXT_SEARCH[BM25 + BGE-M3/Qdrant]
+    TEXT_SEARCH --> FUSION[RRF + CrossEncoder Rerank]
+    FUSION --> STANDARD_ANSWER[Grounded Answer + Claim Verification]
 
-    STANDARD --> TEXT_SEARCH[Text Retrieval]
-    SUPERVISOR --> DISPATCH{Specialist Scheduler}
+    ROUTER -->|复杂文本、纯 Figure、纯 Table 或跨模态| GRAPH[LangGraph]
+    GRAPH --> SUPERVISOR[Supervisor]
+    SUPERVISOR --> PLANNER[Rule-based Planner<br/>Logical Tasks + Query Rewrite]
+    PLANNER --> PLAN[Typed Sub-tasks<br/>Agent Mapping + Budgets + Execution Mode]
+    PLAN --> DISPATCH{Bounded Specialist Scheduler}
+
     DISPATCH --> TEXT_AGENT[Text Research Agent]
     DISPATCH --> FIGURE_AGENT[Figure Analysis Agent]
     DISPATCH --> TABLE_AGENT[Table Analysis Agent]
-    TEXT_AGENT --> TOOLS[Evidence Tools]
-    FIGURE_AGENT --> TOOLS
-    TABLE_AGENT --> TOOLS
-    FIGURE_ROUTE --> TOOLS
-    TABLE_ROUTE --> TOOLS
-    TEXT_SEARCH --> EVIDENCE[统一 Evidence]
-    TOOLS --> MEMORY[Evidence Memory]
+
+    TEXT_AGENT --> TEXT_TOOLS[search / read Text Evidence]
+    FIGURE_AGENT --> FIGURE_TOOLS[search Figure + Qwen-VL 原图分析]
+    TABLE_AGENT --> TABLE_TOOLS[search / read Structured Table<br/>可选 VLM Fallback]
+
+    TEXT_TOOLS --> MEMORY[(Shared Evidence Memory)]
+    FIGURE_TOOLS --> MEMORY
+    TABLE_TOOLS --> MEMORY
     MEMORY --> CRITIC{Evidence Critic}
-    CRITIC -->|定向返工：最多一次| DISPATCH
-    CRITIC -->|partial / approved| EVIDENCE
+
+    CRITIC -->|approved / partial| ANSWER[Answer Synthesis Agent]
+    CRITIC -->|retry once| REPAIR[Targeted Repair Dispatch<br/>只重跑指定 Specialist]
+    REPAIR --> CRITIC
     CRITIC -->|refuse| REFUSAL[Structured Refusal]
 
-    EVIDENCE --> ANSWER[Grounded Answer + Atomic Claims]
     ANSWER --> VERIFY[Claim-level Evidence Verifier]
-    VERIFY --> CITATION[最终 text / figure / table Citations]
-    CITATION --> UI[PDF.js 页码跳转 + BBox 高亮]
-    CITATION --> TRACE[Agent Trace + Evaluation]
-    REFUSAL --> TRACE
-    TRACE --> CHECKPOINT[(SQLite Checkpoint)]
+    VERIFY --> OUTPUT[Answer + text / figure / table Citations]
+    STANDARD_ANSWER --> OUTPUT
+    REFUSAL --> OUTPUT
+    OUTPUT --> UI[PDF.js 页码跳转 + BBox 高亮]
+    OUTPUT --> TRACE[Agent Trace + Evaluation]
     TRACE --> JUDGE[Text Judge / 独立 Visual Judge]
+
+    GRAPH -. 每个节点持久化 State .-> CHECKPOINT[(SQLite Checkpoint)]
 ```
+
+Router 只负责入口分流、复杂度和模态识别；Planner 是 Supervisor 内部的规则规划组件，并非独立 LangGraph Agent。纯 Figure 和纯 Table 问题同样进入 LangGraph，由 Supervisor 分派给对应 Specialist。当前子任务的 `dependencies` 均为空，Scheduler 支持无依赖 Specialist 的串行或并行执行，尚未实现通用依赖拓扑调度。
 
 | 层次 | 主要职责 | 关键实现 |
 |---|---|---|
