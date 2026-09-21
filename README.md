@@ -64,11 +64,17 @@ flowchart TD
 flowchart TD
     QUESTION[用户问题] --> ROUTER{Query Router<br/>复杂度 + 所需模态}
 
+    DATA[(共享论文数据层<br/>PDF / SQLite / Qdrant<br/>Chunk / Sentence / Figure / Table)]
+
     ROUTER -->|简单文本事实| STANDARD[Standard RAG]
     STANDARD --> QUERY_PLAN[Semantic Query + Lexical Query]
     QUERY_PLAN --> TEXT_SEARCH[BM25 + BGE-M3/Qdrant]
     TEXT_SEARCH --> FUSION[RRF + CrossEncoder Rerank]
-    FUSION --> STANDARD_ANSWER[Grounded Answer + Claim Verification]
+    DATA -. 读取同一数据源 .-> TEXT_SEARCH
+    FUSION --> STANDARD_EVIDENCE[本次请求的 Text Evidence]
+    STANDARD_EVIDENCE --> STANDARD_ANSWER[Standard Grounded Answer]
+    STANDARD_ANSWER --> STANDARD_VERIFY[Standard Claim Verification]
+    STANDARD_VERIFY --> STANDARD_RESULT[Standard Result<br/>Text Citations + Standard Trace]
 
     ROUTER -->|复杂文本、纯 Figure、纯 Table 或跨模态| GRAPH[LangGraph]
     GRAPH --> SUPERVISOR[Supervisor]
@@ -83,8 +89,11 @@ flowchart TD
     TEXT_AGENT --> TEXT_TOOLS[search / read Text Evidence]
     FIGURE_AGENT --> FIGURE_TOOLS[search Figure + Qwen-VL 原图分析]
     TABLE_AGENT --> TABLE_TOOLS[search / read Structured Table<br/>可选 VLM Fallback]
+    DATA -. 读取同一数据源 .-> TEXT_TOOLS
+    DATA -. 读取同一数据源 .-> FIGURE_TOOLS
+    DATA -. 读取同一数据源 .-> TABLE_TOOLS
 
-    TEXT_TOOLS --> MEMORY[(Shared Evidence Memory)]
+    TEXT_TOOLS --> MEMORY[(本次 LangGraph 运行的<br/>Shared Evidence Memory)]
     FIGURE_TOOLS --> MEMORY
     TABLE_TOOLS --> MEMORY
     MEMORY --> CRITIC{Evidence Critic}
@@ -95,17 +104,19 @@ flowchart TD
     CRITIC -->|refuse| REFUSAL[Structured Refusal]
 
     ANSWER --> VERIFY[Claim-level Evidence Verifier]
-    VERIFY --> OUTPUT[Answer + text / figure / table Citations]
-    STANDARD_ANSWER --> OUTPUT
-    REFUSAL --> OUTPUT
-    OUTPUT --> UI[PDF.js 页码跳转 + BBox 高亮]
-    OUTPUT --> TRACE[Agent Trace + Evaluation]
-    TRACE --> JUDGE[Text Judge / 独立 Visual Judge]
+    VERIFY --> AGENT_RESULT[Agentic Result<br/>Text / Figure / Table Citations + Agent Trace]
+    REFUSAL --> AGENT_RESULT
+
+    STANDARD_RESULT --> API[统一 API Response Contract]
+    AGENT_RESULT --> API
+    API --> UI[PDF.js 页码跳转 + BBox 高亮]
+    API --> EVAL[离线 Evaluation]
+    EVAL --> JUDGE[Text Judge / 独立 Visual Judge]
 
     GRAPH -. 每个节点持久化 State .-> CHECKPOINT[(SQLite Checkpoint)]
 ```
 
-Router 只负责入口分流、复杂度和模态识别；Planner 是 Supervisor 内部的规则规划组件，并非独立 LangGraph Agent。纯 Figure 和纯 Table 问题同样进入 LangGraph，由 Supervisor 分派给对应 Specialist。当前子任务的 `dependencies` 均为空，Scheduler 支持无依赖 Specialist 的串行或并行执行，尚未实现通用依赖拓扑调度。
+Router 只负责入口分流、复杂度和模态识别；Planner 是 Supervisor 内部的规则规划组件，并非独立 LangGraph Agent。纯 Figure 和纯 Table 问题同样进入 LangGraph，由 Supervisor 分派给对应 Specialist。Standard RAG 与 Agentic RAG 读取同一份持久化论文数据和索引，但每次请求的 Query Plan、候选结果、Evidence、State、Citation 与 Trace 相互隔离；两条线路最后汇合的只是统一 API 响应协议，而不是 Evidence Memory。当前子任务的 `dependencies` 均为空，Scheduler 支持无依赖 Specialist 的串行或并行执行，尚未实现通用依赖拓扑调度。
 
 | 层次 | 主要职责 | 关键实现 |
 |---|---|---|
