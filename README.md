@@ -110,13 +110,16 @@ flowchart TD
     STANDARD_RESULT --> API[统一 API Response Contract]
     AGENT_RESULT --> API
     API --> UI[PDF.js 页码跳转 + BBox 高亮]
-    API --> EVAL[离线 Evaluation]
-    EVAL --> JUDGE[Text Judge / 独立 Visual Judge]
+    API -. 评测脚本离线回放 .-> EVAL[确定性 Evaluation<br/>Retrieval / Evidence / Routing / Execution]
+    EVAL --> JUDGE_GATE{是否启用 --judge?}
+    JUDGE_GATE -->|否| NO_JUDGE[answer_correct / task_success = null]
+    JUDGE_GATE -->|是：文本、表格及非 visual-only| TEXT_JUDGE[DeepSeek Text Judge]
+    JUDGE_GATE -->|是：visual-only| VISUAL_JUDGE[独立 Qwen-VL Visual Judge<br/>重新读取 Gold Figure]
 
     GRAPH -. 每个节点持久化 State .-> CHECKPOINT[(SQLite Checkpoint)]
 ```
 
-Router 只负责入口分流、复杂度和模态识别；Planner 是 Supervisor 内部的规则规划组件，并非独立 LangGraph Agent。纯 Figure 和纯 Table 问题同样进入 LangGraph，由 Supervisor 分派给对应 Specialist。Standard RAG 与 Agentic RAG 读取同一份持久化论文数据和索引，但每次请求的 Query Plan、候选结果、Evidence、State、Citation 与 Trace 相互隔离；两条线路最后汇合的只是统一 API 响应协议，而不是 Evidence Memory。当前子任务的 `dependencies` 均为空，Scheduler 支持无依赖 Specialist 的串行或并行执行，尚未实现通用依赖拓扑调度。
+Router 只负责入口分流、复杂度和模态识别；Planner 是 Supervisor 内部的规则规划组件，并非独立 LangGraph Agent。纯 Figure 和纯 Table 问题同样进入 LangGraph，由 Supervisor 分派给对应 Specialist。Standard RAG 与 Agentic RAG 读取同一份持久化论文数据和索引，但每次请求的 Query Plan、候选结果、Evidence、State、Citation 与 Trace 相互隔离；两条线路最后汇合的只是统一 API 响应协议，而不是 Evidence Memory。正常在线问答在返回 API/UI 结果后结束，Standard RAG 的 Claim Verification 不等同于评测 Judge；只有评测脚本离线回放时才进入 Evaluation，启用 `--judge` 后，文本、表格及非 `visual-only` 样本使用 DeepSeek Text Judge，`visual-only` 样本使用独立 Qwen-VL Visual Judge。未启用 Judge 时，`answer_correct` 与 `task_success` 保持 `null`。当前子任务的 `dependencies` 均为空，Scheduler 支持无依赖 Specialist 的串行或并行执行，尚未实现通用依赖拓扑调度。
 
 | 层次 | 主要职责 | 关键实现 |
 |---|---|---|
