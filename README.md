@@ -62,61 +62,61 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    QUESTION[用户问题] --> ROUTER{Query Router<br/>复杂度 + 所需模态}
+    QUESTION[用户问题] --> ROUTER{查询路由器<br/>复杂度 + 所需模态}
 
     DATA[(共享论文数据层<br/>PDF / SQLite / Qdrant<br/>Chunk / Sentence / Figure / Table)]
 
     ROUTER -->|简单文本事实| STANDARD[Standard RAG]
-    STANDARD --> QUERY_PLAN[Semantic Query + Lexical Query]
+    STANDARD --> QUERY_PLAN[语义查询 + 关键词查询]
     QUERY_PLAN --> TEXT_SEARCH[BM25 + BGE-M3/Qdrant]
-    TEXT_SEARCH --> FUSION[RRF + CrossEncoder Rerank]
+    TEXT_SEARCH --> FUSION[RRF 融合 + CrossEncoder 精排]
     DATA -. 读取同一数据源 .-> TEXT_SEARCH
-    FUSION --> STANDARD_EVIDENCE[本次请求的 Text Evidence]
+    FUSION --> STANDARD_EVIDENCE[本次请求的文本证据]
     STANDARD_EVIDENCE --> STANDARD_ANSWER[基于文本证据生成回答]
-    STANDARD_ANSWER --> STANDARD_VERIFY[Standard Claim Verification]
-    STANDARD_VERIFY --> STANDARD_RESULT[Standard Result<br/>Text Citations + Standard Trace]
+    STANDARD_ANSWER --> STANDARD_VERIFY[标准链路结论校验]
+    STANDARD_VERIFY --> STANDARD_RESULT[标准 RAG 结果<br/>文本引用 + 标准链路轨迹]
 
     ROUTER -->|复杂文本、纯 Figure、纯 Table 或跨模态| GRAPH[LangGraph]
-    GRAPH --> SUPERVISOR[Supervisor]
-    SUPERVISOR --> PLANNER[Rule-based Planner<br/>Logical Tasks + Query Rewrite]
-    PLANNER --> PLAN[Typed Sub-tasks<br/>Agent Mapping + Budgets + Execution Mode]
-    PLAN --> DISPATCH{Bounded Specialist Scheduler}
+    GRAPH --> SUPERVISOR[主管 Agent]
+    SUPERVISOR --> PLANNER[规则任务规划器<br/>逻辑任务 + 查询改写]
+    PLANNER --> PLAN[结构化子任务<br/>Agent 分配 + 预算 + 执行模式]
+    PLAN --> DISPATCH{有边界的专业 Agent 调度器}
 
-    DISPATCH --> TEXT_AGENT[Text Research Agent]
-    DISPATCH --> FIGURE_AGENT[Figure Analysis Agent]
-    DISPATCH --> TABLE_AGENT[Table Analysis Agent]
+    DISPATCH --> TEXT_AGENT[文本研究 Agent]
+    DISPATCH --> FIGURE_AGENT[图片分析 Agent]
+    DISPATCH --> TABLE_AGENT[表格分析 Agent]
 
-    TEXT_AGENT --> TEXT_TOOLS[search / read Text Evidence]
-    FIGURE_AGENT --> FIGURE_TOOLS[search Figure + Qwen-VL 原图分析]
-    TABLE_AGENT --> TABLE_TOOLS[search / read Structured Table<br/>可选 VLM Fallback]
+    TEXT_AGENT --> TEXT_TOOLS[检索 / 读取文本证据]
+    FIGURE_AGENT --> FIGURE_TOOLS[检索图片 + Qwen-VL 原图分析]
+    TABLE_AGENT --> TABLE_TOOLS[检索 / 读取结构化表格<br/>可选视觉模型降级方案]
     DATA -. 读取同一数据源 .-> TEXT_TOOLS
     DATA -. 读取同一数据源 .-> FIGURE_TOOLS
     DATA -. 读取同一数据源 .-> TABLE_TOOLS
 
-    TEXT_TOOLS --> MEMORY[(本次 LangGraph 运行的<br/>Shared Evidence Memory)]
+    TEXT_TOOLS --> MEMORY[(本次 LangGraph 运行的<br/>共享证据池)]
     FIGURE_TOOLS --> MEMORY
     TABLE_TOOLS --> MEMORY
-    MEMORY --> CRITIC{Evidence Critic}
+    MEMORY --> CRITIC{证据审核 Agent}
 
-    CRITIC -->|approved / partial| ANSWER[Answer Synthesis Agent]
-    CRITIC -->|retry once| REPAIR[Targeted Repair Dispatch<br/>只重跑指定 Specialist]
+    CRITIC -->|通过 / 部分通过| ANSWER[答案整合 Agent]
+    CRITIC -->|定向返工一次| REPAIR[定向返工调度<br/>只重跑指定专业 Agent]
     REPAIR --> CRITIC
-    CRITIC -->|refuse| REFUSAL[Structured Refusal]
+    CRITIC -->|拒答| REFUSAL[结构化拒答]
 
-    ANSWER --> VERIFY[Claim-level Evidence Verifier]
-    VERIFY --> AGENT_RESULT[Agentic Result<br/>Text / Figure / Table Citations + Agent Trace]
+    ANSWER --> VERIFY[结论级证据校验]
+    VERIFY --> AGENT_RESULT[多智能体结果<br/>文本 / 图片 / 表格引用 + Agent 运行轨迹]
     REFUSAL --> AGENT_RESULT
 
-    STANDARD_RESULT --> API[统一 API Response Contract]
+    STANDARD_RESULT --> API[统一 API 响应格式]
     AGENT_RESULT --> API
     API --> UI[PDF.js 页码跳转 + BBox 高亮]
-    API -. 评测脚本离线回放 .-> EVAL[确定性 Evaluation<br/>Retrieval / Evidence / Routing / Execution]
+    API -. 评测脚本离线回放 .-> EVAL[确定性评测<br/>检索 / 证据 / 路由 / 执行]
     EVAL --> JUDGE_GATE{是否启用 --judge?}
     JUDGE_GATE -->|否| NO_JUDGE[answer_correct / task_success = null]
-    JUDGE_GATE -->|是：文本、表格及非 visual-only| TEXT_JUDGE[DeepSeek Text Judge]
-    JUDGE_GATE -->|是：visual-only| VISUAL_JUDGE[独立 Qwen-VL Visual Judge<br/>重新读取 Gold Figure]
+    JUDGE_GATE -->|是：文本、表格及非 visual-only| TEXT_JUDGE[DeepSeek 文本裁判]
+    JUDGE_GATE -->|是：visual-only| VISUAL_JUDGE[独立 Qwen-VL 视觉裁判<br/>重新读取标准答案对应图片]
 
-    GRAPH -. 每个节点持久化 State .-> CHECKPOINT[(SQLite Checkpoint)]
+    GRAPH -. 每个节点持久化运行状态 .-> CHECKPOINT[(SQLite 状态检查点)]
 ```
 
 Router 只负责入口分流、复杂度和模态识别；Planner 是 Supervisor 内部的规则规划组件，并非独立 LangGraph Agent。纯 Figure 和纯 Table 问题同样进入 LangGraph，由 Supervisor 分派给对应 Specialist。Standard RAG 与 Agentic RAG 读取同一份持久化论文数据和索引，但每次请求的 Query Plan、候选结果、Evidence、State、Citation 与 Trace 相互隔离；两条线路最后汇合的只是统一 API 响应协议，而不是 Evidence Memory。正常在线问答在返回 API/UI 结果后结束，Standard RAG 的 Claim Verification 不等同于评测 Judge；只有评测脚本离线回放时才进入 Evaluation，启用 `--judge` 后，文本、表格及非 `visual-only` 样本使用 DeepSeek Text Judge，`visual-only` 样本使用独立 Qwen-VL Visual Judge。未启用 Judge 时，`answer_correct` 与 `task_success` 保持 `null`。当前子任务的 `dependencies` 均为空，Scheduler 支持无依赖 Specialist 的串行或并行执行，尚未实现通用依赖拓扑调度。
