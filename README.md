@@ -72,7 +72,7 @@ flowchart TD
     TEXT_SEARCH --> FUSION[RRF + CrossEncoder Rerank]
     DATA -. 读取同一数据源 .-> TEXT_SEARCH
     FUSION --> STANDARD_EVIDENCE[本次请求的 Text Evidence]
-    STANDARD_EVIDENCE --> STANDARD_ANSWER[Standard Grounded Answer]
+    STANDARD_EVIDENCE --> STANDARD_ANSWER[基于文本证据生成回答]
     STANDARD_ANSWER --> STANDARD_VERIFY[Standard Claim Verification]
     STANDARD_VERIFY --> STANDARD_RESULT[Standard Result<br/>Text Citations + Standard Trace]
 
