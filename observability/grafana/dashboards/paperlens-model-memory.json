@@ -1,0 +1,11 @@
+{
+  "annotations":{"list":[]},"editable":true,"graphTooltip":1,"id":null,
+  "panels":[
+    {"type":"timeseries","title":"Tokens / 5m","id":1,"gridPos":{"h":9,"w":12,"x":0,"y":0},"targets":[{"expr":"sum by (provider,operation) (increase(paperlens_tokens_total[5m]))","legendFormat":"{{provider}} / {{operation}}","refId":"A"}]},
+    {"type":"timeseries","title":"Model requests / 5m","id":2,"gridPos":{"h":9,"w":12,"x":12,"y":0},"targets":[{"expr":"sum by (provider,status) (increase(paperlens_model_requests_total[5m]))","legendFormat":"{{provider}} / {{status}}","refId":"A"}]},
+    {"type":"bargauge","title":"Memory items by lifecycle","id":3,"gridPos":{"h":8,"w":12,"x":0,"y":9},"targets":[{"expr":"paperlens_memory_items","legendFormat":"{{status}}","refId":"A"}]},
+    {"type":"timeseries","title":"Memory operations / 5m","id":4,"gridPos":{"h":8,"w":12,"x":12,"y":9},"targets":[{"expr":"sum by (operation,status) (increase(paperlens_memory_operations_total[5m]))","legendFormat":"{{operation}} / {{status}}","refId":"A"}]}
+  ],
+  "refresh":"10s","schemaVersion":41,"tags":["paperlens","models","memory"],"templating":{"list":[]},
+  "time":{"from":"now-6h","to":"now"},"title":"PaperLens - Models & Memory","uid":"paperlens-model-memory","version":1
+}

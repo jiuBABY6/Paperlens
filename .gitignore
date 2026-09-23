@@ -7,6 +7,9 @@ __pycache__/
 data/qdrant-test-root*/
 data/uploads/
 data/paperlens.sqlite3
+data/paperlens.sqlite3-wal
+data/paperlens.sqlite3-shm
+data/paperlens.pre-*.sqlite3
 data/langgraph-checkpoints.sqlite3
 data/langgraph-checkpoints.sqlite3-*
 data/qdrant/

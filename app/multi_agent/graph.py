@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import time
 import uuid
-from typing import Any
+from typing import Any, Callable
 
 from langgraph.graph import END, START, StateGraph
 from langgraph.checkpoint.sqlite import SqliteSaver
@@ -22,6 +22,7 @@ from app.multi_agent.state import MultiAgentState, merge_evidence
 from app.multi_agent.supervisor import SupervisorAgent
 from app.multi_agent.trace_adapter import legacy_compatible_trace
 from app.tools.evidence_tools import EvidenceTools
+from app.multi_agent.function_calling import FunctionCallingSpecialistExecutor
 
 
 class LangGraphExecutor:
@@ -36,7 +37,10 @@ class LangGraphExecutor:
         self.critic = EvidenceCriticAgent(settings)
         self.answer_agent = AnswerSynthesisAgent(reading)
 
-    def _agent(self, name: str, paper, strategy: str | None):
+    def _agent(
+        self, name: str, paper, strategy: str | None,
+        event_callback: Callable[[str, dict[str, Any]], None] | None = None,
+    ):
         tools = EvidenceTools(
             paper,
             self.retriever,
@@ -48,7 +52,11 @@ class LangGraphExecutor:
             "figure_agent": FigureAnalysisAgent,
             "table_agent": TableAnalysisAgent,
         }
-        return classes[name](self.settings, tools)
+        agent = classes[name](self.settings, tools)
+        agent.function_executor = FunctionCallingSpecialistExecutor(
+            self.reading, tools, name, self.settings, event_callback=event_callback
+        )
+        return agent
 
     def load_checkpoint(self, run_id: str) -> dict[str, Any] | None:
         """读取持久化运行状态，供故障诊断和后续恢复入口使用。"""
@@ -65,10 +73,20 @@ class LangGraphExecutor:
             return None
         return dict(value.checkpoint.get("channel_values", {}))
 
-    def _build_graph(self, paper, checkpointer=None):
+    def _build_graph(self, paper, checkpointer=None, event_callback=None):
+        def emit(event: str, data: dict[str, Any]) -> None:
+            if event_callback:
+                event_callback(event, data)
+
         def plan_node(state: MultiAgentState) -> dict[str, Any]:
             started = time.perf_counter()
+            emit("langgraph.node.started", {"node": "supervisor_plan"})
             plan = self.supervisor.plan(state["question"], state["route"])
+            latency = round((time.perf_counter() - started) * 1000, 1)
+            emit("langgraph.node.completed", {
+                "node": "supervisor_plan", "status": "success",
+                "selected_agents": plan["selected_agents"], "latency_ms": latency,
+            })
             return {
                 "plan": plan,
                 "pending_tasks": plan["sub_tasks"],
@@ -77,7 +95,7 @@ class LangGraphExecutor:
                     "node": "supervisor_plan",
                     "agent": "supervisor_agent",
                     "status": "success",
-                    "latency_ms": round((time.perf_counter() - started) * 1000, 1),
+                    "latency_ms": latency,
                     "selected_agents": plan["selected_agents"],
                     "task_ids": [item["task_id"] for item in plan["sub_tasks"]],
                     "evidence_ids": [],
@@ -92,6 +110,11 @@ class LangGraphExecutor:
             attempt: int,
             node_name: str,
         ) -> dict[str, Any]:
+            emit("langgraph.node.started", {
+                "node": node_name,
+                "attempt": attempt,
+                "task_ids": [item.get("task_id") for item in tasks],
+            })
             budget_error = ""
             if time.time() >= state.get("deadline_at", float("inf")):
                 budget_error = "Multi-Agent 全局执行超时。"
@@ -124,6 +147,14 @@ class LangGraphExecutor:
                 if task.get("agent") != "figure_agent" else task
                 for task in tasks
             ]
+            for task in tasks:
+                emit("specialist.started", {
+                    "node": node_name,
+                    "attempt": attempt,
+                    "agent": task.get("agent"),
+                    "task_id": task.get("task_id"),
+                    "modality": task.get("modality"),
+                })
             if budget_error:
                 results = [{
                     "agent": task["agent"],
@@ -152,7 +183,9 @@ class LangGraphExecutor:
                 } for task in tasks]
             else:
                 agents = {
-                    name: self._agent(name, paper, state.get("requested_strategy"))
+                    name: self._agent(
+                        name, paper, state.get("requested_strategy"), event_callback
+                    )
                     for name in {task["agent"] for task in tasks}
                 }
                 scheduler = SpecialistScheduler(
@@ -175,6 +208,39 @@ class LangGraphExecutor:
                 )}
                 for task in tasks
             ]
+            for item in results:
+                emit("specialist.completed", {
+                    "node": node_name,
+                    "attempt": attempt,
+                    "agent": item.get("agent"),
+                    "task_id": item.get("task_id"),
+                    "status": item.get("status"),
+                    "latency_ms": item.get("latency_ms"),
+                    "evidence_ids": item.get("evidence_ids", []),
+                })
+            function_call_ids = {
+                step.get("tool_call_id") for step in steps
+                if step.get("protocol") == "function_calling"
+            }
+            for step in steps:
+                if step.get("tool_call_id") in function_call_ids:
+                    continue
+                emit("tool.completed", {
+                    "agent": step.get("agent"),
+                    "task_id": step.get("task_id", step.get("subtask_id")),
+                    "tool": step.get("tool"),
+                    "result_ids": step.get("result_ids", []),
+                    "latency_ms": step.get("latency_ms"),
+                    "status": step.get("status", "success"),
+                    "protocol": step.get("protocol", "fixed"),
+                })
+            emit("langgraph.node.completed", {
+                "node": node_name,
+                "attempt": attempt,
+                "task_count": len(tasks),
+                "statuses": [item.get("status") for item in results],
+                "tool_call_count": len(steps),
+            })
             return {
                 "agent_results": {item["task_id"]: item for item in results},
                 "evidence": evidence,
@@ -208,7 +274,14 @@ class LangGraphExecutor:
 
         def critic_node(state: MultiAgentState) -> dict[str, Any]:
             started = time.perf_counter()
+            emit("langgraph.node.started", {"node": "evidence_critic"})
             critique = self.critic.review(state)
+            latency = round((time.perf_counter() - started) * 1000, 1)
+            emit("langgraph.node.completed", {
+                "node": "evidence_critic", "status": critique["decision"],
+                "latency_ms": latency,
+                "missing_modalities": critique["missing_modalities"],
+            })
             return {
                 "critique": critique,
                 "retry_targets": critique["retry_targets"],
@@ -216,7 +289,7 @@ class LangGraphExecutor:
                     "node": "evidence_critic",
                     "agent": "evidence_critic",
                     "status": critique["decision"],
-                    "latency_ms": round((time.perf_counter() - started) * 1000, 1),
+                    "latency_ms": latency,
                     "evidence_ids": [
                         item["evidence_id"] for item in state.get("evidence", [])
                     ],
@@ -235,6 +308,11 @@ class LangGraphExecutor:
                 state.get("retry_targets", []),
                 state.get("critique", {}),
             )
+            emit("repair.dispatched", {
+                "attempt": int(state.get("retry_count", 0)) + 1,
+                "task_ids": [item.get("task_id") for item in tasks],
+                "retry_targets": state.get("retry_targets", []),
+            })
             update = dispatch(
                 state,
                 tasks,
@@ -246,6 +324,7 @@ class LangGraphExecutor:
 
         def answer_node(state: MultiAgentState) -> dict[str, Any]:
             started = time.perf_counter()
+            emit("langgraph.node.started", {"node": "answer_agent"})
             if int(state.get("model_calls", 0)) >= self.settings.multi_agent_max_model_calls:
                 grounded = {
                     "answer": "模型调用预算已耗尽，无法继续生成答案。",
@@ -259,13 +338,25 @@ class LangGraphExecutor:
                 }
             else:
                 grounded = self.answer_agent.run(state)
+            latency = round((time.perf_counter() - started) * 1000, 1)
+            emit("answer.verified", {
+                "node": "answer_agent",
+                "status": grounded.get("status", "unknown"),
+                "answerable": grounded.get("answerable"),
+                "citation_count": len(grounded.get("citations", [])),
+                "latency_ms": latency,
+            })
+            emit("langgraph.node.completed", {
+                "node": "answer_agent", "status": grounded.get("status", "unknown"),
+                "latency_ms": latency,
+            })
             return {
                 "answer": grounded,
                 "node_traces": [{
                     "node": "answer_agent",
                     "agent": "answer_agent",
                     "status": grounded.get("status", "unknown"),
-                    "latency_ms": round((time.perf_counter() - started) * 1000, 1),
+                    "latency_ms": latency,
                     "evidence_ids": [
                         item.get("evidence_id", item.get("id"))
                         for item in grounded.get("citations", [])
@@ -277,6 +368,10 @@ class LangGraphExecutor:
         def refusal_node(state: MultiAgentState) -> dict[str, Any]:
             reasons = state.get("critique", {}).get("reasons", [])
             reason = "；".join(str(item) for item in reasons) or "没有可用于回答的论文证据。"
+            emit("answer.verified", {
+                "node": "structured_refusal", "status": "insufficient_evidence",
+                "answerable": False, "citation_count": 0,
+            })
             return {
                 "answer": {
                     "answer": f"论文证据不足，无法回答。{reason}",
@@ -329,6 +424,12 @@ class LangGraphExecutor:
         question: str,
         router: dict,
         strategy: str | None = None,
+        *,
+        conversation_id: str | None = None,
+        turn_index: int | None = None,
+        original_question: str | None = None,
+        referenced_evidence_ids: list[str] | None = None,
+        event_callback: Callable[[str, dict[str, Any]], None] | None = None,
     ) -> dict:
         started = time.perf_counter()
         initial_tokens = getattr(self.reading, "token_usage", 0)
@@ -340,6 +441,11 @@ class LangGraphExecutor:
             "run_id": run_id,
             "paper_id": paper.id,
             "question": question,
+            "original_question": original_question or question,
+            "resolved_question": question,
+            "conversation_id": conversation_id or "",
+            "turn_index": turn_index or 0,
+            "referenced_evidence_ids": list(referenced_evidence_ids or []),
             "route": router,
             "requested_strategy": strategy,
             "retry_count": 0,
@@ -351,17 +457,24 @@ class LangGraphExecutor:
             "execution_mode": "sequential",
         }
         graph_config = {
-            "configurable": {"thread_id": run_id},
+            "configurable": {
+                "thread_id": (
+                    f"{conversation_id}:{turn_index}"
+                    if conversation_id and turn_index else run_id
+                )
+            },
             "recursion_limit": max(10, self.settings.multi_agent_max_steps * 3),
         }
         if self.settings.langgraph_checkpoint_enabled:
             checkpoint_path = self.settings.langgraph_checkpoint_path
             checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
             with SqliteSaver.from_conn_string(str(checkpoint_path)) as checkpointer:
-                graph = self._build_graph(paper, checkpointer=checkpointer)
+                graph = self._build_graph(
+                    paper, checkpointer=checkpointer, event_callback=event_callback
+                )
                 state = graph.invoke(initial_state, config=graph_config)
         else:
-            graph = self._build_graph(paper)
+            graph = self._build_graph(paper, event_callback=event_callback)
             state = graph.invoke(initial_state, config=graph_config)
         grounded = dict(state.get("answer", {}))
         elapsed = round((time.perf_counter() - started) * 1000, 1)
@@ -448,6 +561,20 @@ class LangGraphExecutor:
             ),
             "execution_mode": state.get("execution_mode", "sequential"),
             "critique": critique,
+            "conversation_id": conversation_id,
+            "turn_index": turn_index,
+            "original_question": original_question or question,
+            "resolved_question": question,
+            "referenced_evidence_ids": list(referenced_evidence_ids or []),
+            "specialist_execution_mode": getattr(
+                self.settings, "specialist_execution_mode", "fixed"
+            ),
+            "function_calls": [
+                step for step in steps if step.get("protocol") == "function_calling"
+            ],
+            "function_call_fallbacks": sum(
+                1 for step in steps if step.get("tool") == "function_calling_fallback"
+            ),
         }, orchestrator="langgraph", node_traces=state.get("node_traces", []),
             retry_count=int(state.get("retry_count", 0)),
             recovery={

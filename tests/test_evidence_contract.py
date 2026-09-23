@@ -155,3 +155,15 @@ def test_claim_rejected_when_verifier_finds_only_partial_support(monkeypatch) ->
     assert result["answerable"] is False
     assert result["citations"] == []
     assert result["status"] == "unsupported_claims"
+
+
+def test_exact_per_unit_question_rejects_total_only_answer() -> None:
+    payload = {
+        "answer": "The paper reports a total cost for 100 samples, not a per-explanation cost.",
+        "claims": [{"claim": "Only total cost is reported."}],
+    }
+    assert ReadingService._reported_information_is_absent(
+        "What was the exact US-dollar API cost per generated explanation?",
+        payload,
+        [],
+    ) is True

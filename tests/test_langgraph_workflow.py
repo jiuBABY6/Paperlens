@@ -121,6 +121,32 @@ def test_langgraph_skeleton_runs_through_compatible_adapter() -> None:
     assert result["answer"] == "Grounded answer."
 
 
+def test_langgraph_publishes_node_specialist_tool_and_verified_answer_events() -> None:
+    local = replace(
+        settings, agent_orchestrator="langgraph", vector_enabled=False,
+        reranker_enabled=False, langgraph_checkpoint_enabled=False,
+        specialist_execution_mode="fixed",
+    )
+    executor = build_agent_executor(local, HybridRetriever(local), FakeReading())
+    events = []
+    executor.run(
+        sample_paper(),
+        "What method is novel?",
+        {
+            "complexity": "complex", "route": "agentic_rag",
+            "modalities": ["text"], "required_modalities": ["text"],
+            "pure_visual": False, "pure_table": False, "reason": "event test",
+        },
+        event_callback=lambda event, data: events.append((event, data)),
+    )
+    names = [event for event, _data in events]
+    assert "langgraph.node.started" in names
+    assert "langgraph.node.completed" in names
+    assert "specialist.started" in names and "specialist.completed" in names
+    assert "tool.completed" in names
+    assert "answer.verified" in names
+
+
 def test_langgraph_dispatches_all_specialists_for_cross_modal_question() -> None:
     local = replace(
         settings,

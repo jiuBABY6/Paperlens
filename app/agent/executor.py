@@ -3,6 +3,7 @@
 import json
 import time
 import uuid
+from typing import Callable, Any
 
 from app.agent.evidence_memory import EvidenceMemory
 from app.agent.planner import Planner
@@ -24,6 +25,8 @@ class AgentExecutor:
         question: str,
         router: dict,
         strategy: str | None = None,
+        *,
+        event_callback: Callable[[str, dict[str, Any]], None] | None = None,
     ) -> dict:
         started = time.perf_counter()
         plan = self.planner.plan(question, router["modalities"])
@@ -156,6 +159,24 @@ class AgentExecutor:
         if self.figure_service:
             final_tokens += getattr(self.figure_service.client, "token_usage", 0)
         trace.token_usage = final_tokens - initial_tokens
+        if event_callback:
+            for step in trace.steps:
+                payload = vars(step)
+                event_callback("tool.completed", {
+                    "agent": "legacy_agent",
+                    "task_id": payload.get("subtask_id"),
+                    "tool": payload.get("tool"),
+                    "result_ids": payload.get("result_ids", []),
+                    "latency_ms": payload.get("latency_ms"),
+                    "status": "success",
+                    "protocol": "legacy_fixed",
+                })
+            event_callback("answer.verified", {
+                "node": "legacy_answer",
+                "status": grounded.get("status", "unknown"),
+                "answerable": grounded.get("answerable"),
+                "citation_count": len(grounded.get("citations", [])),
+            })
         return {
             **grounded,
             "route": "agentic_rag",

@@ -6,6 +6,7 @@ import time
 from typing import Any
 
 from app.multi_agent.recovery import classify_error
+from app.observability import llmops
 
 
 VALID_AGENT_STATUSES = {
@@ -20,6 +21,56 @@ class BaseSpecialistAgent:
     def __init__(self, settings, tools) -> None:
         self.settings = settings
         self.tools = tools
+        self.function_executor = None
+
+    def try_function_calling(
+        self, task: dict[str, Any], question: str, started: float
+    ) -> tuple[dict[str, Any] | None, dict[str, Any] | None]:
+        """Return a specialist result or a trace marker explaining fixed-flow fallback."""
+        if (
+            getattr(self.settings, "specialist_execution_mode", "fixed")
+            != "function_calling_with_fallback"
+            or self.function_executor is None
+        ):
+            return None, None
+        call_started = time.perf_counter()
+        try:
+            value = self.function_executor.run(task, question)
+            if not value["evidence"]:
+                raise RuntimeError("function_calling_returned_no_evidence")
+            llmops.function_calls.labels(agent=self.name, status="success").inc()
+            return self.result(
+                task,
+                status="success",
+                evidence=value["evidence"],
+                observations=value["observations"],
+                confidence=0.8,
+                retryable=False,
+                tool_calls=value["tool_calls"],
+                started=started,
+                model_calls=value["model_calls"],
+                qwen_vl_calls=value["qwen_vl_calls"],
+            ), None
+        except Exception as error:
+            detail = classify_error(error)
+            # Metric labels must stay bounded; full error text remains in the trace.
+            reason = str(detail.get("category") or type(error).__name__)[:80]
+            llmops.function_calls.labels(agent=self.name, status="fallback").inc()
+            llmops.function_fallbacks.labels(agent=self.name, reason=reason).inc()
+            return None, self.tool_step(
+                task,
+                "function_calling_fallback",
+                {"mode": "function_calling_with_fallback"},
+                [],
+                call_started,
+                status="fallback",
+                error={
+                    "type": type(error).__name__,
+                    "category": detail.get("category", "function_calling"),
+                    "retryable": bool(detail.get("retryable")),
+                    "message": str(error)[:300],
+                },
+            )
 
     def run(self, task: dict[str, Any], question: str, attempt: int = 0) -> dict[str, Any]:
         raise NotImplementedError

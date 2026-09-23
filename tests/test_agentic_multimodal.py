@@ -69,6 +69,33 @@ def test_router_skips_text_for_pure_visual_question() -> None:
     assert routed["pure_visual"] is True
 
 
+def test_router_recognizes_compact_english_figure_reference_before_chinese_text() -> None:
+    question = "Figure2有几种颜色"
+
+    routed = QueryRouter().route(question)
+
+    assert routed["route"] == "agentic_rag"
+    assert routed["modalities"] == ["figure"]
+    assert routed["required_modalities"] == ["figure"]
+    assert routed["pure_visual"] is True
+    assert EvidenceTools._requested_figure_numbers(question) == {2}
+
+
+def test_router_and_tools_recognize_compact_references_after_chinese_prefix() -> None:
+    figure_question = "根据Figure2，流程中有哪些颜色？"
+    table_question = "根据Table2，性能最高的方法是什么？"
+
+    figure_route = QueryRouter().route(figure_question)
+    table_route = QueryRouter().route(table_question)
+
+    assert figure_route["modalities"] == ["figure"]
+    assert figure_route["pure_visual"] is True
+    assert EvidenceTools._requested_figure_numbers(figure_question) == {2}
+    assert table_route["modalities"] == ["table"]
+    assert table_route["pure_table"] is True
+    assert EvidenceTools._requested_table_numbers(table_question) == {2}
+
+
 def test_router_does_not_treat_chinese_word_image_as_figure_reference() -> None:
     routed = QueryRouter().route(
         "根据论文摘要，SimCLIP 使用哪种编码器来建模图像与文本交互？"
@@ -354,12 +381,12 @@ def test_optional_online_visual_check_is_disabled_by_default_and_enforced_when_e
 
 
 def test_frontend_prioritizes_visual_verification_failure_message() -> None:
-    html = (Path(__file__).parents[1] / "app" / "static" / "index.html").read_text(
+    javascript = (Path(__file__).parents[1] / "app" / "static" / "app.js").read_text(
         encoding="utf-8"
     )
 
-    assert "const decision = visualFailed" in html
-    assert "? '视觉核验未通过'" in html
+    assert "const decision = visualFailed" in javascript
+    assert '? "视觉核验未通过"' in javascript
 
 
 def test_required_table_and_cross_modal_flows_use_expected_tools() -> None:

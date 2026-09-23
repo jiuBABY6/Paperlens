@@ -6,11 +6,13 @@ import json
 import mimetypes
 from pathlib import Path
 import threading
+import time
 
 import httpx
 from PIL import Image, ImageOps
 
 from app.multi_agent.recovery import call_with_retry
+from app.observability import llmops, span
 
 
 class QwenVLClient:
@@ -58,21 +60,43 @@ class QwenVLClient:
                 response.raise_for_status()
                 return response
 
-        with self._request_lock:
-            response = call_with_retry(
-                request,
-                max_retries=self.settings.remote_max_retries,
-                base_delay_seconds=self.settings.remote_retry_base_delay_seconds,
+        started = time.perf_counter()
+        try:
+            with span("provider.qwen_vl", provider="qwen-vl",
+                      model=self.settings.qwen_vl_model, operation="vision"):
+                with self._request_lock:
+                    response = call_with_retry(
+                        request,
+                        max_retries=self.settings.remote_max_retries,
+                        base_delay_seconds=self.settings.remote_retry_base_delay_seconds,
+                    )
+        except Exception:
+            llmops.record_model(
+                provider="qwen-vl", model=self.settings.qwen_vl_model,
+                operation="vision", status="error",
+                duration_seconds=time.perf_counter() - started,
             )
+            raise
         payload = response.json()
+        tokens = int(payload.get("usage", {}).get("total_tokens", 0) or 0)
         with self._counter_lock:
-            self.token_usage += int(payload.get("usage", {}).get("total_tokens", 0) or 0)
+            self.token_usage += tokens
         content = payload.get("choices", [{}])[0].get("message", {}).get("content")
         if not content:
+            llmops.record_model(
+                provider="qwen-vl", model=self.settings.qwen_vl_model,
+                operation="vision", status="invalid_response",
+                duration_seconds=time.perf_counter() - started, tokens=tokens,
+            )
             raise RuntimeError("Qwen-VL 未返回正文内容。")
         value = json.loads(content)
         if not isinstance(value, dict):
             raise ValueError("Qwen-VL 输出不是 JSON object。")
+        llmops.record_model(
+            provider="qwen-vl", model=self.settings.qwen_vl_model,
+            operation="vision", status="success",
+            duration_seconds=time.perf_counter() - started, tokens=tokens,
+        )
         return value
 
     def _prepare_image(self, path: Path) -> tuple[str, bytes]:

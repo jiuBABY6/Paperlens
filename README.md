@@ -1,8 +1,17 @@
-# PaperLens 4.0
+# PaperLens 6.0
 
 Evidence-Grounded Multimodal Agentic RAG for Scientific Paper Reading。
 
-系统保留原有文本 RAG 与 `sentence_id → page + bbox(es) → PDF.js` 高亮链路，并以 LangGraph 编排 Supervisor、Text/Figure/Table Specialists、Evidence Critic 和 Answer Agent。复杂问题支持共享证据池、跨模态冲突检查、一次定向返工、结构化拒答、SQLite Checkpoint 与全链路 Evaluation。
+系统保留文本 RAG 与 `sentence_id → page + bbox(es) → PDF.js` 高亮链路，并以 LangGraph 编排 Supervisor、Text/Figure/Table Specialists、Evidence Critic 和 Answer Agent。PaperLens 6.0 支持持久化多轮会话、论文级跨会话学习记忆、实时 LangGraph/Tool 事件，以及带严格 Schema、结果信封、熔断恢复和固定流程回退的生产化 Function Calling。
+
+## 最终交付文档
+
+- [PaperLens 数据流转与运行机制](docs/paperlens-data-flow-and-runtime-guide.md)：从上传、三模态解析、索引、路由、多智能体执行、证据校验、SSE、记忆到 LLMOps 的完整数据流。
+- [PaperLens AI 应用开发技术面试题库](docs/paperlens-ai-application-interview-qa.md)：60 道基于当前代码与真实边界编写的问答。
+- [LLMOps 与长期记忆工程指南](docs/llmops-and-long-term-memory.md)：观测组件、指标、Trace、记忆生命周期与验收方式。
+- [对话式多智能体升级进度](docs/conversational-upgrade-progress.md)：升级阶段、自动化测试和评测结果。
+
+当前版本全量自动化回归结果为 **159 passed**，覆盖解析与检索契约、多智能体编排、Function Calling 与熔断、对话持久化、SSE、长期记忆、评测指标、Trace 关联字段和 Grafana 查询口径。该结果表示代码回归通过，不等同于真实业务问题准确率；模型质量指标见后文冻结 Dev/Test 报告。
 
 ## 系统架构与 Agentic RAG 流程
 
@@ -58,7 +67,34 @@ flowchart TD
 
 离线阶段持久化的是 BGE-M3/Qdrant 稠密向量索引；BM25 在在线检索时根据当前论文的 Chunk 计算词法排名。Docling 失败时系统降级到 PyMuPDF，保留基本文本、页码、Sentence BBox 与图片能力。
 
-### 在线问答与 LangGraph 多智能体编排
+### 对话入口、Memory 与流式运行
+
+```mermaid
+flowchart TD
+    UI[三栏工作台] --> MSG[提交 User Message]
+    MSG --> TX[原子创建 Message + Run]
+    TX --> SSE[SSE 订阅运行事件]
+    TX --> CONTEXT[加载当前 Conversation<br/>摘要 + 最近 6 轮 + 历史引用 ID]
+    TX --> PAPER_MEMORY[(论文级跨会话学习记忆)]
+    PAPER_MEMORY --> RESOLVE
+    CONTEXT --> RESOLVE{是否依赖历史?}
+    RESOLVE -->|否| ORIGINAL[沿用原问题]
+    RESOLVE -->|是| REWRITE[Query Resolver<br/>改写为独立检索问题]
+    REWRITE -->|无法唯一消歧| CLARIFY[请求澄清]
+    ORIGINAL --> RAG[单轮 RAG 内核]
+    REWRITE --> RAG
+    RAG --> EVENTS[节点 / Tool / Citation / Answer Delta]
+    EVENTS --> SSE
+    RAG --> PERSIST[一次性保存 Assistant Message<br/>Run / Citation / Trace]
+    PERSIST --> MEMORY[更新当前会话短期记忆]
+    PERSIST --> LONG_MEMORY[仅将已验证问答写入<br/>论文级学习记忆]
+    MEMORY --> RECOVER[刷新页面恢复完整时间线]
+    LONG_MEMORY --> RECOVER
+```
+
+Conversation Memory 只理解当前会话中的“它、上一张图、刚才的表格”等上下文；Paper Learning Memory 按论文记录跨会话的已验证问答、章节/图表进度和未解决问题。两者都不能作为论文事实 Citation，每轮仍会重新检索并构建 Evidence Memory。LangGraph `thread_id` 使用 `conversation_id:turn_index`，避免上一轮 Plan、预算或错误污染下一轮。
+
+### 单轮 RAG 内核与 LangGraph 多智能体编排
 
 ```mermaid
 flowchart TD
@@ -119,7 +155,7 @@ flowchart TD
     GRAPH -. 每个节点持久化运行状态 .-> CHECKPOINT[(SQLite 状态检查点)]
 ```
 
-Router 只负责入口分流、复杂度和模态识别；Planner 是 Supervisor 内部的规则规划组件，并非独立 LangGraph Agent。纯 Figure 和纯 Table 问题同样进入 LangGraph，由 Supervisor 分派给对应 Specialist。Standard RAG 与 Agentic RAG 读取同一份持久化论文数据和索引，但每次请求的 Query Plan、候选结果、Evidence、State、Citation 与 Trace 相互隔离；两条线路最后汇合的只是统一 API 响应协议，而不是 Evidence Memory。正常在线问答在返回 API/UI 结果后结束，Standard RAG 的 Claim Verification 不等同于评测 Judge；只有评测脚本离线回放时才进入 Evaluation，启用 `--judge` 后，文本、表格及非 `visual-only` 样本使用 DeepSeek Text Judge，`visual-only` 样本使用独立 Qwen-VL Visual Judge。未启用 Judge 时，`answer_correct` 与 `task_success` 保持 `null`。当前子任务的 `dependencies` 均为空，Scheduler 支持无依赖 Specialist 的串行或并行执行，尚未实现通用依赖拓扑调度。
+Router 只负责入口分流、复杂度和模态识别；Planner 是 Supervisor 内部的规则规划组件，并非独立 LangGraph Agent。纯 Figure 和纯 Table 问题同样进入 LangGraph，由 Supervisor 分派给对应 Specialist。Specialist 使用模型原生 Function Calling，但只能看到各自 strict 白名单工具；非法参数、重复调用、预算耗尽或协议失败会记录 Trace，并回退到固定流程。连续协议失败达到阈值才熔断，冷却后自动恢复试探。Figure 必须完成查询相关原图分析，Table 必须完成结构化读取，否则不会仅因“搜索到了对象”而宣告成功。Standard RAG 与多智能体 RAG 读取同一份持久化论文数据和索引，但每次请求的 Query Plan、候选结果、Evidence、State、Citation 与 Trace 相互隔离。
 
 | 层次 | 主要职责 | 关键实现 |
 |---|---|---|
@@ -143,6 +179,10 @@ Router 只负责入口分流、复杂度和模态识别；Planner 是 Supervisor
 - Recovery：外部 API 有限指数退避、节点超时、工具/模型/Qwen‑VL 预算、SQLite Checkpoint 和结构化错误；网络重试与 Critic 返工分开统计。
 - Trace：记录 router、plan、每个 Agent/Node/Tool、result IDs、缓存命中、延迟、token usage、Qwen-VL 调用、Critic 决策与恢复结果。
 - Evaluation：比较 `standard_rag`、`text_agentic_rag`、`multimodal_agentic_rag`；各模态独立计算 Top-K，并分开报告执行成功与答案正确。
+- Conversation：一个会话永久绑定一篇论文，支持创建、切换、重命名、归档、幂等消息提交、刷新恢复和单会话活动 Run 互斥。
+- Memory：当前会话使用有界短期记忆；同一论文使用跨会话结构化学习记忆。只有已验证问答进入学习记录，partial/refusal 进入未解决列表；历史回答不能充当 Citation。
+- Function Calling：Text/Figure/Table Specialist 使用独立 strict Tool Schema、本地二次校验、统一结果信封、输出上限和失败熔断；`paper_id`、路径、URL 等上下文参数不交给模型控制，固定流程作为显式回退。
+- SSE：Message API 立即返回 `202`，后台执行 Run；浏览器实时接收 Router、LangGraph Node、Specialist、Function Call、Tool、Repair、核验、答案增量和终态事件，支持 `Last-Event-ID` 进程内重放与协作式取消。
 
 ## 启动
 
@@ -152,18 +192,80 @@ cd D:\Desktop\job\demo
 pip install -r requirements.txt
 Copy-Item .env.example .env
 # 将两个 YOUR_... 占位符替换为实际 Key；不用 Figure 时 Qwen-VL Key 可留空。
-# 灰度启用多智能体网页链路：AGENT_ORCHESTRATOR=langgraph
+# 默认启用 LangGraph；Function Calling 失败时自动回退固定 Specialist 流程。
+# AGENT_ORCHESTRATOR=langgraph
+# SPECIALIST_EXECUTION_MODE=function_calling_with_fallback
+# FUNCTION_CALL_STRICT=true
 # 可选启用无依赖 Specialist 并行：MULTI_AGENT_PARALLEL_ENABLED=true
 uvicorn app.main:app --host 127.0.0.1 --port 8010
 ```
 
 健康检查：`GET /api/health`。未设置 `QDRANT_URL` 时使用 `data/qdrant` 的单进程本地存储。
 
+## LLMOps、Grafana 与长期记忆
+
+本项目已加入一套本地可复现的 LLMOps 链路，而不只是在页面展示 Agent Trace：
+
+- `GET /metrics` 暴露 Prometheus 指标，覆盖 HTTP、RAG 运行结果、LangGraph 节点、Tool/Function Calling、模型延迟与 Token、熔断降级、答案状态和记忆生命周期。
+- OpenTelemetry 为 HTTP、单轮 Run、DeepSeek、Qwen-VL 和记忆写入创建关联 Span；对话根 Span 显式记录 `run_id/conversation_id/paper_id/question_preview`，成功 Span 标记为 `OK`，异常标记为 `ERROR`。这些高基数字段用于日志与 Trace 精确关联，但不会作为 Prometheus 标签。
+- JSON 结构化日志自动隐藏 API Key、Authorization、Prompt 和论文正文，只记录状态、长度、计数和错误类型。
+- `GET /api/health` 用于存活检查，`GET /api/ready` 检查 SQLite、数据目录和 LangGraph Checkpoint 目录，不调用外部模型，也不消耗 Token。
+- Grafana 自动预置 `System Overview`、`Agents & Tools`、`Models & Memory` 三张 Dashboard；Prometheus 保存指标，Tempo 保存 Trace，OpenTelemetry Collector 负责接收与转发。
+
+启动应用后，可在另一个终端启动观测组件：
+
+```powershell
+docker compose up -d prometheus tempo otel-collector grafana
+```
+
+访问地址：PaperLens 指标 `http://127.0.0.1:8010/metrics`，Prometheus `http://127.0.0.1:9090`，Grafana `http://127.0.0.1:3000`。Grafana 默认账号为 `admin`，密码读取 `.env` 的 `GRAFANA_ADMIN_PASSWORD`。生产环境必须替换默认密码，并为 `/metrics` 增加内网或网关访问控制。
+
+新建一轮对话后，可用页面返回的 `run_id` 在 Grafana Explore → Tempo 中精确定位：
+
+```traceql
+{ resource.service.name = "paperlens" && span.run_id = "<run_id>" }
+```
+
+展开 `paperlens.conversation_run` 可看到安全截断的 `question_preview`，并沿子 Span 查看 Router、LangGraph、Tool、DeepSeek、Qwen-VL 和记忆写入。字段升级前生成的历史 Trace 不会被回填，验收时应重启应用并发起新请求。
+
+Grafana 中标题带 `/ 5m` 的请求、Run、Tool、模型和记忆面板统一使用 PromQL `increase(...[5m])`，表示最近五分钟的实际新增次数，不是每秒速率。Function Calling fallback、拒绝调用和熔断状态属于低频故障信号，Stat 面板展示当前 PaperLens 进程生命周期累计值，并用 `or vector(0)` 将“尚未发生”显示为 `0`，避免误显示 `No data`。
+
+论文级长期记忆采用“源 Run → 原子记忆项 → 聚合学习记忆”三层结构：
+
+- 只有 `completed + answerable=true + 至少一个 Citation` 的回答进入 `active`；拒答和 partial 进入 `unresolved`，不会被当成可靠事实。
+- 每条记忆保存来源会话、来源 Run、解析版本、Evidence ID/模态、章节、置信度、重要性、到期时间和用户备注，可完整追溯。
+- 论文重新解析后，旧解析版本的记忆（包括置顶项）转为 `stale`，避免引用失效证据；普通记忆到期后转为 `archived`，置顶只跳过过期，不跳过版本失效。
+- 支持历史 Run 幂等回填、容量上限、自动遗忘、置顶、备注和主动忘记。旧版聚合记忆在完成回填前保留，不会因升级被直接清空。
+- 当前记忆按 `paper_id + local user_scope` 隔离；尚未接入登录体系，因此不能将它描述为完整多租户隔离。
+
+长期记忆接口：
+
+- `GET /api/papers/{paper_id}/learning-memory`：读取聚合学习进度并执行回填、版本失效与过期检查。
+- `GET /api/papers/{paper_id}/learning-memory/items?include_inactive=true`：读取原子记忆及生命周期状态。
+- `PATCH /api/papers/{paper_id}/learning-memory/items/{memory_id}`：置顶、修改重要性、添加备注或设为 `forgotten`。
+- `POST /api/papers/{paper_id}/learning-memory/backfill`：从历史完成/部分完成 Run 幂等回填。
+- `DELETE /api/papers/{paper_id}/learning-memory`：只清除派生记忆，不删除论文、会话和原始回答。
+
+记忆质量可使用独立标注集评测，示例格式见 `evals/memory.cases.example.jsonl`：
+
+```powershell
+python scripts\evaluate_memory.py --dataset evals\memory.cases.jsonl --output evals\report-memory.json
+```
+
+报告区分状态准确率、Active Precision/Recall、错误激活率和活跃记忆来源可追溯率。完整实现与故障边界见 [LLMOps 与长期记忆工程指南](docs/llmops-and-long-term-memory.md)。
+
 ## API
 
 - `POST /api/papers`：上传、解析、Figure 离线理解、索引、生成阅读卡片。
 - `POST /api/papers/{paper_id}/reanalyze`：使用当前 parser/index/多模态版本重新分析。
 - `POST /api/papers/{paper_id}/ask`：自动选择 Standard 或 Agentic RAG。
+- `POST /api/papers/{paper_id}/conversations`：创建论文级会话。
+- `GET /api/papers/{paper_id}/conversations`：列出当前论文的未归档会话。
+- `GET/PATCH/DELETE /api/papers/{paper_id}/conversations/{conversation_id}`：读取、重命名与软归档。
+- `POST /api/papers/{paper_id}/conversations/{conversation_id}/messages`：幂等提交消息并异步创建 Run。
+- `GET /api/papers/{paper_id}/conversations/{conversation_id}/runs/{run_id}`：查询持久化终态。
+- `GET .../runs/{run_id}/events`：订阅 SSE；支持浏览器自动携带 `Last-Event-ID` 重放。
+- `POST .../runs/{run_id}/cancel`：请求协作式取消。
 - `GET /api/papers/{paper_id}/evidence/{evidence_id}`：统一读取 text/figure/table Evidence。
 - `GET /api/papers/{paper_id}/traces/{run_id}`：读取持久化 Trace。
 - `GET /api/papers/{paper_id}/figures/{figure_id}`：读取 Figure/Table 原始图像。
@@ -206,6 +308,24 @@ python scripts\evaluate_agentic.py evals\agentic-results.jsonl --top-k 5
 - `execution_success` 只衡量链路是否正常完成；`answer_correct` 只在 Judge 可用时确定；`task_success` 要求执行与答案均正确。
 - 文本答案由 DeepSeek 根据标准答案、Gold 原文和实际引用证据进行 0–2 分裁判；`visual-only` 问题由独立 Qwen-VL 重新查看 Gold Figure，避免使用回答链路的视觉分析自证。
 - 所有参数先在 `dev` 上确定，随后冻结配置并只运行一次 `test`；没有根据最终 test 报告继续调参。
+
+### PaperLens 6.0 对话式多智能体结果
+
+本轮没有扩充正式 Benchmark；仍使用 5 篇论文、20 条冻结 v2 单轮题（Dev 12 / Test 8）。新增多轮 Smoke 只验证指代、会话隔离、取消和流式业务闭环，不包装成正式指标。完整报告见 [Conversation Dev](evals/report-dev-conversation-upgrade-final.json) 与 [Conversation Test](evals/report-test-conversation-upgrade-final.json)。
+
+| 指标 | Dev（12 条） | 冻结 Test（8 条） |
+|---|---:|---:|
+| Execution Success | 100% | 100% |
+| Task Success / Answer Correct | 100%（12/12） | 100%（8/8） |
+| Answerability / Refusal Accuracy | 100% / 100% | 100% / 100% |
+| Retrieval Recall@5 | 1.000 | 0.833 |
+| Evidence Precision / Recall / F1 | 0.944 / 1.000 / 0.963 | 0.833 / 0.833 / 0.833 |
+| 平均 / P95 延迟 | 11.28 s / 33.43 s | 15.06 s / 42.11 s |
+| 平均 Token Usage | 9895.17 | 8556.63 |
+| Qwen-VL 总调用（含 Judge） | 5 | 4 |
+| 原生 Function Calls / Fixed Fallbacks | 19 / 1 | 14 / 2 |
+
+Function Calling 增加了工具选择模型轮次，因此延迟和 Token 不应与旧 fixed 报告直接当作纯性能优化对比；它的收益主要是可审计的模型工具协议、参数约束和动态工具选择。冻结 Test 的严格 Gold ID Recall 为 0.833，但 8 条答案均通过独立 Judge；不能把它表述成“检索 100%”。
 
 ### Legacy 单 Agent 基线
 
@@ -274,4 +394,7 @@ python scripts\evaluate.py --dataset evals\questions.v2.jsonl --split test --mod
 - Router/Planner 第一版采用可测试规则，不是训练过的意图分类器。
 - Critic 的跨模态冲突检查目前以结构化 Agent Result、必要模态覆盖和同名数值冲突为主，不等同于领域专家审稿。
 - LangGraph Checkpoint 支持按 `run_id` 读取状态；当前 UI 尚未提供人工审批后从中断节点继续的操作界面。
+- 论文级长期记忆当前使用本机 `local` 用户范围，尚未接入登录、RBAC、多租户隔离或向量化自由文本记忆。
+- SSE 事件缓冲位于单进程内存，多 Worker 部署前需要迁移到 Redis Streams、NATS 等共享事件总线。
+- 答案 Delta 是 Claim 核验后的安全文本切片，不是 Provider 原生 token 直出；LangGraph 与 Tool 阶段事件已经是真实执行时发布。
 - Web UI 仍是轻量单页 PDF.js 阅读器，支持跳页和 bbox 高亮，但没有缩略图、连续滚动或缩放控件。

@@ -7,14 +7,21 @@ class QueryRouter:
     """可解释的保守路由器；简单单事实查询继续走 Standard RAG。"""
 
     FIGURE = re.compile(
-        r"\b(fig(?:ure)?s?\.?\s*(?:\d+(?:\s*(?:,|and|&|to|-)\s*\d+)*)?|"
-        r"diagrams?|architectures?|workflows?|plots?|charts?)\b|"
+        # Use ASCII token boundaries for English Figure references. Python's
+        # ``\b`` treats both digits and Chinese characters as ``\w``, so a
+        # compact query such as ``Figure2有几种颜色`` otherwise fails to match.
+        r"(?<![A-Za-z0-9_])fig(?:ure)?s?\.?\s*"
+        r"(?:\d+(?:\s*(?:,|and|&|to|-)\s*\d+)*)?(?![A-Za-z0-9_])|"
+        r"\b(?:diagrams?|architectures?|workflows?|plots?|charts?)\b|"
         r"图\s*\d+|图中|图示|图片中|图像中|架构图|流程图",
         re.I,
     )
     TABLE = re.compile(
-        r"\b(tables?\s*(?:\d+(?:\s*(?:,|and|&|to|-)\s*\d+)*)?|"
-        r"tabular|rows?|columns?)\b|表\s*\d*|表格",
+        # Keep the same ASCII-boundary behavior as Figure references so
+        # ``根据Table2，...`` is not mistaken for a text-only question.
+        r"(?<![A-Za-z0-9_])tables?\.?\s*"
+        r"(?:\d+(?:\s*(?:,|and|&|to|-)\s*\d+)*)?(?![A-Za-z0-9_])|"
+        r"\b(?:tabular|rows?|columns?)\b|表\s*\d*|表格",
         re.I,
     )
     EXPLICIT_TEXT = re.compile(

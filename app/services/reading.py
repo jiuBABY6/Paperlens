@@ -3,11 +3,13 @@
 import json
 import re
 import threading
+import time
 import httpx
 
 from app.config import Settings
 from app.domain import Chunk, EvidenceObject, Paper, sentence_payload
 from app.multi_agent.recovery import call_with_retry
+from app.observability import llmops, span
 from app.services.retrieval import HybridRetriever
 
 
@@ -20,6 +22,9 @@ class ReadingService:
         self.request_count = 0
         self._request_slots = threading.BoundedSemaphore(2)
         self._counter_lock = threading.Lock()
+        self.tool_calling_available: bool | None = None
+        self._tool_call_failures = 0
+        self._tool_call_disabled_until = 0.0
 
     def create_card(self, paper: Paper) -> dict:
         """为每个阅读字段生成结论，并强制 LLM 选择候选 sentence_id。"""
@@ -534,7 +539,14 @@ Figure Evidence 的 visual_observations、figure_evidence 和 interpretation 来
             re.I,
         ))
         if not asks_about_reporting:
-            return False
+            asks_exact_unit = bool(re.search(
+                r"\bexact\b.{0,80}\bper\b|"
+                r"(?:精确|准确|具体).{0,40}(?:每|单个|单条)",
+                question,
+                re.I,
+            ))
+            if not asks_exact_unit:
+                return False
         claims = payload.get("claims", []) if isinstance(payload, dict) else []
         claim_text = " ".join(
             str(item.get("claim", item.get("text", "")))
@@ -546,13 +558,21 @@ Figure Evidence 的 visual_observations、figure_evidence 和 interpretation 来
             claim_text,
             " ".join(str(item) for item in insufficient),
         ])
-        return bool(re.search(
+        denies_report = bool(re.search(
             r"(?:未|没有|并未|无).{0,40}(?:报告|提供|给出|包含|提及|说明|涉及)|"
             r"\b(?:no|not|never|without)\b.{0,60}"
             r"\b(?:report|provide|give|include|mention|significance|confidence)\w*\b",
             combined,
             re.I,
         ))
+        denies_requested_unit = bool(re.search(
+            r"\bnot\s+(?:an?\s+)?per[- ]|\bnot\s+per\b|"
+            r"\bonly\b.{0,35}\btotal\b|\btotal\b.{0,35}\bnot\b.{0,20}\bper\b|"
+            r"(?:总计|总成本|总费用).{0,25}(?:而非|不是|未给出).{0,20}(?:每|单条|单个)",
+            combined,
+            re.I,
+        ))
+        return denies_report or denies_requested_unit
 
     def plan_query(self, question: str) -> dict:
         """为中文问题生成英文 BM25 查询，同时保留原问题用于跨语言向量召回。"""
@@ -751,21 +771,140 @@ score 只能是 0、1、2：0=错误或拒答错误，1=部分正确，2=完全�
                 response.raise_for_status()
                 return response
 
+        started = time.perf_counter()
         with self._counter_lock:
             self.request_count += 1
-        with self._request_slots:
-            response = call_with_retry(
-                request,
-                max_retries=self.settings.remote_max_retries,
-                base_delay_seconds=self.settings.remote_retry_base_delay_seconds,
+        try:
+            with span("provider.deepseek", provider="deepseek", model=self.settings.deepseek_model,
+                      operation="json" if as_json else "chat"):
+                with self._request_slots:
+                    response = call_with_retry(
+                        request,
+                        max_retries=self.settings.remote_max_retries,
+                        base_delay_seconds=self.settings.remote_retry_base_delay_seconds,
+                    )
+        except Exception:
+            llmops.record_model(
+                provider="deepseek", model=self.settings.deepseek_model,
+                operation="json" if as_json else "chat", status="error",
+                duration_seconds=time.perf_counter() - started,
             )
+            raise
         payload = response.json()
+        tokens = int(payload.get("usage", {}).get("total_tokens", 0) or 0)
         with self._counter_lock:
-            self.token_usage += int(payload.get("usage", {}).get("total_tokens", 0) or 0)
+            self.token_usage += tokens
         content = payload.get("choices", [{}])[0].get("message", {}).get("content")
         if not content:
+            llmops.record_model(
+                provider="deepseek", model=self.settings.deepseek_model,
+                operation="json" if as_json else "chat", status="invalid_response",
+                duration_seconds=time.perf_counter() - started, tokens=tokens,
+            )
             raise RuntimeError("DeepSeek 未返回正文内容。")
+        llmops.record_model(
+            provider="deepseek", model=self.settings.deepseek_model,
+            operation="json" if as_json else "chat", status="success",
+            duration_seconds=time.perf_counter() - started, tokens=tokens,
+        )
         return content
+
+    def tool_completion(self, messages: list[dict], tools: list[dict]) -> dict:
+        """Call the OpenAI-compatible native tool-calling protocol and return its message."""
+        if not self.settings.deepseek_key:
+            raise RuntimeError("DEEPSEEK_API_KEY 未配置，无法执行 Function Calling。")
+        if self._tool_call_circuit_is_open():
+            raise RuntimeError("Function Calling circuit_open，等待冷却后自动重试。")
+        body = {
+            "model": self.settings.deepseek_model,
+            "temperature": 0.0,
+            "thinking": {"type": "disabled"},
+            "messages": messages,
+            "tools": tools,
+            "tool_choice": "auto",
+        }
+
+        def request():
+            with httpx.Client(timeout=100, trust_env=False) as client:
+                response = client.post(
+                    self.settings.deepseek_url,
+                    headers={"Authorization": f"Bearer {self.settings.deepseek_key}"},
+                    json=body,
+                )
+                response.raise_for_status()
+                return response
+
+        with self._counter_lock:
+            self.request_count += 1
+        started = time.perf_counter()
+        try:
+            with span("provider.deepseek.tool_calling", provider="deepseek",
+                      model=self.settings.deepseek_model, operation="tool_calling"):
+                with self._request_slots:
+                    response = call_with_retry(
+                        request,
+                        max_retries=self.settings.remote_max_retries,
+                        base_delay_seconds=self.settings.remote_retry_base_delay_seconds,
+                    )
+        except Exception:
+            self._record_tool_call_failure()
+            llmops.record_model(
+                provider="deepseek", model=self.settings.deepseek_model,
+                operation="tool_calling", status="error",
+                duration_seconds=time.perf_counter() - started,
+            )
+            raise
+        payload = response.json()
+        tokens = int(payload.get("usage", {}).get("total_tokens", 0) or 0)
+        with self._counter_lock:
+            self.token_usage += tokens
+        message = payload.get("choices", [{}])[0].get("message")
+        if not isinstance(message, dict):
+            self._record_tool_call_failure()
+            llmops.record_model(
+                provider="deepseek", model=self.settings.deepseek_model,
+                operation="tool_calling", status="invalid_response",
+                duration_seconds=time.perf_counter() - started, tokens=tokens,
+            )
+            raise RuntimeError("DeepSeek 未返回有效的 Function Calling 消息。")
+        self._record_tool_call_success()
+        llmops.record_model(
+            provider="deepseek", model=self.settings.deepseek_model,
+            operation="tool_calling", status="success",
+            duration_seconds=time.perf_counter() - started, tokens=tokens,
+        )
+        return message
+
+    def _tool_call_circuit_is_open(self) -> bool:
+        """Reject calls only during a bounded cooldown; transient failures are recoverable."""
+        with self._counter_lock:
+            if self._tool_call_disabled_until <= time.monotonic():
+                if self._tool_call_disabled_until:
+                    self._tool_call_disabled_until = 0.0
+                    self.tool_calling_available = None
+                    llmops.function_circuit_state.set(0)
+                return False
+            return True
+
+    def _record_tool_call_failure(self) -> None:
+        with self._counter_lock:
+            self._tool_call_failures += 1
+            threshold = self.settings.function_call_circuit_failure_threshold
+            if self._tool_call_failures >= threshold:
+                self._tool_call_disabled_until = (
+                    time.monotonic()
+                    + self.settings.function_call_circuit_cooldown_seconds
+                )
+                self.tool_calling_available = False
+                llmops.function_circuit_state.set(1)
+                llmops.function_circuit_opened.inc()
+
+    def _record_tool_call_success(self) -> None:
+        with self._counter_lock:
+            self._tool_call_failures = 0
+            self._tool_call_disabled_until = 0.0
+            self.tool_calling_available = True
+            llmops.function_circuit_state.set(0)
 
     def _unavailable(self, reason: str) -> dict:
         """统一返回不可用卡片。"""

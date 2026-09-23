@@ -1,0 +1,6 @@
+{"case_id":"conversation-table-followup-01","paper_id":"2de38bfe-63c1-43d7-b6f3-7de909020853","turns":["Table 2 中 CNN 和 LSTM 哪个更好？","它的 F1 高了多少？"],"checks":["second_turn_resolved","table_evidence_current_turn","same_conversation"]}
+{"case_id":"conversation-figure-followup-02","paper_id":"7127f33d-1468-4313-bca8-3deab488ea3f","turns":["Figure 2 展示了什么流程？","其中橙色框和浅绿色框分别表示什么？"],"checks":["second_turn_resolved","figure_tool_used","qwen_vl_used"]}
+{"case_id":"conversation-correction-03","paper_id":"d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44","turns":["解释 Table 1。","我问的是 Figure 2，请重新回答。"],"checks":["correction_resolved","figure_evidence_current_turn"]}
+{"case_id":"conversation-cross-modal-04","paper_id":"7127f33d-1468-4313-bca8-3deab488ea3f","turns":["论文的核心方法是什么？","用 Figure 2 验证刚才的流程描述。"],"checks":["text_then_figure","history_not_used_as_evidence"]}
+{"case_id":"conversation-isolation-05","paper_id":"2de38bfe-63c1-43d7-b6f3-7de909020853","turns":["在会话 A 询问 Table 2。","在新会话 B 直接问：它高了多少？"],"checks":["needs_clarification_in_new_conversation","no_cross_conversation_leak"]}
+{"case_id":"conversation-paper-isolation-06","paper_id":"ca7d94e5-26d3-44b5-8109-187200d041e4","turns":["询问当前论文的 Figure 1。","切换论文后问：它表示什么？"],"checks":["new_paper_requires_new_conversation","no_cross_paper_evidence"]}

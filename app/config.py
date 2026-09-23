@@ -42,7 +42,7 @@ class Settings:
     online_visual_judge_enabled: bool = (
         os.getenv("ENABLE_ONLINE_VISUAL_JUDGE", "false").lower() == "true"
     )
-    agent_orchestrator: str = os.getenv("AGENT_ORCHESTRATOR", "legacy").strip().lower()
+    agent_orchestrator: str = os.getenv("AGENT_ORCHESTRATOR", "langgraph").strip().lower()
     multi_agent_max_steps: int = max(
         1, int(os.getenv("MULTI_AGENT_MAX_STEPS", "10"))
     )
@@ -73,6 +73,76 @@ class Settings:
     remote_max_retries: int = max(0, int(os.getenv("REMOTE_MAX_RETRIES", "2")))
     remote_retry_base_delay_seconds: float = max(
         0.0, float(os.getenv("REMOTE_RETRY_BASE_DELAY_SECONDS", "0.25"))
+    )
+    conversations_enabled: bool = (
+        os.getenv("ENABLE_CONVERSATIONS", "true").lower() == "true"
+    )
+    query_resolver_enabled: bool = (
+        os.getenv("ENABLE_QUERY_RESOLVER", "true").lower() == "true"
+    )
+    conversation_recent_turns: int = max(
+        1, int(os.getenv("CONVERSATION_RECENT_TURNS", "6"))
+    )
+    conversation_summary_trigger_turns: int = max(
+        2, int(os.getenv("CONVERSATION_SUMMARY_TRIGGER_TURNS", "6"))
+    )
+    conversation_context_max_chars: int = max(
+        1000, int(os.getenv("CONVERSATION_CONTEXT_MAX_CHARS", "12000"))
+    )
+    sse_enabled: bool = os.getenv("ENABLE_SSE", "true").lower() == "true"
+    sse_heartbeat_seconds: float = max(
+        1.0, float(os.getenv("SSE_HEARTBEAT_SECONDS", "15"))
+    )
+    sse_answer_chunk_chars: int = max(
+        1, int(os.getenv("SSE_ANSWER_CHUNK_CHARS", "12"))
+    )
+    sse_answer_chunk_delay_seconds: float = max(
+        0.0, float(os.getenv("SSE_ANSWER_CHUNK_DELAY_MS", "30")) / 1000.0
+    )
+    run_event_buffer_size: int = max(
+        10, int(os.getenv("RUN_EVENT_BUFFER_SIZE", "200"))
+    )
+    run_event_retention_seconds: int = max(
+        30, int(os.getenv("RUN_EVENT_RETENTION_SECONDS", "600"))
+    )
+    specialist_execution_mode: str = os.getenv(
+        "SPECIALIST_EXECUTION_MODE", "function_calling_with_fallback"
+    ).strip().lower()
+    function_call_max_steps: int = max(
+        1, int(os.getenv("FUNCTION_CALL_MAX_STEPS", "4"))
+    )
+    function_call_max_model_rounds: int = max(
+        1, int(os.getenv("FUNCTION_CALL_MAX_MODEL_ROUNDS", "3"))
+    )
+    function_call_strict: bool = (
+        os.getenv("FUNCTION_CALL_STRICT", "true").lower() == "true"
+    )
+    function_call_tool_result_max_chars: int = max(
+        1000, int(os.getenv("FUNCTION_CALL_TOOL_RESULT_MAX_CHARS", "16000"))
+    )
+    function_call_circuit_failure_threshold: int = max(
+        1, int(os.getenv("FUNCTION_CALL_CIRCUIT_FAILURE_THRESHOLD", "3"))
+    )
+    function_call_circuit_cooldown_seconds: float = max(
+        1.0, float(os.getenv("FUNCTION_CALL_CIRCUIT_COOLDOWN_SECONDS", "60"))
+    )
+    llmops_enabled: bool = os.getenv("ENABLE_LLMOPS", "true").lower() == "true"
+    structured_logging_enabled: bool = (
+        os.getenv("ENABLE_STRUCTURED_LOGGING", "true").lower() == "true"
+    )
+    log_level: str = os.getenv("LOG_LEVEL", "INFO").strip().upper()
+    metrics_enabled: bool = os.getenv("ENABLE_METRICS", "true").lower() == "true"
+    otel_enabled: bool = os.getenv("ENABLE_OTEL", "true").lower() == "true"
+    otel_service_name: str = os.getenv("OTEL_SERVICE_NAME", "paperlens").strip()
+    otel_exporter_endpoint: str = os.getenv("OTEL_EXPORTER_OTLP_ENDPOINT", "").strip()
+    memory_retention_days: int = max(
+        1, int(os.getenv("MEMORY_RETENTION_DAYS", "365"))
+    )
+    memory_max_items_per_paper: int = max(
+        10, int(os.getenv("MEMORY_MAX_ITEMS_PER_PAPER", "200"))
+    )
+    memory_backfill_enabled: bool = (
+        os.getenv("MEMORY_BACKFILL_ENABLED", "true").lower() == "true"
     )
 
     @property

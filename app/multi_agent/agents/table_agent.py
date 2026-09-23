@@ -15,6 +15,9 @@ class TableAnalysisAgent(BaseSpecialistAgent):
 
     def run(self, task: dict[str, Any], question: str, attempt: int = 0) -> dict[str, Any]:
         started = time.perf_counter()
+        function_result, fallback = self.try_function_calling(task, question, started)
+        if function_result:
+            return function_result
         query = str(task.get("query") or task.get("instruction") or question)
         tool_calls: list[dict[str, Any]] = []
         calls_before = (
@@ -79,7 +82,7 @@ class TableAnalysisAgent(BaseSpecialistAgent):
                 self.tools.figure_service.interactive_call_count
                 if self.tools.figure_service else calls_before
             )
-            return self.result(
+            result = self.result(
                 task,
                 status="success" if usable else "partial",
                 evidence=evidence,
@@ -92,5 +95,8 @@ class TableAnalysisAgent(BaseSpecialistAgent):
                 model_calls=max(0, calls_after - calls_before),
                 qwen_vl_calls=max(0, calls_after - calls_before),
             )
+            if fallback:
+                result["tool_calls"].insert(0, fallback)
+            return result
         except Exception as error:
             return self.failed_result(task, error, started)

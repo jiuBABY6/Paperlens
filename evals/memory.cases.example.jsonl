@@ -1,0 +1,1 @@
+{"case_id":"replace-with-real-runs","paper_id":"replace-with-paper-id","expected_items":[{"source_run_id":"replace-with-grounded-run-id","status":"active"},{"source_run_id":"replace-with-refused-run-id","status":"unresolved"}],"forbidden_active_run_ids":["replace-with-refused-run-id"]}

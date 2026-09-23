@@ -4,6 +4,7 @@ import hashlib
 import json
 import sqlite3
 from pathlib import Path
+from typing import Any
 
 from app.domain import Chunk, Figure, Paper, Sentence
 
@@ -28,7 +29,17 @@ class PaperRepository:
         connection = sqlite3.connect(self.database_path, timeout=30)
         connection.row_factory = sqlite3.Row
         connection.execute("PRAGMA foreign_keys = ON")
+        connection.execute("PRAGMA journal_mode = WAL")
+        connection.execute("PRAGMA busy_timeout = 5000")
         return connection
+
+    def check_ready(self) -> bool:
+        """Cheap local readiness probe without mutating user data."""
+        try:
+            with self._connect() as db:
+                return db.execute("SELECT 1").fetchone()[0] == 1
+        except sqlite3.Error:
+            return False
 
     def _initialize(self) -> None:
         """创建应用所需表结构；重复调用不会覆盖用户数据。"""
@@ -88,6 +99,109 @@ class PaperRepository:
                     PRIMARY KEY(paper_id, figure_id, normalized_query),
                     FOREIGN KEY(paper_id) REFERENCES papers(id)
                 );
+                CREATE TABLE IF NOT EXISTS conversations (
+                    id TEXT PRIMARY KEY,
+                    paper_id TEXT NOT NULL,
+                    title TEXT NOT NULL DEFAULT '新对话',
+                    summary TEXT NOT NULL DEFAULT '',
+                    memory_json TEXT NOT NULL DEFAULT '{}',
+                    archived_at TEXT,
+                    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                    updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY(paper_id) REFERENCES papers(id)
+                );
+                CREATE TABLE IF NOT EXISTS conversation_messages (
+                    id TEXT PRIMARY KEY,
+                    conversation_id TEXT NOT NULL,
+                    turn_index INTEGER NOT NULL,
+                    message_index INTEGER NOT NULL,
+                    role TEXT NOT NULL CHECK(role IN ('user', 'assistant')),
+                    content TEXT NOT NULL,
+                    status TEXT NOT NULL DEFAULT 'completed',
+                    client_message_id TEXT,
+                    resolved_question TEXT,
+                    citations_json TEXT NOT NULL DEFAULT '[]',
+                    metadata_json TEXT NOT NULL DEFAULT '{}',
+                    trace_run_id TEXT,
+                    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY(conversation_id) REFERENCES conversations(id),
+                    UNIQUE(conversation_id, message_index),
+                    UNIQUE(conversation_id, turn_index, role),
+                    UNIQUE(conversation_id, client_message_id)
+                );
+                CREATE TABLE IF NOT EXISTS agent_runs (
+                    id TEXT PRIMARY KEY,
+                    paper_id TEXT NOT NULL,
+                    conversation_id TEXT NOT NULL,
+                    user_message_id TEXT NOT NULL,
+                    assistant_message_id TEXT,
+                    status TEXT NOT NULL,
+                    cancel_requested INTEGER NOT NULL DEFAULT 0,
+                    original_question TEXT NOT NULL,
+                    resolved_question TEXT,
+                    result_json TEXT,
+                    error_json TEXT,
+                    started_at TEXT,
+                    finished_at TEXT,
+                    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY(paper_id) REFERENCES papers(id),
+                    FOREIGN KEY(conversation_id) REFERENCES conversations(id),
+                    FOREIGN KEY(user_message_id) REFERENCES conversation_messages(id),
+                    FOREIGN KEY(assistant_message_id) REFERENCES conversation_messages(id)
+                );
+                CREATE TABLE IF NOT EXISTS paper_learning_memories (
+                    user_scope TEXT NOT NULL DEFAULT 'local',
+                    paper_id TEXT NOT NULL,
+                    memory_json TEXT NOT NULL DEFAULT '{}',
+                    version INTEGER NOT NULL DEFAULT 1,
+                    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                    updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                    PRIMARY KEY(user_scope, paper_id),
+                    FOREIGN KEY(paper_id) REFERENCES papers(id)
+                );
+                CREATE TABLE IF NOT EXISTS paper_memory_items (
+                    id TEXT PRIMARY KEY,
+                    user_scope TEXT NOT NULL DEFAULT 'local',
+                    paper_id TEXT NOT NULL,
+                    source_conversation_id TEXT,
+                    source_run_id TEXT,
+                    source_analysis_version INTEGER NOT NULL DEFAULT 1,
+                    fingerprint TEXT NOT NULL,
+                    question TEXT NOT NULL,
+                    resolved_question TEXT NOT NULL,
+                    evidence_ids_json TEXT NOT NULL DEFAULT '[]',
+                    evidence_types_json TEXT NOT NULL DEFAULT '[]',
+                    sections_json TEXT NOT NULL DEFAULT '[]',
+                    importance REAL NOT NULL DEFAULT 0.5,
+                    confidence REAL NOT NULL DEFAULT 1.0,
+                    status TEXT NOT NULL DEFAULT 'active',
+                    pinned INTEGER NOT NULL DEFAULT 0,
+                    user_note TEXT NOT NULL DEFAULT '',
+                    memory_version INTEGER NOT NULL DEFAULT 2,
+                    access_count INTEGER NOT NULL DEFAULT 0,
+                    last_accessed_at TEXT,
+                    expires_at TEXT,
+                    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                    updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY(paper_id) REFERENCES papers(id),
+                    UNIQUE(user_scope, paper_id, fingerprint),
+                    UNIQUE(user_scope, paper_id, source_run_id)
+                );
+                CREATE INDEX IF NOT EXISTS idx_conversations_paper_updated
+                    ON conversations(paper_id, updated_at DESC);
+                CREATE INDEX IF NOT EXISTS idx_messages_conversation_turn
+                    ON conversation_messages(conversation_id, turn_index, message_index);
+                CREATE INDEX IF NOT EXISTS idx_runs_conversation_created
+                    ON agent_runs(conversation_id, created_at DESC);
+                CREATE INDEX IF NOT EXISTS idx_runs_status ON agent_runs(status);
+                CREATE INDEX IF NOT EXISTS idx_learning_memory_paper_updated
+                    ON paper_learning_memories(paper_id, updated_at DESC);
+                CREATE INDEX IF NOT EXISTS idx_memory_items_paper_status
+                    ON paper_memory_items(user_scope, paper_id, status, updated_at DESC);
+                CREATE INDEX IF NOT EXISTS idx_memory_items_expiry
+                    ON paper_memory_items(status, pinned, expires_at);
+                CREATE UNIQUE INDEX IF NOT EXISTS idx_one_active_run_per_conversation
+                    ON agent_runs(conversation_id) WHERE status IN ('queued', 'running');
             """)
             paper_columns = {row[1] for row in db.execute("PRAGMA table_info(papers)")}
             additions = {
@@ -147,6 +261,15 @@ class PaperRepository:
             if "bboxes_json" not in sentence_columns:
                 db.execute("ALTER TABLE sentences ADD COLUMN bboxes_json TEXT")
             self._backfill_document_registry(db)
+            db.execute(
+                """
+                UPDATE agent_runs
+                SET status = 'interrupted', finished_at = CURRENT_TIMESTAMP,
+                    error_json = ?
+                WHERE status IN ('queued', 'running')
+                """,
+                (json.dumps({"code": "SERVER_RESTARTED", "message": "服务重启，运行已中断。"}, ensure_ascii=False),),
+            )
 
     def _backfill_document_registry(self, db: sqlite3.Connection) -> None:
         """为旧数据计算哈希，并将证据最完整的新版本登记为规范记录。"""
@@ -477,3 +600,613 @@ class PaperRepository:
                     (paper_id,),
                 )
         return max(cursor.rowcount, 0)
+
+    @staticmethod
+    def _json(value: str | None, fallback: Any) -> Any:
+        """Safely decode JSON fields written by the conversation subsystem."""
+        if not value:
+            return fallback
+        try:
+            return json.loads(value)
+        except (TypeError, json.JSONDecodeError):
+            return fallback
+
+    def create_conversation(
+        self, conversation_id: str, paper_id: str, title: str = "新对话"
+    ) -> dict[str, Any]:
+        """Create a conversation bound permanently to one completed paper."""
+        with self._connect() as db:
+            paper = db.execute(
+                "SELECT status FROM papers WHERE id = ?", (paper_id,)
+            ).fetchone()
+            if not paper:
+                raise KeyError("paper_not_found")
+            if paper["status"] != "completed":
+                raise RuntimeError("paper_not_ready")
+            db.execute(
+                "INSERT INTO conversations(id, paper_id, title) VALUES (?, ?, ?)",
+                (conversation_id, paper_id, title.strip()[:120] or "新对话"),
+            )
+        return self.get_conversation(paper_id, conversation_id, include_messages=False)  # type: ignore[return-value]
+
+    def list_conversations(
+        self, paper_id: str, *, include_archived: bool = False
+    ) -> list[dict[str, Any]]:
+        """List one paper's conversations without leaking conversations of another paper."""
+        where = "paper_id = ?" if include_archived else "paper_id = ? AND archived_at IS NULL"
+        with self._connect() as db:
+            rows = db.execute(
+                f"""
+                SELECT c.*,
+                       (SELECT content FROM conversation_messages m
+                        WHERE m.conversation_id = c.id
+                        ORDER BY m.message_index DESC LIMIT 1) AS last_message,
+                       (SELECT COUNT(*) FROM conversation_messages m
+                        WHERE m.conversation_id = c.id AND m.role = 'user') AS turn_count
+                FROM conversations c WHERE {where}
+                ORDER BY c.updated_at DESC, c.created_at DESC
+                """,
+                (paper_id,),
+            ).fetchall()
+        return [self._conversation_payload(row) for row in rows]
+
+    def get_conversation(
+        self, paper_id: str, conversation_id: str, *, include_messages: bool = True
+    ) -> dict[str, Any] | None:
+        """Load a scoped conversation and optionally its full ordered timeline."""
+        with self._connect() as db:
+            row = db.execute(
+                "SELECT * FROM conversations WHERE id = ? AND paper_id = ?",
+                (conversation_id, paper_id),
+            ).fetchone()
+            if not row:
+                return None
+            payload = self._conversation_payload(row)
+            if include_messages:
+                messages = db.execute(
+                    "SELECT * FROM conversation_messages WHERE conversation_id = ? ORDER BY message_index",
+                    (conversation_id,),
+                ).fetchall()
+                payload["messages"] = [self._message_payload(item) for item in messages]
+        return payload
+
+    def update_conversation(
+        self, paper_id: str, conversation_id: str, *, title: str | None = None,
+        summary: str | None = None, memory: dict[str, Any] | None = None
+    ) -> dict[str, Any] | None:
+        """Update user-visible title or derived memory while preserving paper ownership."""
+        assignments: list[str] = []
+        values: list[Any] = []
+        if title is not None:
+            assignments.append("title = ?")
+            values.append(title.strip()[:120] or "新对话")
+        if summary is not None:
+            assignments.append("summary = ?")
+            values.append(summary[:12000])
+        if memory is not None:
+            assignments.append("memory_json = ?")
+            values.append(json.dumps(memory, ensure_ascii=False))
+        if assignments:
+            assignments.append("updated_at = CURRENT_TIMESTAMP")
+            with self._connect() as db:
+                cursor = db.execute(
+                    f"UPDATE conversations SET {', '.join(assignments)} WHERE id = ? AND paper_id = ?",
+                    (*values, conversation_id, paper_id),
+                )
+                if cursor.rowcount == 0:
+                    return None
+        return self.get_conversation(paper_id, conversation_id, include_messages=False)
+
+    def archive_conversation(self, paper_id: str, conversation_id: str) -> bool:
+        """Soft-delete a conversation; active runs must be cancelled first."""
+        with self._connect() as db:
+            active = db.execute(
+                "SELECT 1 FROM agent_runs WHERE conversation_id = ? AND status IN ('queued', 'running')",
+                (conversation_id,),
+            ).fetchone()
+            if active:
+                raise RuntimeError("active_run")
+            cursor = db.execute(
+                "UPDATE conversations SET archived_at = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP "
+                "WHERE id = ? AND paper_id = ? AND archived_at IS NULL",
+                (conversation_id, paper_id),
+            )
+        return cursor.rowcount > 0
+
+    def get_paper_learning_memory(
+        self, paper_id: str, *, user_scope: str = "local"
+    ) -> dict[str, Any]:
+        """Read paper-scoped long-term learning memory without mixing papers/users."""
+        with self._connect() as db:
+            row = db.execute(
+                "SELECT * FROM paper_learning_memories WHERE user_scope = ? AND paper_id = ?",
+                (user_scope, paper_id),
+            ).fetchone()
+        if not row:
+            return {
+                "user_scope": user_scope,
+                "paper_id": paper_id,
+                "version": 1,
+                "memory": {},
+                "created_at": None,
+                "updated_at": None,
+            }
+        return {
+            "user_scope": row["user_scope"],
+            "paper_id": row["paper_id"],
+            "version": int(row["version"]),
+            "memory": self._json(row["memory_json"], {}),
+            "created_at": row["created_at"],
+            "updated_at": row["updated_at"],
+        }
+
+    def update_paper_learning_memory(
+        self,
+        paper_id: str,
+        memory: dict[str, Any],
+        *,
+        user_scope: str = "local",
+        version: int = 1,
+    ) -> dict[str, Any]:
+        """Upsert bounded derived learning state; source messages remain immutable."""
+        with self._connect() as db:
+            if not db.execute("SELECT 1 FROM papers WHERE id = ?", (paper_id,)).fetchone():
+                raise KeyError("paper_not_found")
+            db.execute(
+                """
+                INSERT INTO paper_learning_memories(
+                    user_scope, paper_id, memory_json, version
+                ) VALUES (?, ?, ?, ?)
+                ON CONFLICT(user_scope, paper_id) DO UPDATE SET
+                    memory_json = excluded.memory_json,
+                    version = excluded.version,
+                    updated_at = CURRENT_TIMESTAMP
+                """,
+                (
+                    user_scope,
+                    paper_id,
+                    json.dumps(memory, ensure_ascii=False),
+                    max(1, int(version)),
+                ),
+            )
+        return self.get_paper_learning_memory(paper_id, user_scope=user_scope)
+
+    def clear_paper_learning_memory(
+        self, paper_id: str, *, user_scope: str = "local"
+    ) -> bool:
+        """Delete only derived learning memory, never source papers or conversations."""
+        with self._connect() as db:
+            aggregate = db.execute(
+                "DELETE FROM paper_learning_memories WHERE user_scope = ? AND paper_id = ?",
+                (user_scope, paper_id),
+            )
+            items = db.execute(
+                "DELETE FROM paper_memory_items WHERE user_scope = ? AND paper_id = ?",
+                (user_scope, paper_id),
+            )
+        return aggregate.rowcount > 0 or items.rowcount > 0
+
+    def upsert_memory_item(self, item: dict[str, Any]) -> dict[str, Any]:
+        """Persist one versioned memory item, idempotent by source run and fingerprint."""
+        with self._connect() as db:
+            db.execute(
+                """
+                INSERT INTO paper_memory_items(
+                    id, user_scope, paper_id, source_conversation_id, source_run_id,
+                    source_analysis_version, fingerprint, question, resolved_question,
+                    evidence_ids_json, evidence_types_json, sections_json,
+                    importance, confidence, status, pinned, user_note,
+                    memory_version, expires_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ON CONFLICT(user_scope, paper_id, fingerprint) DO UPDATE SET
+                    source_conversation_id = excluded.source_conversation_id,
+                    source_run_id = excluded.source_run_id,
+                    source_analysis_version = excluded.source_analysis_version,
+                    question = excluded.question,
+                    resolved_question = excluded.resolved_question,
+                    evidence_ids_json = excluded.evidence_ids_json,
+                    evidence_types_json = excluded.evidence_types_json,
+                    sections_json = excluded.sections_json,
+                    importance = MAX(paper_memory_items.importance, excluded.importance),
+                    confidence = MAX(paper_memory_items.confidence, excluded.confidence),
+                    status = CASE
+                        WHEN paper_memory_items.status = 'forgotten' THEN 'forgotten'
+                        ELSE excluded.status END,
+                    memory_version = excluded.memory_version,
+                    expires_at = CASE
+                        WHEN paper_memory_items.pinned = 1 THEN NULL
+                        ELSE excluded.expires_at END,
+                    updated_at = CURRENT_TIMESTAMP
+                """,
+                (
+                    item["id"], item.get("user_scope", "local"), item["paper_id"],
+                    item.get("source_conversation_id"), item.get("source_run_id"),
+                    int(item.get("source_analysis_version", 1)), item["fingerprint"],
+                    item.get("question", ""), item.get("resolved_question", ""),
+                    json.dumps(item.get("evidence_ids", []), ensure_ascii=False),
+                    json.dumps(item.get("evidence_types", []), ensure_ascii=False),
+                    json.dumps(item.get("sections", []), ensure_ascii=False),
+                    float(item.get("importance", 0.5)),
+                    float(item.get("confidence", 1.0)), item.get("status", "active"),
+                    int(bool(item.get("pinned", False))), item.get("user_note", "")[:2000],
+                    int(item.get("memory_version", 2)), item.get("expires_at"),
+                ),
+            )
+            row = db.execute(
+                "SELECT * FROM paper_memory_items WHERE user_scope = ? AND paper_id = ? AND fingerprint = ?",
+                (item.get("user_scope", "local"), item["paper_id"], item["fingerprint"]),
+            ).fetchone()
+        return self._memory_item_payload(row)
+
+    def list_memory_items(
+        self, paper_id: str, *, user_scope: str = "local",
+        include_inactive: bool = False, limit: int = 200,
+    ) -> list[dict[str, Any]]:
+        where = "user_scope = ? AND paper_id = ?"
+        if not include_inactive:
+            where += " AND status IN ('active', 'unresolved')"
+        with self._connect() as db:
+            rows = db.execute(
+                f"""
+                SELECT * FROM paper_memory_items WHERE {where}
+                ORDER BY pinned DESC, importance DESC, updated_at DESC LIMIT ?
+                """,
+                (user_scope, paper_id, max(1, min(int(limit), 1000))),
+            ).fetchall()
+        return [self._memory_item_payload(row) for row in rows]
+
+    def get_memory_item(
+        self, paper_id: str, memory_id: str, *, user_scope: str = "local"
+    ) -> dict[str, Any] | None:
+        with self._connect() as db:
+            row = db.execute(
+                "SELECT * FROM paper_memory_items WHERE id = ? AND user_scope = ? AND paper_id = ?",
+                (memory_id, user_scope, paper_id),
+            ).fetchone()
+        return self._memory_item_payload(row) if row else None
+
+    def update_memory_item(
+        self, paper_id: str, memory_id: str, *, user_scope: str = "local",
+        pinned: bool | None = None, user_note: str | None = None,
+        status: str | None = None, importance: float | None = None,
+        expires_at: str | None = None,
+    ) -> dict[str, Any] | None:
+        allowed_statuses = {"active", "unresolved", "stale", "archived", "forgotten"}
+        assignments: list[str] = []
+        values: list[Any] = []
+        if pinned is not None:
+            flag = int(bool(pinned))
+            assignments.append("pinned = ?")
+            values.append(flag)
+            if flag:
+                assignments.append("expires_at = NULL")
+        if user_note is not None:
+            assignments.append("user_note = ?")
+            values.append(user_note.strip()[:2000])
+        if status is not None:
+            if status not in allowed_statuses:
+                raise ValueError("invalid_memory_status")
+            assignments.append("status = ?")
+            values.append(status)
+        if importance is not None:
+            assignments.append("importance = ?")
+            values.append(max(0.0, min(float(importance), 1.0)))
+        if expires_at is not None:
+            assignments.append("expires_at = ?")
+            values.append(expires_at)
+        if not assignments:
+            return self.get_memory_item(paper_id, memory_id, user_scope=user_scope)
+        assignments.append("updated_at = CURRENT_TIMESTAMP")
+        with self._connect() as db:
+            cursor = db.execute(
+                f"UPDATE paper_memory_items SET {', '.join(assignments)} "
+                "WHERE id = ? AND user_scope = ? AND paper_id = ?",
+                (*values, memory_id, user_scope, paper_id),
+            )
+            if cursor.rowcount == 0:
+                return None
+        return self.get_memory_item(paper_id, memory_id, user_scope=user_scope)
+
+    def mark_memory_stale_for_version(
+        self, paper_id: str, analysis_version: int, *, user_scope: str = "local"
+    ) -> int:
+        """Invalidate derived memory whose Evidence belongs to an older parse version."""
+        with self._connect() as db:
+            cursor = db.execute(
+                """
+                UPDATE paper_memory_items SET status = 'stale', updated_at = CURRENT_TIMESTAMP
+                WHERE user_scope = ? AND paper_id = ? AND status = 'active'
+                  AND source_analysis_version <> ?
+                """,
+                (user_scope, paper_id, int(analysis_version)),
+            )
+        return max(cursor.rowcount, 0)
+
+    def memory_status_counts(self, *, user_scope: str = "local") -> dict[str, int]:
+        """Return low-cardinality global memory counts for operational metrics."""
+        with self._connect() as db:
+            rows = db.execute(
+                """
+                SELECT status, COUNT(*) AS item_count
+                FROM paper_memory_items WHERE user_scope = ? GROUP BY status
+                """,
+                (user_scope,),
+            ).fetchall()
+        return {str(row["status"]): int(row["item_count"]) for row in rows}
+
+    def expire_memory_items(self, *, user_scope: str = "local") -> int:
+        with self._connect() as db:
+            cursor = db.execute(
+                """
+                UPDATE paper_memory_items SET status = 'archived', updated_at = CURRENT_TIMESTAMP
+                WHERE user_scope = ? AND status IN ('active', 'unresolved')
+                  AND pinned = 0 AND expires_at IS NOT NULL
+                  AND expires_at <= CURRENT_TIMESTAMP
+                """,
+                (user_scope,),
+            )
+        return max(cursor.rowcount, 0)
+
+    def list_memory_backfill_candidates(
+        self, paper_id: str, *, user_scope: str = "local"
+    ) -> list[dict[str, Any]]:
+        """Return completed historical turns not yet represented by source_run_id."""
+        with self._connect() as db:
+            rows = db.execute(
+                """
+                SELECT r.id AS run_id, r.conversation_id, r.original_question,
+                       r.resolved_question, r.status AS run_status, r.result_json,
+                       r.finished_at, m.citations_json, m.metadata_json,
+                       p.analysis_version
+                FROM agent_runs r
+                JOIN papers p ON p.id = r.paper_id
+                LEFT JOIN conversation_messages m ON m.id = r.assistant_message_id
+                LEFT JOIN paper_memory_items memory
+                  ON memory.user_scope = ? AND memory.paper_id = r.paper_id
+                 AND memory.source_run_id = r.id
+                WHERE r.paper_id = ? AND r.status IN ('completed', 'partial')
+                  AND memory.id IS NULL
+                ORDER BY r.created_at
+                """,
+                (user_scope, paper_id),
+            ).fetchall()
+        return [{
+            "run_id": row["run_id"],
+            "conversation_id": row["conversation_id"],
+            "original_question": row["original_question"],
+            "resolved_question": row["resolved_question"] or row["original_question"],
+            "run_status": row["run_status"],
+            "result": self._json(row["result_json"], {}),
+            "citations": self._json(row["citations_json"], []),
+            "metadata": self._json(row["metadata_json"], {}),
+            "analysis_version": int(row["analysis_version"] or 1),
+            "finished_at": row["finished_at"],
+        } for row in rows]
+
+    def create_message_and_run(
+        self, *, paper_id: str, conversation_id: str, question: str,
+        client_message_id: str, message_id: str, run_id: str
+    ) -> tuple[dict[str, Any], dict[str, Any], bool]:
+        """Atomically create a user turn and queued run, with browser retry idempotency."""
+        with self._connect() as db:
+            db.execute("BEGIN IMMEDIATE")
+            conversation = db.execute(
+                "SELECT archived_at FROM conversations WHERE id = ? AND paper_id = ?",
+                (conversation_id, paper_id),
+            ).fetchone()
+            if not conversation:
+                raise KeyError("conversation_not_found")
+            if conversation["archived_at"]:
+                raise RuntimeError("conversation_archived")
+            existing = db.execute(
+                """
+                SELECT m.*, r.id AS run_id, r.status AS run_status
+                FROM conversation_messages m
+                JOIN agent_runs r ON r.user_message_id = m.id
+                WHERE m.conversation_id = ? AND m.client_message_id = ?
+                """,
+                (conversation_id, client_message_id),
+            ).fetchone()
+            if existing:
+                return self._message_payload(existing), {
+                    "id": existing["run_id"], "status": existing["run_status"],
+                    "paper_id": paper_id, "conversation_id": conversation_id,
+                }, False
+            if db.execute(
+                "SELECT 1 FROM agent_runs WHERE conversation_id = ? AND status IN ('queued', 'running')",
+                (conversation_id,),
+            ).fetchone():
+                raise RuntimeError("active_run")
+            counters = db.execute(
+                """
+                SELECT COALESCE(MAX(turn_index), 0) AS turn_index,
+                       COALESCE(MAX(message_index), 0) AS message_index
+                FROM conversation_messages WHERE conversation_id = ?
+                """,
+                (conversation_id,),
+            ).fetchone()
+            turn_index = int(counters["turn_index"]) + 1
+            message_index = int(counters["message_index"]) + 1
+            db.execute(
+                """
+                INSERT INTO conversation_messages(
+                    id, conversation_id, turn_index, message_index, role, content,
+                    status, client_message_id
+                ) VALUES (?, ?, ?, ?, 'user', ?, 'completed', ?)
+                """,
+                (message_id, conversation_id, turn_index, message_index, question, client_message_id),
+            )
+            db.execute(
+                """
+                INSERT INTO agent_runs(
+                    id, paper_id, conversation_id, user_message_id, status, original_question
+                ) VALUES (?, ?, ?, ?, 'queued', ?)
+                """,
+                (run_id, paper_id, conversation_id, message_id, question),
+            )
+            db.execute(
+                "UPDATE conversations SET updated_at = CURRENT_TIMESTAMP WHERE id = ?",
+                (conversation_id,),
+            )
+            message = db.execute(
+                "SELECT * FROM conversation_messages WHERE id = ?", (message_id,)
+            ).fetchone()
+            run = db.execute("SELECT * FROM agent_runs WHERE id = ?", (run_id,)).fetchone()
+        return self._message_payload(message), self._run_payload(run), True
+
+    def get_run(self, paper_id: str, conversation_id: str, run_id: str) -> dict[str, Any] | None:
+        """Load a run only when all three ownership identifiers match."""
+        with self._connect() as db:
+            row = db.execute(
+                "SELECT * FROM agent_runs WHERE id = ? AND paper_id = ? AND conversation_id = ?",
+                (run_id, paper_id, conversation_id),
+            ).fetchone()
+        return self._run_payload(row) if row else None
+
+    def mark_run_running(self, paper_id: str, conversation_id: str, run_id: str) -> bool:
+        """Transition queued -> running; terminal runs are immutable."""
+        with self._connect() as db:
+            cursor = db.execute(
+                "UPDATE agent_runs SET status = 'running', started_at = CURRENT_TIMESTAMP "
+                "WHERE id = ? AND paper_id = ? AND conversation_id = ? AND status = 'queued'",
+                (run_id, paper_id, conversation_id),
+            )
+        return cursor.rowcount > 0
+
+    def request_run_cancel(self, paper_id: str, conversation_id: str, run_id: str) -> bool:
+        """Request cooperative cancellation without mutating an already terminal run."""
+        with self._connect() as db:
+            cursor = db.execute(
+                "UPDATE agent_runs SET cancel_requested = 1 WHERE id = ? AND paper_id = ? "
+                "AND conversation_id = ? AND status IN ('queued', 'running')",
+                (run_id, paper_id, conversation_id),
+            )
+        return cursor.rowcount > 0
+
+    def is_cancel_requested(self, paper_id: str, conversation_id: str, run_id: str) -> bool:
+        run = self.get_run(paper_id, conversation_id, run_id)
+        return bool(run and run["cancel_requested"])
+
+    def finish_conversation_run(
+        self, *, paper_id: str, conversation_id: str, run_id: str,
+        status: str, answer: str = "", resolved_question: str = "",
+        citations: list[dict] | None = None, metadata: dict[str, Any] | None = None,
+        result: dict[str, Any] | None = None, error: dict[str, Any] | None = None,
+        assistant_message_id: str | None = None
+    ) -> dict[str, Any]:
+        """Atomically persist the final assistant message and terminal run state."""
+        terminal = {"completed", "partial", "failed", "cancelled", "timed_out", "interrupted"}
+        if status not in terminal:
+            raise ValueError(f"invalid terminal run status: {status}")
+        with self._connect() as db:
+            db.execute("BEGIN IMMEDIATE")
+            run = db.execute(
+                "SELECT * FROM agent_runs WHERE id = ? AND paper_id = ? AND conversation_id = ?",
+                (run_id, paper_id, conversation_id),
+            ).fetchone()
+            if not run:
+                raise KeyError("run_not_found")
+            if run["status"] not in {"queued", "running"}:
+                return self._run_payload(run)
+            user = db.execute(
+                "SELECT * FROM conversation_messages WHERE id = ?", (run["user_message_id"],)
+            ).fetchone()
+            if answer or status in {"completed", "partial"}:
+                assistant_message_id = assistant_message_id or f"assistant-{run_id}"
+                db.execute(
+                    """
+                    INSERT INTO conversation_messages(
+                        id, conversation_id, turn_index, message_index, role, content,
+                        status, resolved_question, citations_json, metadata_json, trace_run_id
+                    ) VALUES (?, ?, ?, ?, 'assistant', ?, ?, ?, ?, ?, ?)
+                    """,
+                    (
+                        assistant_message_id, conversation_id, user["turn_index"],
+                        int(user["message_index"]) + 1, answer, status, resolved_question,
+                        json.dumps(citations or [], ensure_ascii=False),
+                        json.dumps(metadata or {}, ensure_ascii=False), run_id,
+                    ),
+                )
+            db.execute(
+                """
+                UPDATE agent_runs SET status = ?, assistant_message_id = ?,
+                    resolved_question = ?, result_json = ?, error_json = ?,
+                    finished_at = CURRENT_TIMESTAMP
+                WHERE id = ?
+                """,
+                (
+                    status, assistant_message_id, resolved_question or None,
+                    json.dumps(result or {}, ensure_ascii=False),
+                    json.dumps(error or {}, ensure_ascii=False) if error else None, run_id,
+                ),
+            )
+            db.execute(
+                "UPDATE conversations SET updated_at = CURRENT_TIMESTAMP WHERE id = ?",
+                (conversation_id,),
+            )
+            final = db.execute("SELECT * FROM agent_runs WHERE id = ?", (run_id,)).fetchone()
+        return self._run_payload(final)
+
+    @classmethod
+    def _conversation_payload(cls, row: sqlite3.Row) -> dict[str, Any]:
+        keys = set(row.keys())
+        return {
+            "id": row["id"], "paper_id": row["paper_id"], "title": row["title"],
+            "summary": row["summary"], "memory": cls._json(row["memory_json"], {}),
+            "archived_at": row["archived_at"], "created_at": row["created_at"],
+            "updated_at": row["updated_at"],
+            "last_message": row["last_message"] if "last_message" in keys else None,
+            "turn_count": int(row["turn_count"] or 0) if "turn_count" in keys else None,
+        }
+
+    @classmethod
+    def _message_payload(cls, row: sqlite3.Row) -> dict[str, Any]:
+        return {
+            "id": row["id"], "conversation_id": row["conversation_id"],
+            "turn_index": int(row["turn_index"]), "message_index": int(row["message_index"]),
+            "role": row["role"], "content": row["content"], "status": row["status"],
+            "client_message_id": row["client_message_id"],
+            "resolved_question": row["resolved_question"],
+            "citations": cls._json(row["citations_json"], []),
+            "metadata": cls._json(row["metadata_json"], {}),
+            "trace_run_id": row["trace_run_id"], "created_at": row["created_at"],
+        }
+
+    @classmethod
+    def _run_payload(cls, row: sqlite3.Row) -> dict[str, Any]:
+        return {
+            "id": row["id"], "paper_id": row["paper_id"],
+            "conversation_id": row["conversation_id"],
+            "user_message_id": row["user_message_id"],
+            "assistant_message_id": row["assistant_message_id"], "status": row["status"],
+            "cancel_requested": bool(row["cancel_requested"]),
+            "original_question": row["original_question"],
+            "resolved_question": row["resolved_question"],
+            "result": cls._json(row["result_json"], {}),
+            "error": cls._json(row["error_json"], {}),
+            "started_at": row["started_at"], "finished_at": row["finished_at"],
+            "created_at": row["created_at"],
+        }
+
+    @classmethod
+    def _memory_item_payload(cls, row: sqlite3.Row) -> dict[str, Any]:
+        return {
+            "id": row["id"], "user_scope": row["user_scope"],
+            "paper_id": row["paper_id"],
+            "source_conversation_id": row["source_conversation_id"],
+            "source_run_id": row["source_run_id"],
+            "source_analysis_version": int(row["source_analysis_version"]),
+            "fingerprint": row["fingerprint"], "question": row["question"],
+            "resolved_question": row["resolved_question"],
+            "evidence_ids": cls._json(row["evidence_ids_json"], []),
+            "evidence_types": cls._json(row["evidence_types_json"], []),
+            "sections": cls._json(row["sections_json"], []),
+            "importance": float(row["importance"]),
+            "confidence": float(row["confidence"]), "status": row["status"],
+            "pinned": bool(row["pinned"]), "user_note": row["user_note"],
+            "memory_version": int(row["memory_version"]),
+            "access_count": int(row["access_count"]),
+            "last_accessed_at": row["last_accessed_at"],
+            "expires_at": row["expires_at"], "created_at": row["created_at"],
+            "updated_at": row["updated_at"],
+        }

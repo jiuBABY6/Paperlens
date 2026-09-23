@@ -4,286 +4,50 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PaperLens</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-  <style>
-    body { margin: 0; background: #f5f7fb; color: #172033; font: 15px system-ui, "Microsoft YaHei", sans-serif; }
-    main { max-width: 1440px; margin: auto; padding: 24px; }
-    .card { margin: 14px 0; padding: 18px; background: #fff; border: 1px solid #e4e9f2; border-radius: 12px; }
-    .hidden { display: none; }
-    .layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 16px; }
-    .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .field { padding: 12px; line-height: 1.65; background: #f8fafc; border-radius: 8px; }
-    .field h3 { margin: 0 0 6px; }
-    .claim, .evidence { margin: 7px 0; padding: 9px; border-left: 3px solid #2563eb; background: #fff; cursor: pointer; }
-    .link { margin-right: 6px; color: #2563eb; cursor: pointer; font-size: 12px; }
-    .status { padding: 9px; background: #eff6ff; border-radius: 7px; }
-    .error { color: #9f1239; background: #fff1f2; }
-    .figures { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; }
-    .figure { margin: 0; padding: 8px; background: #f8fafc; border-radius: 8px; cursor: pointer; }
-    .figure img { width: 100%; max-height: 180px; object-fit: contain; background: #fff; }
-    .figure figcaption { margin-top: 5px; font-size: 12px; line-height: 1.4; }
-    .pdf-toolbar { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-    .pdf-toolbar button { margin: 0; }
-    .pdf-stage { position: relative; overflow: auto; min-height: 600px; max-height: 830px; background: #52525b; text-align: center; }
-    #pdfPage { display: inline-block; position: relative; margin: 12px auto; box-shadow: 0 1px 8px #1118; line-height: 0; }
-    #pdfCanvas { display: block; }
-    #textLayer { position: absolute; inset: 0; overflow: hidden; opacity: .08; line-height: 1; text-align: initial; }
-    #textLayer span { color: transparent; position: absolute; white-space: pre; transform-origin: 0 0; cursor: text; }
-    .highlight { position: absolute; box-sizing: border-box; border: 2px solid #f59e0b; background: #fbbf2459; border-radius: 3px; pointer-events: none; }
-    input, textarea, button { font: inherit; }
-    input, textarea { box-sizing: border-box; width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 7px; }
-    button { margin-top: 8px; padding: 9px 14px; color: #fff; background: #2563eb; border: 0; border-radius: 7px; cursor: pointer; }
-    .answer { white-space: pre-wrap; line-height: 1.75; }
-    @media (max-width: 900px) { .layout, .cards { grid-template-columns: 1fr; } .pdf-stage { max-height: 560px; } }
-  </style>
+  <link rel="stylesheet" href="/static/styles.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script defer src="/static/app.js"></script>
 </head>
 <body>
-  <main>
-    <h1>PaperLens 2.3</h1>
-    <p>Docling 原生结构 · 证据高亮 · 持久化混合检索</p>
-    <section class="card">
+  <header class="topbar">
+    <div><strong>PaperLens</strong><span>对话式多智能体论文阅读</span></div>
+    <div class="upload-row">
       <input id="file" type="file" accept="application/pdf">
-      <button id="upload">上传论文</button>
-      <button id="reanalyze" class="hidden">重新分析当前论文</button>
-      <p id="status" class="status">等待上传。</p>
-    </section>
-    <div id="app" class="hidden">
-      <div class="layout">
-        <div>
-          <section id="summary" class="card"></section>
-          <section id="figurePanel" class="card hidden"><h2>论文图表</h2><div id="figures" class="figures"></div></section>
-          <section class="card">
-            <h2>基于原文提问</h2>
-            <textarea id="question" rows="3" placeholder="例如：作者在 Limitations 中提到了哪些部署风险？"></textarea>
-            <button id="ask">检索并回答</button>
-            <div id="answer" class="answer"></div>
-            <p id="ragMeta" class="status hidden"></p>
-            <div id="evidence"></div>
-          </section>
-        </div>
-        <section class="card">
-          <h2>原文阅读</h2>
-          <p>点击任何证据或图表会跳转并高亮对应的原文区域。</p>
-          <div class="pdf-toolbar"><button id="previousPage">上一页</button><span id="pageInfo">未加载</span><button id="nextPage">下一页</button></div>
-          <div id="pdfStage" class="pdf-stage"><div id="pdfPage"><canvas id="pdfCanvas"></canvas><div id="textLayer"></div><div id="highlight"></div></div></div>
-        </section>
-      </div>
+      <button id="upload">上传 / 打开论文</button>
+      <button id="reanalyze" class="secondary hidden">重新分析</button>
     </div>
+  </header>
+  <p id="status" class="status global-status">请上传 PDF；重复上传会复用已完成的分析。</p>
+  <main id="workspace" class="workspace hidden">
+    <aside class="conversation-column panel">
+      <div class="panel-header"><h2>历史对话</h2><button id="newConversation">＋ 新建</button></div>
+      <input id="conversationSearch" type="search" placeholder="搜索对话">
+      <div id="conversationList" class="conversation-list"></div>
+    </aside>
+    <section class="reading-column panel">
+      <div class="panel-header"><h2>阅读卡片</h2><button id="openPdf" class="secondary">查看原文</button></div>
+      <div id="summary"></div>
+      <details id="figurePanel" class="hidden"><summary>Figure / Table 概览</summary><div id="figures" class="figures"></div></details>
+    </section>
+    <section class="chat-column panel">
+      <div class="chat-header">
+        <div><h2 id="conversationTitle">当前聊天</h2><small id="contextState">请选择或新建对话 · 当前论文内隔离上下文</small></div>
+        <div><button id="renameConversation" class="secondary" disabled>重命名</button><button id="archiveConversation" class="danger" disabled>归档</button></div>
+      </div>
+      <div id="messages" class="messages" aria-live="polite"></div>
+      <form id="composer" class="composer">
+        <textarea id="question" rows="3" maxlength="1000" placeholder="基于当前论文提问；Enter 发送，Shift+Enter 换行" disabled></textarea>
+        <div><span id="runState"></span><button id="cancelRun" type="button" class="danger hidden">停止</button><button id="send" type="submit" disabled>发送</button></div>
+      </form>
+    </section>
   </main>
-  <script>
-    let paperId = '', pdfUrl = '', pdfDocument = null, currentPage = 1, pendingBbox = null, pendingBboxes = [], pendingQuote = '';
-    const pdfScale = 1.45;
-    const $ = selector => document.querySelector(selector);
-    const escapeHtml = value => { const node = document.createElement('div'); node.textContent = value ?? ''; return node.innerHTML; };
-
-    // 上传后由服务端完成持久化、Docling 解析、向量索引和精读卡片生成。
-    $('#upload').onclick = async () => {
-      const file = $('#file').files[0];
-      if (!file) return;
-      resetPaperView();
-      $('#status').className = 'status';
-      $('#status').textContent = '正在解析、建立向量索引并生成精读卡片…';
-      const form = new FormData(); form.append('file', file);
-      try {
-        const response = await fetch('/api/papers', { method: 'POST', body: form });
-        const data = await response.json();
-        if (!response.ok) throw new Error(data.detail);
-        if (response.status === 202) {
-          $('#status').textContent = `该论文正在处理中，任务 ID：${data.id}`;
-          return;
-        }
-        paperId = data.id; pdfUrl = data.pdf_url;
-        render(data);
-        await loadPdf(pdfUrl);
-        $('#app').classList.remove('hidden');
-        $('#reanalyze').classList.remove('hidden');
-        const indexText = data.reused ? '复用已有分析结果。' : (data.vector_indexed ? '向量索引已建立。' : '向量索引未建立，当前将使用 BM25。');
-        $('#status').textContent = `完成：${data.parser} 解析，版本 ${data.analysis_version}，保存 ${data.chunk_count} 个证据块；${indexText}`;
-      } catch (error) { $('#status').className = 'status error'; $('#status').textContent = `失败：${error.message}`; }
-    };
-
-    $('#reanalyze').onclick = async () => {
-      if (!paperId) return;
-      $('#status').className = 'status';
-      $('#status').textContent = '正在重新解析、建立索引并生成精读卡片…';
-      try {
-        const response = await fetch(`/api/papers/${paperId}/reanalyze`, { method: 'POST' });
-        const data = await response.json();
-        if (!response.ok) throw new Error(data.detail);
-        render(data);
-        $('#status').textContent = `重新分析完成：版本 ${data.analysis_version}，保存 ${data.chunk_count} 个证据块。`;
-      } catch (error) { $('#status').className = 'status error'; $('#status').textContent = `重新分析失败：${error.message}`; }
-    };
-
-    // 上传新论文时清空旧论文视图；只有卡片和 PDF 均就绪后才显示整个工作区。
-    function resetPaperView() {
-      paperId = ''; pdfUrl = ''; pdfDocument = null; currentPage = 1;
-      pendingBbox = null; pendingBboxes = []; pendingQuote = '';
-      $('#app').classList.add('hidden');
-      $('#reanalyze').classList.add('hidden');
-      $('#summary').replaceChildren(); $('#figures').replaceChildren();
-      $('#figurePanel').classList.add('hidden');
-      $('#answer').replaceChildren(); $('#evidence').replaceChildren();
-      $('#ragMeta').classList.add('hidden'); $('#ragMeta').textContent = '';
-      $('#question').value = ''; $('#pageInfo').textContent = '正在等待阅读卡片…';
-      $('#pdfCanvas').getContext('2d').clearRect(0, 0, $('#pdfCanvas').width, $('#pdfCanvas').height);
-      $('#textLayer').replaceChildren(); $('#highlight').replaceChildren();
-    }
-
-    function evidenceLinks(citations) {
-      return citations.map(item => {
-        const id = item.evidence_id || item.id || '';
-        const type = item.type || 'text';
-        return `<span class="link" title="${escapeHtml(type)} evidence：${escapeHtml(item.quote || item.text || '')}" onclick='jump(${item.page}, ${JSON.stringify(item.bbox)}, ${JSON.stringify(encodeURIComponent(type === 'text' ? (item.quote || '') : ''))}, ${JSON.stringify(item.bboxes || [])})'>[${type} · 第 ${item.page} 页 · ${escapeHtml(id.slice(-12))}]</span>`;
-      }).join('');
-    }
-    function textField(name, item) { return `<div class="field"><h3>${name}</h3><div>${escapeHtml(item?.text || '未生成')}</div>${evidenceLinks(item?.citations || [])}</div>`; }
-    function claims(name, items) {
-      const body = items?.length ? items.map(item => `<div class="claim">${escapeHtml(item.text)}${evidenceLinks(item.citations || [])}</div>`).join('') : '未找到作者明确描述的原文证据。';
-      return `<div class="field"><h3>${name}</h3>${body}</div>`;
-    }
-    function render(data) {
-      const card = data.card;
-      $('#summary').innerHTML = `<h2>${escapeHtml(data.title)}</h2><p>${escapeHtml(data.abstract)}</p><p class="status ${card.source === 'deepseek' ? '' : 'error'}">${escapeHtml(card.generation_note)}</p><div class="cards">${textField('研究问题', card.research_question)}${claims('核心贡献', card.contributions)}${textField('方法概览', card.method_overview)}${textField('实验解读', card.experiment_summary)}${claims('局限性', card.limitations)}<div class="field"><h3>阅读建议</h3><ul>${(card.reading_suggestions || []).map(value => `<li>${escapeHtml(value)}</li>`).join('')}</ul></div></div>`;
-      renderFigures(data.figures || [], card.figure_notes || []);
-    }
-    function renderFigures(figures, notes) {
-      const usable = figures.filter(item => item.image_url);
-      if (!usable.length) return;
-      const noteMap = Object.fromEntries(notes.map(item => [item.figure_id, item]));
-      $('#figurePanel').classList.remove('hidden');
-      $('#figures').innerHTML = usable.map(item => {
-        const note = noteMap[item.id];
-        return `<figure class="figure" onclick='jump(${item.page}, ${JSON.stringify(item.bbox)})'><img loading="lazy" src="${item.image_url}" alt="${escapeHtml(item.caption)}"><figcaption>第 ${item.page} 页 · ${escapeHtml(item.caption)}${note ? `<br>${escapeHtml(note.text)}<br><em>${escapeHtml(note.visual_status)}</em>${evidenceLinks(note.citations || [])}` : ''}</figcaption></figure>`;
-      }).join('');
-    }
-    $('#ask').onclick = async () => {
-      const question = $('#question').value.trim(); if (!question || !paperId) return;
-      const button = $('#ask'); button.disabled = true;
-      $('#answer').textContent = '正在改写查询、检索并验证答案…';
-      $('#ragMeta').classList.add('hidden');
-      try {
-        const response = await fetch(`/api/papers/${paperId}/ask`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ question }) });
-        const data = await response.json();
-        if (!response.ok) throw new Error(data.detail || '问答请求失败');
-        $('#answer').textContent = data.answer || '没有生成回答。';
-        const retrieval = data.retrieval || {};
-        const trace = data.trace || {};
-        const rewrite = data.query_plan?.translated ? '中文查询已改写' : `${(trace.rewrites || []).length} 次检索改写`;
-        const degraded = retrieval.degraded ? `；检索已降级：${(retrieval.warnings || []).join('；')}` : '';
-        const sufficient = data.evidence_sufficient ?? data.sufficiency?.sufficient;
-        const visualFailed = data.visual_answer_check?.supported === false || data.visual_verification_status === 'failed';
-        const decision = visualFailed
-          ? '视觉核验未通过'
-          : data.answerable === false
-          ? '已拒答'
-          : (data.answerable === true
-              ? (sufficient === false ? 'Claim 校验通过，但任务证据不完整' : 'Claim 校验与任务证据均通过')
-              : '生成状态未知');
-        const visualReason = visualFailed && data.visual_answer_check?.reason ? `；视觉核验：${data.visual_answer_check.reason}` : '';
-        const missing = (data.insufficient_evidence || []).length ? `；缺失：${data.insufficient_evidence.join('；')}` : '';
-        $('#ragMeta').textContent = `${decision}；模式：${data.mode || data.route || 'standard_rag'}；${rewrite}；实际检索：${retrieval.effective_strategy || 'unknown'}；${trace.total_steps || 1} steps；Qwen-VL ${trace.qwen_vl_calls || 0} 次；${data.latency_ms || 0} ms${degraded}${visualReason}${missing}`;
-        $('#ragMeta').className = `status${retrieval.degraded || sufficient === false || visualFailed ? ' error' : ''}`;
-        const evidenceHtml = (data.citations || []).map(item => {
-          const id = item.evidence_id || item.id || '';
-          const type = item.type || 'text';
-          const content = item.text || item.content || item.metadata?.caption || '';
-          return `<div class="evidence" onclick='jump(${item.page}, ${JSON.stringify(item.bbox)}, "")'><b>${escapeHtml(type)} · 第 ${item.page} 页 · ${escapeHtml(item.section || '')} · ${escapeHtml(id)}</b><br>${escapeHtml(content)}</div>`;
-        }).join('');
-        const steps = (trace.steps || []).map(item => {
-          const backend = item.retrieval?.effective_strategy ? ` [${item.retrieval.effective_strategy}]` : '';
-          const warning = (item.retrieval?.warnings || []).length ? ` ⚠ ${(item.retrieval.warnings || []).join('；')}` : '';
-          return `${item.step}. ${item.tool}${backend} → ${(item.result_ids || []).join(', ') || '无结果'}${item.cached ? '（缓存）' : ''}${warning}`;
-        }).join('\n');
-        $('#evidence').innerHTML = '<h3>回答证据</h3>' + evidenceHtml + (steps ? `<details><summary>Agent Trace</summary><pre>${escapeHtml(steps)}</pre></details>` : '');
-      } catch (error) {
-        $('#answer').textContent = `问答失败：${error.message}`;
-        $('#evidence').replaceChildren();
-      } finally {
-        button.disabled = false;
-      }
-    };
-
-    // PDF.js 渲染页面和透明 TextLayer；Docling bbox 与 PDF 点坐标保持同一基准。
-    async function loadPdf(url) {
-      if (!window.pdfjsLib) throw new Error('PDF.js 加载失败，请检查网络连接。');
-      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-      pdfDocument = await pdfjsLib.getDocument(url).promise;
-      currentPage = 1; pendingBbox = null;
-      await renderPage();
-    }
-    async function renderPage() {
-      if (!pdfDocument) return;
-      const page = await pdfDocument.getPage(currentPage);
-      const viewport = page.getViewport({ scale: pdfScale });
-      const canvas = $('#pdfCanvas'), context = canvas.getContext('2d');
-      canvas.width = viewport.width; canvas.height = viewport.height;
-      $('#pdfPage').style.width = `${viewport.width}px`; $('#pdfPage').style.height = `${viewport.height}px`;
-      await page.render({ canvasContext: context, viewport }).promise;
-      const textLayer = $('#textLayer'); textLayer.replaceChildren(); textLayer.style.width = `${viewport.width}px`; textLayer.style.height = `${viewport.height}px`;
-      if (pdfjsLib.renderTextLayer) await pdfjsLib.renderTextLayer({ textContentSource: await page.getTextContent(), container: textLayer, viewport, textDivs: [] }).promise;
-      drawHighlight(pendingBbox, pendingQuote, pendingBboxes);
-      $('#pageInfo').textContent = `第 ${currentPage} / ${pdfDocument.numPages} 页`;
-    }
-    function drawHighlight(bbox, quote, bboxes) {
-      const mark = $('#highlight'); mark.replaceChildren();
-      const boxes = Array.isArray(bboxes) && bboxes.length ? bboxes : (Array.isArray(bbox) ? [bbox] : []);
-      if (boxes.length) {
-        for (const [x0, y0, x1, y1] of boxes) addBox(mark, x0, y0, x1, y1);
-        return;
-      }
-      if (quote && highlightQuote(quote, mark)) return;
-      if (!Array.isArray(bbox) || bbox.length !== 4) return;
-      const [x0, y0, x1, y1] = bbox;
-      addBox(mark, x0, y0, x1, y1);
-    }
-    function addBox(mark, x0, y0, x1, y1) {
-      const area = document.createElement('div'); area.className = 'highlight';
-      area.style.left = `${x0 * pdfScale}px`; area.style.top = `${y0 * pdfScale}px`;
-      area.style.width = `${Math.max((x1 - x0) * pdfScale, 3)}px`; area.style.height = `${Math.max((y1 - y0) * pdfScale, 3)}px`;
-      mark.append(area);
-    }
-    function highlightQuote(quote, container) {
-      const spans = [...$('#textLayer').querySelectorAll('span')];
-      const normalize = value => value.toLowerCase().replace(/\s+/g, ' ').trim();
-      const needle = normalize(quote);
-      if (!needle) return false;
-
-      // 按 TextLayer 阅读顺序拼接页面文本，同时记录每个 span 在拼接文本中的范围。
-      // 只有完整连续的 quote 命中时才高亮，绝不按零散关键词匹配。
-      let pageText = '';
-      const positions = [];
-      for (const span of spans) {
-        const text = normalize(span.textContent);
-        if (!text) continue;
-        if (pageText) pageText += ' ';
-        const start = pageText.length;
-        pageText += text;
-        positions.push({ span, start, end: pageText.length });
-      }
-      const quoteStart = pageText.indexOf(needle);
-      if (quoteStart < 0) return false;
-      const quoteEnd = quoteStart + needle.length;
-      const pageRect = $('#pdfPage').getBoundingClientRect();
-      const matches = positions.filter(item => item.start < quoteEnd && item.end > quoteStart);
-      for (const { span } of matches) {
-        const rect = span.getBoundingClientRect();
-        if (!rect.width || !rect.height) continue;
-        const area = document.createElement('div'); area.className = 'highlight';
-        area.style.left = `${rect.left - pageRect.left}px`; area.style.top = `${rect.top - pageRect.top}px`;
-        area.style.width = `${rect.width}px`; area.style.height = `${rect.height}px`;
-        container.append(area);
-      }
-      return matches.length > 0;
-    }
-    async function jump(page, bbox = null, encodedQuote = '', bboxes = []) {
-      if (!pdfDocument) return;
-      currentPage = page; pendingBbox = bbox; pendingBboxes = bboxes; pendingQuote = decodeURIComponent(encodedQuote || ''); await renderPage();
-      $('#pdfStage').scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-    $('#previousPage').onclick = () => { if (currentPage > 1) { pendingBbox = null; pendingBboxes = []; pendingQuote = ''; currentPage--; renderPage(); } };
-    $('#nextPage').onclick = () => { if (pdfDocument && currentPage < pdfDocument.numPages) { pendingBbox = null; pendingBboxes = []; pendingQuote = ''; currentPage++; renderPage(); } };
-    window.jump = jump;
-  </script>
+  <div id="evidenceDrawer" class="drawer hidden" role="dialog" aria-modal="true">
+    <div class="drawer-shell">
+      <div class="panel-header"><h2>论文证据</h2><button id="closeDrawer" class="secondary">关闭</button></div>
+      <div id="evidenceDetail"></div>
+      <div class="pdf-toolbar"><button id="previousPage">上一页</button><span id="pageInfo">未加载</span><button id="nextPage">下一页</button></div>
+      <div id="pdfStage" class="pdf-stage"><div id="pdfPage"><canvas id="pdfCanvas"></canvas><div id="textLayer"></div><div id="highlight"></div></div></div>
+    </div>
+  </div>
 </body>
 </html>

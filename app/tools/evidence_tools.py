@@ -8,8 +8,8 @@ from app.services.retrieval import HybridRetriever
 
 class EvidenceTools:
     FIGURE_REFERENCE = re.compile(
-        r"\bfig(?:ure)?s?\.?\s*"
-        r"(\d+(?:\s*(?:,|and|&|to|-)\s*\d+)*)|图\s*(\d+)",
+        r"(?<![A-Za-z0-9_])fig(?:ure)?s?\.?\s*"
+        r"(\d+(?:\s*(?:,|and|&|to|-)\s*\d+)*)(?![A-Za-z0-9_])|图\s*(\d+)",
         re.I,
     )
     FIGURE_CAPTION = re.compile(
@@ -17,8 +17,8 @@ class EvidenceTools:
         re.I,
     )
     TABLE_REFERENCE = re.compile(
-        r"\btables?\.?\s*"
-        r"(\d+(?:\s*(?:,|and|&|to|-)\s*\d+)*)|表\s*(\d+)",
+        r"(?<![A-Za-z0-9_])tables?\.?\s*"
+        r"(\d+(?:\s*(?:,|and|&|to|-)\s*\d+)*)(?![A-Za-z0-9_])|表\s*(\d+)",
         re.I,
     )
     TABLE_CAPTION = re.compile(

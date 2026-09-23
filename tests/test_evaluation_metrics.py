@@ -383,6 +383,7 @@ def test_evaluate_rag_records_multimodal_agent_tools_and_trace(monkeypatch, tmp_
         reranker_enabled=False,
         deepseek_key="test",
         qwen_vl_key="test",
+        agent_orchestrator="legacy",
     )
     repository = PaperRepository(local_settings.database_path)
     figure = Figure(

@@ -31,6 +31,11 @@ class MultiAgentState(TypedDict, total=False):
     run_id: str
     paper_id: str
     question: str
+    original_question: str
+    resolved_question: str
+    conversation_id: str
+    turn_index: int
+    referenced_evidence_ids: list[str]
     requested_strategy: str | None
     route: dict[str, Any]
     plan: dict[str, Any]
