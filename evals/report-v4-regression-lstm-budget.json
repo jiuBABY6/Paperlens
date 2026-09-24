@@ -1,0 +1,3294 @@
+{
+  "dataset": "evals\\questions.v4.jsonl",
+  "count": 1,
+  "answerable_count": 1,
+  "unanswerable_count": 0,
+  "decision_count": 1,
+  "execution_success_rate": 1.0,
+  "answer_evaluated_count": 1,
+  "answer_correct_count": 1,
+  "dataset_issue_count": 0,
+  "dataset_issue_case_ids": [],
+  "answer_correct_rate": 1.0,
+  "task_success_rate": 1.0,
+  "answerability_accuracy": 1.0,
+  "refusal_accuracy": 0.0,
+  "answer_delivery_rate": 1.0,
+  "gold_citation_hit_rate": 1.0,
+  "complete_gold_citation_hit_rate": 0.0,
+  "mean_gold_citation_precision": 0.5,
+  "mean_gold_citation_recall": 0.75,
+  "llm_judged_count": 1,
+  "llm_answer_score_0_to_2": 2.0,
+  "llm_exact_correct_rate": 1.0,
+  "mean_end_to_end_latency_ms": 43455.5,
+  "p95_end_to_end_latency_ms": 43455.5,
+  "max_end_to_end_latency_ms": 43455.5,
+  "mean_agent_count": 6.0,
+  "retry_case_rate": 0.0,
+  "mean_retry_count": 0.0,
+  "node_failure_rate": 0.0,
+  "recovery_attempt_count": 0,
+  "recovery_success_rate": null,
+  "configuration": {
+    "mode": "rag",
+    "split": "dev",
+    "strategy": "hybrid-rerank",
+    "query_rewrite_enabled": true,
+    "claim_verification_enabled": true,
+    "llm_judge_enabled": true,
+    "visual_judge_enabled_for_visual_only": true,
+    "online_visual_judge_enabled": false,
+    "orchestrator": "langgraph",
+    "parallel_enabled": true,
+    "case_id": "lstm-crossmodal-design-v3-06",
+    "limit": 5
+  },
+  "agentic_metrics": {
+    "overall": {
+      "count": 1,
+      "retrieval": {
+        "recall_at_k": 0.75,
+        "mrr": 1.0,
+        "k": 5
+      },
+      "evidence": {
+        "precision": 0.5,
+        "recall": 0.75,
+        "f1": 0.6
+      },
+      "generation": {
+        "faithfulness": 1.0,
+        "claim_support_rate": 1.0
+      },
+      "agent": {
+        "execution_success_rate": 1.0,
+        "answer_correct_rate": 1.0,
+        "task_success_rate": 1.0,
+        "average_steps": 11.0,
+        "average_tool_calls": 11.0,
+        "repeated_tool_call_rate": 0.3636
+      },
+      "multimodal": {
+        "text_retrieval_recall_at_k": 0.0,
+        "figure_retrieval_recall_at_k": 1.0,
+        "table_retrieval_recall_at_k": 1.0,
+        "text_retrieval_mrr": 0.0,
+        "figure_retrieval_mrr": 1.0,
+        "table_retrieval_mrr": 1.0,
+        "modality_routing_accuracy": 1.0
+      },
+      "engineering": {
+        "average_latency_ms": 43455.5,
+        "average_token_usage": 25777.0,
+        "average_qwen_vl_calls": 1.0,
+        "total_qwen_vl_calls": 1,
+        "average_visual_judge_qwen_vl_calls": 0.0,
+        "total_visual_judge_qwen_vl_calls": 0,
+        "total_qwen_vl_calls_including_judge": 1
+      }
+    },
+    "by_mode": {
+      "standard_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "text_agentic_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "multimodal_agentic_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "text_multi_agent_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "multimodal_multi_agent_rag": {
+        "count": 1,
+        "retrieval": {
+          "recall_at_k": 0.75,
+          "mrr": 1.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.5,
+          "recall": 0.75,
+          "f1": 0.6
+        },
+        "generation": {
+          "faithfulness": 1.0,
+          "claim_support_rate": 1.0
+        },
+        "agent": {
+          "execution_success_rate": 1.0,
+          "answer_correct_rate": 1.0,
+          "task_success_rate": 1.0,
+          "average_steps": 11.0,
+          "average_tool_calls": 11.0,
+          "repeated_tool_call_rate": 0.3636
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 1.0,
+          "table_retrieval_recall_at_k": 1.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 1.0,
+          "table_retrieval_mrr": 1.0,
+          "modality_routing_accuracy": 1.0
+        },
+        "engineering": {
+          "average_latency_ms": 43455.5,
+          "average_token_usage": 25777.0,
+          "average_qwen_vl_calls": 1.0,
+          "total_qwen_vl_calls": 1,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 1
+        }
+      }
+    }
+  },
+  "records": [
+    {
+      "case_id": "lstm-crossmodal-design-v3-06",
+      "paper_id": "2de38bfe-63c1-43d7-b6f3-7de909020853",
+      "question": "Based on Figure 1, the method description, and Tables 1 and 2, which design choices appear most important for humor prediction?",
+      "mode": "multimodal_multi_agent_rag",
+      "gold_answerable": true,
+      "predicted_answerable": true,
+      "answerability_correct": true,
+      "answer": "The proposed framework uses an LSTM to model the dialogue sequence, which the paper presents as a first-ever LSTM application to humor response prediction.\nFigure 1 shows three CNN input features (words, word2vec, character trigrams) feeding an utterance encoding layer, whose high-level feature vectors go into an LSTM and then a softmax layer.\nTable 1 shows LSTM + high level features gives the best results (Accuracy 70.0, F-score 62.9), better than CRF variants and plain LSTM.\nTable 2 shows CNN sentence encoding outperforms LSTM sentence encoding (70.0 vs 68.4 accuracy; 62.9 vs 59.1 F1).\nEarlier bag-of-ngram or simple RNN approaches were found not ideal for capturing setup context, motivating the LSTM design.",
+      "refusal_reason": "",
+      "answer_status": "ok",
+      "claims": [
+        {
+          "claim": "The proposed framework uses an LSTM to model the dialogue sequence, which the paper presents as a first-ever LSTM application to humor response prediction.",
+          "text": "The proposed framework uses an LSTM to model the dialogue sequence, which the paper presents as a first-ever LSTM application to humor response prediction.",
+          "evidence_ids": [
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s3"
+          ],
+          "citations": [
+            {
+              "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+              "id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+              "type": "text",
+              "page": 1,
+              "bbox": [
+                93.8,
+                264.6,
+                277.0,
+                298.5
+              ],
+              "content": "We propose a ﬁrst-ever attempt to employ a Long Short-Term memory based framework to predict humor in dialogues.",
+              "text": "We propose a ﬁrst-ever attempt to employ a Long Short-Term memory based framework to predict humor in dialogues.",
+              "section": "Abstract",
+              "metadata": {
+                "chunk_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5",
+                "bboxes": [
+                  [
+                    93.8,
+                    264.6,
+                    277.0,
+                    274.6
+                  ],
+                  [
+                    93.8,
+                    276.6,
+                    277.0,
+                    286.5
+                  ],
+                  [
+                    93.8,
+                    288.5,
+                    220.8,
+                    298.5
+                  ]
+                ]
+              }
+            },
+            {
+              "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s3",
+              "id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s3",
+              "type": "text",
+              "page": 2,
+              "bbox": [
+                72.0,
+                381.1,
+                298.8,
+                432.7
+              ],
+              "content": "This is also to our knowledge the ﬁrst-ever attempt that a LSTM is applied to humor response prediction or general hu- mor detection tasks.",
+              "text": "This is also to our knowledge the ﬁrst-ever attempt that a LSTM is applied to humor response prediction or general hu- mor detection tasks.",
+              "section": "but then just gave up. LAUGH",
+              "metadata": {
+                "chunk_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2",
+                "bboxes": [
+                  [
+                    235.9,
+                    381.1,
+                    298.8,
+                    392.0
+                  ],
+                  [
+                    72.0,
+                    394.7,
+                    298.8,
+                    405.6
+                  ],
+                  [
+                    72.0,
+                    408.2,
+                    298.8,
+                    419.1
+                  ],
+                  [
+                    72.0,
+                    421.8,
+                    159.6,
+                    432.7
+                  ]
+                ]
+              }
+            }
+          ],
+          "verification_status": "supported"
+        },
+        {
+          "claim": "Figure 1 shows three CNN input features (words, word2vec, character trigrams) feeding an utterance encoding layer, whose high-level feature vectors go into an LSTM and then a softmax layer.",
+          "text": "Figure 1 shows three CNN input features (words, word2vec, character trigrams) feeding an utterance encoding layer, whose high-level feature vectors go into an LSTM and then a softmax layer.",
+          "evidence_ids": [
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001"
+          ],
+          "citations": [
+            {
+              "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001",
+              "id": "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001",
+              "type": "figure",
+              "page": 2,
+              "bbox": [
+                314.5,
+                61.3,
+                542.0,
+                283.9
+              ],
+              "content": null,
+              "text": "Figure 1: Framework diagram. a t , b t and c t are the CNN three input features (words, word2vec and character trigrams). l t are the high level feature vectors, and y t the outputs for each utterance.",
+              "section": "2.1 Convolutional Neural Network for each utterance",
+              "metadata": {
+                "caption": "Figure 1: Framework diagram. a t , b t and c t are the CNN three input features (words, word2vec and character trigrams). l t are the high level feature vectors, and y t the outputs for each utterance.",
+                "image_path": "D:\\Desktop\\job\\demo\\data\\uploads\\2de38bfe-63c1-43d7-b6f3-7de909020853\\figures\\picture-1.png",
+                "nearby_text": "three input features (words, word2vec and character trigrams). lt are the high level feature vectors, and yt the outputs for each A max-pooling operation is then applied to extract the most salient features of all the tokens into a single vector for the whole utterance. An additional layer is used to gen- eralize and distribute each feature to its full range before obtaining the ﬁnal utterance vector. In our task we use three input features: Character trigrams: each token is represented as a bag-of-character-trigrams vector. Low-level, high-dimensional input feature vectors are fed into a ﬁrst embedding layer to obtain a low dimensional dense vector.",
+                "related_sentence_ids": [
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b4-s0",
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b5-s0",
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b7-s1",
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b7-s2",
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b10-s0",
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b12-s1",
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b15-s1"
+                ],
+                "description": {
+                  "figure_type": "other",
+                  "summary": "",
+                  "entities": [],
+                  "components": [],
+                  "relations": [],
+                  "visual_evidence": [],
+                  "numerical_evidence": [],
+                  "retrieval_keywords": [],
+                  "potential_questions": [],
+                  "uncertainty": [
+                    "Qwen-VL 离线理解失败：ReadTimeout: The read operation timed out"
+                  ],
+                  "status": "error"
+                },
+                "summary": "",
+                "query_analysis": {
+                  "relevant": true,
+                  "answerable": true,
+                  "figure_evidence": [
+                    {
+                      "evidence": "Figure caption: 'a_t , b_t and c_t are the CNN three input features (words, word2vec and character trigrams). l_t are the high level feature vectors, and y_t the outputs for each utterance.'",
+                      "source": "caption"
+                    },
+                    {
+                      "evidence": "Nearby paper text: 'three input features: Character trigrams: each token is represented as a bag-of-character-trigrams vector. Low-level, high-dimensional input feature vectors are fed into a first embedding layer to obtain a low dimensional dense vector.'",
+                      "source": "nearby_text"
+                    }
+                  ],
+                  "visual_observations": [
+                    {
+                      "label": "a_t, b_t and c_t are the CNN three input features (words, word2vec and character trigrams)",
+                      "position": "bottom",
+                      "immediate_region": "The three input sequences labeled a_{0,0}...a_{0,L}, b_{0,0}...b_{0,L}, c_{0,0}...c_{0,L} at the very bottom of the figure, feeding into three separate CNN blocks.",
+                      "fill_color": "white",
+                      "visible_basis": "figure"
+                    },
+                    {
+                      "label": "CNN",
+                      "position": "bottom-right",
+                      "immediate_region": "The label 'CNN' pointing to the rightmost of the three identical block structures in the bottom row.",
+                      "fill_color": "white",
+                      "visible_basis": "figure"
+                    },
+                    {
+                      "label": "UTTERANCE ENCODING LAYER",
+                      "position": "middle-left",
+                      "immediate_region": "The label 'UTTERANCE ENCODING LAYER' pointing to the group of three CNN blocks that collectively encode each utterance token sequence.",
+                      "fill_color": "white",
+                      "visible_basis": "figure"
+                    },
+                    {
+                      "label": "LSTM",
+                      "position": "middle",
+                      "immediate_region": "The label 'LSTM' pointing to the central stacked gray blocks that process outputs from the CNNs sequentially.",
+                      "fill_color": "gray",
+                      "visible_basis": "figure"
+                    },
+                    {
+                      "label": "SOFTMAX LAYER",
+                      "position": "top",
+                      "immediate_region": "The label 'SOFTMAX LAYER' pointing to the top-level output nodes y_0, y_1, y_2 with their respective hidden units h_0, h_1, h_2.",
+                      "fill_color": "white",
+                      "visible_basis": "figure"
+                    },
+                    {
+                      "label": "l_t are the high level feature vectors, and y_t the outputs for each utterance",
+                      "position": "top",
+                      "immediate_region": "The text near the top right indicating l_t and y_t as intermediate and final outputs — specifically, the boxes labeled l_0, h_0, y_0 etc. under the softmax layer.",
+                      "fill_color": "white",
+                      "visible_basis": "figure"
+                    }
+                  ],
+                  "interpretation": "The figure shows a design where each utterance is processed by three parallel CNNs (one per input feature: words, word2vec, character trigrams), producing high-level feature vectors (l_t) which are then fed into an LSTM for temporal modeling across utterance tokens, followed by a softmax layer for classification (y_t). The architecture is modular, with clear separation of input encoding (CNN), sequential modeling (LSTM), and output prediction (softmax).",
+                  "missing_information": [],
+                  "confidence": "high",
+                  "image_preparation": {
+                    "original_width": 227,
+                    "original_height": 223,
+                    "sent_width": 1024,
+                    "sent_height": 1006,
+                    "upscaled": true,
+                    "scale": 4.511
+                  },
+                  "cached": false,
+                  "cache_version": 4
+                }
+              }
+            }
+          ],
+          "verification_status": "supported"
+        },
+        {
+          "claim": "Table 1 shows LSTM + high level features gives the best results (Accuracy 70.0, F-score 62.9), better than CRF variants and plain LSTM.",
+          "text": "Table 1 shows LSTM + high level features gives the best results (Accuracy 70.0, F-score 62.9), better than CRF variants and plain LSTM.",
+          "evidence_ids": [
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+          ],
+          "citations": [
+            {
+              "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "type": "table",
+              "page": 4,
+              "bbox": [
+                130.2,
+                57.2,
+                481.1,
+                139.2
+              ],
+              "content": "Table 1: Results, percentage.\n\n| Classifier and features         |   Accuracy |   Precision |   Recall |   F-score |\n|---------------------------------|------------|-------------|----------|-----------|\n| CRF n-grams                     |       61.8 |        56.8 |     45.1 |      50.2 |\n| CRF language features           |       67.8 |        67.5 |     47.8 |      56.0 |\n| CRF n-grams + language features |       65.9 |        61.2 |     55.3 |      58.1 |\n| LSTM                            |       63.1 |        56.7 |     58.7 |      57.6 |\n| LSTM + high level features      |       70.0 |        66.7 |     59.4 |      62.9 |",
+              "text": "Table 1: Results, percentage.\n\n| Classifier and features         |   Accuracy |   Precision |   Recall |   F-score |\n|---------------------------------|------------|-------------|----------|-----------|\n| CRF n-grams                     |       61.8 |        56.8 |     45.1 |      50.2 |\n| CRF language features           |       67.8 |        67.5 |     47.8 |      56.0 |\n| CRF n-grams + language features |       65.9 |        61.2 |     55.3 |      58.1 |\n| LSTM                            |       63.1 |        56.7 |     58.7 |      57.6 |\n| LSTM + high level features      |       70.0 |        66.7 |     59.4 |      62.9 |",
+              "section": "3.3 Results and discussion",
+              "metadata": {
+                "caption": "Table 1: Results, percentage.",
+                "image_path": "D:\\Desktop\\job\\demo\\data\\uploads\\2de38bfe-63c1-43d7-b6f3-7de909020853\\figures\\table-1.png",
+                "nearby_text": "3.3 Results and discussion Results of our system and our baselines are shown in table 1. The LSTM with the aid of the high level feature vector generally outperformed all the CRF baselines with the highest accuracy of 70.0% and the highest F-score of 62.9%.",
+                "related_sentence_ids": [
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b7-s0",
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0",
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1"
+                ],
+                "markdown": "Table 1: Results, percentage.\n\n| Classifier and features         |   Accuracy |   Precision |   Recall |   F-score |\n|---------------------------------|------------|-------------|----------|-----------|\n| CRF n-grams                     |       61.8 |        56.8 |     45.1 |      50.2 |\n| CRF language features           |       67.8 |        67.5 |     47.8 |      56.0 |\n| CRF n-grams + language features |       65.9 |        61.2 |     55.3 |      58.1 |\n| LSTM                            |       63.1 |        56.7 |     58.7 |      57.6 |\n| LSTM + high level features      |       70.0 |        66.7 |     59.4 |      62.9 |",
+                "columns": [
+                  "Classifier and features",
+                  "Accuracy",
+                  "Precision",
+                  "Recall",
+                  "F-score"
+                ],
+                "rows": [
+                  {
+                    "Classifier and features": "CRF n-grams",
+                    "Accuracy": "61.8",
+                    "Precision": "56.8",
+                    "Recall": "45.1",
+                    "F-score": "50.2"
+                  },
+                  {
+                    "Classifier and features": "CRF language features",
+                    "Accuracy": "67.8",
+                    "Precision": "67.5",
+                    "Recall": "47.8",
+                    "F-score": "56.0"
+                  },
+                  {
+                    "Classifier and features": "CRF n-grams + language features",
+                    "Accuracy": "65.9",
+                    "Precision": "61.2",
+                    "Recall": "55.3",
+                    "F-score": "58.1"
+                  },
+                  {
+                    "Classifier and features": "LSTM",
+                    "Accuracy": "63.1",
+                    "Precision": "56.7",
+                    "Recall": "58.7",
+                    "F-score": "57.6"
+                  },
+                  {
+                    "Classifier and features": "LSTM + high level features",
+                    "Accuracy": "70.0",
+                    "Precision": "66.7",
+                    "Recall": "59.4",
+                    "F-score": "62.9"
+                  }
+                ]
+              }
+            }
+          ],
+          "verification_status": "supported"
+        },
+        {
+          "claim": "Table 2 shows CNN sentence encoding outperforms LSTM sentence encoding (70.0 vs 68.4 accuracy; 62.9 vs 59.1 F1).",
+          "text": "Table 2 shows CNN sentence encoding outperforms LSTM sentence encoding (70.0 vs 68.4 accuracy; 62.9 vs 59.1 F1).",
+          "evidence_ids": [
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+          ],
+          "citations": [
+            {
+              "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002",
+              "id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002",
+              "type": "table",
+              "page": 4,
+              "bbox": [
+                83.5,
+                171.8,
+                287.6,
+                211.5
+              ],
+              "content": "Table 2: Comparison between a CNN and a LSTM sentence encoding input.\n\n| Encoding stage   |    A |    P |    R |   F1 |\n|------------------|------|------|------|------|\n| CNN              | 70.0 | 66.7 | 59.4 | 62.9 |\n| LSTM             | 68.4 | 66.2 | 53.4 | 59.1 |",
+              "text": "Table 2: Comparison between a CNN and a LSTM sentence encoding input.\n\n| Encoding stage   |    A |    P |    R |   F1 |\n|------------------|------|------|------|------|\n| CNN              | 70.0 | 66.7 | 59.4 | 62.9 |\n| LSTM             | 68.4 | 66.2 | 53.4 | 59.1 |",
+              "section": "2.2 Long/Short Term Memory for the utterance sequence",
+              "metadata": {
+                "caption": "Table 2: Comparison between a CNN and a LSTM sentence encoding input.",
+                "image_path": "D:\\Desktop\\job\\demo\\data\\uploads\\2de38bfe-63c1-43d7-b6f3-7de909020853\\figures\\table-2.png",
+                "nearby_text": "the same high level feature vector added at the end of the neural network, 1-2-3gram features of a win- dow made by the utterance and the four previous, and the two feature sets combined. We also com- pared the overall system where we replace the CNN with an LSTM sentence encoder (Li et al., 2015), where we kept the same input features. In the neural network we set the size to 100 for all the hidden layers of the CNN and the LSTM, and 5 to the convolutional window. A CNN-LSTM network seems to over- come this issue as the CNN stage is better in model- ing the lexical and semantic content of the utterance, as the LSTM allows to put each utterance in relation with the past context, ﬁltering out many false posi- tives from wrong contexts. We applied a dropout regularization layer (Srivastava et al., 2014) after the output of the LSTM, and L2 regularization on the softmax output layer. The choice of the CNN is further justiﬁed by the results obtained from the comparison between the CNN and the LSTM sentence encoding input, shown in table 2. We may consider in the future to use more data, and try other sentence input encoders, including deeper or bi-directional LSTMs, to ﬁnd the most effective one. As a baseline for comparison we used an imple- mentation of the Conditional Random Field (Laf- ferty et al., 2001) from CRFSuite (Okazaki, 2007), with L2 regularization.",
+                "related_sentence_ids": [
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b3-s0",
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b3-s1",
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b11-s0",
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s4",
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b11-s1",
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s0",
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s4",
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b13-s0"
+                ],
+                "markdown": "Table 2: Comparison between a CNN and a LSTM sentence encoding input.\n\n| Encoding stage   |    A |    P |    R |   F1 |\n|------------------|------|------|------|------|\n| CNN              | 70.0 | 66.7 | 59.4 | 62.9 |\n| LSTM             | 68.4 | 66.2 | 53.4 | 59.1 |",
+                "columns": [
+                  "Encoding stage",
+                  "A",
+                  "P",
+                  "R",
+                  "F1"
+                ],
+                "rows": [
+                  {
+                    "Encoding stage": "CNN",
+                    "A": "70.0",
+                    "P": "66.7",
+                    "R": "59.4",
+                    "F1": "62.9"
+                  },
+                  {
+                    "Encoding stage": "LSTM",
+                    "A": "68.4",
+                    "P": "66.2",
+                    "R": "53.4",
+                    "F1": "59.1"
+                  }
+                ]
+              }
+            }
+          ],
+          "verification_status": "supported"
+        },
+        {
+          "claim": "Earlier bag-of-ngram or simple RNN approaches were found not ideal for capturing setup context, motivating the LSTM design.",
+          "text": "Earlier bag-of-ngram or simple RNN approaches were found not ideal for capturing setup context, motivating the LSTM design.",
+          "evidence_ids": [
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s0"
+          ],
+          "citations": [
+            {
+              "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s0",
+              "id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s0",
+              "type": "text",
+              "page": 2,
+              "bbox": [
+                72.0,
+                205.0,
+                298.8,
+                283.6
+              ],
+              "content": "Our previous attempts on the same corpus (Bert- ero and Fung, 2016b; Bertero and Fung, 2016a) showed that using a bag-of-ngram representation over a sliding window or a simple RNN to cap- ture the contextual information of the setup was not ideal.",
+              "text": "Our previous attempts on the same corpus (Bert- ero and Fung, 2016b; Bertero and Fung, 2016a) showed that using a bag-of-ngram representation over a sliding window or a simple RNN to cap- ture the contextual information of the setup was not ideal.",
+              "section": "but then just gave up. LAUGH",
+              "metadata": {
+                "chunk_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2",
+                "bboxes": [
+                  [
+                    82.9,
+                    205.0,
+                    298.8,
+                    215.9
+                  ],
+                  [
+                    72.0,
+                    218.5,
+                    298.8,
+                    229.5
+                  ],
+                  [
+                    72.0,
+                    232.1,
+                    298.8,
+                    243.0
+                  ],
+                  [
+                    72.0,
+                    245.6,
+                    298.8,
+                    256.6
+                  ],
+                  [
+                    72.0,
+                    259.2,
+                    298.8,
+                    270.1
+                  ],
+                  [
+                    72.0,
+                    272.7,
+                    95.9,
+                    283.6
+                  ]
+                ]
+              }
+            }
+          ],
+          "verification_status": "supported"
+        }
+      ],
+      "citation_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s3",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+      ],
+      "gold_sentence_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b4-s0"
+      ],
+      "gold_sentence_groups": [
+        [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b4-s0"
+        ]
+      ],
+      "gold_evidence_groups": [
+        [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b4-s0",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+        ]
+      ],
+      "gold_citation_hit": true,
+      "gold_complete_citation_hit": false,
+      "gold_citation_precision": 0.5,
+      "gold_citation_recall": 0.75,
+      "query_plan": {
+        "router": {
+          "complexity": "complex",
+          "route": "agentic_rag",
+          "modalities": [
+            "text",
+            "figure",
+            "table"
+          ],
+          "required_modalities": [
+            "text",
+            "figure",
+            "table"
+          ],
+          "pure_visual": false,
+          "pure_table": false,
+          "reason": "需要分解任务或读取非文本证据。"
+        },
+        "rewrites": [
+          {
+            "subtask_id": "task_1",
+            "attempt": 0,
+            "query": "Figure 1 Tables 1 and 2 method result statements Based on Figure 1 description Tables 2 which design choices appear most important humor prediction"
+          },
+          {
+            "subtask_id": "task_2",
+            "attempt": 0,
+            "query": "Figure 1 Tables 1 and 2 original scientific figure Based on 1 method description Tables 2 which design choices appear most important humor prediction"
+          },
+          {
+            "subtask_id": "task_3",
+            "attempt": 0,
+            "query": "Figure 1 Tables 1 and 2 structured table evidence Based on Figure 1 method description Tables 2 which design choices appear most important humor prediction"
+          }
+        ]
+      },
+      "router": {
+        "complexity": "complex",
+        "route": "agentic_rag",
+        "modalities": [
+          "text",
+          "figure",
+          "table"
+        ],
+        "required_modalities": [
+          "text",
+          "figure",
+          "table"
+        ],
+        "pure_visual": false,
+        "pure_table": false,
+        "reason": "需要分解任务或读取非文本证据。"
+      },
+      "retrieval": {
+        "effective_strategy": "hybrid-rerank+metadata-exact",
+        "effective_strategies": [
+          "hybrid-rerank",
+          "metadata-exact"
+        ],
+        "degraded": false,
+        "warnings": [],
+        "search_count": 5
+      },
+      "trace": {
+        "run_id": "1a9eff00-aae4-4c12-a447-f35fe6436fb0",
+        "query": "Based on Figure 1, the method description, and Tables 1 and 2, which design choices appear most important for humor prediction?",
+        "route": "langgraph_agentic_rag",
+        "router": {
+          "complexity": "complex",
+          "route": "agentic_rag",
+          "modalities": [
+            "text",
+            "figure",
+            "table"
+          ],
+          "required_modalities": [
+            "text",
+            "figure",
+            "table"
+          ],
+          "pure_visual": false,
+          "pure_table": false,
+          "reason": "需要分解任务或读取非文本证据。"
+        },
+        "plan": {
+          "goal": "Based on Figure 1, the method description, and Tables 1 and 2, which design choices appear most important for humor prediction?",
+          "execution": "parallel",
+          "selected_agents": [
+            "text_agent",
+            "figure_agent",
+            "table_agent"
+          ],
+          "reason": "需要分解任务或读取非文本证据。",
+          "sub_tasks": [
+            {
+              "task_id": "task_1",
+              "source_task_id": "task_1",
+              "agent": "text_agent",
+              "modality": "text",
+              "instruction": "Find method or result statements relevant to: Based on Figure 1, the method description, and Tables 1 and 2, which design choices appear most important for humor prediction?",
+              "query": "Figure 1 Tables 1 and 2 method result statements Based on Figure 1 description Tables 2 which design choices appear most important humor prediction",
+              "required_modalities": [
+                "text"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            },
+            {
+              "task_id": "task_2",
+              "source_task_id": "task_2",
+              "agent": "figure_agent",
+              "modality": "figure",
+              "instruction": "Find the original scientific figure relevant to: Based on Figure 1, the method description, and Tables 1 and 2, which design choices appear most important for humor prediction?",
+              "query": "Figure 1 Tables 1 and 2 original scientific figure Based on 1 method description Tables 2 which design choices appear most important humor prediction",
+              "required_modalities": [
+                "figure"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            },
+            {
+              "task_id": "task_3",
+              "source_task_id": "task_3",
+              "agent": "table_agent",
+              "modality": "table",
+              "instruction": "Find structured table evidence relevant to: Based on Figure 1, the method description, and Tables 1 and 2, which design choices appear most important for humor prediction?",
+              "query": "Figure 1 Tables 1 and 2 structured table evidence Based on Figure 1 method description Tables 2 which design choices appear most important humor prediction",
+              "required_modalities": [
+                "table"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            }
+          ],
+          "budgets": {
+            "max_steps": 10,
+            "max_retries": 1,
+            "max_model_calls": 8,
+            "max_qwen_vl_calls": 2,
+            "timeout_seconds": 120.0
+          }
+        },
+        "rewrites": [
+          {
+            "subtask_id": "task_1",
+            "attempt": 0,
+            "query": "Figure 1 Tables 1 and 2 method result statements Based on Figure 1 description Tables 2 which design choices appear most important humor prediction"
+          },
+          {
+            "subtask_id": "task_2",
+            "attempt": 0,
+            "query": "Figure 1 Tables 1 and 2 original scientific figure Based on 1 method description Tables 2 which design choices appear most important humor prediction"
+          },
+          {
+            "subtask_id": "task_3",
+            "attempt": 0,
+            "query": "Figure 1 Tables 1 and 2 structured table evidence Based on Figure 1 method description Tables 2 which design choices appear most important humor prediction"
+          }
+        ],
+        "steps": [
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "search_text",
+            "arguments": {
+              "query": "design choices important for humor prediction ablation",
+              "top_k": 10
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b14-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b0-s0"
+            ],
+            "latency_ms": 29222.2,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 93,
+              "lexical_candidate_count": 64,
+              "semantic_candidate_count": 24,
+              "fusion_candidate_count": 72,
+              "rerank_candidate_count": 8,
+              "reranked": true,
+              "returned_count": 8,
+              "bm25_latency_ms": 9.1,
+              "dense_latency_ms": 20866.4,
+              "rerank_latency_ms": 8344.5
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_eiiNCyJCiUQFzGnCk2d65375",
+            "step": 1
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "search_text",
+            "arguments": {
+              "query": "Figure 1 method architecture humor prediction",
+              "top_k": 10
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b14-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b0-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s2",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s1"
+            ],
+            "latency_ms": 6165.8,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 93,
+              "lexical_candidate_count": 32,
+              "semantic_candidate_count": 24,
+              "fusion_candidate_count": 38,
+              "rerank_candidate_count": 8,
+              "reranked": true,
+              "returned_count": 8,
+              "bm25_latency_ms": 8.6,
+              "dense_latency_ms": 164.2,
+              "rerank_latency_ms": 5991.5
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_tKukAlb3Xa5pDUODczbG8842",
+            "step": 2
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_vW9r7kYjunKjmDjXF2BJ0456",
+            "step": 3
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_3rGwpUaY2yunBOoMmo8a1540",
+            "step": 4
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "figure_agent",
+            "node": "figure_agent",
+            "tool": "search_figures",
+            "arguments": {
+              "query": "Figure 1 humor prediction model architecture design choices",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 1,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 1,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_figure_numbers": [
+                1
+              ],
+              "exact_figure_match_applied": true,
+              "exact_figure_ids": [
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_FyMWchEAzSLXv1oE2Hmm7088",
+            "step": 5
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "figure_agent",
+            "node": "figure_agent",
+            "tool": "read_figure",
+            "arguments": {
+              "figure_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_eUBrkTQkCtogWWPFKIag7875",
+            "step": 6
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "figure_agent",
+            "node": "figure_agent",
+            "tool": "analyze_figure_for_query",
+            "arguments": {
+              "figure_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001",
+              "question": "What design choices for humor prediction are shown in this figure (architecture, components, inputs, outputs)?"
+            },
+            "result_ids": [],
+            "latency_ms": 10474.1,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_iqVvHgng83TXxp45SfNz0729",
+            "step": 7
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "Table 1 Table 2 humor prediction ablation design choices",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            ],
+            "latency_ms": 0.2,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 2,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 2,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_table_numbers": [
+                1,
+                2
+              ],
+              "exact_table_match_applied": true,
+              "exact_table_ids": [
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_v5sla2RfxwRx1Icqm0xC0318",
+            "step": 8
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "Table 1 Table 2 humor prediction results model components",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 2,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 2,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_table_numbers": [
+                1,
+                2
+              ],
+              "exact_table_match_applied": true,
+              "exact_table_ids": [
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_90DuUcTsQllmp3ki3DF50061",
+            "step": 9
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "read_table",
+            "arguments": {
+              "table_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_nlibCJTLFuqifvfl1wS27043",
+            "step": 10
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "read_table",
+            "arguments": {
+              "table_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_FbE7dgdmBbaeGqq4QCTw7305",
+            "step": 11
+          }
+        ],
+        "final_evidence_ids": [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s3",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s0",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+        ],
+        "total_steps": 11,
+        "total_latency_ms": 43455.2,
+        "token_usage": 25777,
+        "qwen_vl_calls": 1,
+        "sufficiency": {
+          "sufficient": true,
+          "covered_subtasks": [
+            "task_1",
+            "task_2",
+            "task_3"
+          ],
+          "missing_subtasks": [],
+          "missing_information": []
+        },
+        "evidence_memory": [
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+            "type": "text",
+            "used": true
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b14-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s3",
+            "type": "text",
+            "used": true
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s0",
+            "type": "text",
+            "used": true
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s1",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s1",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b0-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s3",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s2",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001",
+            "type": "figure",
+            "used": true
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+            "type": "table",
+            "used": true
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002",
+            "type": "table",
+            "used": true
+          }
+        ],
+        "retrieval": {
+          "effective_strategy": "hybrid-rerank+metadata-exact",
+          "effective_strategies": [
+            "hybrid-rerank",
+            "metadata-exact"
+          ],
+          "degraded": false,
+          "warnings": [],
+          "search_count": 5
+        },
+        "model_calls": 10,
+        "execution_mode": "parallel",
+        "critique": {
+          "decision": "approved",
+          "required_modalities": [
+            "text",
+            "figure",
+            "table"
+          ],
+          "usable_modalities": [
+            "figure",
+            "table",
+            "text"
+          ],
+          "missing_modalities": [],
+          "conflicts": [],
+          "retry_targets": [],
+          "reasons": []
+        },
+        "conversation_id": null,
+        "turn_index": null,
+        "original_question": "Based on Figure 1, the method description, and Tables 1 and 2, which design choices appear most important for humor prediction?",
+        "resolved_question": "Based on Figure 1, the method description, and Tables 1 and 2, which design choices appear most important for humor prediction?",
+        "referenced_evidence_ids": [],
+        "specialist_execution_mode": "function_calling_with_fallback",
+        "function_calls": [
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "search_text",
+            "arguments": {
+              "query": "design choices important for humor prediction ablation",
+              "top_k": 10
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b14-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b0-s0"
+            ],
+            "latency_ms": 29222.2,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 93,
+              "lexical_candidate_count": 64,
+              "semantic_candidate_count": 24,
+              "fusion_candidate_count": 72,
+              "rerank_candidate_count": 8,
+              "reranked": true,
+              "returned_count": 8,
+              "bm25_latency_ms": 9.1,
+              "dense_latency_ms": 20866.4,
+              "rerank_latency_ms": 8344.5
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_eiiNCyJCiUQFzGnCk2d65375",
+            "step": 1
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "search_text",
+            "arguments": {
+              "query": "Figure 1 method architecture humor prediction",
+              "top_k": 10
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b14-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b0-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s2",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s1"
+            ],
+            "latency_ms": 6165.8,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 93,
+              "lexical_candidate_count": 32,
+              "semantic_candidate_count": 24,
+              "fusion_candidate_count": 38,
+              "rerank_candidate_count": 8,
+              "reranked": true,
+              "returned_count": 8,
+              "bm25_latency_ms": 8.6,
+              "dense_latency_ms": 164.2,
+              "rerank_latency_ms": 5991.5
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_tKukAlb3Xa5pDUODczbG8842",
+            "step": 2
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_vW9r7kYjunKjmDjXF2BJ0456",
+            "step": 3
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_3rGwpUaY2yunBOoMmo8a1540",
+            "step": 4
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "figure_agent",
+            "node": "figure_agent",
+            "tool": "search_figures",
+            "arguments": {
+              "query": "Figure 1 humor prediction model architecture design choices",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 1,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 1,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_figure_numbers": [
+                1
+              ],
+              "exact_figure_match_applied": true,
+              "exact_figure_ids": [
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_FyMWchEAzSLXv1oE2Hmm7088",
+            "step": 5
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "figure_agent",
+            "node": "figure_agent",
+            "tool": "read_figure",
+            "arguments": {
+              "figure_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_eUBrkTQkCtogWWPFKIag7875",
+            "step": 6
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "figure_agent",
+            "node": "figure_agent",
+            "tool": "analyze_figure_for_query",
+            "arguments": {
+              "figure_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001",
+              "question": "What design choices for humor prediction are shown in this figure (architecture, components, inputs, outputs)?"
+            },
+            "result_ids": [],
+            "latency_ms": 10474.1,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_iqVvHgng83TXxp45SfNz0729",
+            "step": 7
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "Table 1 Table 2 humor prediction ablation design choices",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            ],
+            "latency_ms": 0.2,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 2,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 2,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_table_numbers": [
+                1,
+                2
+              ],
+              "exact_table_match_applied": true,
+              "exact_table_ids": [
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_v5sla2RfxwRx1Icqm0xC0318",
+            "step": 8
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "Table 1 Table 2 humor prediction results model components",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 2,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 2,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_table_numbers": [
+                1,
+                2
+              ],
+              "exact_table_match_applied": true,
+              "exact_table_ids": [
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_90DuUcTsQllmp3ki3DF50061",
+            "step": 9
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "read_table",
+            "arguments": {
+              "table_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_nlibCJTLFuqifvfl1wS27043",
+            "step": 10
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "read_table",
+            "arguments": {
+              "table_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_FbE7dgdmBbaeGqq4QCTw7305",
+            "step": 11
+          }
+        ],
+        "function_call_fallbacks": 0,
+        "orchestrator": "langgraph",
+        "node_traces": [
+          {
+            "node": "supervisor_plan",
+            "agent": "supervisor_agent",
+            "status": "success",
+            "latency_ms": 1.6,
+            "selected_agents": [
+              "text_agent",
+              "figure_agent",
+              "table_agent"
+            ],
+            "task_ids": [
+              "task_1",
+              "task_2",
+              "task_3"
+            ],
+            "evidence_ids": [],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "text_agent",
+            "task_id": "task_1",
+            "status": "success",
+            "latency_ms": 38404.5,
+            "evidence_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b14-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b0-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s2",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s0"
+            ],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "figure_agent",
+            "task_id": "task_2",
+            "status": "success",
+            "latency_ms": 15248.6,
+            "evidence_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001"
+            ],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "table_agent",
+            "task_id": "task_3",
+            "status": "success",
+            "latency_ms": 5730.4,
+            "evidence_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            ],
+            "errors": []
+          },
+          {
+            "node": "evidence_critic",
+            "agent": "evidence_critic",
+            "status": "approved",
+            "latency_ms": 1.0,
+            "evidence_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b14-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b0-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s2",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            ],
+            "missing_modalities": [],
+            "conflicts": [],
+            "errors": []
+          },
+          {
+            "node": "answer_agent",
+            "agent": "answer_agent",
+            "status": "ok",
+            "latency_ms": 4989.6,
+            "evidence_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            ],
+            "errors": []
+          }
+        ],
+        "agent_count": 6,
+        "retry_count": 0,
+        "recovery": {
+          "attempted": false,
+          "successful": false,
+          "final_decision": "approved"
+        }
+      },
+      "agent_trace": {
+        "run_id": "1a9eff00-aae4-4c12-a447-f35fe6436fb0",
+        "query": "Based on Figure 1, the method description, and Tables 1 and 2, which design choices appear most important for humor prediction?",
+        "route": "langgraph_agentic_rag",
+        "router": {
+          "complexity": "complex",
+          "route": "agentic_rag",
+          "modalities": [
+            "text",
+            "figure",
+            "table"
+          ],
+          "required_modalities": [
+            "text",
+            "figure",
+            "table"
+          ],
+          "pure_visual": false,
+          "pure_table": false,
+          "reason": "需要分解任务或读取非文本证据。"
+        },
+        "plan": {
+          "goal": "Based on Figure 1, the method description, and Tables 1 and 2, which design choices appear most important for humor prediction?",
+          "execution": "parallel",
+          "selected_agents": [
+            "text_agent",
+            "figure_agent",
+            "table_agent"
+          ],
+          "reason": "需要分解任务或读取非文本证据。",
+          "sub_tasks": [
+            {
+              "task_id": "task_1",
+              "source_task_id": "task_1",
+              "agent": "text_agent",
+              "modality": "text",
+              "instruction": "Find method or result statements relevant to: Based on Figure 1, the method description, and Tables 1 and 2, which design choices appear most important for humor prediction?",
+              "query": "Figure 1 Tables 1 and 2 method result statements Based on Figure 1 description Tables 2 which design choices appear most important humor prediction",
+              "required_modalities": [
+                "text"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            },
+            {
+              "task_id": "task_2",
+              "source_task_id": "task_2",
+              "agent": "figure_agent",
+              "modality": "figure",
+              "instruction": "Find the original scientific figure relevant to: Based on Figure 1, the method description, and Tables 1 and 2, which design choices appear most important for humor prediction?",
+              "query": "Figure 1 Tables 1 and 2 original scientific figure Based on 1 method description Tables 2 which design choices appear most important humor prediction",
+              "required_modalities": [
+                "figure"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            },
+            {
+              "task_id": "task_3",
+              "source_task_id": "task_3",
+              "agent": "table_agent",
+              "modality": "table",
+              "instruction": "Find structured table evidence relevant to: Based on Figure 1, the method description, and Tables 1 and 2, which design choices appear most important for humor prediction?",
+              "query": "Figure 1 Tables 1 and 2 structured table evidence Based on Figure 1 method description Tables 2 which design choices appear most important humor prediction",
+              "required_modalities": [
+                "table"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            }
+          ],
+          "budgets": {
+            "max_steps": 10,
+            "max_retries": 1,
+            "max_model_calls": 8,
+            "max_qwen_vl_calls": 2,
+            "timeout_seconds": 120.0
+          }
+        },
+        "rewrites": [
+          {
+            "subtask_id": "task_1",
+            "attempt": 0,
+            "query": "Figure 1 Tables 1 and 2 method result statements Based on Figure 1 description Tables 2 which design choices appear most important humor prediction"
+          },
+          {
+            "subtask_id": "task_2",
+            "attempt": 0,
+            "query": "Figure 1 Tables 1 and 2 original scientific figure Based on 1 method description Tables 2 which design choices appear most important humor prediction"
+          },
+          {
+            "subtask_id": "task_3",
+            "attempt": 0,
+            "query": "Figure 1 Tables 1 and 2 structured table evidence Based on Figure 1 method description Tables 2 which design choices appear most important humor prediction"
+          }
+        ],
+        "steps": [
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "search_text",
+            "arguments": {
+              "query": "design choices important for humor prediction ablation",
+              "top_k": 10
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b14-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b0-s0"
+            ],
+            "latency_ms": 29222.2,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 93,
+              "lexical_candidate_count": 64,
+              "semantic_candidate_count": 24,
+              "fusion_candidate_count": 72,
+              "rerank_candidate_count": 8,
+              "reranked": true,
+              "returned_count": 8,
+              "bm25_latency_ms": 9.1,
+              "dense_latency_ms": 20866.4,
+              "rerank_latency_ms": 8344.5
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_eiiNCyJCiUQFzGnCk2d65375",
+            "step": 1
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "search_text",
+            "arguments": {
+              "query": "Figure 1 method architecture humor prediction",
+              "top_k": 10
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b14-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b0-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s2",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s1"
+            ],
+            "latency_ms": 6165.8,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 93,
+              "lexical_candidate_count": 32,
+              "semantic_candidate_count": 24,
+              "fusion_candidate_count": 38,
+              "rerank_candidate_count": 8,
+              "reranked": true,
+              "returned_count": 8,
+              "bm25_latency_ms": 8.6,
+              "dense_latency_ms": 164.2,
+              "rerank_latency_ms": 5991.5
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_tKukAlb3Xa5pDUODczbG8842",
+            "step": 2
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_vW9r7kYjunKjmDjXF2BJ0456",
+            "step": 3
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_3rGwpUaY2yunBOoMmo8a1540",
+            "step": 4
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "figure_agent",
+            "node": "figure_agent",
+            "tool": "search_figures",
+            "arguments": {
+              "query": "Figure 1 humor prediction model architecture design choices",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 1,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 1,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_figure_numbers": [
+                1
+              ],
+              "exact_figure_match_applied": true,
+              "exact_figure_ids": [
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_FyMWchEAzSLXv1oE2Hmm7088",
+            "step": 5
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "figure_agent",
+            "node": "figure_agent",
+            "tool": "read_figure",
+            "arguments": {
+              "figure_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_eUBrkTQkCtogWWPFKIag7875",
+            "step": 6
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "figure_agent",
+            "node": "figure_agent",
+            "tool": "analyze_figure_for_query",
+            "arguments": {
+              "figure_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001",
+              "question": "What design choices for humor prediction are shown in this figure (architecture, components, inputs, outputs)?"
+            },
+            "result_ids": [],
+            "latency_ms": 10474.1,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_iqVvHgng83TXxp45SfNz0729",
+            "step": 7
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "Table 1 Table 2 humor prediction ablation design choices",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            ],
+            "latency_ms": 0.2,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 2,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 2,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_table_numbers": [
+                1,
+                2
+              ],
+              "exact_table_match_applied": true,
+              "exact_table_ids": [
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_v5sla2RfxwRx1Icqm0xC0318",
+            "step": 8
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "Table 1 Table 2 humor prediction results model components",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 2,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 2,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_table_numbers": [
+                1,
+                2
+              ],
+              "exact_table_match_applied": true,
+              "exact_table_ids": [
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_90DuUcTsQllmp3ki3DF50061",
+            "step": 9
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "read_table",
+            "arguments": {
+              "table_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_nlibCJTLFuqifvfl1wS27043",
+            "step": 10
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "read_table",
+            "arguments": {
+              "table_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_FbE7dgdmBbaeGqq4QCTw7305",
+            "step": 11
+          }
+        ],
+        "final_evidence_ids": [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s3",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s0",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+        ],
+        "total_steps": 11,
+        "total_latency_ms": 43455.2,
+        "token_usage": 25777,
+        "qwen_vl_calls": 1,
+        "sufficiency": {
+          "sufficient": true,
+          "covered_subtasks": [
+            "task_1",
+            "task_2",
+            "task_3"
+          ],
+          "missing_subtasks": [],
+          "missing_information": []
+        },
+        "evidence_memory": [
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+            "type": "text",
+            "used": true
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b14-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s3",
+            "type": "text",
+            "used": true
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s0",
+            "type": "text",
+            "used": true
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s1",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s1",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b0-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s3",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s2",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001",
+            "type": "figure",
+            "used": true
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+            "type": "table",
+            "used": true
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002",
+            "type": "table",
+            "used": true
+          }
+        ],
+        "retrieval": {
+          "effective_strategy": "hybrid-rerank+metadata-exact",
+          "effective_strategies": [
+            "hybrid-rerank",
+            "metadata-exact"
+          ],
+          "degraded": false,
+          "warnings": [],
+          "search_count": 5
+        },
+        "model_calls": 10,
+        "execution_mode": "parallel",
+        "critique": {
+          "decision": "approved",
+          "required_modalities": [
+            "text",
+            "figure",
+            "table"
+          ],
+          "usable_modalities": [
+            "figure",
+            "table",
+            "text"
+          ],
+          "missing_modalities": [],
+          "conflicts": [],
+          "retry_targets": [],
+          "reasons": []
+        },
+        "conversation_id": null,
+        "turn_index": null,
+        "original_question": "Based on Figure 1, the method description, and Tables 1 and 2, which design choices appear most important for humor prediction?",
+        "resolved_question": "Based on Figure 1, the method description, and Tables 1 and 2, which design choices appear most important for humor prediction?",
+        "referenced_evidence_ids": [],
+        "specialist_execution_mode": "function_calling_with_fallback",
+        "function_calls": [
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "search_text",
+            "arguments": {
+              "query": "design choices important for humor prediction ablation",
+              "top_k": 10
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b14-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b0-s0"
+            ],
+            "latency_ms": 29222.2,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 93,
+              "lexical_candidate_count": 64,
+              "semantic_candidate_count": 24,
+              "fusion_candidate_count": 72,
+              "rerank_candidate_count": 8,
+              "reranked": true,
+              "returned_count": 8,
+              "bm25_latency_ms": 9.1,
+              "dense_latency_ms": 20866.4,
+              "rerank_latency_ms": 8344.5
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_eiiNCyJCiUQFzGnCk2d65375",
+            "step": 1
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "search_text",
+            "arguments": {
+              "query": "Figure 1 method architecture humor prediction",
+              "top_k": 10
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b14-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b0-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s2",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s1"
+            ],
+            "latency_ms": 6165.8,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 93,
+              "lexical_candidate_count": 32,
+              "semantic_candidate_count": 24,
+              "fusion_candidate_count": 38,
+              "rerank_candidate_count": 8,
+              "reranked": true,
+              "returned_count": 8,
+              "bm25_latency_ms": 8.6,
+              "dense_latency_ms": 164.2,
+              "rerank_latency_ms": 5991.5
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_tKukAlb3Xa5pDUODczbG8842",
+            "step": 2
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_vW9r7kYjunKjmDjXF2BJ0456",
+            "step": 3
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_3rGwpUaY2yunBOoMmo8a1540",
+            "step": 4
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "figure_agent",
+            "node": "figure_agent",
+            "tool": "search_figures",
+            "arguments": {
+              "query": "Figure 1 humor prediction model architecture design choices",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 1,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 1,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_figure_numbers": [
+                1
+              ],
+              "exact_figure_match_applied": true,
+              "exact_figure_ids": [
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_FyMWchEAzSLXv1oE2Hmm7088",
+            "step": 5
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "figure_agent",
+            "node": "figure_agent",
+            "tool": "read_figure",
+            "arguments": {
+              "figure_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_eUBrkTQkCtogWWPFKIag7875",
+            "step": 6
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "figure_agent",
+            "node": "figure_agent",
+            "tool": "analyze_figure_for_query",
+            "arguments": {
+              "figure_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001",
+              "question": "What design choices for humor prediction are shown in this figure (architecture, components, inputs, outputs)?"
+            },
+            "result_ids": [],
+            "latency_ms": 10474.1,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_iqVvHgng83TXxp45SfNz0729",
+            "step": 7
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "Table 1 Table 2 humor prediction ablation design choices",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            ],
+            "latency_ms": 0.2,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 2,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 2,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_table_numbers": [
+                1,
+                2
+              ],
+              "exact_table_match_applied": true,
+              "exact_table_ids": [
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_v5sla2RfxwRx1Icqm0xC0318",
+            "step": 8
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "Table 1 Table 2 humor prediction results model components",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 2,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 2,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_table_numbers": [
+                1,
+                2
+              ],
+              "exact_table_match_applied": true,
+              "exact_table_ids": [
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_90DuUcTsQllmp3ki3DF50061",
+            "step": 9
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "read_table",
+            "arguments": {
+              "table_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_nlibCJTLFuqifvfl1wS27043",
+            "step": 10
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "read_table",
+            "arguments": {
+              "table_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_FbE7dgdmBbaeGqq4QCTw7305",
+            "step": 11
+          }
+        ],
+        "function_call_fallbacks": 0,
+        "orchestrator": "langgraph",
+        "node_traces": [
+          {
+            "node": "supervisor_plan",
+            "agent": "supervisor_agent",
+            "status": "success",
+            "latency_ms": 1.6,
+            "selected_agents": [
+              "text_agent",
+              "figure_agent",
+              "table_agent"
+            ],
+            "task_ids": [
+              "task_1",
+              "task_2",
+              "task_3"
+            ],
+            "evidence_ids": [],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "text_agent",
+            "task_id": "task_1",
+            "status": "success",
+            "latency_ms": 38404.5,
+            "evidence_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b14-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b0-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s2",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s0"
+            ],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "figure_agent",
+            "task_id": "task_2",
+            "status": "success",
+            "latency_ms": 15248.6,
+            "evidence_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001"
+            ],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "table_agent",
+            "task_id": "task_3",
+            "status": "success",
+            "latency_ms": 5730.4,
+            "evidence_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            ],
+            "errors": []
+          },
+          {
+            "node": "evidence_critic",
+            "agent": "evidence_critic",
+            "status": "approved",
+            "latency_ms": 1.0,
+            "evidence_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b14-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b0-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s2",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            ],
+            "missing_modalities": [],
+            "conflicts": [],
+            "errors": []
+          },
+          {
+            "node": "answer_agent",
+            "agent": "answer_agent",
+            "status": "ok",
+            "latency_ms": 4989.6,
+            "evidence_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            ],
+            "errors": []
+          }
+        ],
+        "agent_count": 6,
+        "retry_count": 0,
+        "recovery": {
+          "attempted": false,
+          "successful": false,
+          "final_decision": "approved"
+        }
+      },
+      "tool_calls": [
+        "search_text",
+        "search_text",
+        "read_sentence",
+        "read_sentence",
+        "search_figures",
+        "read_figure",
+        "analyze_figure_for_query",
+        "search_tables",
+        "search_tables",
+        "read_table",
+        "read_table"
+      ],
+      "steps": 11,
+      "qwen_vl_calls": 1,
+      "visual_judge_qwen_vl_calls": 0,
+      "total_qwen_vl_calls": 1,
+      "token_usage": 25777,
+      "orchestrator": "langgraph",
+      "agent_count": 6,
+      "retry_count": 0,
+      "recovery": {
+        "attempted": false,
+        "successful": false,
+        "final_decision": "approved"
+      },
+      "node_traces": [
+        {
+          "node": "supervisor_plan",
+          "agent": "supervisor_agent",
+          "status": "success",
+          "latency_ms": 1.6,
+          "selected_agents": [
+            "text_agent",
+            "figure_agent",
+            "table_agent"
+          ],
+          "task_ids": [
+            "task_1",
+            "task_2",
+            "task_3"
+          ],
+          "evidence_ids": [],
+          "errors": []
+        },
+        {
+          "node": "specialist_dispatch",
+          "agent": "text_agent",
+          "task_id": "task_1",
+          "status": "success",
+          "latency_ms": 38404.5,
+          "evidence_ids": [
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b14-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s3",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s1",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s1",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b0-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s3",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s2",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s0"
+          ],
+          "errors": []
+        },
+        {
+          "node": "specialist_dispatch",
+          "agent": "figure_agent",
+          "task_id": "task_2",
+          "status": "success",
+          "latency_ms": 15248.6,
+          "evidence_ids": [
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001"
+          ],
+          "errors": []
+        },
+        {
+          "node": "specialist_dispatch",
+          "agent": "table_agent",
+          "task_id": "task_3",
+          "status": "success",
+          "latency_ms": 5730.4,
+          "evidence_ids": [
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+          ],
+          "errors": []
+        },
+        {
+          "node": "evidence_critic",
+          "agent": "evidence_critic",
+          "status": "approved",
+          "latency_ms": 1.0,
+          "evidence_ids": [
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b14-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s3",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s1",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s1",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b0-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s3",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s2",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+          ],
+          "missing_modalities": [],
+          "conflicts": [],
+          "errors": []
+        },
+        {
+          "node": "answer_agent",
+          "agent": "answer_agent",
+          "status": "ok",
+          "latency_ms": 4989.6,
+          "evidence_ids": [
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s3",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+          ],
+          "errors": []
+        }
+      ],
+      "expected_tools": [
+        "search_text",
+        "search_figures",
+        "analyze_figure_for_query",
+        "search_tables",
+        "read_table"
+      ],
+      "expected_modalities": [
+        "text",
+        "figure",
+        "table"
+      ],
+      "predicted_modalities": [
+        "text",
+        "figure",
+        "table"
+      ],
+      "routed_modalities": [
+        "text",
+        "figure",
+        "table"
+      ],
+      "required_modalities": [
+        "text",
+        "figure",
+        "table"
+      ],
+      "expected_evidence_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b4-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+      ],
+      "expected_evidence_groups": [
+        [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b4-s0",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+        ]
+      ],
+      "expected_chunk_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b4"
+      ],
+      "expected_chunk_groups": [
+        [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b4"
+        ]
+      ],
+      "ranked_evidence_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b14-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s3",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s1",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s1",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b0-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s3",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s2",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+      ],
+      "ranked_evidence_ids_by_modality": {
+        "text": [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b14-s0",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s3",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s0",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s0",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s1",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s1",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s0",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b0-s0",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s0",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s3",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s2",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s0"
+        ],
+        "figure": [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001"
+        ],
+        "table": [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+        ]
+      },
+      "ranked_text_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s5",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b14-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s3",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b2-s1",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s1",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b10-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b0-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s3",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s2",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b11-s0"
+      ],
+      "ranked_figure_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001"
+      ],
+      "ranked_table_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+      ],
+      "returned_evidence_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s3",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+      ],
+      "expected_text_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b4-s0"
+      ],
+      "expected_figure_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001"
+      ],
+      "expected_table_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+      ],
+      "returned_text_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2-s3"
+      ],
+      "returned_figure_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-fig_001"
+      ],
+      "returned_table_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+      ],
+      "execution_success": true,
+      "answer_correct": true,
+      "task_success": true,
+      "judge": {
+        "score": 2,
+        "correct": true,
+        "reason": "回答准确涵盖标准答案的关键设计选择：CNN输入特征（words、word2vec、character trigrams）、高层特征输入LSTM、LSTM+高层特征取得最佳结果（70.0/62.9），以及CNN句子编码优于LSTM（70.0 vs 68.4；62.9 vs 59.1）。补充细节均有原始证据支持，无关键错误或矛盾。",
+        "kind": "text"
+      },
+      "latency_ms": 43455.5,
+      "status": "ok"
+    }
+  ]
+}

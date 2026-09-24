@@ -311,7 +311,13 @@ def span(name: str, **attributes: Any) -> Iterator[Any]:
             yield current
             # A caller may catch an exception inside the span and mark it before
             # leaving the context. Do not overwrite that explicit ERROR state.
-            if current.status.status_code is StatusCode.UNSET:
+            # The API's NonRecordingSpan intentionally has no public ``status``
+            # attribute, so tracing-disabled CLI jobs must treat it as a no-op.
+            current_status = getattr(current, "status", None)
+            if (
+                current_status is not None
+                and current_status.status_code is StatusCode.UNSET
+            ):
                 current.set_status(Status(StatusCode.OK))
         except Exception as error:
             mark_span_error(current, error)

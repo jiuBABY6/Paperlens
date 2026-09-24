@@ -401,6 +401,7 @@ def _ask_paper(paper_id: str, request: AskRequest, *, event_callback=None) -> di
         paper.chunks,
         query_plan["semantic_query"],
         lexical_query=query_plan["lexical_query"],
+        section_hints=tuple(query_plan.get("section_hints", ())),
     )
     if settings.vector_enabled and (
         not paper.vector_indexed or paper.index_version != INDEX_VERSION

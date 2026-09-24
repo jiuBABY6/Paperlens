@@ -1,6 +1,13 @@
 # 评测集说明
 
-当前在 `questions.v2.jsonl` 中维护基于 5 篇新论文的 20 条人工标注题目；后续可扩展到 30–50 条。完整格式参考 `questions.example.jsonl`。
+当前数据集版本如下：
+
+- `questions.v2.jsonl`：20 条，已用于历史 Dev/Test 正式报告。
+- `questions.v3.jsonl`：30 条，保留 v2 全部题目并扩充题型。
+- `questions.v4.jsonl`：60 条，覆盖 5 篇论文，每篇 12 条；Dev 36 条、Test 24 条。其中 50 条可回答、10 条不可回答，覆盖文本、表格、纯视觉和跨模态问题。
+- `questions.v4.additions.jsonl`：v4 相对 v3 新增的 30 条，便于单独审阅和追踪。
+
+`questions.v4.jsonl` 已通过本地结构、Evidence ID、页码和原文引用的严格校验，但尚未运行完整模型评测，因此不能用它替换 README 中已经冻结的正式指标。完整格式参考 `questions.example.jsonl`。
 
 先按页码、章节或关键词查看可标注证据：
 
@@ -15,6 +22,8 @@ python scripts\annotate.py --paper-id <ID> --unit chunk --page 6 --jsonl
 ```powershell
 python scripts\validate_dataset.py --dataset evals\questions.v2.jsonl
 python scripts\validate_dataset.py --dataset evals\questions.v2.jsonl --json
+# v4：
+python scripts\validate_dataset.py --dataset evals\questions.v4.jsonl --json
 ```
 
 校验器会检查重复 case、字段类型、论文处理状态、Chunk/Sentence 归属、页码一致性以及 `gold_quotes` 是否确实来自已标注句子。可回答问题必须同时标注 Chunk、Sentence 和原文；无答案问题的 Gold Evidence 必须为空。同一篇论文不能同时出现在 `dev` 和 `test`，避免论文内容泄漏。

@@ -1,0 +1,796 @@
+{
+  "dataset": "evals\\questions.v4.jsonl",
+  "count": 1,
+  "answerable_count": 1,
+  "unanswerable_count": 0,
+  "decision_count": 1,
+  "execution_success_rate": 1.0,
+  "answer_evaluated_count": 1,
+  "answer_correct_count": 1,
+  "dataset_issue_count": 0,
+  "dataset_issue_case_ids": [],
+  "answer_correct_rate": 1.0,
+  "task_success_rate": 1.0,
+  "answerability_accuracy": 1.0,
+  "refusal_accuracy": 0.0,
+  "answer_delivery_rate": 1.0,
+  "gold_citation_hit_rate": 1.0,
+  "complete_gold_citation_hit_rate": 1.0,
+  "mean_gold_citation_precision": 1.0,
+  "mean_gold_citation_recall": 1.0,
+  "llm_judged_count": 1,
+  "llm_answer_score_0_to_2": 2.0,
+  "llm_exact_correct_rate": 1.0,
+  "mean_end_to_end_latency_ms": 21455.5,
+  "p95_end_to_end_latency_ms": 21455.5,
+  "max_end_to_end_latency_ms": 21455.5,
+  "mean_agent_count": 0.0,
+  "retry_case_rate": 0.0,
+  "mean_retry_count": 0.0,
+  "node_failure_rate": 0.0,
+  "recovery_attempt_count": 0,
+  "recovery_success_rate": null,
+  "configuration": {
+    "mode": "rag",
+    "split": "dev",
+    "strategy": "hybrid-rerank",
+    "query_rewrite_enabled": true,
+    "claim_verification_enabled": true,
+    "llm_judge_enabled": true,
+    "visual_judge_enabled_for_visual_only": true,
+    "online_visual_judge_enabled": false,
+    "orchestrator": "langgraph",
+    "parallel_enabled": true,
+    "case_id": "lstm-method-pipeline-v4-07",
+    "limit": 5
+  },
+  "agentic_metrics": {
+    "overall": {
+      "count": 1,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "k": 5
+      },
+      "evidence": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "generation": {
+        "faithfulness": 1.0,
+        "claim_support_rate": 1.0
+      },
+      "agent": {
+        "execution_success_rate": 1.0,
+        "answer_correct_rate": 1.0,
+        "task_success_rate": 1.0,
+        "average_steps": 1.0,
+        "average_tool_calls": 1.0,
+        "repeated_tool_call_rate": 0.0
+      },
+      "multimodal": {
+        "text_retrieval_recall_at_k": 1.0,
+        "figure_retrieval_recall_at_k": 0.0,
+        "table_retrieval_recall_at_k": 0.0,
+        "text_retrieval_mrr": 1.0,
+        "figure_retrieval_mrr": 0.0,
+        "table_retrieval_mrr": 0.0,
+        "modality_routing_accuracy": 1.0
+      },
+      "engineering": {
+        "average_latency_ms": 21455.5,
+        "average_token_usage": 1183.0,
+        "average_qwen_vl_calls": 0.0,
+        "total_qwen_vl_calls": 0,
+        "average_visual_judge_qwen_vl_calls": 0.0,
+        "total_visual_judge_qwen_vl_calls": 0,
+        "total_qwen_vl_calls_including_judge": 0
+      }
+    },
+    "by_mode": {
+      "standard_rag": {
+        "count": 1,
+        "retrieval": {
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "generation": {
+          "faithfulness": 1.0,
+          "claim_support_rate": 1.0
+        },
+        "agent": {
+          "execution_success_rate": 1.0,
+          "answer_correct_rate": 1.0,
+          "task_success_rate": 1.0,
+          "average_steps": 1.0,
+          "average_tool_calls": 1.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 1.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 1.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 1.0
+        },
+        "engineering": {
+          "average_latency_ms": 21455.5,
+          "average_token_usage": 1183.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "text_agentic_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "multimodal_agentic_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "text_multi_agent_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "multimodal_multi_agent_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      }
+    }
+  },
+  "records": [
+    {
+      "case_id": "lstm-method-pipeline-v4-07",
+      "paper_id": "2de38bfe-63c1-43d7-b6f3-7de909020853",
+      "question": "How are the CNN, LSTM, and high-level feature vector arranged in the paper's punchline classifier?",
+      "mode": "standard_rag",
+      "gold_answerable": true,
+      "predicted_answerable": true,
+      "answerability_correct": true,
+      "answer": "The classifier concatenates a CNN that encodes each utterance, followed by an LSTM that models the sequential dialog context, and a vector of higher-level syntactic, structural, and sentiment features is added before the output softmax layer.",
+      "refusal_reason": "",
+      "answer_status": "ok",
+      "claims": [
+        {
+          "text": "The classifier concatenates a CNN that encodes each utterance, followed by an LSTM that models the sequential dialog context, and a vector of higher-level syntactic, structural, and sentiment features is added before the output softmax layer.",
+          "sentence_ids": [
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s1",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s2"
+          ],
+          "citations": [
+            {
+              "id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s1",
+              "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s1",
+              "type": "text",
+              "page": 2,
+              "section": "2 Methodology",
+              "text": "The bulk of our classiﬁer is made of a concatenation of a Convo- lutional Neural Network (Collobert et al., 2011) to encode each utterance, followed by a Long Short- Term Memory (Hochreiter and Schmidhuber, 1997) to model the sequential context of the dialog.",
+              "bbox": [
+                72.0,
+                480.6,
+                298.8,
+                559.2
+              ],
+              "bboxes": [
+                [
+                  222.9,
+                  480.6,
+                  298.8,
+                  491.5
+                ],
+                [
+                  72.0,
+                  494.1,
+                  298.8,
+                  505.0
+                ],
+                [
+                  72.0,
+                  507.7,
+                  298.8,
+                  518.6
+                ],
+                [
+                  72.0,
+                  521.2,
+                  298.8,
+                  532.1
+                ],
+                [
+                  72.0,
+                  534.8,
+                  298.8,
+                  545.7
+                ],
+                [
+                  72.0,
+                  548.3,
+                  265.9,
+                  559.2
+                ]
+              ],
+              "content": "The bulk of our classiﬁer is made of a concatenation of a Convo- lutional Neural Network (Collobert et al., 2011) to encode each utterance, followed by a Long Short- Term Memory (Hochreiter and Schmidhuber, 1997) to model the sequential context of the dialog.",
+              "metadata": {
+                "chunk_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9"
+              },
+              "quote": "The bulk of our classiﬁer is made of a concatenation of a Convo- lutional Neural Network (Collobert et al., 2011) to encode each utterance, followed by a Long Short- Term Memory (Hochreiter and Schmidhuber, 1997) to model the sequential context of the dialog."
+            },
+            {
+              "id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s2",
+              "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s2",
+              "type": "text",
+              "page": 2,
+              "section": "2 Methodology",
+              "text": "Before the output softmax layer we add a vector of higher level syntactic, structural and sentiment features.",
+              "bbox": [
+                72.0,
+                548.3,
+                298.8,
+                586.3
+              ],
+              "bboxes": [
+                [
+                  269.1,
+                  548.3,
+                  298.8,
+                  559.2
+                ],
+                [
+                  72.0,
+                  561.9,
+                  298.8,
+                  572.8
+                ],
+                [
+                  72.0,
+                  575.4,
+                  286.5,
+                  586.3
+                ]
+              ],
+              "content": "Before the output softmax layer we add a vector of higher level syntactic, structural and sentiment features.",
+              "metadata": {
+                "chunk_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9"
+              },
+              "quote": "Before the output softmax layer we add a vector of higher level syntactic, structural and sentiment features."
+            }
+          ],
+          "verification_status": "supported",
+          "verification_reason": "证据直接说明分类器由CNN编码每句话、后接LSTM建模对话序列上下文组成，并在输出softmax层前加入高层句法、结构和情感特征向量，与结论全部细节一致。"
+        }
+      ],
+      "citation_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s1",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s2"
+      ],
+      "gold_sentence_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s1",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s2"
+      ],
+      "gold_sentence_groups": [
+        [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s1",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s2"
+        ]
+      ],
+      "gold_evidence_groups": [
+        [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s1",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s2"
+        ]
+      ],
+      "gold_citation_hit": true,
+      "gold_complete_citation_hit": true,
+      "gold_citation_precision": 1.0,
+      "gold_citation_recall": 1.0,
+      "query_plan": {
+        "semantic_query": "How are the CNN, LSTM, and high-level feature vector arranged in the paper's punchline classifier?",
+        "lexical_query": "How are the CNN, LSTM, and high-level feature vector arranged in the paper's punchline classifier? convolutional neural network long short-term memory",
+        "translated": false,
+        "section_hints": [
+          "method",
+          "methodology",
+          "approach",
+          "model",
+          "architecture"
+        ]
+      },
+      "router": {
+        "complexity": "simple",
+        "route": "standard_rag",
+        "modalities": [
+          "text"
+        ],
+        "required_modalities": [
+          "text"
+        ],
+        "pure_visual": false,
+        "pure_table": false,
+        "reason": "单一文本事实检索足以回答。"
+      },
+      "retrieval": {
+        "requested_strategy": "hybrid-rerank",
+        "effective_strategy": "hybrid-rerank",
+        "degraded": false,
+        "warnings": [],
+        "index_version": 3,
+        "scoped_chunk_count": 1,
+        "lexical_candidate_count": 1,
+        "semantic_candidate_count": 1,
+        "fusion_candidate_count": 1,
+        "rerank_candidate_count": 1,
+        "reranked": true,
+        "returned_count": 1,
+        "bm25_latency_ms": 1.4,
+        "dense_latency_ms": 17212.5,
+        "rerank_latency_ms": 2092.3
+      },
+      "trace": {
+        "run_id": "eval-lstm-method-pipeline-v4-07",
+        "query": "How are the CNN, LSTM, and high-level feature vector arranged in the paper's punchline classifier?",
+        "route": "standard_rag",
+        "router": {
+          "complexity": "simple",
+          "route": "standard_rag",
+          "modalities": [
+            "text"
+          ],
+          "required_modalities": [
+            "text"
+          ],
+          "pure_visual": false,
+          "pure_table": false,
+          "reason": "单一文本事实检索足以回答。"
+        },
+        "plan": {},
+        "rewrites": [
+          {
+            "semantic_query": "How are the CNN, LSTM, and high-level feature vector arranged in the paper's punchline classifier?",
+            "lexical_query": "How are the CNN, LSTM, and high-level feature vector arranged in the paper's punchline classifier? convolutional neural network long short-term memory",
+            "translated": false,
+            "section_hints": [
+              "method",
+              "methodology",
+              "approach",
+              "model",
+              "architecture"
+            ]
+          }
+        ],
+        "steps": [
+          {
+            "step": 1,
+            "subtask_id": "standard_rag",
+            "tool": "search_text",
+            "arguments": {
+              "query": "How are the CNN, LSTM, and high-level feature vector arranged in the paper's punchline classifier?",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9"
+            ],
+            "latency_ms": 21455.5,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 1,
+              "lexical_candidate_count": 1,
+              "semantic_candidate_count": 1,
+              "fusion_candidate_count": 1,
+              "rerank_candidate_count": 1,
+              "reranked": true,
+              "returned_count": 1,
+              "bm25_latency_ms": 1.4,
+              "dense_latency_ms": 17212.5,
+              "rerank_latency_ms": 2092.3
+            }
+          }
+        ],
+        "final_evidence_ids": [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s1",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s2"
+        ],
+        "total_steps": 1,
+        "total_latency_ms": 21455.5,
+        "token_usage": 1183,
+        "qwen_vl_calls": 0,
+        "sufficiency": {
+          "sufficient": true,
+          "covered_subtasks": [
+            "standard_rag"
+          ],
+          "missing_subtasks": [],
+          "missing_information": []
+        },
+        "evidence_memory": [],
+        "retrieval": {
+          "requested_strategy": "hybrid-rerank",
+          "effective_strategy": "hybrid-rerank",
+          "degraded": false,
+          "warnings": [],
+          "index_version": 3,
+          "scoped_chunk_count": 1,
+          "lexical_candidate_count": 1,
+          "semantic_candidate_count": 1,
+          "fusion_candidate_count": 1,
+          "rerank_candidate_count": 1,
+          "reranked": true,
+          "returned_count": 1,
+          "bm25_latency_ms": 1.4,
+          "dense_latency_ms": 17212.5,
+          "rerank_latency_ms": 2092.3
+        },
+        "orchestrator": "standard_rag",
+        "node_traces": [],
+        "agent_count": 0,
+        "retry_count": 0,
+        "recovery": {}
+      },
+      "agent_trace": {
+        "run_id": "eval-lstm-method-pipeline-v4-07",
+        "query": "How are the CNN, LSTM, and high-level feature vector arranged in the paper's punchline classifier?",
+        "route": "standard_rag",
+        "router": {
+          "complexity": "simple",
+          "route": "standard_rag",
+          "modalities": [
+            "text"
+          ],
+          "required_modalities": [
+            "text"
+          ],
+          "pure_visual": false,
+          "pure_table": false,
+          "reason": "单一文本事实检索足以回答。"
+        },
+        "plan": {},
+        "rewrites": [
+          {
+            "semantic_query": "How are the CNN, LSTM, and high-level feature vector arranged in the paper's punchline classifier?",
+            "lexical_query": "How are the CNN, LSTM, and high-level feature vector arranged in the paper's punchline classifier? convolutional neural network long short-term memory",
+            "translated": false,
+            "section_hints": [
+              "method",
+              "methodology",
+              "approach",
+              "model",
+              "architecture"
+            ]
+          }
+        ],
+        "steps": [
+          {
+            "step": 1,
+            "subtask_id": "standard_rag",
+            "tool": "search_text",
+            "arguments": {
+              "query": "How are the CNN, LSTM, and high-level feature vector arranged in the paper's punchline classifier?",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9"
+            ],
+            "latency_ms": 21455.5,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 1,
+              "lexical_candidate_count": 1,
+              "semantic_candidate_count": 1,
+              "fusion_candidate_count": 1,
+              "rerank_candidate_count": 1,
+              "reranked": true,
+              "returned_count": 1,
+              "bm25_latency_ms": 1.4,
+              "dense_latency_ms": 17212.5,
+              "rerank_latency_ms": 2092.3
+            }
+          }
+        ],
+        "final_evidence_ids": [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s1",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s2"
+        ],
+        "total_steps": 1,
+        "total_latency_ms": 21455.5,
+        "token_usage": 1183,
+        "qwen_vl_calls": 0,
+        "sufficiency": {
+          "sufficient": true,
+          "covered_subtasks": [
+            "standard_rag"
+          ],
+          "missing_subtasks": [],
+          "missing_information": []
+        },
+        "evidence_memory": [],
+        "retrieval": {
+          "requested_strategy": "hybrid-rerank",
+          "effective_strategy": "hybrid-rerank",
+          "degraded": false,
+          "warnings": [],
+          "index_version": 3,
+          "scoped_chunk_count": 1,
+          "lexical_candidate_count": 1,
+          "semantic_candidate_count": 1,
+          "fusion_candidate_count": 1,
+          "rerank_candidate_count": 1,
+          "reranked": true,
+          "returned_count": 1,
+          "bm25_latency_ms": 1.4,
+          "dense_latency_ms": 17212.5,
+          "rerank_latency_ms": 2092.3
+        },
+        "orchestrator": "standard_rag",
+        "node_traces": [],
+        "agent_count": 0,
+        "retry_count": 0,
+        "recovery": {}
+      },
+      "tool_calls": [
+        "search_text"
+      ],
+      "steps": 1,
+      "qwen_vl_calls": 0,
+      "visual_judge_qwen_vl_calls": 0,
+      "total_qwen_vl_calls": 0,
+      "token_usage": 1183,
+      "orchestrator": "standard_rag",
+      "agent_count": 0,
+      "retry_count": 0,
+      "recovery": {},
+      "node_traces": [],
+      "expected_tools": [
+        "search_text"
+      ],
+      "expected_modalities": [
+        "text"
+      ],
+      "predicted_modalities": [
+        "text"
+      ],
+      "routed_modalities": [
+        "text"
+      ],
+      "required_modalities": [
+        "text"
+      ],
+      "expected_evidence_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s1",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s2"
+      ],
+      "expected_evidence_groups": [
+        [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s1",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s2"
+        ]
+      ],
+      "expected_chunk_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9"
+      ],
+      "expected_chunk_groups": [
+        [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9"
+        ]
+      ],
+      "ranked_evidence_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9"
+      ],
+      "ranked_evidence_ids_by_modality": {
+        "text": [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9"
+        ],
+        "figure": [],
+        "table": []
+      },
+      "ranked_text_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9"
+      ],
+      "ranked_figure_ids": [],
+      "ranked_table_ids": [],
+      "returned_evidence_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s1",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s2"
+      ],
+      "expected_text_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s1",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s2"
+      ],
+      "expected_figure_ids": [],
+      "expected_table_ids": [],
+      "returned_text_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s1",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9-s2"
+      ],
+      "returned_figure_ids": [],
+      "returned_table_ids": [],
+      "execution_success": true,
+      "answer_correct": true,
+      "task_success": true,
+      "judge": {
+        "score": 2,
+        "correct": true,
+        "reason": "回答准确描述了CNN编码每句话、LSTM建模对话序列上下文，以及softmax层前加入高层句法、结构和情感特征向量，与标准答案和原始证据一致。",
+        "kind": "text"
+      },
+      "latency_ms": 21455.5,
+      "status": "ok"
+    }
+  ]
+}

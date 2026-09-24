@@ -1,0 +1,2204 @@
+{
+  "dataset": "evals\\questions.v4.jsonl",
+  "count": 1,
+  "answerable_count": 1,
+  "unanswerable_count": 0,
+  "decision_count": 1,
+  "execution_success_rate": 1.0,
+  "answer_evaluated_count": 1,
+  "answer_correct_count": 1,
+  "dataset_issue_count": 0,
+  "dataset_issue_case_ids": [],
+  "answer_correct_rate": 1.0,
+  "task_success_rate": 1.0,
+  "answerability_accuracy": 1.0,
+  "refusal_accuracy": 0.0,
+  "answer_delivery_rate": 1.0,
+  "gold_citation_hit_rate": 1.0,
+  "complete_gold_citation_hit_rate": 1.0,
+  "mean_gold_citation_precision": 1.0,
+  "mean_gold_citation_recall": 1.0,
+  "llm_judged_count": 1,
+  "llm_answer_score_0_to_2": 2.0,
+  "llm_exact_correct_rate": 1.0,
+  "mean_end_to_end_latency_ms": 66220.6,
+  "p95_end_to_end_latency_ms": 66220.6,
+  "max_end_to_end_latency_ms": 66220.6,
+  "mean_agent_count": 6.0,
+  "retry_case_rate": 0.0,
+  "mean_retry_count": 0.0,
+  "node_failure_rate": 0.0,
+  "recovery_attempt_count": 0,
+  "recovery_success_rate": null,
+  "configuration": {
+    "mode": "rag",
+    "split": "dev",
+    "strategy": "hybrid-rerank",
+    "query_rewrite_enabled": true,
+    "claim_verification_enabled": true,
+    "llm_judge_enabled": true,
+    "visual_judge_enabled_for_visual_only": true,
+    "online_visual_judge_enabled": false,
+    "orchestrator": "langgraph",
+    "parallel_enabled": true,
+    "case_id": "bottle-crossmodal-ib-progress-v4-11",
+    "limit": 5
+  },
+  "agentic_metrics": {
+    "overall": {
+      "count": 1,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "k": 5
+      },
+      "evidence": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "generation": {
+        "faithfulness": 1.0,
+        "claim_support_rate": 1.0
+      },
+      "agent": {
+        "execution_success_rate": 1.0,
+        "answer_correct_rate": 1.0,
+        "task_success_rate": 1.0,
+        "average_steps": 8.0,
+        "average_tool_calls": 8.0,
+        "repeated_tool_call_rate": 0.25
+      },
+      "multimodal": {
+        "text_retrieval_recall_at_k": 0.0,
+        "figure_retrieval_recall_at_k": 1.0,
+        "table_retrieval_recall_at_k": 1.0,
+        "text_retrieval_mrr": 0.0,
+        "figure_retrieval_mrr": 1.0,
+        "table_retrieval_mrr": 1.0,
+        "modality_routing_accuracy": 0.0
+      },
+      "engineering": {
+        "average_latency_ms": 66220.6,
+        "average_token_usage": 38733.0,
+        "average_qwen_vl_calls": 1.0,
+        "total_qwen_vl_calls": 1,
+        "average_visual_judge_qwen_vl_calls": 0.0,
+        "total_visual_judge_qwen_vl_calls": 0,
+        "total_qwen_vl_calls_including_judge": 1
+      }
+    },
+    "by_mode": {
+      "standard_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "text_agentic_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "multimodal_agentic_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "text_multi_agent_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "multimodal_multi_agent_rag": {
+        "count": 1,
+        "retrieval": {
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "generation": {
+          "faithfulness": 1.0,
+          "claim_support_rate": 1.0
+        },
+        "agent": {
+          "execution_success_rate": 1.0,
+          "answer_correct_rate": 1.0,
+          "task_success_rate": 1.0,
+          "average_steps": 8.0,
+          "average_tool_calls": 8.0,
+          "repeated_tool_call_rate": 0.25
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 1.0,
+          "table_retrieval_recall_at_k": 1.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 1.0,
+          "table_retrieval_mrr": 1.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 66220.6,
+          "average_token_usage": 38733.0,
+          "average_qwen_vl_calls": 1.0,
+          "total_qwen_vl_calls": 1,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 1
+        }
+      }
+    }
+  },
+  "records": [
+    {
+      "case_id": "bottle-crossmodal-ib-progress-v4-11",
+      "paper_id": "7127f33d-1468-4313-bca8-3deab488ea3f",
+      "question": "Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+      "mode": "multimodal_multi_agent_rag",
+      "gold_answerable": true,
+      "predicted_answerable": true,
+      "answerability_correct": true,
+      "answer": "In Figure 4, Cosine+CE has the highest plotted F1 score among the IB components (Random=46.7, Cosine=46.7, CE=49.2, Cosine+CE=51.5).\nTable 3 reports GPT-4o F1 on MemeCap (MC) increasing from 50.8 at hop 0 to 63.6 at hop 2.\nTable 3 reports GPT-4o F1 on NewYorker (NY) increasing from 61.9 at hop 0 to 72.1 at hop 2.",
+      "refusal_reason": "",
+      "answer_status": "partial",
+      "claims": [
+        {
+          "claim": "In Figure 4, Cosine+CE has the highest plotted F1 score among the IB components (Random=46.7, Cosine=46.7, CE=49.2, Cosine+CE=51.5).",
+          "text": "In Figure 4, Cosine+CE has the highest plotted F1 score among the IB components (Random=46.7, Cosine=46.7, CE=49.2, Cosine+CE=51.5).",
+          "evidence_ids": [
+            "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004"
+          ],
+          "citations": [
+            {
+              "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004",
+              "id": "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004",
+              "type": "figure",
+              "page": 8,
+              "bbox": [
+                316.8,
+                72.1,
+                513.2,
+                173.3
+              ],
+              "content": null,
+              "text": "Figure 4: Performance of GPT4o on different IB components.",
+              "section": "5.3 Assessment of the IB Framework",
+              "metadata": {
+                "caption": "Figure 4: Performance of GPT4o on different IB components.",
+                "image_path": "D:\\Desktop\\job\\demo\\data\\uploads\\7127f33d-1468-4313-bca8-3deab488ea3f\\figures\\picture-4.png",
+                "nearby_text": "GPT4o Flash1.5 h0 h1 h2 h0 h1 h2 We focus on GPT4o, the best performing model across all datasets, and analyze the contribution of each IB component in our method through ablation tests. 3.3): (1) Random, where implications are selected randomly; (2) Cosine, which selects implications with the lowest cosine similarity to the previous inputs; (3) CE, which selects impli- cations that yield the lowest cross-entropy value when we condition on them to generate the candi- date explanations; and (4) Cosine+CE, our method presented in Sec. We manually analyzed 40 ran- domly sampled explanations across different mod- els where implications negatively impacted perfor- mance.",
+                "related_sentence_ids": [
+                  "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b4-s0",
+                  "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s1",
+                  "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s3",
+                  "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b10-s1"
+                ],
+                "description": {
+                  "figure_type": "bar chart",
+                  "summary": "The figure presents the performance of GPT4o on different Information Bottleneck (IB) components, measured by Precision (blue), Recall (green), and F1 Score (orange) across four conditions: Random, Cosine, CE, and Cosine+CE.",
+                  "entities": [
+                    "GPT4o",
+                    "IB components",
+                    "Random",
+                    "Cosine",
+                    "CE",
+                    "Cosine+CE",
+                    "Precision",
+                    "Recall",
+                    "F1 Score"
+                  ],
+                  "components": [
+                    {
+                      "name": "Random",
+                      "description": "Ablation baseline where implications are selected randomly."
+                    },
+                    {
+                      "name": "Cosine",
+                      "description": "Ablation where implications with the lowest cosine similarity to previous inputs are selected."
+                    },
+                    {
+                      "name": "CE",
+                      "description": "Ablation where implications that yield the lowest cross-entropy when conditioning to generate candidate explanations are selected."
+                    },
+                    {
+                      "name": "Cosine+CE",
+                      "description": "The full method combining Cosine and CE selection strategies."
+                    }
+                  ],
+                  "relations": [
+                    "GPT4o's performance is evaluated under each IB component ablation condition.",
+                    "Each condition has three metrics: Precision, Recall, and F1 Score."
+                  ],
+                  "visual_evidence": [],
+                  "numerical_evidence": [],
+                  "retrieval_keywords": [
+                    "GPT4o",
+                    "Information Bottleneck",
+                    "ablation study",
+                    "IB components",
+                    "Random",
+                    "Cosine",
+                    "CE",
+                    "Cosine+CE",
+                    "Precision",
+                    "Recall",
+                    "F1 Score",
+                    "performance comparison"
+                  ],
+                  "potential_questions": [
+                    "How does the combination of Cosine and CE improve performance over individual components?",
+                    "Why does the Random baseline have lower recall than Cosine and CE despite similar precision?",
+                    "What is the magnitude of improvement in F1 score from Random to Cosine+CE?",
+                    "Are the reported metrics specific to a particular dataset or averaged across datasets?"
+                  ],
+                  "uncertainty": [],
+                  "status": "ok"
+                },
+                "summary": "The figure presents the performance of GPT4o on different Information Bottleneck (IB) components, measured by Precision (blue), Recall (green), and F1 Score (orange) across four conditions: Random, Cosine, CE, and Cosine+CE.",
+                "query_analysis": {
+                  "relevant": true,
+                  "answerable": true,
+                  "figure_evidence": [
+                    {
+                      "evidence": "Figure 4 shows performance of GPT4o on different IB components: Random, Cosine, CE, Cosine+CE. The orange bars represent F1 Score. Values are: Random=46.7, Cosine=46.7, CE=49.2, Cosine+CE=51.5.",
+                      "source": "figure"
+                    },
+                    {
+                      "evidence": "The caption states: 'Figure 4: Performance of GPT4o on different IB components.'",
+                      "source": "caption"
+                    },
+                    {
+                      "evidence": "The nearby text mentions the four IB components: Random, Cosine, CE, Cosine+CE.",
+                      "source": "nearby_text"
+                    }
+                  ],
+                  "visual_observations": [
+                    {
+                      "label": "Random",
+                      "position": "left",
+                      "immediate_region": "first group of bars (blue, green, orange)",
+                      "fill_color": "blue (Precision), green (Recall), orange (F1 Score)",
+                      "visible_basis": "x-axis label 'Random' under first bar group"
+                    },
+                    {
+                      "label": "Cosine",
+                      "position": "center-left",
+                      "immediate_region": "second group of bars",
+                      "fill_color": "blue (Precision), green (Recall), orange (F1 Score)",
+                      "visible_basis": "x-axis label 'Cosine' under second bar group"
+                    },
+                    {
+                      "label": "CE",
+                      "position": "center-right",
+                      "immediate_region": "third group of bars",
+                      "fill_color": "blue (Precision), green (Recall), orange (F1 Score)",
+                      "visible_basis": "x-axis label 'CE' under third bar group"
+                    },
+                    {
+                      "label": "Cosine+CE",
+                      "position": "right",
+                      "immediate_region": "fourth group of bars",
+                      "fill_color": "blue (Precision), green (Recall), orange (F1 Score)",
+                      "visible_basis": "x-axis label 'Cosine+CE' under fourth bar group"
+                    },
+                    {
+                      "label": "Precision",
+                      "position": "top-left (legend)",
+                      "immediate_region": "blue square in legend",
+                      "fill_color": "blue",
+                      "visible_basis": "legend: blue = Precision"
+                    },
+                    {
+                      "label": "Recall",
+                      "position": "top-middle (legend)",
+                      "immediate_region": "green square in legend",
+                      "fill_color": "green",
+                      "visible_basis": "legend: green = Recall"
+                    },
+                    {
+                      "label": "F1 Score",
+                      "position": "top-right (legend)",
+                      "immediate_region": "orange square in legend",
+                      "fill_color": "orange",
+                      "visible_basis": "legend: orange = F1 Score"
+                    },
+                    {
+                      "label": "74.5",
+                      "position": "leftmost blue bar (Random, Precision)",
+                      "immediate_region": "blue bar in Random group, value 74.5",
+                      "fill_color": "blue",
+                      "visible_basis": "value on top of blue bar for Random"
+                    },
+                    {
+                      "label": "31.9",
+                      "position": "leftmost green bar (Random, Recall)",
+                      "immediate_region": "green bar in Random group, value 31.9",
+                      "fill_color": "green",
+                      "visible_basis": "value on top of green bar for Random"
+                    },
+                    {
+                      "label": "46.7",
+                      "position": "leftmost orange bar (Random, F1 Score)",
+                      "immediate_region": "orange bar in Random group, value 46.7",
+                      "fill_color": "orange",
+                      "visible_basis": "value on top of orange bar for Random"
+                    },
+                    {
+                      "label": "77.2",
+                      "position": "second blue bar (Cosine, Precision)",
+                      "immediate_region": "blue bar in Cosine group, value 77.2",
+                      "fill_color": "blue",
+                      "visible_basis": "value on top of blue bar for Cosine"
+                    },
+                    {
+                      "label": "33.5",
+                      "position": "second green bar (Cosine, Recall)",
+                      "immediate_region": "green bar in Cosine group, value 33.5",
+                      "fill_color": "green",
+                      "visible_basis": "value on top of green bar for Cosine"
+                    },
+                    {
+                      "label": "46.7",
+                      "position": "second orange bar (Cosine, F1 Score)",
+                      "immediate_region": "orange bar in Cosine group, value 46.7",
+                      "fill_color": "orange",
+                      "visible_basis": "value on top of orange bar for Cosine"
+                    },
+                    {
+                      "label": "77.8",
+                      "position": "third blue bar (CE, Precision)",
+                      "immediate_region": "blue bar in CE group, value 77.8",
+                      "fill_color": "blue",
+                      "visible_basis": "value on top of blue bar for CE"
+                    },
+                    {
+                      "label": "36",
+                      "position": "third green bar (CE, Recall)",
+                      "immediate_region": "green bar in CE group, value 36",
+                      "fill_color": "green",
+                      "visible_basis": "value on top of green bar for CE"
+                    },
+                    {
+                      "label": "49.2",
+                      "position": "third orange bar (CE, F1 Score)",
+                      "immediate_region": "orange bar in CE group, value 49.2",
+                      "fill_color": "orange",
+                      "visible_basis": "value on top of orange bar for CE"
+                    },
+                    {
+                      "label": "81.6",
+                      "position": "fourth blue bar (Cosine+CE, Precision)",
+                      "immediate_region": "blue bar in Cosine+CE group, value 81.6",
+                      "fill_color": "blue",
+                      "visible_basis": "value on top of blue bar for Cosine+CE"
+                    },
+                    {
+                      "label": "37.6",
+                      "position": "fourth green bar (Cosine+CE, Recall)",
+                      "immediate_region": "green bar in Cosine+CE group, value 37.6",
+                      "fill_color": "green",
+                      "visible_basis": "value on top of green bar for Cosine+CE"
+                    },
+                    {
+                      "label": "51.5",
+                      "position": "fourth orange bar (Cosine+CE, F1 Score)",
+                      "immediate_region": "orange bar in Cosine+CE group, value 51.5",
+                      "fill_color": "orange",
+                      "visible_basis": "value on top of orange bar for Cosine+CE"
+                    }
+                  ],
+                  "interpretation": "Among the IB components shown in Figure 4, Cosine+CE has the highest F1 Score (51.5). For GPT-4o, the F1 Score increases from hop 0 to hop 2 on MemeCap and NewYorker, but this is not directly visible in Figure 4 — the figure does not show hops (h0/h1/h2) or datasets (MemeCap/NewYorker). The question asks about change from hop 0 to hop 2, but Figure 4 only shows ablation results across components, not across hops or datasets. Therefore, the second part of the question cannot be answered from Figure 4 alone.",
+                  "missing_information": [
+                    "Hop-specific F1 scores (h0, h1, h2) for MemeCap and NewYorker",
+                    "Dataset-specific breakdowns (MemeCap vs NewYorker)"
+                  ],
+                  "confidence": "high",
+                  "image_preparation": {
+                    "original_width": 196,
+                    "original_height": 101,
+                    "sent_width": 1490,
+                    "sent_height": 768,
+                    "upscaled": true,
+                    "scale": 7.604
+                  },
+                  "cached": false,
+                  "cache_version": 2
+                }
+              }
+            }
+          ],
+          "verification_status": "supported"
+        },
+        {
+          "claim": "Table 3 reports GPT-4o F1 on MemeCap (MC) increasing from 50.8 at hop 0 to 63.6 at hop 2.",
+          "text": "Table 3 reports GPT-4o F1 on MemeCap (MC) increasing from 50.8 at hop 0 to 63.6 at hop 2.",
+          "evidence_ids": [
+            "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+          ],
+          "citations": [
+            {
+              "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-table_003",
+              "id": "7127f33d-1468-4313-bca8-3deab488ea3f-table_003",
+              "type": "table",
+              "page": 8,
+              "bbox": [
+                306.6,
+                220.6,
+                523.7,
+                354.2
+              ],
+              "content": "Table 3: Precision, Recall, and F 1 scores on intermediate explanations across hops. h stands for hop. In our experiments, hop h = 0 corresponds to k = 0 (no implications), h = 1 allows up to k = 3 implications, and h = 2 allows up to k = 6 implications.\n\n|    |     | GPT4o   | GPT4o   | GPT4o   | Flash1.5   | Flash1.5   | Flash1.5   |\n|----|-----|---------|---------|---------|------------|------------|------------|\n|    |     | h 0     | h 1     | h 2     | h 0        | h 1        | h 2        |\n| MC | P   | 88.5    | 92.7    | 92.7    | 81.0       | 92.2       | 92.3       |\n|    | R   | 35.6    | 47.0    | 48.5    | 21.0       | 35.0       | 32.6       |\n|    | F 1 | 50.8    | 62.4    | 63.6    | 33.3       | 50.7       | 48.2       |\n| NY | P   | 79.6    | 86.5    | 84.7    | 72.2       | 83.5       | 83.5       |\n|    | R   | 50.6    | 57.9    | 62.8    | 22.9       | 33.4       | 34.7       |\n|    | F 1 | 61.9    | 69.4    | 72.1    | 34.8       | 47.7       | 49.0       |\n| YB | P   | 67.2    | 82.3    | 82.0    | 81.0       | 92.2       | 92.3       |\n|    | R   | 48.2    | 56.2    | 57.6    | 26.2       | 36.8       | 38.1       |\n|    | F 1 | 56.2    | 66.8    | 67.6    | 39.6       | 52.6       | 54.0       |",
+              "text": "Table 3: Precision, Recall, and F 1 scores on intermediate explanations across hops. h stands for hop. In our experiments, hop h = 0 corresponds to k = 0 (no implications), h = 1 allows up to k = 3 implications, and h = 2 allows up to k = 6 implications.\n\n|    |     | GPT4o   | GPT4o   | GPT4o   | Flash1.5   | Flash1.5   | Flash1.5   |\n|----|-----|---------|---------|---------|------------|------------|------------|\n|    |     | h 0     | h 1     | h 2     | h 0        | h 1        | h 2        |\n| MC | P   | 88.5    | 92.7    | 92.7    | 81.0       | 92.2       | 92.3       |\n|    | R   | 35.6    | 47.0    | 48.5    | 21.0       | 35.0       | 32.6       |\n|    | F 1 | 50.8    | 62.4    | 63.6    | 33.3       | 50.7       | 48.2       |\n| NY | P   | 79.6    | 86.5    | 84.7    | 72.2       | 83.5       | 83.5       |\n|    | R   | 50.6    | 57.9    | 62.8    | 22.9       | 33.4       | 34.7       |\n|    | F 1 | 61.9    | 69.4    | 72.1    | 34.8       | 47.7       | 49.0       |\n| YB | P   | 67.2    | 82.3    | 82.0    | 81.0       | 92.2       | 92.3       |\n|    | R   | 48.2    | 56.2    | 57.6    | 26.2       | 36.8       | 38.1       |\n|    | F 1 | 56.2    | 66.8    | 67.6    | 39.6       | 52.6       | 54.0       |",
+              "section": "5.3 Assessment of the IB Framework",
+              "metadata": {
+                "caption": "Table 3: Precision, Recall, and F 1 scores on intermediate explanations across hops. h stands for hop. In our experiments, hop h = 0 corresponds to k = 0 (no implications), h = 1 allows up to k = 3 implications, and h = 2 allows up to k = 6 implications.",
+                "image_path": "D:\\Desktop\\job\\demo\\data\\uploads\\7127f33d-1468-4313-bca8-3deab488ea3f\\figures\\table-3.png",
+                "nearby_text": "3.3): (1) Random, where implications are selected randomly; (2) Cosine, which selects implications with the lowest cosine similarity to the previous inputs; (3) CE, which selects impli- cations that yield the lowest cross-entropy value when we condition on them to generate the candi- date explanations; and (4) Cosine+CE, our method presented in Sec. In our experiments, hop h = 0 corresponds to k = 0 (no implications), h = 1 allows up to k = 3 implications, and h = 2 allows up to k = 6 implications. We manually analyzed 40 ran- domly sampled explanations across different mod- els where implications negatively impacted perfor- mance. Since each iteration gen- erates three candidate explanations, we report the highest F1 score among them, and the correspond- ing precision and recall values in Table 3. For GPT-4o, F1 scores consistently improve across iter- ations, primarily driven by recall, which increases by an average of 11.4 points at h2 compared to the initial hop. Precision also improves significantly at h1, averaging an 8.0 point gain across datasets, then stabilizes. A similar trend is observed in Flash1.5- 8B, a considerably smaller model, except for the MemeCap, where F1 scores peak at h1 but decrease by 2.5 points at h2. While precision remains simi- lar at the final hop compared to h1, recall drops by 2.4 points, suggesting smaller models are more sus- ceptible to noisy information as iterations progress.",
+                "related_sentence_ids": [
+                  "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s3",
+                  "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s2",
+                  "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b10-s1",
+                  "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s2",
+                  "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s3",
+                  "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s4",
+                  "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s5",
+                  "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s6"
+                ],
+                "markdown": "Table 3: Precision, Recall, and F 1 scores on intermediate explanations across hops. h stands for hop. In our experiments, hop h = 0 corresponds to k = 0 (no implications), h = 1 allows up to k = 3 implications, and h = 2 allows up to k = 6 implications.\n\n|    |     | GPT4o   | GPT4o   | GPT4o   | Flash1.5   | Flash1.5   | Flash1.5   |\n|----|-----|---------|---------|---------|------------|------------|------------|\n|    |     | h 0     | h 1     | h 2     | h 0        | h 1        | h 2        |\n| MC | P   | 88.5    | 92.7    | 92.7    | 81.0       | 92.2       | 92.3       |\n|    | R   | 35.6    | 47.0    | 48.5    | 21.0       | 35.0       | 32.6       |\n|    | F 1 | 50.8    | 62.4    | 63.6    | 33.3       | 50.7       | 48.2       |\n| NY | P   | 79.6    | 86.5    | 84.7    | 72.2       | 83.5       | 83.5       |\n|    | R   | 50.6    | 57.9    | 62.8    | 22.9       | 33.4       | 34.7       |\n|    | F 1 | 61.9    | 69.4    | 72.1    | 34.8       | 47.7       | 49.0       |\n| YB | P   | 67.2    | 82.3    | 82.0    | 81.0       | 92.2       | 92.3       |\n|    | R   | 48.2    | 56.2    | 57.6    | 26.2       | 36.8       | 38.1       |\n|    | F 1 | 56.2    | 66.8    | 67.6    | 39.6       | 52.6       | 54.0       |",
+                "columns": [
+                  "",
+                  "",
+                  "GPT4o",
+                  "GPT4o",
+                  "GPT4o",
+                  "Flash1.5",
+                  "Flash1.5",
+                  "Flash1.5"
+                ],
+                "rows": [
+                  {
+                    "column_1": "",
+                    "column_2": "",
+                    "GPT4o": "h 2",
+                    "Flash1.5": "h 2"
+                  },
+                  {
+                    "column_1": "MC",
+                    "column_2": "P",
+                    "GPT4o": "92.7",
+                    "Flash1.5": "92.3"
+                  },
+                  {
+                    "column_1": "",
+                    "column_2": "R",
+                    "GPT4o": "48.5",
+                    "Flash1.5": "32.6"
+                  },
+                  {
+                    "column_1": "",
+                    "column_2": "F 1",
+                    "GPT4o": "63.6",
+                    "Flash1.5": "48.2"
+                  },
+                  {
+                    "column_1": "NY",
+                    "column_2": "P",
+                    "GPT4o": "84.7",
+                    "Flash1.5": "83.5"
+                  },
+                  {
+                    "column_1": "",
+                    "column_2": "R",
+                    "GPT4o": "62.8",
+                    "Flash1.5": "34.7"
+                  },
+                  {
+                    "column_1": "",
+                    "column_2": "F 1",
+                    "GPT4o": "72.1",
+                    "Flash1.5": "49.0"
+                  },
+                  {
+                    "column_1": "YB",
+                    "column_2": "P",
+                    "GPT4o": "82.0",
+                    "Flash1.5": "92.3"
+                  },
+                  {
+                    "column_1": "",
+                    "column_2": "R",
+                    "GPT4o": "57.6",
+                    "Flash1.5": "38.1"
+                  },
+                  {
+                    "column_1": "",
+                    "column_2": "F 1",
+                    "GPT4o": "67.6",
+                    "Flash1.5": "54.0"
+                  }
+                ]
+              }
+            }
+          ],
+          "verification_status": "supported"
+        },
+        {
+          "claim": "Table 3 reports GPT-4o F1 on NewYorker (NY) increasing from 61.9 at hop 0 to 72.1 at hop 2.",
+          "text": "Table 3 reports GPT-4o F1 on NewYorker (NY) increasing from 61.9 at hop 0 to 72.1 at hop 2.",
+          "evidence_ids": [
+            "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+          ],
+          "citations": [
+            {
+              "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-table_003",
+              "id": "7127f33d-1468-4313-bca8-3deab488ea3f-table_003",
+              "type": "table",
+              "page": 8,
+              "bbox": [
+                306.6,
+                220.6,
+                523.7,
+                354.2
+              ],
+              "content": "Table 3: Precision, Recall, and F 1 scores on intermediate explanations across hops. h stands for hop. In our experiments, hop h = 0 corresponds to k = 0 (no implications), h = 1 allows up to k = 3 implications, and h = 2 allows up to k = 6 implications.\n\n|    |     | GPT4o   | GPT4o   | GPT4o   | Flash1.5   | Flash1.5   | Flash1.5   |\n|----|-----|---------|---------|---------|------------|------------|------------|\n|    |     | h 0     | h 1     | h 2     | h 0        | h 1        | h 2        |\n| MC | P   | 88.5    | 92.7    | 92.7    | 81.0       | 92.2       | 92.3       |\n|    | R   | 35.6    | 47.0    | 48.5    | 21.0       | 35.0       | 32.6       |\n|    | F 1 | 50.8    | 62.4    | 63.6    | 33.3       | 50.7       | 48.2       |\n| NY | P   | 79.6    | 86.5    | 84.7    | 72.2       | 83.5       | 83.5       |\n|    | R   | 50.6    | 57.9    | 62.8    | 22.9       | 33.4       | 34.7       |\n|    | F 1 | 61.9    | 69.4    | 72.1    | 34.8       | 47.7       | 49.0       |\n| YB | P   | 67.2    | 82.3    | 82.0    | 81.0       | 92.2       | 92.3       |\n|    | R   | 48.2    | 56.2    | 57.6    | 26.2       | 36.8       | 38.1       |\n|    | F 1 | 56.2    | 66.8    | 67.6    | 39.6       | 52.6       | 54.0       |",
+              "text": "Table 3: Precision, Recall, and F 1 scores on intermediate explanations across hops. h stands for hop. In our experiments, hop h = 0 corresponds to k = 0 (no implications), h = 1 allows up to k = 3 implications, and h = 2 allows up to k = 6 implications.\n\n|    |     | GPT4o   | GPT4o   | GPT4o   | Flash1.5   | Flash1.5   | Flash1.5   |\n|----|-----|---------|---------|---------|------------|------------|------------|\n|    |     | h 0     | h 1     | h 2     | h 0        | h 1        | h 2        |\n| MC | P   | 88.5    | 92.7    | 92.7    | 81.0       | 92.2       | 92.3       |\n|    | R   | 35.6    | 47.0    | 48.5    | 21.0       | 35.0       | 32.6       |\n|    | F 1 | 50.8    | 62.4    | 63.6    | 33.3       | 50.7       | 48.2       |\n| NY | P   | 79.6    | 86.5    | 84.7    | 72.2       | 83.5       | 83.5       |\n|    | R   | 50.6    | 57.9    | 62.8    | 22.9       | 33.4       | 34.7       |\n|    | F 1 | 61.9    | 69.4    | 72.1    | 34.8       | 47.7       | 49.0       |\n| YB | P   | 67.2    | 82.3    | 82.0    | 81.0       | 92.2       | 92.3       |\n|    | R   | 48.2    | 56.2    | 57.6    | 26.2       | 36.8       | 38.1       |\n|    | F 1 | 56.2    | 66.8    | 67.6    | 39.6       | 52.6       | 54.0       |",
+              "section": "5.3 Assessment of the IB Framework",
+              "metadata": {
+                "caption": "Table 3: Precision, Recall, and F 1 scores on intermediate explanations across hops. h stands for hop. In our experiments, hop h = 0 corresponds to k = 0 (no implications), h = 1 allows up to k = 3 implications, and h = 2 allows up to k = 6 implications.",
+                "image_path": "D:\\Desktop\\job\\demo\\data\\uploads\\7127f33d-1468-4313-bca8-3deab488ea3f\\figures\\table-3.png",
+                "nearby_text": "3.3): (1) Random, where implications are selected randomly; (2) Cosine, which selects implications with the lowest cosine similarity to the previous inputs; (3) CE, which selects impli- cations that yield the lowest cross-entropy value when we condition on them to generate the candi- date explanations; and (4) Cosine+CE, our method presented in Sec. In our experiments, hop h = 0 corresponds to k = 0 (no implications), h = 1 allows up to k = 3 implications, and h = 2 allows up to k = 6 implications. We manually analyzed 40 ran- domly sampled explanations across different mod- els where implications negatively impacted perfor- mance. Since each iteration gen- erates three candidate explanations, we report the highest F1 score among them, and the correspond- ing precision and recall values in Table 3. For GPT-4o, F1 scores consistently improve across iter- ations, primarily driven by recall, which increases by an average of 11.4 points at h2 compared to the initial hop. Precision also improves significantly at h1, averaging an 8.0 point gain across datasets, then stabilizes. A similar trend is observed in Flash1.5- 8B, a considerably smaller model, except for the MemeCap, where F1 scores peak at h1 but decrease by 2.5 points at h2. While precision remains simi- lar at the final hop compared to h1, recall drops by 2.4 points, suggesting smaller models are more sus- ceptible to noisy information as iterations progress.",
+                "related_sentence_ids": [
+                  "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s3",
+                  "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s2",
+                  "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b10-s1",
+                  "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s2",
+                  "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s3",
+                  "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s4",
+                  "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s5",
+                  "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s6"
+                ],
+                "markdown": "Table 3: Precision, Recall, and F 1 scores on intermediate explanations across hops. h stands for hop. In our experiments, hop h = 0 corresponds to k = 0 (no implications), h = 1 allows up to k = 3 implications, and h = 2 allows up to k = 6 implications.\n\n|    |     | GPT4o   | GPT4o   | GPT4o   | Flash1.5   | Flash1.5   | Flash1.5   |\n|----|-----|---------|---------|---------|------------|------------|------------|\n|    |     | h 0     | h 1     | h 2     | h 0        | h 1        | h 2        |\n| MC | P   | 88.5    | 92.7    | 92.7    | 81.0       | 92.2       | 92.3       |\n|    | R   | 35.6    | 47.0    | 48.5    | 21.0       | 35.0       | 32.6       |\n|    | F 1 | 50.8    | 62.4    | 63.6    | 33.3       | 50.7       | 48.2       |\n| NY | P   | 79.6    | 86.5    | 84.7    | 72.2       | 83.5       | 83.5       |\n|    | R   | 50.6    | 57.9    | 62.8    | 22.9       | 33.4       | 34.7       |\n|    | F 1 | 61.9    | 69.4    | 72.1    | 34.8       | 47.7       | 49.0       |\n| YB | P   | 67.2    | 82.3    | 82.0    | 81.0       | 92.2       | 92.3       |\n|    | R   | 48.2    | 56.2    | 57.6    | 26.2       | 36.8       | 38.1       |\n|    | F 1 | 56.2    | 66.8    | 67.6    | 39.6       | 52.6       | 54.0       |",
+                "columns": [
+                  "",
+                  "",
+                  "GPT4o",
+                  "GPT4o",
+                  "GPT4o",
+                  "Flash1.5",
+                  "Flash1.5",
+                  "Flash1.5"
+                ],
+                "rows": [
+                  {
+                    "column_1": "",
+                    "column_2": "",
+                    "GPT4o": "h 2",
+                    "Flash1.5": "h 2"
+                  },
+                  {
+                    "column_1": "MC",
+                    "column_2": "P",
+                    "GPT4o": "92.7",
+                    "Flash1.5": "92.3"
+                  },
+                  {
+                    "column_1": "",
+                    "column_2": "R",
+                    "GPT4o": "48.5",
+                    "Flash1.5": "32.6"
+                  },
+                  {
+                    "column_1": "",
+                    "column_2": "F 1",
+                    "GPT4o": "63.6",
+                    "Flash1.5": "48.2"
+                  },
+                  {
+                    "column_1": "NY",
+                    "column_2": "P",
+                    "GPT4o": "84.7",
+                    "Flash1.5": "83.5"
+                  },
+                  {
+                    "column_1": "",
+                    "column_2": "R",
+                    "GPT4o": "62.8",
+                    "Flash1.5": "34.7"
+                  },
+                  {
+                    "column_1": "",
+                    "column_2": "F 1",
+                    "GPT4o": "72.1",
+                    "Flash1.5": "49.0"
+                  },
+                  {
+                    "column_1": "YB",
+                    "column_2": "P",
+                    "GPT4o": "82.0",
+                    "Flash1.5": "92.3"
+                  },
+                  {
+                    "column_1": "",
+                    "column_2": "R",
+                    "GPT4o": "57.6",
+                    "Flash1.5": "38.1"
+                  },
+                  {
+                    "column_1": "",
+                    "column_2": "F 1",
+                    "GPT4o": "67.6",
+                    "Flash1.5": "54.0"
+                  }
+                ]
+              }
+            }
+          ],
+          "verification_status": "supported"
+        }
+      ],
+      "citation_ids": [
+        "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+      ],
+      "gold_sentence_ids": [],
+      "gold_sentence_groups": [],
+      "gold_evidence_groups": [
+        [
+          "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004",
+          "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+        ]
+      ],
+      "gold_citation_hit": true,
+      "gold_complete_citation_hit": true,
+      "gold_citation_precision": 1.0,
+      "gold_citation_recall": 1.0,
+      "query_plan": {
+        "router": {
+          "complexity": "complex",
+          "route": "agentic_rag",
+          "modalities": [
+            "text",
+            "figure",
+            "table"
+          ],
+          "required_modalities": [
+            "figure",
+            "table"
+          ],
+          "pure_visual": false,
+          "pure_table": false,
+          "reason": "需要分解任务或读取非文本证据。"
+        },
+        "rewrites": [
+          {
+            "subtask_id": "task_1",
+            "attempt": 0,
+            "query": "Figure 4 Table 3 method result statements Combine Figure 4 Table 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0"
+          },
+          {
+            "subtask_id": "task_2",
+            "attempt": 0,
+            "query": "Figure 4 Table 3 original scientific figure Combine 4 Table 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0 2"
+          },
+          {
+            "subtask_id": "task_3",
+            "attempt": 0,
+            "query": "Figure 4 Table 3 structured table evidence Combine Figure 4 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0 2"
+          }
+        ]
+      },
+      "router": {
+        "complexity": "complex",
+        "route": "agentic_rag",
+        "modalities": [
+          "text",
+          "figure",
+          "table"
+        ],
+        "required_modalities": [
+          "figure",
+          "table"
+        ],
+        "pure_visual": false,
+        "pure_table": false,
+        "reason": "需要分解任务或读取非文本证据。"
+      },
+      "retrieval": {
+        "effective_strategy": "hybrid-rerank+metadata-exact",
+        "effective_strategies": [
+          "hybrid-rerank",
+          "metadata-exact"
+        ],
+        "degraded": false,
+        "warnings": [],
+        "search_count": 3
+      },
+      "trace": {
+        "run_id": "05c97549-5153-4652-916f-7757203b26fe",
+        "query": "Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+        "route": "langgraph_agentic_rag",
+        "router": {
+          "complexity": "complex",
+          "route": "agentic_rag",
+          "modalities": [
+            "text",
+            "figure",
+            "table"
+          ],
+          "required_modalities": [
+            "figure",
+            "table"
+          ],
+          "pure_visual": false,
+          "pure_table": false,
+          "reason": "需要分解任务或读取非文本证据。"
+        },
+        "plan": {
+          "goal": "Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+          "execution": "parallel",
+          "selected_agents": [
+            "text_agent",
+            "figure_agent",
+            "table_agent"
+          ],
+          "reason": "需要分解任务或读取非文本证据。",
+          "sub_tasks": [
+            {
+              "task_id": "task_1",
+              "source_task_id": "task_1",
+              "agent": "text_agent",
+              "modality": "text",
+              "instruction": "Find method or result statements relevant to: Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+              "query": "Figure 4 Table 3 method result statements Combine Figure 4 Table 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0",
+              "required_modalities": [
+                "text"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            },
+            {
+              "task_id": "task_2",
+              "source_task_id": "task_2",
+              "agent": "figure_agent",
+              "modality": "figure",
+              "instruction": "Find the original scientific figure relevant to: Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+              "query": "Figure 4 Table 3 original scientific figure Combine 4 Table 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0 2",
+              "required_modalities": [
+                "figure"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            },
+            {
+              "task_id": "task_3",
+              "source_task_id": "task_3",
+              "agent": "table_agent",
+              "modality": "table",
+              "instruction": "Find structured table evidence relevant to: Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+              "query": "Figure 4 Table 3 structured table evidence Combine Figure 4 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0 2",
+              "required_modalities": [
+                "table"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            }
+          ],
+          "budgets": {
+            "max_steps": 10,
+            "max_retries": 1,
+            "max_model_calls": 8,
+            "max_qwen_vl_calls": 2,
+            "timeout_seconds": 120.0
+          }
+        },
+        "rewrites": [
+          {
+            "subtask_id": "task_1",
+            "attempt": 0,
+            "query": "Figure 4 Table 3 method result statements Combine Figure 4 Table 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0"
+          },
+          {
+            "subtask_id": "task_2",
+            "attempt": 0,
+            "query": "Figure 4 Table 3 original scientific figure Combine 4 Table 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0 2"
+          },
+          {
+            "subtask_id": "task_3",
+            "attempt": 0,
+            "query": "Figure 4 Table 3 structured table evidence Combine Figure 4 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0 2"
+          }
+        ],
+        "steps": [
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "function_calling_fallback",
+            "arguments": {
+              "mode": "function_calling_with_fallback"
+            },
+            "result_ids": [],
+            "latency_ms": 44530.5,
+            "cached": false,
+            "retrieval": {},
+            "status": "fallback",
+            "error": {
+              "type": "FunctionCallingError",
+              "category": "application",
+              "retryable": false,
+              "message": "function_call_budget_exhausted"
+            },
+            "step": 1
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "search_text",
+            "arguments": {
+              "query": "Figure 4 Table 3 method result statements Combine Figure 4 Table 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0",
+              "top_k": 10,
+              "attempt": 0
+            },
+            "result_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0"
+            ],
+            "latency_ms": 6118.9,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 400,
+              "lexical_candidate_count": 190,
+              "semantic_candidate_count": 24,
+              "fusion_candidate_count": 191,
+              "rerank_candidate_count": 8,
+              "reranked": true,
+              "returned_count": 8,
+              "bm25_latency_ms": 30.9,
+              "dense_latency_ms": 303.1,
+              "rerank_latency_ms": 5784.3
+            },
+            "status": "success",
+            "error": null,
+            "step": 2
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "figure_agent",
+            "node": "figure_agent",
+            "tool": "function_calling_fallback",
+            "arguments": {
+              "mode": "function_calling_with_fallback"
+            },
+            "result_ids": [],
+            "latency_ms": 38309.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "fallback",
+            "error": {
+              "type": "FunctionCallingError",
+              "category": "application",
+              "retryable": false,
+              "message": "function_call_budget_exhausted"
+            },
+            "step": 3
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "figure_agent",
+            "node": "figure_agent",
+            "tool": "search_figures",
+            "arguments": {
+              "query": "Figure 4 Table 3 original scientific figure Combine 4 Table 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0 2",
+              "top_k": 5,
+              "attempt": 0
+            },
+            "result_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 1,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 1,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_figure_numbers": [
+                4
+              ],
+              "exact_figure_match_applied": true,
+              "exact_figure_ids": [
+                "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "step": 4
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "figure_agent",
+            "node": "figure_agent",
+            "tool": "analyze_figure_for_query",
+            "arguments": {
+              "figure_id": "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004",
+              "question": "Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?"
+            },
+            "result_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004"
+            ],
+            "latency_ms": 24844.6,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "step": 5
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "function_calling_fallback",
+            "arguments": {
+              "mode": "function_calling_with_fallback"
+            },
+            "result_ids": [],
+            "latency_ms": 40329.4,
+            "cached": false,
+            "retrieval": {},
+            "status": "fallback",
+            "error": {
+              "type": "FunctionCallingError",
+              "category": "application",
+              "retryable": false,
+              "message": "function_call_budget_exhausted"
+            },
+            "step": 6
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "Figure 4 Table 3 structured table evidence Combine Figure 4 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0 2",
+              "top_k": 5,
+              "attempt": 0
+            },
+            "result_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+            ],
+            "latency_ms": 0.3,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 1,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 1,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_table_numbers": [
+                3
+              ],
+              "exact_table_match_applied": true,
+              "exact_table_ids": [
+                "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "step": 7
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "read_table",
+            "arguments": {
+              "table_id": "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+            },
+            "result_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+            ],
+            "latency_ms": 0.5,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "step": 8
+          }
+        ],
+        "final_evidence_ids": [
+          "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004",
+          "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+        ],
+        "total_steps": 8,
+        "total_latency_ms": 66220.4,
+        "token_usage": 38733,
+        "qwen_vl_calls": 1,
+        "sufficiency": {
+          "sufficient": true,
+          "covered_subtasks": [
+            "task_1",
+            "task_2",
+            "task_3"
+          ],
+          "missing_subtasks": [],
+          "missing_information": [
+            "Hop-specific F1 scores (h0, h1, h2) for MemeCap and NewYorker",
+            "Dataset-specific breakdowns (MemeCap vs NewYorker)"
+          ]
+        },
+        "evidence_memory": [
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004",
+            "type": "figure",
+            "used": true
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-table_003",
+            "type": "table",
+            "used": true
+          }
+        ],
+        "retrieval": {
+          "effective_strategy": "hybrid-rerank+metadata-exact",
+          "effective_strategies": [
+            "hybrid-rerank",
+            "metadata-exact"
+          ],
+          "degraded": false,
+          "warnings": [],
+          "search_count": 3
+        },
+        "model_calls": 11,
+        "execution_mode": "parallel",
+        "critique": {
+          "decision": "approved",
+          "required_modalities": [
+            "figure",
+            "table"
+          ],
+          "usable_modalities": [
+            "figure",
+            "table",
+            "text"
+          ],
+          "missing_modalities": [],
+          "conflicts": [],
+          "retry_targets": [],
+          "reasons": []
+        },
+        "conversation_id": null,
+        "turn_index": null,
+        "original_question": "Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+        "resolved_question": "Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+        "referenced_evidence_ids": [],
+        "specialist_execution_mode": "function_calling_with_fallback",
+        "function_calls": [],
+        "function_call_fallbacks": 3,
+        "orchestrator": "langgraph",
+        "node_traces": [
+          {
+            "node": "supervisor_plan",
+            "agent": "supervisor_agent",
+            "status": "success",
+            "latency_ms": 1.8,
+            "selected_agents": [
+              "text_agent",
+              "figure_agent",
+              "table_agent"
+            ],
+            "task_ids": [
+              "task_1",
+              "task_2",
+              "task_3"
+            ],
+            "evidence_ids": [],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "text_agent",
+            "task_id": "task_1",
+            "status": "success",
+            "latency_ms": 50649.4,
+            "evidence_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0"
+            ],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "figure_agent",
+            "task_id": "task_2",
+            "status": "success",
+            "latency_ms": 63153.8,
+            "evidence_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004"
+            ],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "table_agent",
+            "task_id": "task_3",
+            "status": "success",
+            "latency_ms": 40330.4,
+            "evidence_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+            ],
+            "errors": []
+          },
+          {
+            "node": "evidence_critic",
+            "agent": "evidence_critic",
+            "status": "approved",
+            "latency_ms": 0.0,
+            "evidence_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+            ],
+            "missing_modalities": [],
+            "conflicts": [],
+            "errors": []
+          },
+          {
+            "node": "answer_agent",
+            "agent": "answer_agent",
+            "status": "ok",
+            "latency_ms": 3013.4,
+            "evidence_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+            ],
+            "errors": []
+          }
+        ],
+        "agent_count": 6,
+        "retry_count": 0,
+        "recovery": {
+          "attempted": false,
+          "successful": false,
+          "final_decision": "approved"
+        }
+      },
+      "agent_trace": {
+        "run_id": "05c97549-5153-4652-916f-7757203b26fe",
+        "query": "Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+        "route": "langgraph_agentic_rag",
+        "router": {
+          "complexity": "complex",
+          "route": "agentic_rag",
+          "modalities": [
+            "text",
+            "figure",
+            "table"
+          ],
+          "required_modalities": [
+            "figure",
+            "table"
+          ],
+          "pure_visual": false,
+          "pure_table": false,
+          "reason": "需要分解任务或读取非文本证据。"
+        },
+        "plan": {
+          "goal": "Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+          "execution": "parallel",
+          "selected_agents": [
+            "text_agent",
+            "figure_agent",
+            "table_agent"
+          ],
+          "reason": "需要分解任务或读取非文本证据。",
+          "sub_tasks": [
+            {
+              "task_id": "task_1",
+              "source_task_id": "task_1",
+              "agent": "text_agent",
+              "modality": "text",
+              "instruction": "Find method or result statements relevant to: Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+              "query": "Figure 4 Table 3 method result statements Combine Figure 4 Table 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0",
+              "required_modalities": [
+                "text"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            },
+            {
+              "task_id": "task_2",
+              "source_task_id": "task_2",
+              "agent": "figure_agent",
+              "modality": "figure",
+              "instruction": "Find the original scientific figure relevant to: Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+              "query": "Figure 4 Table 3 original scientific figure Combine 4 Table 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0 2",
+              "required_modalities": [
+                "figure"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            },
+            {
+              "task_id": "task_3",
+              "source_task_id": "task_3",
+              "agent": "table_agent",
+              "modality": "table",
+              "instruction": "Find structured table evidence relevant to: Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+              "query": "Figure 4 Table 3 structured table evidence Combine Figure 4 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0 2",
+              "required_modalities": [
+                "table"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            }
+          ],
+          "budgets": {
+            "max_steps": 10,
+            "max_retries": 1,
+            "max_model_calls": 8,
+            "max_qwen_vl_calls": 2,
+            "timeout_seconds": 120.0
+          }
+        },
+        "rewrites": [
+          {
+            "subtask_id": "task_1",
+            "attempt": 0,
+            "query": "Figure 4 Table 3 method result statements Combine Figure 4 Table 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0"
+          },
+          {
+            "subtask_id": "task_2",
+            "attempt": 0,
+            "query": "Figure 4 Table 3 original scientific figure Combine 4 Table 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0 2"
+          },
+          {
+            "subtask_id": "task_3",
+            "attempt": 0,
+            "query": "Figure 4 Table 3 structured table evidence Combine Figure 4 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0 2"
+          }
+        ],
+        "steps": [
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "function_calling_fallback",
+            "arguments": {
+              "mode": "function_calling_with_fallback"
+            },
+            "result_ids": [],
+            "latency_ms": 44530.5,
+            "cached": false,
+            "retrieval": {},
+            "status": "fallback",
+            "error": {
+              "type": "FunctionCallingError",
+              "category": "application",
+              "retryable": false,
+              "message": "function_call_budget_exhausted"
+            },
+            "step": 1
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "search_text",
+            "arguments": {
+              "query": "Figure 4 Table 3 method result statements Combine Figure 4 Table 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0",
+              "top_k": 10,
+              "attempt": 0
+            },
+            "result_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0"
+            ],
+            "latency_ms": 6118.9,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 400,
+              "lexical_candidate_count": 190,
+              "semantic_candidate_count": 24,
+              "fusion_candidate_count": 191,
+              "rerank_candidate_count": 8,
+              "reranked": true,
+              "returned_count": 8,
+              "bm25_latency_ms": 30.9,
+              "dense_latency_ms": 303.1,
+              "rerank_latency_ms": 5784.3
+            },
+            "status": "success",
+            "error": null,
+            "step": 2
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "figure_agent",
+            "node": "figure_agent",
+            "tool": "function_calling_fallback",
+            "arguments": {
+              "mode": "function_calling_with_fallback"
+            },
+            "result_ids": [],
+            "latency_ms": 38309.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "fallback",
+            "error": {
+              "type": "FunctionCallingError",
+              "category": "application",
+              "retryable": false,
+              "message": "function_call_budget_exhausted"
+            },
+            "step": 3
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "figure_agent",
+            "node": "figure_agent",
+            "tool": "search_figures",
+            "arguments": {
+              "query": "Figure 4 Table 3 original scientific figure Combine 4 Table 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0 2",
+              "top_k": 5,
+              "attempt": 0
+            },
+            "result_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 1,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 1,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_figure_numbers": [
+                4
+              ],
+              "exact_figure_match_applied": true,
+              "exact_figure_ids": [
+                "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "step": 4
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "figure_agent",
+            "node": "figure_agent",
+            "tool": "analyze_figure_for_query",
+            "arguments": {
+              "figure_id": "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004",
+              "question": "Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?"
+            },
+            "result_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004"
+            ],
+            "latency_ms": 24844.6,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "step": 5
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "function_calling_fallback",
+            "arguments": {
+              "mode": "function_calling_with_fallback"
+            },
+            "result_ids": [],
+            "latency_ms": 40329.4,
+            "cached": false,
+            "retrieval": {},
+            "status": "fallback",
+            "error": {
+              "type": "FunctionCallingError",
+              "category": "application",
+              "retryable": false,
+              "message": "function_call_budget_exhausted"
+            },
+            "step": 6
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "Figure 4 Table 3 structured table evidence Combine Figure 4 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0 2",
+              "top_k": 5,
+              "attempt": 0
+            },
+            "result_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+            ],
+            "latency_ms": 0.3,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 1,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 1,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_table_numbers": [
+                3
+              ],
+              "exact_table_match_applied": true,
+              "exact_table_ids": [
+                "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "step": 7
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "read_table",
+            "arguments": {
+              "table_id": "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+            },
+            "result_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+            ],
+            "latency_ms": 0.5,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "step": 8
+          }
+        ],
+        "final_evidence_ids": [
+          "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004",
+          "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+        ],
+        "total_steps": 8,
+        "total_latency_ms": 66220.4,
+        "token_usage": 38733,
+        "qwen_vl_calls": 1,
+        "sufficiency": {
+          "sufficient": true,
+          "covered_subtasks": [
+            "task_1",
+            "task_2",
+            "task_3"
+          ],
+          "missing_subtasks": [],
+          "missing_information": [
+            "Hop-specific F1 scores (h0, h1, h2) for MemeCap and NewYorker",
+            "Dataset-specific breakdowns (MemeCap vs NewYorker)"
+          ]
+        },
+        "evidence_memory": [
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004",
+            "type": "figure",
+            "used": true
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-table_003",
+            "type": "table",
+            "used": true
+          }
+        ],
+        "retrieval": {
+          "effective_strategy": "hybrid-rerank+metadata-exact",
+          "effective_strategies": [
+            "hybrid-rerank",
+            "metadata-exact"
+          ],
+          "degraded": false,
+          "warnings": [],
+          "search_count": 3
+        },
+        "model_calls": 11,
+        "execution_mode": "parallel",
+        "critique": {
+          "decision": "approved",
+          "required_modalities": [
+            "figure",
+            "table"
+          ],
+          "usable_modalities": [
+            "figure",
+            "table",
+            "text"
+          ],
+          "missing_modalities": [],
+          "conflicts": [],
+          "retry_targets": [],
+          "reasons": []
+        },
+        "conversation_id": null,
+        "turn_index": null,
+        "original_question": "Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+        "resolved_question": "Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+        "referenced_evidence_ids": [],
+        "specialist_execution_mode": "function_calling_with_fallback",
+        "function_calls": [],
+        "function_call_fallbacks": 3,
+        "orchestrator": "langgraph",
+        "node_traces": [
+          {
+            "node": "supervisor_plan",
+            "agent": "supervisor_agent",
+            "status": "success",
+            "latency_ms": 1.8,
+            "selected_agents": [
+              "text_agent",
+              "figure_agent",
+              "table_agent"
+            ],
+            "task_ids": [
+              "task_1",
+              "task_2",
+              "task_3"
+            ],
+            "evidence_ids": [],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "text_agent",
+            "task_id": "task_1",
+            "status": "success",
+            "latency_ms": 50649.4,
+            "evidence_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0"
+            ],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "figure_agent",
+            "task_id": "task_2",
+            "status": "success",
+            "latency_ms": 63153.8,
+            "evidence_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004"
+            ],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "table_agent",
+            "task_id": "task_3",
+            "status": "success",
+            "latency_ms": 40330.4,
+            "evidence_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+            ],
+            "errors": []
+          },
+          {
+            "node": "evidence_critic",
+            "agent": "evidence_critic",
+            "status": "approved",
+            "latency_ms": 0.0,
+            "evidence_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+            ],
+            "missing_modalities": [],
+            "conflicts": [],
+            "errors": []
+          },
+          {
+            "node": "answer_agent",
+            "agent": "answer_agent",
+            "status": "ok",
+            "latency_ms": 3013.4,
+            "evidence_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+            ],
+            "errors": []
+          }
+        ],
+        "agent_count": 6,
+        "retry_count": 0,
+        "recovery": {
+          "attempted": false,
+          "successful": false,
+          "final_decision": "approved"
+        }
+      },
+      "tool_calls": [
+        "function_calling_fallback",
+        "search_text",
+        "function_calling_fallback",
+        "search_figures",
+        "analyze_figure_for_query",
+        "function_calling_fallback",
+        "search_tables",
+        "read_table"
+      ],
+      "steps": 8,
+      "qwen_vl_calls": 1,
+      "visual_judge_qwen_vl_calls": 0,
+      "total_qwen_vl_calls": 1,
+      "token_usage": 38733,
+      "orchestrator": "langgraph",
+      "agent_count": 6,
+      "retry_count": 0,
+      "recovery": {
+        "attempted": false,
+        "successful": false,
+        "final_decision": "approved"
+      },
+      "node_traces": [
+        {
+          "node": "supervisor_plan",
+          "agent": "supervisor_agent",
+          "status": "success",
+          "latency_ms": 1.8,
+          "selected_agents": [
+            "text_agent",
+            "figure_agent",
+            "table_agent"
+          ],
+          "task_ids": [
+            "task_1",
+            "task_2",
+            "task_3"
+          ],
+          "evidence_ids": [],
+          "errors": []
+        },
+        {
+          "node": "specialist_dispatch",
+          "agent": "text_agent",
+          "task_id": "task_1",
+          "status": "success",
+          "latency_ms": 50649.4,
+          "evidence_ids": [
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0"
+          ],
+          "errors": []
+        },
+        {
+          "node": "specialist_dispatch",
+          "agent": "figure_agent",
+          "task_id": "task_2",
+          "status": "success",
+          "latency_ms": 63153.8,
+          "evidence_ids": [
+            "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004"
+          ],
+          "errors": []
+        },
+        {
+          "node": "specialist_dispatch",
+          "agent": "table_agent",
+          "task_id": "task_3",
+          "status": "success",
+          "latency_ms": 40330.4,
+          "evidence_ids": [
+            "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+          ],
+          "errors": []
+        },
+        {
+          "node": "evidence_critic",
+          "agent": "evidence_critic",
+          "status": "approved",
+          "latency_ms": 0.0,
+          "evidence_ids": [
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+          ],
+          "missing_modalities": [],
+          "conflicts": [],
+          "errors": []
+        },
+        {
+          "node": "answer_agent",
+          "agent": "answer_agent",
+          "status": "ok",
+          "latency_ms": 3013.4,
+          "evidence_ids": [
+            "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+          ],
+          "errors": []
+        }
+      ],
+      "expected_tools": [
+        "search_figures",
+        "analyze_figure_for_query",
+        "search_tables",
+        "read_table"
+      ],
+      "expected_modalities": [
+        "figure",
+        "table"
+      ],
+      "predicted_modalities": [
+        "figure",
+        "table"
+      ],
+      "routed_modalities": [
+        "text",
+        "figure",
+        "table"
+      ],
+      "required_modalities": [
+        "figure",
+        "table"
+      ],
+      "expected_evidence_ids": [
+        "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+      ],
+      "expected_evidence_groups": [
+        [
+          "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004",
+          "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+        ]
+      ],
+      "expected_chunk_ids": [],
+      "expected_chunk_groups": [],
+      "ranked_evidence_ids": [
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+      ],
+      "ranked_evidence_ids_by_modality": {
+        "text": [
+          "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+          "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+          "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+          "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+          "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+          "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+          "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+          "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0"
+        ],
+        "figure": [
+          "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004"
+        ],
+        "table": [
+          "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+        ]
+      },
+      "ranked_text_ids": [
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0"
+      ],
+      "ranked_figure_ids": [
+        "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004"
+      ],
+      "ranked_table_ids": [
+        "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+      ],
+      "returned_evidence_ids": [
+        "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+      ],
+      "expected_text_ids": [],
+      "expected_figure_ids": [
+        "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004"
+      ],
+      "expected_table_ids": [
+        "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+      ],
+      "returned_text_ids": [],
+      "returned_figure_ids": [
+        "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004"
+      ],
+      "returned_table_ids": [
+        "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+      ],
+      "execution_success": true,
+      "answer_correct": true,
+      "task_success": true,
+      "judge": {
+        "score": 2,
+        "correct": true,
+        "reason": "回答正确指出 Cosine+CE 的 F1 最高（51.5），并准确给出 GPT-4o 在 MemeCap 从 50.8 升至 63.6、在 NewYorker 从 61.9 升至 72.1，与标准答案及原始证据一致。",
+        "kind": "text"
+      },
+      "latency_ms": 66220.6,
+      "status": "ok"
+    }
+  ]
+}

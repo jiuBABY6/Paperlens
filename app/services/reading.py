@@ -16,6 +16,25 @@ from app.services.retrieval import HybridRetriever
 class ReadingService:
     """将段落检索结果转成句子级、可精确定位的精读结论。"""
 
+    ACADEMIC_ACRONYM_EXPANSIONS = {
+        "CNN": "convolutional neural network",
+        "LSTM": "long short-term memory",
+        "VLM": "vision language model",
+        "LLM": "large language model",
+        "IB": "information bottleneck",
+    }
+    METHOD_QUERY = re.compile(
+        r"\b(?:arrang(?:e|ed|ement)|architectures?|pipelines?|workflows?|"
+        r"components?|modules?|method(?:ology)?|how\s+.+\s+(?:work|combine|connect))\b|"
+        r"(?:如何|怎样|怎么).{0,30}(?:排列|组合|连接|工作)|架构|流程|模块|方法",
+        re.I,
+    )
+    RESULT_QUERY = re.compile(
+        r"\b(?:results?|scores?|performance|accuracy|precision|recall|f1|"
+        r"experiments?|ablation|baseline|table)\b|结果|性能|准确率|召回率|实验|消融|基线|表\s*\d*",
+        re.I,
+    )
+
     def __init__(self, settings: Settings, retriever: HybridRetriever) -> None:
         self.settings, self.retriever = settings, retriever
         self.token_usage = 0
@@ -577,11 +596,22 @@ Figure Evidence 的 visual_observations、figure_evidence 和 interpretation 来
     def plan_query(self, question: str) -> dict:
         """为中文问题生成英文 BM25 查询，同时保留原问题用于跨语言向量召回。"""
         original = question.strip()
+        section_hints = self._section_hints_for_query(original)
         if not re.search(r"[\u4e00-\u9fff]", original):
-            return {"semantic_query": original, "lexical_query": original, "translated": False}
+            return {
+                "semantic_query": original,
+                "lexical_query": self._expand_academic_acronyms(original),
+                "translated": False,
+                "section_hints": section_hints,
+            }
         ascii_terms = " ".join(re.findall(r"[A-Za-z][A-Za-z0-9_.-]*|\d+(?:\.\d+)?%?", original))
         if not self.settings.deepseek_key:
-            return {"semantic_query": original, "lexical_query": ascii_terms, "translated": False}
+            return {
+                "semantic_query": original,
+                "lexical_query": self._expand_academic_acronyms(ascii_terms),
+                "translated": False,
+                "section_hints": section_hints,
+            }
         prompt = f"""将下面的中文科研问题改写成适合检索英文论文的简洁英文关键词查询。
 保留模型名、数据集名、缩写、数值和数学符号，不添加原问题没有的限定条件。
 问题：{original}
@@ -592,12 +622,45 @@ Figure Evidence 的 visual_observations、figure_evidence 和 interpretation 来
                 as_json=True,
                 system="你是跨语言学术检索查询改写器，只输出有效 JSON。",
             ))
-            lexical = str(payload.get("lexical_query", "")).strip()[:500]
+            lexical = self._expand_academic_acronyms(
+                str(payload.get("lexical_query", "")).strip()
+            )[:500]
             if not lexical:
                 raise ValueError("英文查询为空")
-            return {"semantic_query": original, "lexical_query": lexical, "translated": True}
+            return {
+                "semantic_query": original,
+                "lexical_query": lexical,
+                "translated": True,
+                "section_hints": section_hints,
+            }
         except Exception:
-            return {"semantic_query": original, "lexical_query": ascii_terms, "translated": False}
+            return {
+                "semantic_query": original,
+                "lexical_query": self._expand_academic_acronyms(ascii_terms),
+                "translated": False,
+                "section_hints": section_hints,
+            }
+
+    @classmethod
+    def _section_hints_for_query(cls, question: str) -> tuple[str, ...]:
+        """Narrow unambiguous method questions without misrouting result queries."""
+        if cls.METHOD_QUERY.search(question) and not cls.RESULT_QUERY.search(question):
+            return ("method", "methodology", "approach", "model", "architecture")
+        return ()
+
+    @classmethod
+    def _expand_academic_acronyms(cls, query: str) -> str:
+        """Add full forms for common model acronyms without changing semantics."""
+        value = str(query or "").strip()
+        additions = []
+        lowered = value.lower()
+        for acronym, expansion in cls.ACADEMIC_ACRONYM_EXPANSIONS.items():
+            if (
+                re.search(rf"\b{re.escape(acronym)}\b", value, re.I)
+                and expansion.lower() not in lowered
+            ):
+                additions.append(expansion)
+        return " ".join([value, *additions]).strip()[:500]
 
     def judge_answer(
         self,

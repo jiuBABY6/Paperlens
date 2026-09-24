@@ -1,0 +1,1469 @@
+{
+  "dataset": "evals\\questions.v4.jsonl",
+  "count": 1,
+  "answerable_count": 1,
+  "unanswerable_count": 0,
+  "decision_count": 1,
+  "execution_success_rate": 1.0,
+  "answer_evaluated_count": 1,
+  "answer_correct_count": 1,
+  "dataset_issue_count": 0,
+  "dataset_issue_case_ids": [],
+  "answer_correct_rate": 1.0,
+  "task_success_rate": 1.0,
+  "answerability_accuracy": 1.0,
+  "refusal_accuracy": 0.0,
+  "answer_delivery_rate": 1.0,
+  "gold_citation_hit_rate": 1.0,
+  "complete_gold_citation_hit_rate": 1.0,
+  "mean_gold_citation_precision": 1.0,
+  "mean_gold_citation_recall": 1.0,
+  "llm_judged_count": 1,
+  "llm_answer_score_0_to_2": 2.0,
+  "llm_exact_correct_rate": 1.0,
+  "mean_end_to_end_latency_ms": 25726.9,
+  "p95_end_to_end_latency_ms": 25726.9,
+  "max_end_to_end_latency_ms": 25726.9,
+  "mean_agent_count": 4.0,
+  "retry_case_rate": 0.0,
+  "mean_retry_count": 0.0,
+  "node_failure_rate": 0.0,
+  "recovery_attempt_count": 0,
+  "recovery_success_rate": null,
+  "configuration": {
+    "mode": "rag",
+    "split": "dev",
+    "strategy": "hybrid-rerank",
+    "query_rewrite_enabled": true,
+    "claim_verification_enabled": true,
+    "llm_judge_enabled": true,
+    "visual_judge_enabled_for_visual_only": true,
+    "online_visual_judge_enabled": false,
+    "orchestrator": "langgraph",
+    "parallel_enabled": true,
+    "case_id": "lstm-table1-crf-recall-v4-09",
+    "limit": 5
+  },
+  "agentic_metrics": {
+    "overall": {
+      "count": 1,
+      "retrieval": {
+        "recall_at_k": 1.0,
+        "mrr": 1.0,
+        "k": 5
+      },
+      "evidence": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "generation": {
+        "faithfulness": 1.0,
+        "claim_support_rate": 1.0
+      },
+      "agent": {
+        "execution_success_rate": 1.0,
+        "answer_correct_rate": 1.0,
+        "task_success_rate": 1.0,
+        "average_steps": 3.0,
+        "average_tool_calls": 3.0,
+        "repeated_tool_call_rate": 0.3333
+      },
+      "multimodal": {
+        "text_retrieval_recall_at_k": 0.0,
+        "figure_retrieval_recall_at_k": 0.0,
+        "table_retrieval_recall_at_k": 1.0,
+        "text_retrieval_mrr": 0.0,
+        "figure_retrieval_mrr": 0.0,
+        "table_retrieval_mrr": 1.0,
+        "modality_routing_accuracy": 1.0
+      },
+      "engineering": {
+        "average_latency_ms": 25726.9,
+        "average_token_usage": 8527.0,
+        "average_qwen_vl_calls": 0.0,
+        "total_qwen_vl_calls": 0,
+        "average_visual_judge_qwen_vl_calls": 0.0,
+        "total_visual_judge_qwen_vl_calls": 0,
+        "total_qwen_vl_calls_including_judge": 0
+      }
+    },
+    "by_mode": {
+      "standard_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "text_agentic_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "multimodal_agentic_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "text_multi_agent_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "multimodal_multi_agent_rag": {
+        "count": 1,
+        "retrieval": {
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "generation": {
+          "faithfulness": 1.0,
+          "claim_support_rate": 1.0
+        },
+        "agent": {
+          "execution_success_rate": 1.0,
+          "answer_correct_rate": 1.0,
+          "task_success_rate": 1.0,
+          "average_steps": 3.0,
+          "average_tool_calls": 3.0,
+          "repeated_tool_call_rate": 0.3333
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 1.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 1.0,
+          "modality_routing_accuracy": 1.0
+        },
+        "engineering": {
+          "average_latency_ms": 25726.9,
+          "average_token_usage": 8527.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      }
+    }
+  },
+  "records": [
+    {
+      "case_id": "lstm-table1-crf-recall-v4-09",
+      "paper_id": "2de38bfe-63c1-43d7-b6f3-7de909020853",
+      "question": "According to Table 1, which CRF configuration has the highest recall, and how does that recall compare with the plain LSTM?",
+      "mode": "multimodal_multi_agent_rag",
+      "gold_answerable": true,
+      "predicted_answerable": true,
+      "answerability_correct": true,
+      "answer": "Among the CRF configurations in Table 1, CRF n-grams + language features has the highest recall at 55.3.\nThe plain LSTM has a recall of 58.7, which is higher than the best CRF configuration's recall of 55.3.",
+      "refusal_reason": "",
+      "answer_status": "ok",
+      "claims": [
+        {
+          "claim": "Among the CRF configurations in Table 1, CRF n-grams + language features has the highest recall at 55.3.",
+          "text": "Among the CRF configurations in Table 1, CRF n-grams + language features has the highest recall at 55.3.",
+          "evidence_ids": [
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+          ],
+          "citations": [
+            {
+              "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "type": "table",
+              "page": 4,
+              "bbox": [
+                130.2,
+                57.2,
+                481.1,
+                139.2
+              ],
+              "content": "Table 1: Results, percentage.\n\n| Classifier and features         |   Accuracy |   Precision |   Recall |   F-score |\n|---------------------------------|------------|-------------|----------|-----------|\n| CRF n-grams                     |       61.8 |        56.8 |     45.1 |      50.2 |\n| CRF language features           |       67.8 |        67.5 |     47.8 |      56.0 |\n| CRF n-grams + language features |       65.9 |        61.2 |     55.3 |      58.1 |\n| LSTM                            |       63.1 |        56.7 |     58.7 |      57.6 |\n| LSTM + high level features      |       70.0 |        66.7 |     59.4 |      62.9 |",
+              "text": "Table 1: Results, percentage.\n\n| Classifier and features         |   Accuracy |   Precision |   Recall |   F-score |\n|---------------------------------|------------|-------------|----------|-----------|\n| CRF n-grams                     |       61.8 |        56.8 |     45.1 |      50.2 |\n| CRF language features           |       67.8 |        67.5 |     47.8 |      56.0 |\n| CRF n-grams + language features |       65.9 |        61.2 |     55.3 |      58.1 |\n| LSTM                            |       63.1 |        56.7 |     58.7 |      57.6 |\n| LSTM + high level features      |       70.0 |        66.7 |     59.4 |      62.9 |",
+              "section": "3.3 Results and discussion",
+              "metadata": {
+                "caption": "Table 1: Results, percentage.",
+                "image_path": "D:\\Desktop\\job\\demo\\data\\uploads\\2de38bfe-63c1-43d7-b6f3-7de909020853\\figures\\table-1.png",
+                "nearby_text": "3.3 Results and discussion Results of our system and our baselines are shown in table 1. The LSTM with the aid of the high level feature vector generally outperformed all the CRF baselines with the highest accuracy of 70.0% and the highest F-score of 62.9%.",
+                "related_sentence_ids": [
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b7-s0",
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0",
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1"
+                ],
+                "markdown": "Table 1: Results, percentage.\n\n| Classifier and features         |   Accuracy |   Precision |   Recall |   F-score |\n|---------------------------------|------------|-------------|----------|-----------|\n| CRF n-grams                     |       61.8 |        56.8 |     45.1 |      50.2 |\n| CRF language features           |       67.8 |        67.5 |     47.8 |      56.0 |\n| CRF n-grams + language features |       65.9 |        61.2 |     55.3 |      58.1 |\n| LSTM                            |       63.1 |        56.7 |     58.7 |      57.6 |\n| LSTM + high level features      |       70.0 |        66.7 |     59.4 |      62.9 |",
+                "columns": [
+                  "Classifier and features",
+                  "Accuracy",
+                  "Precision",
+                  "Recall",
+                  "F-score"
+                ],
+                "rows": [
+                  {
+                    "Classifier and features": "CRF n-grams",
+                    "Accuracy": "61.8",
+                    "Precision": "56.8",
+                    "Recall": "45.1",
+                    "F-score": "50.2"
+                  },
+                  {
+                    "Classifier and features": "CRF language features",
+                    "Accuracy": "67.8",
+                    "Precision": "67.5",
+                    "Recall": "47.8",
+                    "F-score": "56.0"
+                  },
+                  {
+                    "Classifier and features": "CRF n-grams + language features",
+                    "Accuracy": "65.9",
+                    "Precision": "61.2",
+                    "Recall": "55.3",
+                    "F-score": "58.1"
+                  },
+                  {
+                    "Classifier and features": "LSTM",
+                    "Accuracy": "63.1",
+                    "Precision": "56.7",
+                    "Recall": "58.7",
+                    "F-score": "57.6"
+                  },
+                  {
+                    "Classifier and features": "LSTM + high level features",
+                    "Accuracy": "70.0",
+                    "Precision": "66.7",
+                    "Recall": "59.4",
+                    "F-score": "62.9"
+                  }
+                ]
+              }
+            }
+          ],
+          "verification_status": "supported"
+        },
+        {
+          "claim": "The plain LSTM has a recall of 58.7, which is higher than the best CRF configuration's recall of 55.3.",
+          "text": "The plain LSTM has a recall of 58.7, which is higher than the best CRF configuration's recall of 55.3.",
+          "evidence_ids": [
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+          ],
+          "citations": [
+            {
+              "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "type": "table",
+              "page": 4,
+              "bbox": [
+                130.2,
+                57.2,
+                481.1,
+                139.2
+              ],
+              "content": "Table 1: Results, percentage.\n\n| Classifier and features         |   Accuracy |   Precision |   Recall |   F-score |\n|---------------------------------|------------|-------------|----------|-----------|\n| CRF n-grams                     |       61.8 |        56.8 |     45.1 |      50.2 |\n| CRF language features           |       67.8 |        67.5 |     47.8 |      56.0 |\n| CRF n-grams + language features |       65.9 |        61.2 |     55.3 |      58.1 |\n| LSTM                            |       63.1 |        56.7 |     58.7 |      57.6 |\n| LSTM + high level features      |       70.0 |        66.7 |     59.4 |      62.9 |",
+              "text": "Table 1: Results, percentage.\n\n| Classifier and features         |   Accuracy |   Precision |   Recall |   F-score |\n|---------------------------------|------------|-------------|----------|-----------|\n| CRF n-grams                     |       61.8 |        56.8 |     45.1 |      50.2 |\n| CRF language features           |       67.8 |        67.5 |     47.8 |      56.0 |\n| CRF n-grams + language features |       65.9 |        61.2 |     55.3 |      58.1 |\n| LSTM                            |       63.1 |        56.7 |     58.7 |      57.6 |\n| LSTM + high level features      |       70.0 |        66.7 |     59.4 |      62.9 |",
+              "section": "3.3 Results and discussion",
+              "metadata": {
+                "caption": "Table 1: Results, percentage.",
+                "image_path": "D:\\Desktop\\job\\demo\\data\\uploads\\2de38bfe-63c1-43d7-b6f3-7de909020853\\figures\\table-1.png",
+                "nearby_text": "3.3 Results and discussion Results of our system and our baselines are shown in table 1. The LSTM with the aid of the high level feature vector generally outperformed all the CRF baselines with the highest accuracy of 70.0% and the highest F-score of 62.9%.",
+                "related_sentence_ids": [
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b7-s0",
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0",
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1"
+                ],
+                "markdown": "Table 1: Results, percentage.\n\n| Classifier and features         |   Accuracy |   Precision |   Recall |   F-score |\n|---------------------------------|------------|-------------|----------|-----------|\n| CRF n-grams                     |       61.8 |        56.8 |     45.1 |      50.2 |\n| CRF language features           |       67.8 |        67.5 |     47.8 |      56.0 |\n| CRF n-grams + language features |       65.9 |        61.2 |     55.3 |      58.1 |\n| LSTM                            |       63.1 |        56.7 |     58.7 |      57.6 |\n| LSTM + high level features      |       70.0 |        66.7 |     59.4 |      62.9 |",
+                "columns": [
+                  "Classifier and features",
+                  "Accuracy",
+                  "Precision",
+                  "Recall",
+                  "F-score"
+                ],
+                "rows": [
+                  {
+                    "Classifier and features": "CRF n-grams",
+                    "Accuracy": "61.8",
+                    "Precision": "56.8",
+                    "Recall": "45.1",
+                    "F-score": "50.2"
+                  },
+                  {
+                    "Classifier and features": "CRF language features",
+                    "Accuracy": "67.8",
+                    "Precision": "67.5",
+                    "Recall": "47.8",
+                    "F-score": "56.0"
+                  },
+                  {
+                    "Classifier and features": "CRF n-grams + language features",
+                    "Accuracy": "65.9",
+                    "Precision": "61.2",
+                    "Recall": "55.3",
+                    "F-score": "58.1"
+                  },
+                  {
+                    "Classifier and features": "LSTM",
+                    "Accuracy": "63.1",
+                    "Precision": "56.7",
+                    "Recall": "58.7",
+                    "F-score": "57.6"
+                  },
+                  {
+                    "Classifier and features": "LSTM + high level features",
+                    "Accuracy": "70.0",
+                    "Precision": "66.7",
+                    "Recall": "59.4",
+                    "F-score": "62.9"
+                  }
+                ]
+              }
+            }
+          ],
+          "verification_status": "supported"
+        }
+      ],
+      "citation_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+      ],
+      "gold_sentence_ids": [],
+      "gold_sentence_groups": [],
+      "gold_evidence_groups": [
+        [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+        ]
+      ],
+      "gold_citation_hit": true,
+      "gold_complete_citation_hit": true,
+      "gold_citation_precision": 1.0,
+      "gold_citation_recall": 1.0,
+      "query_plan": {
+        "router": {
+          "complexity": "complex",
+          "route": "agentic_rag",
+          "modalities": [
+            "table"
+          ],
+          "required_modalities": [
+            "table"
+          ],
+          "pure_visual": false,
+          "pure_table": true,
+          "reason": "需要分解任务或读取非文本证据。"
+        },
+        "rewrites": [
+          {
+            "subtask_id": "task_1",
+            "attempt": 0,
+            "query": "Table 1 structured table evidence According 1 which CRF configuration has highest recall how does that compare with plain LSTM"
+          }
+        ]
+      },
+      "router": {
+        "complexity": "complex",
+        "route": "agentic_rag",
+        "modalities": [
+          "table"
+        ],
+        "required_modalities": [
+          "table"
+        ],
+        "pure_visual": false,
+        "pure_table": true,
+        "reason": "需要分解任务或读取非文本证据。"
+      },
+      "retrieval": {
+        "effective_strategy": "metadata-exact+hybrid-rerank",
+        "effective_strategies": [
+          "metadata-exact",
+          "hybrid-rerank"
+        ],
+        "degraded": false,
+        "warnings": [],
+        "search_count": 2
+      },
+      "trace": {
+        "run_id": "736ccc26-e52d-4eb2-a370-ea7b4f05ca69",
+        "query": "According to Table 1, which CRF configuration has the highest recall, and how does that recall compare with the plain LSTM?",
+        "route": "langgraph_agentic_rag",
+        "router": {
+          "complexity": "complex",
+          "route": "agentic_rag",
+          "modalities": [
+            "table"
+          ],
+          "required_modalities": [
+            "table"
+          ],
+          "pure_visual": false,
+          "pure_table": true,
+          "reason": "需要分解任务或读取非文本证据。"
+        },
+        "plan": {
+          "goal": "According to Table 1, which CRF configuration has the highest recall, and how does that recall compare with the plain LSTM?",
+          "execution": "sequential",
+          "selected_agents": [
+            "table_agent"
+          ],
+          "reason": "需要分解任务或读取非文本证据。",
+          "sub_tasks": [
+            {
+              "task_id": "task_1",
+              "source_task_id": "task_1",
+              "agent": "table_agent",
+              "modality": "table",
+              "instruction": "Find structured table evidence relevant to: According to Table 1, which CRF configuration has the highest recall, and how does that recall compare with the plain LSTM?",
+              "query": "Table 1 structured table evidence According 1 which CRF configuration has highest recall how does that compare with plain LSTM",
+              "required_modalities": [
+                "table"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            }
+          ],
+          "budgets": {
+            "max_steps": 10,
+            "max_retries": 1,
+            "max_model_calls": 8,
+            "max_qwen_vl_calls": 2,
+            "timeout_seconds": 120.0
+          }
+        },
+        "rewrites": [
+          {
+            "subtask_id": "task_1",
+            "attempt": 0,
+            "query": "Table 1 structured table evidence According 1 which CRF configuration has highest recall how does that compare with plain LSTM"
+          }
+        ],
+        "steps": [
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "Table 1 CRF configuration recall LSTM",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 1,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 1,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_table_numbers": [
+                1
+              ],
+              "exact_table_match_applied": true,
+              "exact_table_ids": [
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_KJZun98p6VlDeuofuex21784",
+            "step": 1
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "CRF recall comparison plain LSTM",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            ],
+            "latency_ms": 19695.8,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 2,
+              "lexical_candidate_count": 2,
+              "semantic_candidate_count": 2,
+              "fusion_candidate_count": 2,
+              "rerank_candidate_count": 2,
+              "reranked": true,
+              "returned_count": 2,
+              "bm25_latency_ms": 1.7,
+              "dense_latency_ms": 17415.4,
+              "rerank_latency_ms": 2278.5,
+              "requested_table_numbers": [],
+              "exact_table_match_applied": false,
+              "exact_table_ids": []
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_AnFfLm8EQ4A9saukgwwG8877",
+            "step": 2
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "read_table",
+            "arguments": {
+              "table_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "latency_ms": 0.2,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_OvdluF99EYJ7mK3H3D9t7439",
+            "step": 3
+          }
+        ],
+        "final_evidence_ids": [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+        ],
+        "total_steps": 3,
+        "total_latency_ms": 25726.7,
+        "token_usage": 8527,
+        "qwen_vl_calls": 0,
+        "sufficiency": {
+          "sufficient": true,
+          "covered_subtasks": [
+            "task_1"
+          ],
+          "missing_subtasks": [],
+          "missing_information": []
+        },
+        "evidence_memory": [
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+            "type": "table",
+            "used": true
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002",
+            "type": "table",
+            "used": false
+          }
+        ],
+        "retrieval": {
+          "effective_strategy": "metadata-exact+hybrid-rerank",
+          "effective_strategies": [
+            "metadata-exact",
+            "hybrid-rerank"
+          ],
+          "degraded": false,
+          "warnings": [],
+          "search_count": 2
+        },
+        "model_calls": 8,
+        "execution_mode": "sequential",
+        "critique": {
+          "decision": "approved",
+          "required_modalities": [
+            "table"
+          ],
+          "usable_modalities": [
+            "table"
+          ],
+          "missing_modalities": [],
+          "conflicts": [],
+          "retry_targets": [],
+          "reasons": []
+        },
+        "conversation_id": null,
+        "turn_index": null,
+        "original_question": "According to Table 1, which CRF configuration has the highest recall, and how does that recall compare with the plain LSTM?",
+        "resolved_question": "According to Table 1, which CRF configuration has the highest recall, and how does that recall compare with the plain LSTM?",
+        "referenced_evidence_ids": [],
+        "specialist_execution_mode": "function_calling_with_fallback",
+        "function_calls": [
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "Table 1 CRF configuration recall LSTM",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 1,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 1,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_table_numbers": [
+                1
+              ],
+              "exact_table_match_applied": true,
+              "exact_table_ids": [
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_KJZun98p6VlDeuofuex21784",
+            "step": 1
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "CRF recall comparison plain LSTM",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            ],
+            "latency_ms": 19695.8,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 2,
+              "lexical_candidate_count": 2,
+              "semantic_candidate_count": 2,
+              "fusion_candidate_count": 2,
+              "rerank_candidate_count": 2,
+              "reranked": true,
+              "returned_count": 2,
+              "bm25_latency_ms": 1.7,
+              "dense_latency_ms": 17415.4,
+              "rerank_latency_ms": 2278.5,
+              "requested_table_numbers": [],
+              "exact_table_match_applied": false,
+              "exact_table_ids": []
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_AnFfLm8EQ4A9saukgwwG8877",
+            "step": 2
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "read_table",
+            "arguments": {
+              "table_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "latency_ms": 0.2,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_OvdluF99EYJ7mK3H3D9t7439",
+            "step": 3
+          }
+        ],
+        "function_call_fallbacks": 0,
+        "orchestrator": "langgraph",
+        "node_traces": [
+          {
+            "node": "supervisor_plan",
+            "agent": "supervisor_agent",
+            "status": "success",
+            "latency_ms": 1.4,
+            "selected_agents": [
+              "table_agent"
+            ],
+            "task_ids": [
+              "task_1"
+            ],
+            "evidence_ids": [],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "table_agent",
+            "task_id": "task_1",
+            "status": "success",
+            "latency_ms": 22849.9,
+            "evidence_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            ],
+            "errors": []
+          },
+          {
+            "node": "evidence_critic",
+            "agent": "evidence_critic",
+            "status": "approved",
+            "latency_ms": 0.0,
+            "evidence_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            ],
+            "missing_modalities": [],
+            "conflicts": [],
+            "errors": []
+          },
+          {
+            "node": "answer_agent",
+            "agent": "answer_agent",
+            "status": "ok",
+            "latency_ms": 2826.3,
+            "evidence_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "errors": []
+          }
+        ],
+        "agent_count": 4,
+        "retry_count": 0,
+        "recovery": {
+          "attempted": false,
+          "successful": false,
+          "final_decision": "approved"
+        }
+      },
+      "agent_trace": {
+        "run_id": "736ccc26-e52d-4eb2-a370-ea7b4f05ca69",
+        "query": "According to Table 1, which CRF configuration has the highest recall, and how does that recall compare with the plain LSTM?",
+        "route": "langgraph_agentic_rag",
+        "router": {
+          "complexity": "complex",
+          "route": "agentic_rag",
+          "modalities": [
+            "table"
+          ],
+          "required_modalities": [
+            "table"
+          ],
+          "pure_visual": false,
+          "pure_table": true,
+          "reason": "需要分解任务或读取非文本证据。"
+        },
+        "plan": {
+          "goal": "According to Table 1, which CRF configuration has the highest recall, and how does that recall compare with the plain LSTM?",
+          "execution": "sequential",
+          "selected_agents": [
+            "table_agent"
+          ],
+          "reason": "需要分解任务或读取非文本证据。",
+          "sub_tasks": [
+            {
+              "task_id": "task_1",
+              "source_task_id": "task_1",
+              "agent": "table_agent",
+              "modality": "table",
+              "instruction": "Find structured table evidence relevant to: According to Table 1, which CRF configuration has the highest recall, and how does that recall compare with the plain LSTM?",
+              "query": "Table 1 structured table evidence According 1 which CRF configuration has highest recall how does that compare with plain LSTM",
+              "required_modalities": [
+                "table"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            }
+          ],
+          "budgets": {
+            "max_steps": 10,
+            "max_retries": 1,
+            "max_model_calls": 8,
+            "max_qwen_vl_calls": 2,
+            "timeout_seconds": 120.0
+          }
+        },
+        "rewrites": [
+          {
+            "subtask_id": "task_1",
+            "attempt": 0,
+            "query": "Table 1 structured table evidence According 1 which CRF configuration has highest recall how does that compare with plain LSTM"
+          }
+        ],
+        "steps": [
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "Table 1 CRF configuration recall LSTM",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 1,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 1,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_table_numbers": [
+                1
+              ],
+              "exact_table_match_applied": true,
+              "exact_table_ids": [
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_KJZun98p6VlDeuofuex21784",
+            "step": 1
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "CRF recall comparison plain LSTM",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            ],
+            "latency_ms": 19695.8,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 2,
+              "lexical_candidate_count": 2,
+              "semantic_candidate_count": 2,
+              "fusion_candidate_count": 2,
+              "rerank_candidate_count": 2,
+              "reranked": true,
+              "returned_count": 2,
+              "bm25_latency_ms": 1.7,
+              "dense_latency_ms": 17415.4,
+              "rerank_latency_ms": 2278.5,
+              "requested_table_numbers": [],
+              "exact_table_match_applied": false,
+              "exact_table_ids": []
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_AnFfLm8EQ4A9saukgwwG8877",
+            "step": 2
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "read_table",
+            "arguments": {
+              "table_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "latency_ms": 0.2,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_OvdluF99EYJ7mK3H3D9t7439",
+            "step": 3
+          }
+        ],
+        "final_evidence_ids": [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+        ],
+        "total_steps": 3,
+        "total_latency_ms": 25726.7,
+        "token_usage": 8527,
+        "qwen_vl_calls": 0,
+        "sufficiency": {
+          "sufficient": true,
+          "covered_subtasks": [
+            "task_1"
+          ],
+          "missing_subtasks": [],
+          "missing_information": []
+        },
+        "evidence_memory": [
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+            "type": "table",
+            "used": true
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002",
+            "type": "table",
+            "used": false
+          }
+        ],
+        "retrieval": {
+          "effective_strategy": "metadata-exact+hybrid-rerank",
+          "effective_strategies": [
+            "metadata-exact",
+            "hybrid-rerank"
+          ],
+          "degraded": false,
+          "warnings": [],
+          "search_count": 2
+        },
+        "model_calls": 8,
+        "execution_mode": "sequential",
+        "critique": {
+          "decision": "approved",
+          "required_modalities": [
+            "table"
+          ],
+          "usable_modalities": [
+            "table"
+          ],
+          "missing_modalities": [],
+          "conflicts": [],
+          "retry_targets": [],
+          "reasons": []
+        },
+        "conversation_id": null,
+        "turn_index": null,
+        "original_question": "According to Table 1, which CRF configuration has the highest recall, and how does that recall compare with the plain LSTM?",
+        "resolved_question": "According to Table 1, which CRF configuration has the highest recall, and how does that recall compare with the plain LSTM?",
+        "referenced_evidence_ids": [],
+        "specialist_execution_mode": "function_calling_with_fallback",
+        "function_calls": [
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "Table 1 CRF configuration recall LSTM",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 1,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 1,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_table_numbers": [
+                1
+              ],
+              "exact_table_match_applied": true,
+              "exact_table_ids": [
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_KJZun98p6VlDeuofuex21784",
+            "step": 1
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "CRF recall comparison plain LSTM",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            ],
+            "latency_ms": 19695.8,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 2,
+              "lexical_candidate_count": 2,
+              "semantic_candidate_count": 2,
+              "fusion_candidate_count": 2,
+              "rerank_candidate_count": 2,
+              "reranked": true,
+              "returned_count": 2,
+              "bm25_latency_ms": 1.7,
+              "dense_latency_ms": 17415.4,
+              "rerank_latency_ms": 2278.5,
+              "requested_table_numbers": [],
+              "exact_table_match_applied": false,
+              "exact_table_ids": []
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_AnFfLm8EQ4A9saukgwwG8877",
+            "step": 2
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "read_table",
+            "arguments": {
+              "table_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "latency_ms": 0.2,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_OvdluF99EYJ7mK3H3D9t7439",
+            "step": 3
+          }
+        ],
+        "function_call_fallbacks": 0,
+        "orchestrator": "langgraph",
+        "node_traces": [
+          {
+            "node": "supervisor_plan",
+            "agent": "supervisor_agent",
+            "status": "success",
+            "latency_ms": 1.4,
+            "selected_agents": [
+              "table_agent"
+            ],
+            "task_ids": [
+              "task_1"
+            ],
+            "evidence_ids": [],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "table_agent",
+            "task_id": "task_1",
+            "status": "success",
+            "latency_ms": 22849.9,
+            "evidence_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            ],
+            "errors": []
+          },
+          {
+            "node": "evidence_critic",
+            "agent": "evidence_critic",
+            "status": "approved",
+            "latency_ms": 0.0,
+            "evidence_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+            ],
+            "missing_modalities": [],
+            "conflicts": [],
+            "errors": []
+          },
+          {
+            "node": "answer_agent",
+            "agent": "answer_agent",
+            "status": "ok",
+            "latency_ms": 2826.3,
+            "evidence_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "errors": []
+          }
+        ],
+        "agent_count": 4,
+        "retry_count": 0,
+        "recovery": {
+          "attempted": false,
+          "successful": false,
+          "final_decision": "approved"
+        }
+      },
+      "tool_calls": [
+        "search_tables",
+        "search_tables",
+        "read_table"
+      ],
+      "steps": 3,
+      "qwen_vl_calls": 0,
+      "visual_judge_qwen_vl_calls": 0,
+      "total_qwen_vl_calls": 0,
+      "token_usage": 8527,
+      "orchestrator": "langgraph",
+      "agent_count": 4,
+      "retry_count": 0,
+      "recovery": {
+        "attempted": false,
+        "successful": false,
+        "final_decision": "approved"
+      },
+      "node_traces": [
+        {
+          "node": "supervisor_plan",
+          "agent": "supervisor_agent",
+          "status": "success",
+          "latency_ms": 1.4,
+          "selected_agents": [
+            "table_agent"
+          ],
+          "task_ids": [
+            "task_1"
+          ],
+          "evidence_ids": [],
+          "errors": []
+        },
+        {
+          "node": "specialist_dispatch",
+          "agent": "table_agent",
+          "task_id": "task_1",
+          "status": "success",
+          "latency_ms": 22849.9,
+          "evidence_ids": [
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+          ],
+          "errors": []
+        },
+        {
+          "node": "evidence_critic",
+          "agent": "evidence_critic",
+          "status": "approved",
+          "latency_ms": 0.0,
+          "evidence_ids": [
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+          ],
+          "missing_modalities": [],
+          "conflicts": [],
+          "errors": []
+        },
+        {
+          "node": "answer_agent",
+          "agent": "answer_agent",
+          "status": "ok",
+          "latency_ms": 2826.3,
+          "evidence_ids": [
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+          ],
+          "errors": []
+        }
+      ],
+      "expected_tools": [
+        "search_tables",
+        "read_table"
+      ],
+      "expected_modalities": [
+        "table"
+      ],
+      "predicted_modalities": [
+        "table"
+      ],
+      "routed_modalities": [
+        "table"
+      ],
+      "required_modalities": [
+        "table"
+      ],
+      "expected_evidence_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+      ],
+      "expected_evidence_groups": [
+        [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+        ]
+      ],
+      "expected_chunk_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+      ],
+      "expected_chunk_groups": [
+        [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+        ]
+      ],
+      "ranked_evidence_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+      ],
+      "ranked_evidence_ids_by_modality": {
+        "text": [],
+        "figure": [],
+        "table": [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+        ]
+      },
+      "ranked_text_ids": [],
+      "ranked_figure_ids": [],
+      "ranked_table_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_002"
+      ],
+      "returned_evidence_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+      ],
+      "expected_text_ids": [],
+      "expected_figure_ids": [],
+      "expected_table_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+      ],
+      "returned_text_ids": [],
+      "returned_figure_ids": [],
+      "returned_table_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+      ],
+      "execution_success": true,
+      "answer_correct": true,
+      "task_success": true,
+      "judge": {
+        "score": 2,
+        "correct": true,
+        "reason": "回答正确指出 CRF n-grams + language features 召回率最高为 55.3，并说明 plain LSTM 为 58.7、高于该 CRF 配置，与证据一致。",
+        "kind": "text"
+      },
+      "latency_ms": 25726.9,
+      "status": "ok"
+    }
+  ]
+}

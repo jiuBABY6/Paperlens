@@ -385,6 +385,7 @@ def evaluate(
                 query_plan["semantic_query"],
                 limit=limit,
                 lexical_query=query_plan["lexical_query"],
+                section_hints=tuple(query_plan.get("section_hints", ())),
                 strategy=strategy,
                 strict=True,
             )
@@ -533,6 +534,7 @@ def evaluate_rag(
                     query_plan["semantic_query"],
                     limit=limit,
                     lexical_query=query_plan["lexical_query"],
+                    section_hints=tuple(query_plan.get("section_hints", ())),
                     strategy=strategy,
                     strict=True,
                 )

@@ -34,15 +34,20 @@ class FunctionCallingSpecialistExecutor:
             "role": "system",
             "content": (
                 f"You are {self.agent_name}. Use only the supplied current-paper tools. "
-                "Do not answer from memory. Stop once sufficient evidence is found."
+                "Do not answer from memory. Use one focused search before reading or "
+                "analyzing the selected evidence. Do not issue alternative query variants "
+                "after sufficient evidence is found. Stop once sufficient evidence is found."
             ),
         }, {"role": "user", "content": f"Task: {task.get('instruction', '')}\nQuestion: {question}"}]
         calls: list[dict[str, Any]] = []
         evidence: dict[str, dict[str, Any]] = {}
         observations: list[Any] = []
         seen: set[tuple[str, str]] = set()
+        discovered_figure_ids: set[str] = set()
+        discovered_table_ids: set[str] = set()
         qwen_calls = 0
         model_rounds = 0
+        budget_exhausted = False
         max_steps = min(
             int(task.get("max_tool_steps", self.settings.function_call_max_steps)),
             self.settings.function_call_max_steps,
@@ -70,7 +75,17 @@ class FunctionCallingSpecialistExecutor:
             })
             for call in tool_calls:
                 if len(calls) >= max_steps:
-                    raise FunctionCallingError("function_call_budget_exhausted")
+                    # Keep already collected evidence instead of discarding it and
+                    # repeating the same work in the fixed-flow fallback. Required
+                    # Figure/Table tool checks below still prevent incomplete runs
+                    # from being accepted.
+                    budget_exhausted = True
+                    self._emit("function_call.budget_reached", {
+                        "agent": self.agent_name,
+                        "task_id": task.get("task_id"),
+                        "max_steps": max_steps,
+                    })
+                    break
                 function = call.get("function", {})
                 name = str(function.get("name", ""))
                 try:
@@ -79,6 +94,13 @@ class FunctionCallingSpecialistExecutor:
                     raw = function.get("arguments", "{}")
                     args = json.loads(raw) if isinstance(raw, str) else raw
                     args = validate_arguments(self.agent_name, name, args)
+                    args = self._preserve_structured_references(name, args, question)
+                    self._validate_evidence_target(
+                        name,
+                        args,
+                        discovered_figure_ids=discovered_figure_ids,
+                        discovered_table_ids=discovered_table_ids,
+                    )
                 except Exception as error:
                     self._emit("function_call.rejected", {
                         "agent": self.agent_name,
@@ -87,6 +109,8 @@ class FunctionCallingSpecialistExecutor:
                         "tool_call_id": call.get("id", ""),
                         "error": str(error)[:300],
                     })
+                    if isinstance(error, FunctionCallingError):
+                        raise
                     raise FunctionCallingError(f"invalid_tool_call:{type(error).__name__}") from error
                 signature = (name, json.dumps(args, ensure_ascii=False, sort_keys=True))
                 if signature in seen:
@@ -116,6 +140,10 @@ class FunctionCallingSpecialistExecutor:
                     })
                     raise
                 result_ids = self._collect(result, evidence, observations)
+                if name == "search_figures":
+                    discovered_figure_ids.update(result_ids)
+                elif name == "search_tables":
+                    discovered_table_ids.update(result_ids)
                 self._attach_query_analysis(name, args, result, evidence, result_ids)
                 record = {
                     "subtask_id": task["task_id"], "task_id": task["task_id"],
@@ -142,6 +170,8 @@ class FunctionCallingSpecialistExecutor:
                         ensure_ascii=False,
                     ),
                 })
+            if budget_exhausted:
+                break
         called_tools = {item["tool"] for item in calls}
         if self.agent_name == "figure_agent" and "analyze_figure_for_query" not in called_tools:
             raise FunctionCallingError("required_visual_analysis_missing")
@@ -153,7 +183,57 @@ class FunctionCallingSpecialistExecutor:
             "evidence": list(evidence.values()), "observations": observations,
             "tool_calls": calls, "model_calls": model_rounds,
             "qwen_vl_calls": qwen_calls,
+            "budget_exhausted": budget_exhausted,
         }
+
+    def _preserve_structured_references(
+        self,
+        tool_name: str,
+        arguments: dict[str, Any],
+        question: str,
+    ) -> dict[str, Any]:
+        """Keep explicit Figure/Table numbers as hard constraints on searches.
+
+        Provider models may shorten a specialist query and accidentally drop
+        ``Figure 2`` or ``Table 1``.  That turns an exact metadata lookup into a
+        semantic search and can make the model inspect the wrong object.  The
+        user question is the source of truth for these structured references.
+        """
+        args = dict(arguments)
+        if tool_name == "search_figures" and hasattr(self.tools, "_requested_figure_numbers"):
+            numbers = self.tools._requested_figure_numbers(question)
+            if numbers:
+                refs = " ".join(f"Figure {number}" for number in sorted(numbers))
+                args["query"] = f"{refs} {args.get('query', '')}".strip()
+        elif tool_name == "analyze_figure_for_query":
+            # The provider may shorten the question and drop a Table/text
+            # dependency.  Figure answerability is scoped using the original
+            # user request, so preserve it exactly at the tool boundary.
+            args["question"] = question
+        elif tool_name == "search_tables" and hasattr(self.tools, "_requested_table_numbers"):
+            numbers = self.tools._requested_table_numbers(question)
+            if numbers:
+                refs = " ".join(f"Table {number}" for number in sorted(numbers))
+                args["query"] = f"{refs} {args.get('query', '')}".strip()
+        return args
+
+    @staticmethod
+    def _validate_evidence_target(
+        tool_name: str,
+        arguments: dict[str, Any],
+        *,
+        discovered_figure_ids: set[str],
+        discovered_table_ids: set[str],
+    ) -> None:
+        """Prevent a specialist from reading an ID not returned by its search."""
+        if tool_name in {"read_figure", "analyze_figure_for_query"}:
+            evidence_id = str(arguments.get("figure_id", ""))
+            if discovered_figure_ids and evidence_id not in discovered_figure_ids:
+                raise FunctionCallingError("figure_target_not_in_search_results")
+        elif tool_name in {"read_table", "analyze_table_image_with_vlm"}:
+            evidence_id = str(arguments.get("table_id", ""))
+            if discovered_table_ids and evidence_id not in discovered_table_ids:
+                raise FunctionCallingError("table_target_not_in_search_results")
 
     def _attach_query_analysis(
         self,
@@ -191,7 +271,21 @@ class FunctionCallingSpecialistExecutor:
                 if isinstance(value, tuple) and len(value) == 2 and hasattr(value[0], "evidence_id"):
                     item, score = value
                     payload = evidence_to_state(item, score)
-                    evidence[item.evidence_id] = payload
+                    existing = evidence.get(item.evidence_id)
+                    if existing is None:
+                        evidence[item.evidence_id] = payload
+                    else:
+                        # A later search variant may return the same object after
+                        # it has already been enriched by visual/table analysis.
+                        # Preserve that query-conditioned metadata instead of
+                        # replacing it with a bare retrieval payload.
+                        merged_metadata = dict(payload.get("metadata", {}))
+                        merged_metadata.update(existing.get("metadata", {}))
+                        existing["metadata"] = merged_metadata
+                        existing["score"] = max(
+                            float(existing.get("score", 0.0) or 0.0),
+                            float(payload.get("score", 0.0) or 0.0),
+                        )
                     ids.append(item.evidence_id)
         elif isinstance(result, dict):
             evidence_id = result.get("evidence_id") or result.get("id") or result.get("figure_id") or result.get("table_id")

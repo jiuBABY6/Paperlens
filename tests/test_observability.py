@@ -1,11 +1,15 @@
 import json
+from contextlib import contextmanager
 from pathlib import Path
 import uuid
 
 from fastapi.testclient import TestClient
+import pytest
+from opentelemetry.trace import Status, StatusCode
 
 import app.main as main
-from app.observability import mark_span_error, safe_fields
+import app.observability as observability
+from app.observability import mark_span_error, safe_fields, span
 
 
 class _RecordedSpan:
@@ -22,6 +26,34 @@ class _RecordedSpan:
 
     def set_status(self, status) -> None:
         self.status = status
+
+
+class _NonRecordingSpan:
+    """Match the OpenTelemetry no-op span surface that lacks ``status``."""
+
+    def __init__(self) -> None:
+        self.recorded = []
+        self.attributes = {}
+        self.status_updates = []
+
+    def record_exception(self, error) -> None:
+        self.recorded.append(error)
+
+    def set_attribute(self, key, value) -> None:
+        self.attributes[key] = value
+
+    def set_status(self, status) -> None:
+        self.status_updates.append(status)
+
+
+class _Tracer:
+    def __init__(self, current) -> None:
+        self.current = current
+
+    @contextmanager
+    def start_as_current_span(self, _name, attributes=None):
+        self.attributes = attributes
+        yield self.current
 
 
 def test_structured_fields_redact_secrets_and_content() -> None:
@@ -43,6 +75,49 @@ def test_handled_span_failure_is_explicitly_marked_error() -> None:
     assert current.recorded == [error]
     assert current.attributes == {"error.type": "RuntimeError"}
     assert current.status.status_code.name == "ERROR"
+    assert current.status.description == "RuntimeError"
+
+
+def test_non_recording_span_is_a_safe_noop(monkeypatch) -> None:
+    current = _NonRecordingSpan()
+    tracer = _Tracer(current)
+    monkeypatch.setattr(observability.trace, "get_tracer", lambda _name: tracer)
+
+    with span("provider.test", api_key="secret", model="demo"):
+        pass
+
+    assert current.status_updates == []
+    assert tracer.attributes["api_key"] == "[REDACTED]"
+    assert tracer.attributes["model"] == "demo"
+
+
+def test_recording_span_is_marked_ok_after_success(monkeypatch) -> None:
+    current = _RecordedSpan()
+    current.status = Status(StatusCode.UNSET)
+    monkeypatch.setattr(
+        observability.trace, "get_tracer", lambda _name: _Tracer(current)
+    )
+
+    with span("provider.test"):
+        pass
+
+    assert current.status.status_code is StatusCode.OK
+
+
+def test_span_records_and_reraises_provider_error(monkeypatch) -> None:
+    current = _RecordedSpan()
+    current.status = Status(StatusCode.UNSET)
+    monkeypatch.setattr(
+        observability.trace, "get_tracer", lambda _name: _Tracer(current)
+    )
+
+    with pytest.raises(RuntimeError, match="provider failed"):
+        with span("provider.test"):
+            raise RuntimeError("provider failed")
+
+    assert len(current.recorded) == 1
+    assert current.attributes == {"error.type": "RuntimeError"}
+    assert current.status.status_code is StatusCode.ERROR
     assert current.status.description == "RuntimeError"
 
 

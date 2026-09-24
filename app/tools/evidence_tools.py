@@ -7,6 +7,11 @@ from app.services.retrieval import HybridRetriever
 
 
 class EvidenceTools:
+    TEXT_QUERY_STOPWORDS = {
+        "a", "an", "and", "are", "as", "at", "be", "by", "do", "does",
+        "for", "from", "how", "in", "is", "it", "of", "on", "or", "the",
+        "this", "to", "what", "when", "where", "which", "why", "with",
+    }
     FIGURE_REFERENCE = re.compile(
         r"(?<![A-Za-z0-9_])fig(?:ure)?s?\.?\s*"
         r"(\d+(?:\s*(?:,|and|&|to|-)\s*\d+)*)(?![A-Za-z0-9_])|图\s*(\d+)",
@@ -58,14 +63,78 @@ class EvidenceTools:
         candidates = [item for item in self.paper.chunks if not item.section.startswith("Table:")]
         results = self._search(candidates, query, top_k)
         output: list[tuple[EvidenceObject, float]] = []
+        # Retrieval ranks chunks, while downstream grounding consumes sentences.
+        # Selecting the first sentence systematically loses supporting details
+        # located later in a correctly retrieved paragraph. Keep the two most
+        # query-relevant sentences per high-ranked chunk, with an overall bound.
+        max_evidence = max(1, int(top_k))
         for result in results:
             ids = result.chunk.sentence_ids or [result.chunk.id]
-            for evidence_id in ids:
-                sentence = self.sentences.get(evidence_id)
-                if sentence:
-                    output.append((sentence_evidence(sentence), result.score))
-                    break
+            sentences = [self.sentences[item] for item in ids if item in self.sentences]
+            for sentence in self._select_chunk_sentences(sentences, query, limit=2):
+                output.append((sentence_evidence(sentence), result.score))
+                if len(output) >= max_evidence:
+                    return output
         return output
+
+    @classmethod
+    def _select_chunk_sentences(cls, sentences, query: str, *, limit: int) -> list:
+        if not sentences or limit <= 0:
+            return []
+        terms = cls._text_terms(query)
+        ranked = []
+        for index, sentence in enumerate(sentences):
+            sentence_terms = cls._text_terms(sentence.text)
+            overlap = len(terms.intersection(sentence_terms))
+            ranked.append((overlap, -index, sentence, sentence_terms))
+        ranked.sort(key=lambda item: (item[0], item[1]), reverse=True)
+        if limit == 1 or len(ranked) == 1:
+            return [ranked[0][2]]
+        # Select the pair that covers the most distinct query terms.  Adjacent
+        # sentences receive a small discourse-context bonus because scientific
+        # claims often use a mechanism sentence followed by a "This ..."
+        # consequence sentence.  Pair scoring avoids choosing two redundant
+        # keyword-heavy sentences from different parts of a long paragraph.
+        pairs = []
+        for left in range(len(sentences)):
+            left_terms = cls._text_terms(sentences[left].text)
+            for right in range(left + 1, len(sentences)):
+                right_terms = cls._text_terms(sentences[right].text)
+                coverage = len(terms.intersection(left_terms.union(right_terms)))
+                left_overlap = len(terms.intersection(left_terms))
+                right_overlap = len(terms.intersection(right_terms))
+                adjacency_bonus = (
+                    3
+                    if right == left + 1 and left_overlap > 0 and right_overlap > 0
+                    else 0
+                )
+                individual = (
+                    left_overlap + right_overlap
+                )
+                pairs.append((coverage + adjacency_bonus, coverage, individual, -left, -right))
+        _score, _coverage, _individual, neg_left, neg_right = max(pairs)
+        selected_indexes = {-neg_left, -neg_right}
+        selected = [item for item in ranked if (-item[1]) in selected_indexes]
+        if limit > 2:
+            selected.extend(item for item in ranked if (-item[1]) not in selected_indexes)
+        return [item[2] for item in selected[:limit]]
+
+    @classmethod
+    def _text_terms(cls, value: str) -> set[str]:
+        # Join PDF line-break hyphenation before tokenizing (for example
+        # ``embed- dings``), then keep bounded lexical signals only.
+        normalized = re.sub(r"-\s+", "", str(value or "").lower())
+        terms: set[str] = set()
+        for token in re.findall(r"[a-z0-9]+", normalized):
+            if len(token) <= 1 or token in cls.TEXT_QUERY_STOPWORDS:
+                continue
+            terms.add(token)
+            # Lightweight plural/third-person normalization is enough for
+            # sentence ranking and avoids a heavy NLP dependency.  It lets a
+            # query containing ``reduce`` match evidence saying ``reduces``.
+            if len(token) > 3 and token.endswith("s") and not token.endswith("ss"):
+                terms.add(token[:-1])
+        return terms
 
     def read_text(self, chunk_id: str) -> dict | None:
         chunk = self.chunks.get(chunk_id)

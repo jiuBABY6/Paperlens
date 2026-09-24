@@ -32,6 +32,27 @@ class FakeReading:
         }
 
 
+class ToolCallingReading(FakeReading):
+    def __init__(self) -> None:
+        self.token_usage = 0
+        self.request_count = 0
+
+    def tool_completion(self, messages, _tools):
+        self.request_count += 1
+        if not any(item.get("role") == "tool" for item in messages):
+            return {
+                "content": "",
+                "tool_calls": [{
+                    "id": "search-1",
+                    "function": {
+                        "name": "search_text",
+                        "arguments": '{"query":"novel method","top_k":3}',
+                    },
+                }],
+            }
+        return {"content": "done", "tool_calls": []}
+
+
 def sample_paper() -> Paper:
     chunk = Chunk("paper-p1-b1", "paper", 1, "Methods", "The method is novel.", None)
     sentence = Sentence(
@@ -145,6 +166,34 @@ def test_langgraph_publishes_node_specialist_tool_and_verified_answer_events() -
     assert "specialist.started" in names and "specialist.completed" in names
     assert "tool.completed" in names
     assert "answer.verified" in names
+
+
+def test_final_answer_has_reserved_model_budget_after_specialist_calls() -> None:
+    local = replace(
+        settings,
+        agent_orchestrator="langgraph",
+        vector_enabled=False,
+        reranker_enabled=False,
+        langgraph_checkpoint_enabled=False,
+        specialist_execution_mode="function_calling_with_fallback",
+        multi_agent_max_model_calls=1,
+    )
+    reading = ToolCallingReading()
+    executor = build_agent_executor(local, HybridRetriever(local), reading)
+
+    result = executor.run(
+        sample_paper(),
+        "Why is this method novel?",
+        {
+            "complexity": "complex", "route": "agentic_rag",
+            "modalities": ["text"], "required_modalities": ["text"],
+            "pure_visual": False, "pure_table": False, "reason": "budget test",
+        },
+    )
+
+    assert result["answer"] == "Grounded answer."
+    assert result["status"] == "ok"
+    assert result["trace"]["model_calls"] == 2
 
 
 def test_langgraph_dispatches_all_specialists_for_cross_modal_question() -> None:

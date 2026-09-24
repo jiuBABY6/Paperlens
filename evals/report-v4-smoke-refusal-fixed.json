@@ -1,0 +1,639 @@
+{
+  "dataset": "evals\\questions.v4.jsonl",
+  "count": 1,
+  "answerable_count": 0,
+  "unanswerable_count": 1,
+  "decision_count": 1,
+  "execution_success_rate": 1.0,
+  "answer_evaluated_count": 1,
+  "answer_correct_count": 1,
+  "dataset_issue_count": 0,
+  "dataset_issue_case_ids": [],
+  "answer_correct_rate": 1.0,
+  "task_success_rate": 1.0,
+  "answerability_accuracy": 1.0,
+  "refusal_accuracy": 1.0,
+  "answer_delivery_rate": 0.0,
+  "gold_citation_hit_rate": 0.0,
+  "complete_gold_citation_hit_rate": 0.0,
+  "mean_gold_citation_precision": 0.0,
+  "mean_gold_citation_recall": 0.0,
+  "llm_judged_count": 0,
+  "llm_answer_score_0_to_2": null,
+  "llm_exact_correct_rate": null,
+  "mean_end_to_end_latency_ms": 30534.2,
+  "p95_end_to_end_latency_ms": 30534.2,
+  "max_end_to_end_latency_ms": 30534.2,
+  "mean_agent_count": 0.0,
+  "retry_case_rate": 0.0,
+  "mean_retry_count": 0.0,
+  "node_failure_rate": 0.0,
+  "recovery_attempt_count": 0,
+  "recovery_success_rate": null,
+  "configuration": {
+    "mode": "rag",
+    "split": "dev",
+    "strategy": "hybrid-rerank",
+    "query_rewrite_enabled": true,
+    "claim_verification_enabled": true,
+    "llm_judge_enabled": true,
+    "visual_judge_enabled_for_visual_only": true,
+    "online_visual_judge_enabled": false,
+    "orchestrator": "langgraph",
+    "parallel_enabled": true,
+    "case_id": "lstm-runtime-unanswerable-v4-12",
+    "limit": 5
+  },
+  "agentic_metrics": {
+    "overall": {
+      "count": 1,
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "k": 5
+      },
+      "evidence": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "claim_support_rate": 0.0
+      },
+      "agent": {
+        "execution_success_rate": 1.0,
+        "answer_correct_rate": 1.0,
+        "task_success_rate": 1.0,
+        "average_steps": 1.0,
+        "average_tool_calls": 1.0,
+        "repeated_tool_call_rate": 0.0
+      },
+      "multimodal": {
+        "text_retrieval_recall_at_k": 0.0,
+        "figure_retrieval_recall_at_k": 0.0,
+        "table_retrieval_recall_at_k": 0.0,
+        "text_retrieval_mrr": 0.0,
+        "figure_retrieval_mrr": 0.0,
+        "table_retrieval_mrr": 0.0,
+        "modality_routing_accuracy": 0.0
+      },
+      "engineering": {
+        "average_latency_ms": 30534.2,
+        "average_token_usage": 1515.0,
+        "average_qwen_vl_calls": 0.0,
+        "total_qwen_vl_calls": 0,
+        "average_visual_judge_qwen_vl_calls": 0.0,
+        "total_visual_judge_qwen_vl_calls": 0,
+        "total_qwen_vl_calls_including_judge": 0
+      }
+    },
+    "by_mode": {
+      "standard_rag": {
+        "count": 1,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": 1.0,
+          "answer_correct_rate": 1.0,
+          "task_success_rate": 1.0,
+          "average_steps": 1.0,
+          "average_tool_calls": 1.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 30534.2,
+          "average_token_usage": 1515.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "text_agentic_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "multimodal_agentic_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "text_multi_agent_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "multimodal_multi_agent_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      }
+    }
+  },
+  "records": [
+    {
+      "case_id": "lstm-runtime-unanswerable-v4-12",
+      "paper_id": "2de38bfe-63c1-43d7-b6f3-7de909020853",
+      "question": "What GPU model and exact wall-clock training time did the authors report for the final humor classifier?",
+      "mode": "standard_rag",
+      "gold_answerable": false,
+      "predicted_answerable": false,
+      "answerability_correct": true,
+      "answer": "论文证据不足，无法回答。The candidate sentences do not report any GPU model or exact wall-clock training time for the final humor classifier.",
+      "refusal_reason": "The candidate sentences do not report any GPU model or exact wall-clock training time for the final humor classifier.",
+      "answer_status": "insufficient_evidence",
+      "claims": [],
+      "citation_ids": [],
+      "gold_sentence_ids": [],
+      "gold_sentence_groups": [],
+      "gold_evidence_groups": [],
+      "gold_citation_hit": null,
+      "gold_complete_citation_hit": null,
+      "gold_citation_precision": null,
+      "gold_citation_recall": null,
+      "query_plan": {
+        "semantic_query": "What GPU model and exact wall-clock training time did the authors report for the final humor classifier?",
+        "lexical_query": "What GPU model and exact wall-clock training time did the authors report for the final humor classifier?",
+        "translated": false
+      },
+      "router": {
+        "complexity": "simple",
+        "route": "standard_rag",
+        "modalities": [
+          "text"
+        ],
+        "required_modalities": [
+          "text"
+        ],
+        "pure_visual": false,
+        "pure_table": false,
+        "reason": "单一文本事实检索足以回答。"
+      },
+      "retrieval": {
+        "requested_strategy": "hybrid-rerank",
+        "effective_strategy": "hybrid-rerank",
+        "degraded": false,
+        "warnings": [],
+        "index_version": 3,
+        "scoped_chunk_count": 95,
+        "lexical_candidate_count": 92,
+        "semantic_candidate_count": 24,
+        "fusion_candidate_count": 92,
+        "rerank_candidate_count": 8,
+        "reranked": true,
+        "returned_count": 5,
+        "bm25_latency_ms": 9.5,
+        "dense_latency_ms": 21464.1,
+        "rerank_latency_ms": 8110.6
+      },
+      "trace": {
+        "run_id": "eval-lstm-runtime-unanswerable-v4-12",
+        "query": "What GPU model and exact wall-clock training time did the authors report for the final humor classifier?",
+        "route": "standard_rag",
+        "router": {
+          "complexity": "simple",
+          "route": "standard_rag",
+          "modalities": [
+            "text"
+          ],
+          "required_modalities": [
+            "text"
+          ],
+          "pure_visual": false,
+          "pure_table": false,
+          "reason": "单一文本事实检索足以回答。"
+        },
+        "plan": {},
+        "rewrites": [
+          {
+            "semantic_query": "What GPU model and exact wall-clock training time did the authors report for the final humor classifier?",
+            "lexical_query": "What GPU model and exact wall-clock training time did the authors report for the final humor classifier?",
+            "translated": false
+          }
+        ],
+        "steps": [
+          {
+            "step": 1,
+            "subtask_id": "standard_rag",
+            "tool": "search_text",
+            "arguments": {
+              "query": "What GPU model and exact wall-clock training time did the authors report for the final humor classifier?",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b8",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b14",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9"
+            ],
+            "latency_ms": 30534.1,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 95,
+              "lexical_candidate_count": 92,
+              "semantic_candidate_count": 24,
+              "fusion_candidate_count": 92,
+              "rerank_candidate_count": 8,
+              "reranked": true,
+              "returned_count": 5,
+              "bm25_latency_ms": 9.5,
+              "dense_latency_ms": 21464.1,
+              "rerank_latency_ms": 8110.6
+            }
+          }
+        ],
+        "final_evidence_ids": [],
+        "total_steps": 1,
+        "total_latency_ms": 30534.1,
+        "token_usage": 1515,
+        "qwen_vl_calls": 0,
+        "sufficiency": {
+          "sufficient": false,
+          "covered_subtasks": [],
+          "missing_subtasks": [
+            "standard_rag"
+          ],
+          "missing_information": []
+        },
+        "evidence_memory": [],
+        "retrieval": {
+          "requested_strategy": "hybrid-rerank",
+          "effective_strategy": "hybrid-rerank",
+          "degraded": false,
+          "warnings": [],
+          "index_version": 3,
+          "scoped_chunk_count": 95,
+          "lexical_candidate_count": 92,
+          "semantic_candidate_count": 24,
+          "fusion_candidate_count": 92,
+          "rerank_candidate_count": 8,
+          "reranked": true,
+          "returned_count": 5,
+          "bm25_latency_ms": 9.5,
+          "dense_latency_ms": 21464.1,
+          "rerank_latency_ms": 8110.6
+        },
+        "orchestrator": "standard_rag",
+        "node_traces": [],
+        "agent_count": 0,
+        "retry_count": 0,
+        "recovery": {}
+      },
+      "agent_trace": {
+        "run_id": "eval-lstm-runtime-unanswerable-v4-12",
+        "query": "What GPU model and exact wall-clock training time did the authors report for the final humor classifier?",
+        "route": "standard_rag",
+        "router": {
+          "complexity": "simple",
+          "route": "standard_rag",
+          "modalities": [
+            "text"
+          ],
+          "required_modalities": [
+            "text"
+          ],
+          "pure_visual": false,
+          "pure_table": false,
+          "reason": "单一文本事实检索足以回答。"
+        },
+        "plan": {},
+        "rewrites": [
+          {
+            "semantic_query": "What GPU model and exact wall-clock training time did the authors report for the final humor classifier?",
+            "lexical_query": "What GPU model and exact wall-clock training time did the authors report for the final humor classifier?",
+            "translated": false
+          }
+        ],
+        "steps": [
+          {
+            "step": 1,
+            "subtask_id": "standard_rag",
+            "tool": "search_text",
+            "arguments": {
+              "query": "What GPU model and exact wall-clock training time did the authors report for the final humor classifier?",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b8",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b14",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9"
+            ],
+            "latency_ms": 30534.1,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 95,
+              "lexical_candidate_count": 92,
+              "semantic_candidate_count": 24,
+              "fusion_candidate_count": 92,
+              "rerank_candidate_count": 8,
+              "reranked": true,
+              "returned_count": 5,
+              "bm25_latency_ms": 9.5,
+              "dense_latency_ms": 21464.1,
+              "rerank_latency_ms": 8110.6
+            }
+          }
+        ],
+        "final_evidence_ids": [],
+        "total_steps": 1,
+        "total_latency_ms": 30534.1,
+        "token_usage": 1515,
+        "qwen_vl_calls": 0,
+        "sufficiency": {
+          "sufficient": false,
+          "covered_subtasks": [],
+          "missing_subtasks": [
+            "standard_rag"
+          ],
+          "missing_information": []
+        },
+        "evidence_memory": [],
+        "retrieval": {
+          "requested_strategy": "hybrid-rerank",
+          "effective_strategy": "hybrid-rerank",
+          "degraded": false,
+          "warnings": [],
+          "index_version": 3,
+          "scoped_chunk_count": 95,
+          "lexical_candidate_count": 92,
+          "semantic_candidate_count": 24,
+          "fusion_candidate_count": 92,
+          "rerank_candidate_count": 8,
+          "reranked": true,
+          "returned_count": 5,
+          "bm25_latency_ms": 9.5,
+          "dense_latency_ms": 21464.1,
+          "rerank_latency_ms": 8110.6
+        },
+        "orchestrator": "standard_rag",
+        "node_traces": [],
+        "agent_count": 0,
+        "retry_count": 0,
+        "recovery": {}
+      },
+      "tool_calls": [
+        "search_text"
+      ],
+      "steps": 1,
+      "qwen_vl_calls": 0,
+      "visual_judge_qwen_vl_calls": 0,
+      "total_qwen_vl_calls": 0,
+      "token_usage": 1515,
+      "orchestrator": "standard_rag",
+      "agent_count": 0,
+      "retry_count": 0,
+      "recovery": {},
+      "node_traces": [],
+      "expected_tools": [
+        "search_text"
+      ],
+      "expected_modalities": [],
+      "predicted_modalities": [],
+      "routed_modalities": [
+        "text"
+      ],
+      "required_modalities": [
+        "text"
+      ],
+      "expected_evidence_ids": [],
+      "expected_evidence_groups": [],
+      "expected_chunk_ids": [],
+      "expected_chunk_groups": [],
+      "ranked_evidence_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b8",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b14",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9"
+      ],
+      "ranked_evidence_ids_by_modality": {
+        "text": [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b8",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b14",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9"
+        ],
+        "figure": [],
+        "table": []
+      },
+      "ranked_text_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b2",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p1-b5",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p5-b8",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b14",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p2-b9"
+      ],
+      "ranked_figure_ids": [],
+      "ranked_table_ids": [],
+      "returned_evidence_ids": [],
+      "expected_text_ids": [],
+      "expected_figure_ids": [],
+      "expected_table_ids": [],
+      "returned_text_ids": [],
+      "returned_figure_ids": [],
+      "returned_table_ids": [],
+      "execution_success": true,
+      "answer_correct": true,
+      "task_success": true,
+      "judge": {
+        "score": null,
+        "correct": null,
+        "reason": "未启用",
+        "kind": null,
+        "dataset_issue": null
+      },
+      "latency_ms": 30534.2,
+      "status": "ok"
+    }
+  ]
+}

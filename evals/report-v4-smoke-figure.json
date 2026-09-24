@@ -1,0 +1,832 @@
+{
+  "dataset": "evals\\questions.v4.jsonl",
+  "count": 1,
+  "answerable_count": 1,
+  "unanswerable_count": 0,
+  "decision_count": 1,
+  "execution_success_rate": 1.0,
+  "answer_evaluated_count": 1,
+  "answer_correct_count": 0,
+  "dataset_issue_count": 0,
+  "dataset_issue_case_ids": [],
+  "answer_correct_rate": 0.0,
+  "task_success_rate": 0.0,
+  "answerability_accuracy": 0.0,
+  "refusal_accuracy": 0.0,
+  "answer_delivery_rate": 0.0,
+  "gold_citation_hit_rate": 0.0,
+  "complete_gold_citation_hit_rate": 0.0,
+  "mean_gold_citation_precision": 0.0,
+  "mean_gold_citation_recall": 0.0,
+  "llm_judged_count": 0,
+  "llm_answer_score_0_to_2": null,
+  "llm_exact_correct_rate": null,
+  "mean_end_to_end_latency_ms": 7842.6,
+  "p95_end_to_end_latency_ms": 7842.6,
+  "max_end_to_end_latency_ms": 7842.6,
+  "mean_agent_count": 4.0,
+  "retry_case_rate": 0.0,
+  "mean_retry_count": 0.0,
+  "node_failure_rate": 0.25,
+  "recovery_attempt_count": 0,
+  "recovery_success_rate": null,
+  "configuration": {
+    "mode": "rag",
+    "split": "dev",
+    "strategy": "hybrid-rerank",
+    "query_rewrite_enabled": true,
+    "claim_verification_enabled": true,
+    "llm_judge_enabled": true,
+    "visual_judge_enabled_for_visual_only": true,
+    "online_visual_judge_enabled": false,
+    "orchestrator": "langgraph",
+    "parallel_enabled": true,
+    "case_id": "simclip-figure1-panels-v4-10",
+    "limit": 5
+  },
+  "agentic_metrics": {
+    "overall": {
+      "count": 1,
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "k": 5
+      },
+      "evidence": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "claim_support_rate": 0.0
+      },
+      "agent": {
+        "execution_success_rate": 1.0,
+        "answer_correct_rate": 0.0,
+        "task_success_rate": 0.0,
+        "average_steps": 0.0,
+        "average_tool_calls": 0.0,
+        "repeated_tool_call_rate": 0.0
+      },
+      "multimodal": {
+        "text_retrieval_recall_at_k": 0.0,
+        "figure_retrieval_recall_at_k": 0.0,
+        "table_retrieval_recall_at_k": 0.0,
+        "text_retrieval_mrr": 0.0,
+        "figure_retrieval_mrr": 0.0,
+        "table_retrieval_mrr": 0.0,
+        "modality_routing_accuracy": 1.0
+      },
+      "engineering": {
+        "average_latency_ms": 7842.6,
+        "average_token_usage": 0.0,
+        "average_qwen_vl_calls": 0.0,
+        "total_qwen_vl_calls": 0,
+        "average_visual_judge_qwen_vl_calls": 0.0,
+        "total_visual_judge_qwen_vl_calls": 0,
+        "total_qwen_vl_calls_including_judge": 0
+      }
+    },
+    "by_mode": {
+      "standard_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "text_agentic_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "multimodal_agentic_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "text_multi_agent_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "multimodal_multi_agent_rag": {
+        "count": 1,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": 1.0,
+          "answer_correct_rate": 0.0,
+          "task_success_rate": 0.0,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 1.0
+        },
+        "engineering": {
+          "average_latency_ms": 7842.6,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      }
+    }
+  },
+  "records": [
+    {
+      "case_id": "simclip-figure1-panels-v4-10",
+      "paper_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44",
+      "question": "In Figure 1, which labeled panel contains the yellow Minion image, and which panel is the black text-only example?",
+      "mode": "multimodal_multi_agent_rag",
+      "gold_answerable": true,
+      "predicted_answerable": false,
+      "answerability_correct": false,
+      "answer": "论文证据不足，无法回答。缺少可用的 figure Evidence。",
+      "refusal_reason": "缺少可用的 figure Evidence。",
+      "answer_status": "insufficient_evidence",
+      "claims": [],
+      "citation_ids": [],
+      "gold_sentence_ids": [],
+      "gold_sentence_groups": [],
+      "gold_evidence_groups": [
+        [
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-fig_001"
+        ]
+      ],
+      "gold_citation_hit": false,
+      "gold_complete_citation_hit": false,
+      "gold_citation_precision": 0.0,
+      "gold_citation_recall": 0.0,
+      "query_plan": {
+        "router": {
+          "complexity": "complex",
+          "route": "agentic_rag",
+          "modalities": [
+            "figure"
+          ],
+          "required_modalities": [
+            "figure"
+          ],
+          "pure_visual": true,
+          "pure_table": false,
+          "reason": "需要分解任务或读取非文本证据。"
+        },
+        "rewrites": [
+          {
+            "subtask_id": "task_1",
+            "attempt": 0,
+            "query": "Figure 1 original scientific figure In 1 which labeled panel contains yellow Minion image black text-only example"
+          }
+        ]
+      },
+      "router": {
+        "complexity": "complex",
+        "route": "agentic_rag",
+        "modalities": [
+          "figure"
+        ],
+        "required_modalities": [
+          "figure"
+        ],
+        "pure_visual": true,
+        "pure_table": false,
+        "reason": "需要分解任务或读取非文本证据。"
+      },
+      "retrieval": {
+        "effective_strategy": "none",
+        "effective_strategies": [],
+        "degraded": false,
+        "warnings": [],
+        "search_count": 0
+      },
+      "trace": {
+        "run_id": "5fc85b13-9c3c-409b-ba3c-725e06367db1",
+        "query": "In Figure 1, which labeled panel contains the yellow Minion image, and which panel is the black text-only example?",
+        "route": "langgraph_agentic_rag",
+        "router": {
+          "complexity": "complex",
+          "route": "agentic_rag",
+          "modalities": [
+            "figure"
+          ],
+          "required_modalities": [
+            "figure"
+          ],
+          "pure_visual": true,
+          "pure_table": false,
+          "reason": "需要分解任务或读取非文本证据。"
+        },
+        "plan": {
+          "goal": "In Figure 1, which labeled panel contains the yellow Minion image, and which panel is the black text-only example?",
+          "execution": "sequential",
+          "selected_agents": [
+            "figure_agent"
+          ],
+          "reason": "需要分解任务或读取非文本证据。",
+          "sub_tasks": [
+            {
+              "task_id": "task_1",
+              "source_task_id": "task_1",
+              "agent": "figure_agent",
+              "modality": "figure",
+              "instruction": "Find the original scientific figure relevant to: In Figure 1, which labeled panel contains the yellow Minion image, and which panel is the black text-only example?",
+              "query": "Figure 1 original scientific figure In 1 which labeled panel contains yellow Minion image black text-only example",
+              "required_modalities": [
+                "figure"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            }
+          ],
+          "budgets": {
+            "max_steps": 10,
+            "max_retries": 1,
+            "max_model_calls": 8,
+            "max_qwen_vl_calls": 2,
+            "timeout_seconds": 120.0
+          }
+        },
+        "rewrites": [
+          {
+            "subtask_id": "task_1",
+            "attempt": 0,
+            "query": "Figure 1 original scientific figure In 1 which labeled panel contains yellow Minion image black text-only example"
+          }
+        ],
+        "steps": [],
+        "final_evidence_ids": [],
+        "total_steps": 0,
+        "total_latency_ms": 7842.5,
+        "token_usage": 0,
+        "qwen_vl_calls": 0,
+        "sufficiency": {
+          "sufficient": false,
+          "covered_subtasks": [],
+          "missing_subtasks": [
+            "task_1"
+          ],
+          "missing_information": [
+            "figure_agent 执行失败。"
+          ]
+        },
+        "evidence_memory": [],
+        "retrieval": {
+          "effective_strategy": "none",
+          "effective_strategies": [],
+          "degraded": false,
+          "warnings": [],
+          "search_count": 0
+        },
+        "model_calls": 1,
+        "execution_mode": "sequential",
+        "critique": {
+          "decision": "refuse",
+          "required_modalities": [
+            "figure"
+          ],
+          "usable_modalities": [],
+          "missing_modalities": [
+            "figure"
+          ],
+          "conflicts": [],
+          "retry_targets": [],
+          "reasons": [
+            "缺少可用的 figure Evidence。"
+          ]
+        },
+        "conversation_id": null,
+        "turn_index": null,
+        "original_question": "In Figure 1, which labeled panel contains the yellow Minion image, and which panel is the black text-only example?",
+        "resolved_question": "In Figure 1, which labeled panel contains the yellow Minion image, and which panel is the black text-only example?",
+        "referenced_evidence_ids": [],
+        "specialist_execution_mode": "function_calling_with_fallback",
+        "function_calls": [],
+        "function_call_fallbacks": 0,
+        "orchestrator": "langgraph",
+        "node_traces": [
+          {
+            "node": "supervisor_plan",
+            "agent": "supervisor_agent",
+            "status": "success",
+            "latency_ms": 1.3,
+            "selected_agents": [
+              "figure_agent"
+            ],
+            "task_ids": [
+              "task_1"
+            ],
+            "evidence_ids": [],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "figure_agent",
+            "task_id": "task_1",
+            "status": "failed",
+            "latency_ms": 7802.0,
+            "evidence_ids": [],
+            "errors": [
+              {
+                "type": "AttributeError",
+                "category": "application",
+                "message": "'NonRecordingSpan' object has no attribute 'status'",
+                "retryable": false
+              }
+            ]
+          },
+          {
+            "node": "evidence_critic",
+            "agent": "evidence_critic",
+            "status": "refuse",
+            "latency_ms": 0.0,
+            "evidence_ids": [],
+            "missing_modalities": [
+              "figure"
+            ],
+            "conflicts": [],
+            "errors": []
+          },
+          {
+            "node": "structured_refusal",
+            "agent": "answer_agent",
+            "status": "refuse",
+            "latency_ms": 0.0,
+            "evidence_ids": [],
+            "errors": []
+          }
+        ],
+        "agent_count": 4,
+        "retry_count": 0,
+        "recovery": {
+          "attempted": false,
+          "successful": false,
+          "final_decision": "refuse"
+        }
+      },
+      "agent_trace": {
+        "run_id": "5fc85b13-9c3c-409b-ba3c-725e06367db1",
+        "query": "In Figure 1, which labeled panel contains the yellow Minion image, and which panel is the black text-only example?",
+        "route": "langgraph_agentic_rag",
+        "router": {
+          "complexity": "complex",
+          "route": "agentic_rag",
+          "modalities": [
+            "figure"
+          ],
+          "required_modalities": [
+            "figure"
+          ],
+          "pure_visual": true,
+          "pure_table": false,
+          "reason": "需要分解任务或读取非文本证据。"
+        },
+        "plan": {
+          "goal": "In Figure 1, which labeled panel contains the yellow Minion image, and which panel is the black text-only example?",
+          "execution": "sequential",
+          "selected_agents": [
+            "figure_agent"
+          ],
+          "reason": "需要分解任务或读取非文本证据。",
+          "sub_tasks": [
+            {
+              "task_id": "task_1",
+              "source_task_id": "task_1",
+              "agent": "figure_agent",
+              "modality": "figure",
+              "instruction": "Find the original scientific figure relevant to: In Figure 1, which labeled panel contains the yellow Minion image, and which panel is the black text-only example?",
+              "query": "Figure 1 original scientific figure In 1 which labeled panel contains yellow Minion image black text-only example",
+              "required_modalities": [
+                "figure"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            }
+          ],
+          "budgets": {
+            "max_steps": 10,
+            "max_retries": 1,
+            "max_model_calls": 8,
+            "max_qwen_vl_calls": 2,
+            "timeout_seconds": 120.0
+          }
+        },
+        "rewrites": [
+          {
+            "subtask_id": "task_1",
+            "attempt": 0,
+            "query": "Figure 1 original scientific figure In 1 which labeled panel contains yellow Minion image black text-only example"
+          }
+        ],
+        "steps": [],
+        "final_evidence_ids": [],
+        "total_steps": 0,
+        "total_latency_ms": 7842.5,
+        "token_usage": 0,
+        "qwen_vl_calls": 0,
+        "sufficiency": {
+          "sufficient": false,
+          "covered_subtasks": [],
+          "missing_subtasks": [
+            "task_1"
+          ],
+          "missing_information": [
+            "figure_agent 执行失败。"
+          ]
+        },
+        "evidence_memory": [],
+        "retrieval": {
+          "effective_strategy": "none",
+          "effective_strategies": [],
+          "degraded": false,
+          "warnings": [],
+          "search_count": 0
+        },
+        "model_calls": 1,
+        "execution_mode": "sequential",
+        "critique": {
+          "decision": "refuse",
+          "required_modalities": [
+            "figure"
+          ],
+          "usable_modalities": [],
+          "missing_modalities": [
+            "figure"
+          ],
+          "conflicts": [],
+          "retry_targets": [],
+          "reasons": [
+            "缺少可用的 figure Evidence。"
+          ]
+        },
+        "conversation_id": null,
+        "turn_index": null,
+        "original_question": "In Figure 1, which labeled panel contains the yellow Minion image, and which panel is the black text-only example?",
+        "resolved_question": "In Figure 1, which labeled panel contains the yellow Minion image, and which panel is the black text-only example?",
+        "referenced_evidence_ids": [],
+        "specialist_execution_mode": "function_calling_with_fallback",
+        "function_calls": [],
+        "function_call_fallbacks": 0,
+        "orchestrator": "langgraph",
+        "node_traces": [
+          {
+            "node": "supervisor_plan",
+            "agent": "supervisor_agent",
+            "status": "success",
+            "latency_ms": 1.3,
+            "selected_agents": [
+              "figure_agent"
+            ],
+            "task_ids": [
+              "task_1"
+            ],
+            "evidence_ids": [],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "figure_agent",
+            "task_id": "task_1",
+            "status": "failed",
+            "latency_ms": 7802.0,
+            "evidence_ids": [],
+            "errors": [
+              {
+                "type": "AttributeError",
+                "category": "application",
+                "message": "'NonRecordingSpan' object has no attribute 'status'",
+                "retryable": false
+              }
+            ]
+          },
+          {
+            "node": "evidence_critic",
+            "agent": "evidence_critic",
+            "status": "refuse",
+            "latency_ms": 0.0,
+            "evidence_ids": [],
+            "missing_modalities": [
+              "figure"
+            ],
+            "conflicts": [],
+            "errors": []
+          },
+          {
+            "node": "structured_refusal",
+            "agent": "answer_agent",
+            "status": "refuse",
+            "latency_ms": 0.0,
+            "evidence_ids": [],
+            "errors": []
+          }
+        ],
+        "agent_count": 4,
+        "retry_count": 0,
+        "recovery": {
+          "attempted": false,
+          "successful": false,
+          "final_decision": "refuse"
+        }
+      },
+      "tool_calls": [],
+      "steps": 0,
+      "qwen_vl_calls": 0,
+      "visual_judge_qwen_vl_calls": 0,
+      "total_qwen_vl_calls": 0,
+      "token_usage": 0,
+      "orchestrator": "langgraph",
+      "agent_count": 4,
+      "retry_count": 0,
+      "recovery": {
+        "attempted": false,
+        "successful": false,
+        "final_decision": "refuse"
+      },
+      "node_traces": [
+        {
+          "node": "supervisor_plan",
+          "agent": "supervisor_agent",
+          "status": "success",
+          "latency_ms": 1.3,
+          "selected_agents": [
+            "figure_agent"
+          ],
+          "task_ids": [
+            "task_1"
+          ],
+          "evidence_ids": [],
+          "errors": []
+        },
+        {
+          "node": "specialist_dispatch",
+          "agent": "figure_agent",
+          "task_id": "task_1",
+          "status": "failed",
+          "latency_ms": 7802.0,
+          "evidence_ids": [],
+          "errors": [
+            {
+              "type": "AttributeError",
+              "category": "application",
+              "message": "'NonRecordingSpan' object has no attribute 'status'",
+              "retryable": false
+            }
+          ]
+        },
+        {
+          "node": "evidence_critic",
+          "agent": "evidence_critic",
+          "status": "refuse",
+          "latency_ms": 0.0,
+          "evidence_ids": [],
+          "missing_modalities": [
+            "figure"
+          ],
+          "conflicts": [],
+          "errors": []
+        },
+        {
+          "node": "structured_refusal",
+          "agent": "answer_agent",
+          "status": "refuse",
+          "latency_ms": 0.0,
+          "evidence_ids": [],
+          "errors": []
+        }
+      ],
+      "expected_tools": [
+        "search_figures",
+        "analyze_figure_for_query"
+      ],
+      "expected_modalities": [
+        "figure"
+      ],
+      "predicted_modalities": [],
+      "routed_modalities": [
+        "figure"
+      ],
+      "required_modalities": [
+        "figure"
+      ],
+      "expected_evidence_ids": [
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-fig_001"
+      ],
+      "expected_evidence_groups": [
+        [
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-fig_001"
+        ]
+      ],
+      "expected_chunk_ids": [
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-fig_001"
+      ],
+      "expected_chunk_groups": [
+        [
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-fig_001"
+        ]
+      ],
+      "ranked_evidence_ids": [],
+      "ranked_evidence_ids_by_modality": {
+        "text": [],
+        "figure": [],
+        "table": []
+      },
+      "ranked_text_ids": [],
+      "ranked_figure_ids": [],
+      "ranked_table_ids": [],
+      "returned_evidence_ids": [],
+      "expected_text_ids": [],
+      "expected_figure_ids": [
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-fig_001"
+      ],
+      "expected_table_ids": [],
+      "returned_text_ids": [],
+      "returned_figure_ids": [],
+      "returned_table_ids": [],
+      "execution_success": true,
+      "answer_correct": false,
+      "task_success": false,
+      "judge": {
+        "score": null,
+        "correct": null,
+        "reason": "未启用",
+        "kind": null,
+        "dataset_issue": null
+      },
+      "latency_ms": 7842.6,
+      "status": "ok"
+    }
+  ]
+}

@@ -18,7 +18,7 @@ OFFLINE_FIELDS = {
     "uncertainty": [],
 }
 
-FIGURE_QUERY_CACHE_VERSION = 2
+FIGURE_QUERY_CACHE_VERSION = 4
 
 
 class FigureUnderstandingService:
@@ -91,6 +91,7 @@ Rules:
                 cache_version=FIGURE_QUERY_CACHE_VERSION,
             )
             if cached is not None:
+                cached = self._resolve_cross_modal_dependency(cached, question)
                 return {
                     **cached,
                     "cached": True,
@@ -121,18 +122,28 @@ Nearby paper text:
 You are analyzing a scientific figure as evidence for answering the user's question.
 Inspect the original figure carefully. Focus only on the question. Use caption and nearby text only as supporting context. Do not use outside knowledge or invent details.
 
+You are the Figure specialist in a multi-modal workflow. Judge only whether this
+figure supplies the figure-dependent part of the question. If another part asks
+for a table value or paper-text fact that is not present here, list that as a
+cross-modal dependency but do not set answerable=false when the requested visual
+workflow, labels, colors, components, relations, or values can be extracted from
+this figure.
+
 Mandatory visual inspection procedure:
 1. Locate each label named in the question separately and copy its visible text.
 2. Record the label's position (left/center/right and top/middle/bottom).
 3. Identify the immediate rectangle or region belonging to that label. Do not transfer the color, border, or content of an adjacent box, parent container, legend, or arrow.
 4. For color questions, inspect the fill inside each immediate rectangle, not its border or the surrounding group. Report each label-to-color mapping independently.
 5. Compare all mappings once more before answering. If text, ownership, or color is ambiguous, lower confidence and state the ambiguity instead of guessing.
-6. Distinguish figure, caption and nearby_text sources. If the figure cannot answer, set answerable=false. Preserve technical terms and numbers.
+6. Distinguish figure, caption and nearby_text sources. Set answerable=false only
+   when the figure-dependent portion cannot be answered. Preserve technical terms
+   and numbers.
 
 Return JSON only:
 {{"relevant":true,"answerable":true,"visual_observations":[{{"label":"","position":"","immediate_region":"","fill_color":"","visible_basis":""}}],"figure_evidence":[{{"evidence":"","source":"figure | caption | nearby_text"}}],"interpretation":"","missing_information":[],"confidence":"high | medium | low"}}"""
         self.query_call_count += 1
         result = self._normalize_query_result(self.client.analyze(figure.image_path, prompt))
+        result = self._resolve_cross_modal_dependency(result, question)
         result["image_preparation"] = self._image_preparation()
         if self.repository:
             self.repository.save_figure_query_cache(
@@ -312,3 +323,34 @@ Inspect the attached original scientific figure. Do not trust any previous analy
             "missing_information": value.get("missing_information", []) if isinstance(value.get("missing_information"), list) else [],
             "confidence": confidence if confidence in ("high", "medium", "low") else "low",
         }
+
+    @staticmethod
+    def _resolve_cross_modal_dependency(result: dict, question: str) -> dict:
+        """Do not fail a Figure subtask solely because a Table value is absent.
+
+        The Figure Specialist owns only visual evidence.  In a Figure+Table
+        question, a useful visual extraction is successful even when Qwen-VL
+        correctly notes that the numeric table component is unavailable in the
+        image.  The Table Specialist and Evidence Critic handle that dependency.
+        """
+        value = dict(result)
+        has_figure_evidence = bool(
+            value.get("figure_evidence") or value.get("visual_observations")
+        )
+        has_table_dependency = bool(re.search(
+            r"(?<![A-Za-z0-9_])tables?\.?\s*\d+|表\s*\d+",
+            question or "",
+            re.I,
+        ))
+        if (
+            value.get("relevant") is True
+            and value.get("answerable") is not True
+            and has_figure_evidence
+            and has_table_dependency
+        ):
+            value["answerable"] = True
+            value["cross_modal_dependencies"] = list(
+                value.get("missing_information", [])
+            )
+            value["missing_information"] = []
+        return value

@@ -26,8 +26,12 @@ class QueryRouter:
     )
     EXPLICIT_TEXT = re.compile(
         r"\b(method description|paper text|textual description|methodological claims?|"
-        r"claimed contributions?|authors? state|according to the text)\b|"
-        r"方法描述|正文|文本描述|方法主张|作者声称|核心贡献",
+        r"method rationale|design rationale|rationale|"
+        r"claimed contributions?|authors? state|according to the text|"
+        r"corpus description|dataset description|data description|"
+        r"corpus split|train\s*/\s*dev\s*/\s*test split)\b|"
+        r"方法描述|方法依据|设计依据|设计动机|正文|文本描述|语料描述|数据集描述|数据划分|"
+        r"训练集.{0,8}(?:验证集|开发集).{0,8}测试集|方法主张|作者声称|核心贡献",
         re.I,
     )
     EXPERIMENTAL_CLAIM_CHECK = re.compile(
@@ -56,11 +60,16 @@ class QueryRouter:
         implicit_result_table = bool(self.EXPERIMENTAL_CLAIM_CHECK.search(question))
         explicit_table = bool(self.TABLE.search(question))
         needs_table = explicit_table or implicit_result_table
-        pure_visual = needs_figure and not needs_table and not explicit_text
+        needs_text = bool(
+            explicit_text
+            or implicit_result_table
+            or not (needs_figure or needs_table)
+        )
+        pure_visual = needs_figure and not needs_table and not needs_text
         pure_table = (
             explicit_table
             and not needs_figure
-            and not explicit_text
+            and not needs_text
             and not implicit_result_table
         )
         if pure_visual:
@@ -68,13 +77,13 @@ class QueryRouter:
         elif pure_table:
             modalities = ["table"]
         else:
-            modalities = ["text"]
+            modalities = ["text"] if needs_text else []
         if needs_figure and "figure" not in modalities:
             modalities.append("figure")
         if needs_table and "table" not in modalities:
             modalities.append("table")
         required_modalities: list[str] = []
-        if not needs_figure and not needs_table or explicit_text:
+        if needs_text:
             required_modalities.append("text")
         if needs_figure:
             required_modalities.append("figure")

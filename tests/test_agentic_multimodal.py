@@ -55,7 +55,8 @@ def test_router_keeps_simple_text_query_on_standard_rag() -> None:
     assert router.route("What dataset does this paper use?")["route"] == "standard_rag"
     multimodal = router.route("Based on Figure 3 and Table 2, which module contributes most?")
     assert multimodal["route"] == "agentic_rag"
-    assert multimodal["modalities"] == ["text", "figure", "table"]
+    assert multimodal["modalities"] == ["figure", "table"]
+    assert multimodal["required_modalities"] == ["figure", "table"]
 
 
 def test_router_skips_text_for_pure_visual_question() -> None:
@@ -122,6 +123,105 @@ def test_router_skips_text_for_pure_table_question() -> None:
     assert routed["modalities"] == ["table"]
     assert routed["required_modalities"] == ["table"]
     assert routed["pure_table"] is True
+
+
+def test_router_requires_text_and_table_for_corpus_description_question() -> None:
+    routed = QueryRouter().route(
+        "Combine the corpus description with Table 1: what train/dev/test split "
+        "was used, and which configuration achieved the best F-score?"
+    )
+
+    assert routed["modalities"] == ["text", "table"]
+    assert routed["required_modalities"] == ["text", "table"]
+    assert routed["pure_table"] is False
+
+
+def test_router_requires_text_and_table_for_method_rationale_question() -> None:
+    routed = QueryRouter().route(
+        "Relate the method rationale to Table 2: why use product/difference "
+        "interactions, and which variant performs best?"
+    )
+
+    assert routed["modalities"] == ["text", "table"]
+    assert routed["required_modalities"] == ["text", "table"]
+    assert routed["pure_table"] is False
+
+
+def test_text_sentence_selection_uses_relevant_non_initial_sentences() -> None:
+    sentences = [
+        Sentence("s0", "paper", "chunk", 1, "Method", "We introduce SimCLIP.", None),
+        Sentence(
+            "s1", "paper", "chunk", 1, "Method",
+            "The product and difference precompute cross-modal interactions without extra weights.",
+            None,
+        ),
+        Sentence(
+            "s2", "paper", "chunk", 1, "Method",
+            "This reduces the number of trainable parameters and the network burden.",
+            None,
+        ),
+    ]
+
+    selected = EvidenceTools._select_chunk_sentences(
+        sentences,
+        "Why do product and difference operations reduce the trainable network burden?",
+        limit=2,
+    )
+
+    assert [item.id for item in selected] == ["s2", "s1"]
+
+
+def test_text_sentence_selection_normalizes_simple_inflections() -> None:
+    sentences = [
+        Sentence(
+            "s0", "paper", "chunk", 1, "Method",
+            "The embeddings use product and difference operations.", None,
+        ),
+        Sentence(
+            "s1", "paper", "chunk", 1, "Method",
+            "The product and difference compute interactions without additional weights.", None,
+        ),
+        Sentence(
+            "s2", "paper", "chunk", 1, "Method",
+            "This efficient comparison reduces the need for the network to learn them, "
+            "cutting down on trainable parameters.", None,
+        ),
+    ]
+
+    selected = EvidenceTools._select_chunk_sentences(
+        sentences,
+        "Why do the operations reduce the burden on the trainable network?",
+        limit=2,
+    )
+
+    assert [item.id for item in selected] == ["s2", "s0"]
+
+
+def test_text_sentence_selection_keeps_adjacent_mechanism_and_consequence() -> None:
+    sentences = [
+        Sentence(
+            "s0", "paper", "chunk", 1, "Method",
+            "We use product and absolute difference operations.", None,
+        ),
+        Sentence("s1", "paper", "chunk", 1, "Method", "Prior work uses concatenation.", None),
+        Sentence(
+            "s2", "paper", "chunk", 1, "Method",
+            "The product and difference compute interactions without additional weights.", None,
+        ),
+        Sentence(
+            "s3", "paper", "chunk", 1, "Method",
+            "This efficient comparison reduces what the network must learn and cuts trainable parameters.",
+            None,
+        ),
+    ]
+
+    selected = EvidenceTools._select_chunk_sentences(
+        sentences,
+        "Why do product and difference operations reduce the trainable network burden?",
+        limit=2,
+    )
+
+    assert {item.id for item in selected} == {"s2", "s3"}
 
 
 def test_planner_decomposes_methodological_claim_support_question() -> None:
@@ -239,6 +339,58 @@ class FakeVLClient:
                 "missing_information": [], "confidence": "high",
             }
         return {"figure_type": "architecture", "summary": "two modules", "components": ["encoder", "decoder"]}
+
+
+def test_cross_modal_figure_prompt_judges_only_the_visual_subtask() -> None:
+    client = FakeVLClient()
+    service = FigureUnderstandingService(
+        replace(settings, qwen_vl_key="placeholder"), client=client
+    )
+
+    result = service.analyze_for_query(
+        "paper",
+        sample_paper().figures[0],
+        "Using Figure 3 and Table 2, summarize the workflow and report the score.",
+    )
+
+    assert result["answerable"] is True
+    assert "Judge only whether" in client.prompts[-1]
+    assert "figure-dependent part of the question" in client.prompts[-1]
+    assert "do not set answerable=false" in client.prompts[-1]
+
+
+def test_cross_modal_table_dependency_does_not_fail_figure_subtask() -> None:
+    class CrossModalVLClient(FakeVLClient):
+        def analyze(self, _image_path, prompt):
+            self.prompts.append(prompt)
+            return {
+                "relevant": True,
+                "answerable": False,
+                "figure_evidence": [{
+                    "evidence": "The figure shows a six-step refinement workflow.",
+                    "source": "figure",
+                }],
+                "visual_observations": [],
+                "interpretation": "The workflow is visible, but Table 1 is absent.",
+                "missing_information": ["Table 1 GPT-4o average F1"],
+                "confidence": "high",
+            }
+
+    service = FigureUnderstandingService(
+        replace(settings, qwen_vl_key="placeholder"),
+        client=CrossModalVLClient(),
+    )
+
+    result = service.analyze_for_query(
+        "paper",
+        sample_paper().figures[0],
+        "Using Figure 3 and Table 1, summarize the workflow and report F1.",
+    )
+
+    assert result["answerable"] is True
+    assert result["missing_information"] == []
+    assert result["cross_modal_dependencies"] == ["Table 1 GPT-4o average F1"]
+    assert result["cache_version"] == 4
 
 
 def test_qwen_client_upscales_low_resolution_figure_in_memory(tmp_path: Path) -> None:

@@ -1,0 +1,1633 @@
+{
+  "dataset": "evals\\questions.v4.jsonl",
+  "count": 1,
+  "answerable_count": 1,
+  "unanswerable_count": 0,
+  "decision_count": 1,
+  "execution_success_rate": 1.0,
+  "answer_evaluated_count": 1,
+  "answer_correct_count": 0,
+  "dataset_issue_count": 0,
+  "dataset_issue_case_ids": [],
+  "answer_correct_rate": 0.0,
+  "task_success_rate": 0.0,
+  "answerability_accuracy": 0.0,
+  "refusal_accuracy": 0.0,
+  "answer_delivery_rate": 0.0,
+  "gold_citation_hit_rate": 0.0,
+  "complete_gold_citation_hit_rate": 0.0,
+  "mean_gold_citation_precision": 0.0,
+  "mean_gold_citation_recall": 0.0,
+  "llm_judged_count": 0,
+  "llm_answer_score_0_to_2": null,
+  "llm_exact_correct_rate": null,
+  "mean_end_to_end_latency_ms": 121614.9,
+  "p95_end_to_end_latency_ms": 121614.9,
+  "max_end_to_end_latency_ms": 121614.9,
+  "mean_agent_count": 6.0,
+  "retry_case_rate": 1.0,
+  "mean_retry_count": 1.0,
+  "node_failure_rate": 0.25,
+  "recovery_attempt_count": 1,
+  "recovery_success_rate": 0.0,
+  "configuration": {
+    "mode": "rag",
+    "split": "dev",
+    "strategy": "hybrid-rerank",
+    "query_rewrite_enabled": true,
+    "claim_verification_enabled": true,
+    "llm_judge_enabled": true,
+    "visual_judge_enabled_for_visual_only": true,
+    "online_visual_judge_enabled": false,
+    "orchestrator": "langgraph",
+    "parallel_enabled": true,
+    "case_id": "bottle-crossmodal-ib-progress-v4-11",
+    "limit": 5
+  },
+  "agentic_metrics": {
+    "overall": {
+      "count": 1,
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "k": 5
+      },
+      "evidence": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "generation": {
+        "faithfulness": 0.0,
+        "claim_support_rate": 0.0
+      },
+      "agent": {
+        "execution_success_rate": 1.0,
+        "answer_correct_rate": 0.0,
+        "task_success_rate": 0.0,
+        "average_steps": 5.0,
+        "average_tool_calls": 5.0,
+        "repeated_tool_call_rate": 0.2
+      },
+      "multimodal": {
+        "text_retrieval_recall_at_k": 0.0,
+        "figure_retrieval_recall_at_k": 0.0,
+        "table_retrieval_recall_at_k": 1.0,
+        "text_retrieval_mrr": 0.0,
+        "figure_retrieval_mrr": 0.0,
+        "table_retrieval_mrr": 1.0,
+        "modality_routing_accuracy": 0.0
+      },
+      "engineering": {
+        "average_latency_ms": 121614.9,
+        "average_token_usage": 27951.0,
+        "average_qwen_vl_calls": 0.0,
+        "total_qwen_vl_calls": 0,
+        "average_visual_judge_qwen_vl_calls": 0.0,
+        "total_visual_judge_qwen_vl_calls": 0,
+        "total_qwen_vl_calls_including_judge": 0
+      }
+    },
+    "by_mode": {
+      "standard_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "text_agentic_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "multimodal_agentic_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "text_multi_agent_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "multimodal_multi_agent_rag": {
+        "count": 1,
+        "retrieval": {
+          "recall_at_k": 0.5,
+          "mrr": 1.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": 1.0,
+          "answer_correct_rate": 0.0,
+          "task_success_rate": 0.0,
+          "average_steps": 5.0,
+          "average_tool_calls": 5.0,
+          "repeated_tool_call_rate": 0.2
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 1.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 1.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 121614.9,
+          "average_token_usage": 27951.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      }
+    }
+  },
+  "records": [
+    {
+      "case_id": "bottle-crossmodal-ib-progress-v4-11",
+      "paper_id": "7127f33d-1468-4313-bca8-3deab488ea3f",
+      "question": "Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+      "mode": "multimodal_multi_agent_rag",
+      "gold_answerable": true,
+      "predicted_answerable": false,
+      "answerability_correct": false,
+      "answer": "论文证据不足，无法回答。问题要求结合 Figure 4 与 Table 3 判断哪个 IB component 的 plotted F1 最高。Table 3 仅提供 GPT4o 与 Flash1.5 在不同 hop 下按数据集（MC/NY/YB）的 P/R/F1，并未按 IB component 拆分 F1；而 Figure 4 仅有标题性文本证据（“Figure 4: Performance of GPT4o on different IB components.”），缺少可用的图像视觉观察字段，无法读取各 IB component 的 F1 数值。因此无法完成该跨模态比较。",
+      "refusal_reason": "问题要求结合 Figure 4 与 Table 3 判断哪个 IB component 的 plotted F1 最高。Table 3 仅提供 GPT4o 与 Flash1.5 在不同 hop 下按数据集（MC/NY/YB）的 P/R/F1，并未按 IB component 拆分 F1；而 Figure 4 仅有标题性文本证据（“Figure 4: Performance of GPT4o on different IB components.”），缺少可用的图像视觉观察字段，无法读取各 IB component 的 F1 数值。因此无法完成该跨模态比较。",
+      "answer_status": "partial",
+      "claims": [],
+      "citation_ids": [],
+      "gold_sentence_ids": [],
+      "gold_sentence_groups": [],
+      "gold_evidence_groups": [
+        [
+          "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004",
+          "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+        ]
+      ],
+      "gold_citation_hit": false,
+      "gold_complete_citation_hit": false,
+      "gold_citation_precision": 0.0,
+      "gold_citation_recall": 0.0,
+      "query_plan": {
+        "router": {
+          "complexity": "complex",
+          "route": "agentic_rag",
+          "modalities": [
+            "text",
+            "figure",
+            "table"
+          ],
+          "required_modalities": [
+            "figure",
+            "table"
+          ],
+          "pure_visual": false,
+          "pure_table": false,
+          "reason": "需要分解任务或读取非文本证据。"
+        },
+        "rewrites": [
+          {
+            "subtask_id": "task_1",
+            "attempt": 0,
+            "query": "Figure 4 Table 3 method result statements Combine Figure 4 Table 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0"
+          },
+          {
+            "subtask_id": "task_2",
+            "attempt": 0,
+            "query": "Figure 4 Table 3 original scientific figure Combine 4 Table 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0 2"
+          },
+          {
+            "subtask_id": "task_3",
+            "attempt": 0,
+            "query": "Figure 4 Table 3 structured table evidence Combine Figure 4 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0 2"
+          }
+        ]
+      },
+      "router": {
+        "complexity": "complex",
+        "route": "agentic_rag",
+        "modalities": [
+          "text",
+          "figure",
+          "table"
+        ],
+        "required_modalities": [
+          "figure",
+          "table"
+        ],
+        "pure_visual": false,
+        "pure_table": false,
+        "reason": "需要分解任务或读取非文本证据。"
+      },
+      "retrieval": {
+        "effective_strategy": "hybrid-rerank+metadata-exact",
+        "effective_strategies": [
+          "hybrid-rerank",
+          "metadata-exact"
+        ],
+        "degraded": false,
+        "warnings": [],
+        "search_count": 2
+      },
+      "trace": {
+        "run_id": "3c7e3833-dcaf-4b0d-8a51-d14cda50ca76",
+        "query": "Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+        "route": "langgraph_agentic_rag",
+        "router": {
+          "complexity": "complex",
+          "route": "agentic_rag",
+          "modalities": [
+            "text",
+            "figure",
+            "table"
+          ],
+          "required_modalities": [
+            "figure",
+            "table"
+          ],
+          "pure_visual": false,
+          "pure_table": false,
+          "reason": "需要分解任务或读取非文本证据。"
+        },
+        "plan": {
+          "goal": "Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+          "execution": "parallel",
+          "selected_agents": [
+            "text_agent",
+            "figure_agent",
+            "table_agent"
+          ],
+          "reason": "需要分解任务或读取非文本证据。",
+          "sub_tasks": [
+            {
+              "task_id": "task_1",
+              "source_task_id": "task_1",
+              "agent": "text_agent",
+              "modality": "text",
+              "instruction": "Find method or result statements relevant to: Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+              "query": "Figure 4 Table 3 method result statements Combine Figure 4 Table 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0",
+              "required_modalities": [
+                "text"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            },
+            {
+              "task_id": "task_2",
+              "source_task_id": "task_2",
+              "agent": "figure_agent",
+              "modality": "figure",
+              "instruction": "Find the original scientific figure relevant to: Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+              "query": "Figure 4 Table 3 original scientific figure Combine 4 Table 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0 2",
+              "required_modalities": [
+                "figure"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            },
+            {
+              "task_id": "task_3",
+              "source_task_id": "task_3",
+              "agent": "table_agent",
+              "modality": "table",
+              "instruction": "Find structured table evidence relevant to: Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+              "query": "Figure 4 Table 3 structured table evidence Combine Figure 4 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0 2",
+              "required_modalities": [
+                "table"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            }
+          ],
+          "budgets": {
+            "max_steps": 10,
+            "max_retries": 1,
+            "max_model_calls": 8,
+            "max_qwen_vl_calls": 2,
+            "timeout_seconds": 120.0
+          }
+        },
+        "rewrites": [
+          {
+            "subtask_id": "task_1",
+            "attempt": 0,
+            "query": "Figure 4 Table 3 method result statements Combine Figure 4 Table 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0"
+          },
+          {
+            "subtask_id": "task_2",
+            "attempt": 0,
+            "query": "Figure 4 Table 3 original scientific figure Combine 4 Table 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0 2"
+          },
+          {
+            "subtask_id": "task_3",
+            "attempt": 0,
+            "query": "Figure 4 Table 3 structured table evidence Combine Figure 4 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0 2"
+          }
+        ],
+        "steps": [
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "function_calling_fallback",
+            "arguments": {
+              "mode": "function_calling_with_fallback"
+            },
+            "result_ids": [],
+            "latency_ms": 41781.6,
+            "cached": false,
+            "retrieval": {},
+            "status": "fallback",
+            "error": {
+              "type": "FunctionCallingError",
+              "category": "application",
+              "retryable": false,
+              "message": "function_call_budget_exhausted"
+            },
+            "step": 1
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "search_text",
+            "arguments": {
+              "query": "Figure 4 Table 3 method result statements Combine Figure 4 Table 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0",
+              "top_k": 10,
+              "attempt": 0
+            },
+            "result_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0"
+            ],
+            "latency_ms": 6231.1,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 400,
+              "lexical_candidate_count": 190,
+              "semantic_candidate_count": 24,
+              "fusion_candidate_count": 191,
+              "rerank_candidate_count": 8,
+              "reranked": true,
+              "returned_count": 8,
+              "bm25_latency_ms": 27.4,
+              "dense_latency_ms": 273.4,
+              "rerank_latency_ms": 5929.8
+            },
+            "status": "success",
+            "error": null,
+            "step": 2
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "function_calling_fallback",
+            "arguments": {
+              "mode": "function_calling_with_fallback"
+            },
+            "result_ids": [],
+            "latency_ms": 24434.6,
+            "cached": false,
+            "retrieval": {},
+            "status": "fallback",
+            "error": {
+              "type": "FunctionCallingError",
+              "category": "application",
+              "retryable": false,
+              "message": "function_call_budget_exhausted"
+            },
+            "step": 3
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "Figure 4 Table 3 structured table evidence Combine Figure 4 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0 2",
+              "top_k": 5,
+              "attempt": 0
+            },
+            "result_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 1,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 1,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_table_numbers": [
+                3
+              ],
+              "exact_table_match_applied": true,
+              "exact_table_ids": [
+                "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "step": 4
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "read_table",
+            "arguments": {
+              "table_id": "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+            },
+            "result_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+            ],
+            "latency_ms": 0.2,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "step": 5
+          }
+        ],
+        "final_evidence_ids": [],
+        "total_steps": 5,
+        "total_latency_ms": 121614.7,
+        "token_usage": 27951,
+        "qwen_vl_calls": 0,
+        "sufficiency": {
+          "sufficient": false,
+          "covered_subtasks": [
+            "task_1",
+            "task_3"
+          ],
+          "missing_subtasks": [
+            "task_2"
+          ],
+          "missing_information": [
+            "Multi-Agent 全局执行超时。"
+          ]
+        },
+        "evidence_memory": [
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-table_003",
+            "type": "table",
+            "used": false
+          }
+        ],
+        "retrieval": {
+          "effective_strategy": "hybrid-rerank+metadata-exact",
+          "effective_strategies": [
+            "hybrid-rerank",
+            "metadata-exact"
+          ],
+          "degraded": false,
+          "warnings": [],
+          "search_count": 2
+        },
+        "model_calls": 8,
+        "execution_mode": "parallel",
+        "critique": {
+          "decision": "partial",
+          "required_modalities": [
+            "figure",
+            "table"
+          ],
+          "usable_modalities": [
+            "table",
+            "text"
+          ],
+          "missing_modalities": [
+            "figure"
+          ],
+          "conflicts": [],
+          "retry_targets": [],
+          "reasons": [
+            "缺少可用的 figure Evidence。"
+          ]
+        },
+        "conversation_id": null,
+        "turn_index": null,
+        "original_question": "Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+        "resolved_question": "Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+        "referenced_evidence_ids": [],
+        "specialist_execution_mode": "function_calling_with_fallback",
+        "function_calls": [],
+        "function_call_fallbacks": 2,
+        "orchestrator": "langgraph",
+        "node_traces": [
+          {
+            "node": "supervisor_plan",
+            "agent": "supervisor_agent",
+            "status": "success",
+            "latency_ms": 1.6,
+            "selected_agents": [
+              "text_agent",
+              "figure_agent",
+              "table_agent"
+            ],
+            "task_ids": [
+              "task_1",
+              "task_2",
+              "task_3"
+            ],
+            "evidence_ids": [],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "text_agent",
+            "task_id": "task_1",
+            "status": "success",
+            "latency_ms": 48012.7,
+            "evidence_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0"
+            ],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "figure_agent",
+            "task_id": "task_2",
+            "status": "failed",
+            "latency_ms": 119971.3,
+            "evidence_ids": [],
+            "errors": [
+              {
+                "type": "TimeoutError",
+                "category": "timeout",
+                "message": "并行节点执行超时。",
+                "retryable": true
+              }
+            ]
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "table_agent",
+            "task_id": "task_3",
+            "status": "success",
+            "latency_ms": 24435.0,
+            "evidence_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+            ],
+            "errors": []
+          },
+          {
+            "node": "evidence_critic",
+            "agent": "evidence_critic",
+            "status": "retry",
+            "latency_ms": 0.0,
+            "evidence_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+            ],
+            "missing_modalities": [
+              "figure"
+            ],
+            "conflicts": [],
+            "errors": []
+          },
+          {
+            "node": "repair_dispatch",
+            "agent": "figure_agent",
+            "task_id": "task_2",
+            "status": "failed",
+            "latency_ms": 0.0,
+            "evidence_ids": [],
+            "errors": [
+              {
+                "type": "BudgetExceeded",
+                "category": "budget",
+                "message": "Multi-Agent 全局执行超时。",
+                "retryable": false
+              }
+            ]
+          },
+          {
+            "node": "evidence_critic",
+            "agent": "evidence_critic",
+            "status": "partial",
+            "latency_ms": 0.0,
+            "evidence_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+            ],
+            "missing_modalities": [
+              "figure"
+            ],
+            "conflicts": [],
+            "errors": []
+          },
+          {
+            "node": "answer_agent",
+            "agent": "answer_agent",
+            "status": "partial",
+            "latency_ms": 1580.0,
+            "evidence_ids": [],
+            "errors": []
+          }
+        ],
+        "agent_count": 6,
+        "retry_count": 1,
+        "recovery": {
+          "attempted": true,
+          "successful": false,
+          "final_decision": "partial"
+        }
+      },
+      "agent_trace": {
+        "run_id": "3c7e3833-dcaf-4b0d-8a51-d14cda50ca76",
+        "query": "Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+        "route": "langgraph_agentic_rag",
+        "router": {
+          "complexity": "complex",
+          "route": "agentic_rag",
+          "modalities": [
+            "text",
+            "figure",
+            "table"
+          ],
+          "required_modalities": [
+            "figure",
+            "table"
+          ],
+          "pure_visual": false,
+          "pure_table": false,
+          "reason": "需要分解任务或读取非文本证据。"
+        },
+        "plan": {
+          "goal": "Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+          "execution": "parallel",
+          "selected_agents": [
+            "text_agent",
+            "figure_agent",
+            "table_agent"
+          ],
+          "reason": "需要分解任务或读取非文本证据。",
+          "sub_tasks": [
+            {
+              "task_id": "task_1",
+              "source_task_id": "task_1",
+              "agent": "text_agent",
+              "modality": "text",
+              "instruction": "Find method or result statements relevant to: Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+              "query": "Figure 4 Table 3 method result statements Combine Figure 4 Table 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0",
+              "required_modalities": [
+                "text"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            },
+            {
+              "task_id": "task_2",
+              "source_task_id": "task_2",
+              "agent": "figure_agent",
+              "modality": "figure",
+              "instruction": "Find the original scientific figure relevant to: Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+              "query": "Figure 4 Table 3 original scientific figure Combine 4 Table 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0 2",
+              "required_modalities": [
+                "figure"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            },
+            {
+              "task_id": "task_3",
+              "source_task_id": "task_3",
+              "agent": "table_agent",
+              "modality": "table",
+              "instruction": "Find structured table evidence relevant to: Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+              "query": "Figure 4 Table 3 structured table evidence Combine Figure 4 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0 2",
+              "required_modalities": [
+                "table"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            }
+          ],
+          "budgets": {
+            "max_steps": 10,
+            "max_retries": 1,
+            "max_model_calls": 8,
+            "max_qwen_vl_calls": 2,
+            "timeout_seconds": 120.0
+          }
+        },
+        "rewrites": [
+          {
+            "subtask_id": "task_1",
+            "attempt": 0,
+            "query": "Figure 4 Table 3 method result statements Combine Figure 4 Table 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0"
+          },
+          {
+            "subtask_id": "task_2",
+            "attempt": 0,
+            "query": "Figure 4 Table 3 original scientific figure Combine 4 Table 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0 2"
+          },
+          {
+            "subtask_id": "task_3",
+            "attempt": 0,
+            "query": "Figure 4 Table 3 structured table evidence Combine Figure 4 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0 2"
+          }
+        ],
+        "steps": [
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "function_calling_fallback",
+            "arguments": {
+              "mode": "function_calling_with_fallback"
+            },
+            "result_ids": [],
+            "latency_ms": 41781.6,
+            "cached": false,
+            "retrieval": {},
+            "status": "fallback",
+            "error": {
+              "type": "FunctionCallingError",
+              "category": "application",
+              "retryable": false,
+              "message": "function_call_budget_exhausted"
+            },
+            "step": 1
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "search_text",
+            "arguments": {
+              "query": "Figure 4 Table 3 method result statements Combine Figure 4 Table 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0",
+              "top_k": 10,
+              "attempt": 0
+            },
+            "result_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0"
+            ],
+            "latency_ms": 6231.1,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 400,
+              "lexical_candidate_count": 190,
+              "semantic_candidate_count": 24,
+              "fusion_candidate_count": 191,
+              "rerank_candidate_count": 8,
+              "reranked": true,
+              "returned_count": 8,
+              "bm25_latency_ms": 27.4,
+              "dense_latency_ms": 273.4,
+              "rerank_latency_ms": 5929.8
+            },
+            "status": "success",
+            "error": null,
+            "step": 2
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "function_calling_fallback",
+            "arguments": {
+              "mode": "function_calling_with_fallback"
+            },
+            "result_ids": [],
+            "latency_ms": 24434.6,
+            "cached": false,
+            "retrieval": {},
+            "status": "fallback",
+            "error": {
+              "type": "FunctionCallingError",
+              "category": "application",
+              "retryable": false,
+              "message": "function_call_budget_exhausted"
+            },
+            "step": 3
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "Figure 4 Table 3 structured table evidence Combine Figure 4 3 which IB component has highest plotted F1 how does GPT-4o change from hop 0 2",
+              "top_k": 5,
+              "attempt": 0
+            },
+            "result_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 1,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 1,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_table_numbers": [
+                3
+              ],
+              "exact_table_match_applied": true,
+              "exact_table_ids": [
+                "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "step": 4
+          },
+          {
+            "subtask_id": "task_3",
+            "task_id": "task_3",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "read_table",
+            "arguments": {
+              "table_id": "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+            },
+            "result_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+            ],
+            "latency_ms": 0.2,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "step": 5
+          }
+        ],
+        "final_evidence_ids": [],
+        "total_steps": 5,
+        "total_latency_ms": 121614.7,
+        "token_usage": 27951,
+        "qwen_vl_calls": 0,
+        "sufficiency": {
+          "sufficient": false,
+          "covered_subtasks": [
+            "task_1",
+            "task_3"
+          ],
+          "missing_subtasks": [
+            "task_2"
+          ],
+          "missing_information": [
+            "Multi-Agent 全局执行超时。"
+          ]
+        },
+        "evidence_memory": [
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "7127f33d-1468-4313-bca8-3deab488ea3f-table_003",
+            "type": "table",
+            "used": false
+          }
+        ],
+        "retrieval": {
+          "effective_strategy": "hybrid-rerank+metadata-exact",
+          "effective_strategies": [
+            "hybrid-rerank",
+            "metadata-exact"
+          ],
+          "degraded": false,
+          "warnings": [],
+          "search_count": 2
+        },
+        "model_calls": 8,
+        "execution_mode": "parallel",
+        "critique": {
+          "decision": "partial",
+          "required_modalities": [
+            "figure",
+            "table"
+          ],
+          "usable_modalities": [
+            "table",
+            "text"
+          ],
+          "missing_modalities": [
+            "figure"
+          ],
+          "conflicts": [],
+          "retry_targets": [],
+          "reasons": [
+            "缺少可用的 figure Evidence。"
+          ]
+        },
+        "conversation_id": null,
+        "turn_index": null,
+        "original_question": "Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+        "resolved_question": "Combine Figure 4 and Table 3: which IB component has the highest plotted F1, and how does GPT-4o F1 change from hop 0 to hop 2 on MemeCap and NewYorker?",
+        "referenced_evidence_ids": [],
+        "specialist_execution_mode": "function_calling_with_fallback",
+        "function_calls": [],
+        "function_call_fallbacks": 2,
+        "orchestrator": "langgraph",
+        "node_traces": [
+          {
+            "node": "supervisor_plan",
+            "agent": "supervisor_agent",
+            "status": "success",
+            "latency_ms": 1.6,
+            "selected_agents": [
+              "text_agent",
+              "figure_agent",
+              "table_agent"
+            ],
+            "task_ids": [
+              "task_1",
+              "task_2",
+              "task_3"
+            ],
+            "evidence_ids": [],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "text_agent",
+            "task_id": "task_1",
+            "status": "success",
+            "latency_ms": 48012.7,
+            "evidence_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0"
+            ],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "figure_agent",
+            "task_id": "task_2",
+            "status": "failed",
+            "latency_ms": 119971.3,
+            "evidence_ids": [],
+            "errors": [
+              {
+                "type": "TimeoutError",
+                "category": "timeout",
+                "message": "并行节点执行超时。",
+                "retryable": true
+              }
+            ]
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "table_agent",
+            "task_id": "task_3",
+            "status": "success",
+            "latency_ms": 24435.0,
+            "evidence_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+            ],
+            "errors": []
+          },
+          {
+            "node": "evidence_critic",
+            "agent": "evidence_critic",
+            "status": "retry",
+            "latency_ms": 0.0,
+            "evidence_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+            ],
+            "missing_modalities": [
+              "figure"
+            ],
+            "conflicts": [],
+            "errors": []
+          },
+          {
+            "node": "repair_dispatch",
+            "agent": "figure_agent",
+            "task_id": "task_2",
+            "status": "failed",
+            "latency_ms": 0.0,
+            "evidence_ids": [],
+            "errors": [
+              {
+                "type": "BudgetExceeded",
+                "category": "budget",
+                "message": "Multi-Agent 全局执行超时。",
+                "retryable": false
+              }
+            ]
+          },
+          {
+            "node": "evidence_critic",
+            "agent": "evidence_critic",
+            "status": "partial",
+            "latency_ms": 0.0,
+            "evidence_ids": [
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0",
+              "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+            ],
+            "missing_modalities": [
+              "figure"
+            ],
+            "conflicts": [],
+            "errors": []
+          },
+          {
+            "node": "answer_agent",
+            "agent": "answer_agent",
+            "status": "partial",
+            "latency_ms": 1580.0,
+            "evidence_ids": [],
+            "errors": []
+          }
+        ],
+        "agent_count": 6,
+        "retry_count": 1,
+        "recovery": {
+          "attempted": true,
+          "successful": false,
+          "final_decision": "partial"
+        }
+      },
+      "tool_calls": [
+        "function_calling_fallback",
+        "search_text",
+        "function_calling_fallback",
+        "search_tables",
+        "read_table"
+      ],
+      "steps": 5,
+      "qwen_vl_calls": 0,
+      "visual_judge_qwen_vl_calls": 0,
+      "total_qwen_vl_calls": 0,
+      "token_usage": 27951,
+      "orchestrator": "langgraph",
+      "agent_count": 6,
+      "retry_count": 1,
+      "recovery": {
+        "attempted": true,
+        "successful": false,
+        "final_decision": "partial"
+      },
+      "node_traces": [
+        {
+          "node": "supervisor_plan",
+          "agent": "supervisor_agent",
+          "status": "success",
+          "latency_ms": 1.6,
+          "selected_agents": [
+            "text_agent",
+            "figure_agent",
+            "table_agent"
+          ],
+          "task_ids": [
+            "task_1",
+            "task_2",
+            "task_3"
+          ],
+          "evidence_ids": [],
+          "errors": []
+        },
+        {
+          "node": "specialist_dispatch",
+          "agent": "text_agent",
+          "task_id": "task_1",
+          "status": "success",
+          "latency_ms": 48012.7,
+          "evidence_ids": [
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0"
+          ],
+          "errors": []
+        },
+        {
+          "node": "specialist_dispatch",
+          "agent": "figure_agent",
+          "task_id": "task_2",
+          "status": "failed",
+          "latency_ms": 119971.3,
+          "evidence_ids": [],
+          "errors": [
+            {
+              "type": "TimeoutError",
+              "category": "timeout",
+              "message": "并行节点执行超时。",
+              "retryable": true
+            }
+          ]
+        },
+        {
+          "node": "specialist_dispatch",
+          "agent": "table_agent",
+          "task_id": "task_3",
+          "status": "success",
+          "latency_ms": 24435.0,
+          "evidence_ids": [
+            "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+          ],
+          "errors": []
+        },
+        {
+          "node": "evidence_critic",
+          "agent": "evidence_critic",
+          "status": "retry",
+          "latency_ms": 0.0,
+          "evidence_ids": [
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+          ],
+          "missing_modalities": [
+            "figure"
+          ],
+          "conflicts": [],
+          "errors": []
+        },
+        {
+          "node": "repair_dispatch",
+          "agent": "figure_agent",
+          "task_id": "task_2",
+          "status": "failed",
+          "latency_ms": 0.0,
+          "evidence_ids": [],
+          "errors": [
+            {
+              "type": "BudgetExceeded",
+              "category": "budget",
+              "message": "Multi-Agent 全局执行超时。",
+              "retryable": false
+            }
+          ]
+        },
+        {
+          "node": "evidence_critic",
+          "agent": "evidence_critic",
+          "status": "partial",
+          "latency_ms": 0.0,
+          "evidence_ids": [
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0",
+            "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+          ],
+          "missing_modalities": [
+            "figure"
+          ],
+          "conflicts": [],
+          "errors": []
+        },
+        {
+          "node": "answer_agent",
+          "agent": "answer_agent",
+          "status": "partial",
+          "latency_ms": 1580.0,
+          "evidence_ids": [],
+          "errors": []
+        }
+      ],
+      "expected_tools": [
+        "search_figures",
+        "analyze_figure_for_query",
+        "search_tables",
+        "read_table"
+      ],
+      "expected_modalities": [
+        "figure",
+        "table"
+      ],
+      "predicted_modalities": [],
+      "routed_modalities": [
+        "text",
+        "figure",
+        "table"
+      ],
+      "required_modalities": [
+        "figure",
+        "table"
+      ],
+      "expected_evidence_ids": [
+        "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+      ],
+      "expected_evidence_groups": [
+        [
+          "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004",
+          "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+        ]
+      ],
+      "expected_chunk_ids": [],
+      "expected_chunk_groups": [],
+      "ranked_evidence_ids": [
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+      ],
+      "ranked_evidence_ids_by_modality": {
+        "text": [
+          "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+          "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+          "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+          "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+          "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+          "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+          "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+          "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0"
+        ],
+        "figure": [],
+        "table": [
+          "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+        ]
+      },
+      "ranked_text_ids": [
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b11-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b8-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p6-b28-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b1-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b3-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p13-b9-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p8-b9-s0",
+        "7127f33d-1468-4313-bca8-3deab488ea3f-p7-b24-s0"
+      ],
+      "ranked_figure_ids": [],
+      "ranked_table_ids": [
+        "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+      ],
+      "returned_evidence_ids": [],
+      "expected_text_ids": [],
+      "expected_figure_ids": [
+        "7127f33d-1468-4313-bca8-3deab488ea3f-fig_004"
+      ],
+      "expected_table_ids": [
+        "7127f33d-1468-4313-bca8-3deab488ea3f-table_003"
+      ],
+      "returned_text_ids": [],
+      "returned_figure_ids": [],
+      "returned_table_ids": [],
+      "execution_success": true,
+      "answer_correct": false,
+      "task_success": false,
+      "judge": {
+        "score": null,
+        "correct": null,
+        "reason": "未启用",
+        "kind": null,
+        "dataset_issue": null
+      },
+      "latency_ms": 121614.9,
+      "status": "ok"
+    }
+  ]
+}

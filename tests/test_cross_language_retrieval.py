@@ -41,3 +41,29 @@ def test_query_plan_preserves_semantic_query_and_uses_english_rewrite() -> None:
     assert plan["semantic_query"] == "BERT 在哪些数据集上提升了 12.5%？"
     assert plan["lexical_query"] == "datasets used in experiments BERT 12.5%"
     assert plan["translated"] is True
+
+
+def test_english_query_expands_common_model_acronyms_for_bm25() -> None:
+    service = ReadingService(settings, HybridRetriever(settings))
+
+    plan = service.plan_query(
+        "How are the CNN and LSTM arranged in the classifier?"
+    )
+
+    assert plan["semantic_query"] == "How are the CNN and LSTM arranged in the classifier?"
+    assert "convolutional neural network" in plan["lexical_query"]
+    assert "long short-term memory" in plan["lexical_query"]
+    assert plan["section_hints"] == (
+        "method", "methodology", "approach", "model", "architecture"
+    )
+    assert plan["translated"] is False
+
+
+def test_result_query_does_not_hard_scope_to_method_sections() -> None:
+    service = ReadingService(settings, HybridRetriever(settings))
+
+    plan = service.plan_query(
+        "Which method has the best F1 performance in the experiment?"
+    )
+
+    assert plan["section_hints"] == ()

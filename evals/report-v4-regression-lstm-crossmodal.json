@@ -1,0 +1,2121 @@
+{
+  "dataset": "evals\\questions.v4.jsonl",
+  "count": 1,
+  "answerable_count": 1,
+  "unanswerable_count": 0,
+  "decision_count": 1,
+  "execution_success_rate": 1.0,
+  "answer_evaluated_count": 1,
+  "answer_correct_count": 1,
+  "dataset_issue_count": 0,
+  "dataset_issue_case_ids": [],
+  "answer_correct_rate": 1.0,
+  "task_success_rate": 1.0,
+  "answerability_accuracy": 1.0,
+  "refusal_accuracy": 0.0,
+  "answer_delivery_rate": 1.0,
+  "gold_citation_hit_rate": 1.0,
+  "complete_gold_citation_hit_rate": 1.0,
+  "mean_gold_citation_precision": 0.5,
+  "mean_gold_citation_recall": 1.0,
+  "llm_judged_count": 1,
+  "llm_answer_score_0_to_2": 2.0,
+  "llm_exact_correct_rate": 1.0,
+  "mean_end_to_end_latency_ms": 33544.7,
+  "p95_end_to_end_latency_ms": 33544.7,
+  "max_end_to_end_latency_ms": 33544.7,
+  "mean_agent_count": 5.0,
+  "retry_case_rate": 0.0,
+  "mean_retry_count": 0.0,
+  "node_failure_rate": 0.0,
+  "recovery_attempt_count": 0,
+  "recovery_success_rate": null,
+  "configuration": {
+    "mode": "rag",
+    "split": "dev",
+    "strategy": "hybrid-rerank",
+    "query_rewrite_enabled": true,
+    "claim_verification_enabled": true,
+    "llm_judge_enabled": true,
+    "visual_judge_enabled_for_visual_only": true,
+    "online_visual_judge_enabled": false,
+    "orchestrator": "langgraph",
+    "parallel_enabled": true,
+    "case_id": "lstm-crossmodal-split-result-v4-11",
+    "limit": 5
+  },
+  "agentic_metrics": {
+    "overall": {
+      "count": 1,
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "k": 5
+      },
+      "evidence": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.6667
+      },
+      "generation": {
+        "faithfulness": 1.0,
+        "claim_support_rate": 1.0
+      },
+      "agent": {
+        "execution_success_rate": 1.0,
+        "answer_correct_rate": 1.0,
+        "task_success_rate": 1.0,
+        "average_steps": 6.0,
+        "average_tool_calls": 6.0,
+        "repeated_tool_call_rate": 0.3333
+      },
+      "multimodal": {
+        "text_retrieval_recall_at_k": 0.0,
+        "figure_retrieval_recall_at_k": 0.0,
+        "table_retrieval_recall_at_k": 1.0,
+        "text_retrieval_mrr": 0.0,
+        "figure_retrieval_mrr": 0.0,
+        "table_retrieval_mrr": 1.0,
+        "modality_routing_accuracy": 1.0
+      },
+      "engineering": {
+        "average_latency_ms": 33544.7,
+        "average_token_usage": 11154.0,
+        "average_qwen_vl_calls": 0.0,
+        "total_qwen_vl_calls": 0,
+        "average_visual_judge_qwen_vl_calls": 0.0,
+        "total_visual_judge_qwen_vl_calls": 0,
+        "total_qwen_vl_calls_including_judge": 0
+      }
+    },
+    "by_mode": {
+      "standard_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "text_agentic_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "multimodal_agentic_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "text_multi_agent_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "multimodal_multi_agent_rag": {
+        "count": 1,
+        "retrieval": {
+          "recall_at_k": 0.5,
+          "mrr": 1.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.6667
+        },
+        "generation": {
+          "faithfulness": 1.0,
+          "claim_support_rate": 1.0
+        },
+        "agent": {
+          "execution_success_rate": 1.0,
+          "answer_correct_rate": 1.0,
+          "task_success_rate": 1.0,
+          "average_steps": 6.0,
+          "average_tool_calls": 6.0,
+          "repeated_tool_call_rate": 0.3333
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 1.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 1.0,
+          "modality_routing_accuracy": 1.0
+        },
+        "engineering": {
+          "average_latency_ms": 33544.7,
+          "average_token_usage": 11154.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      }
+    }
+  },
+  "records": [
+    {
+      "case_id": "lstm-crossmodal-split-result-v4-11",
+      "paper_id": "2de38bfe-63c1-43d7-b6f3-7de909020853",
+      "question": "Combine the corpus description with Table 1: what train/dev/test split was used, and which configuration achieved the best F-score?",
+      "mode": "multimodal_multi_agent_rag",
+      "gold_answerable": true,
+      "predicted_answerable": true,
+      "answerability_correct": true,
+      "answer": "The corpus was split into 80% training, 10% development, and 10% test episodes.\nThe split contained 35,865 training utterances, 3,904 development utterances, and 3,903 test utterances.\nTable 1 shows the best F-score was 62.9%, achieved by LSTM + high level features.\nThe LSTM with the high level feature vector achieved the highest accuracy of 70.0% and the highest F-score of 62.9%.",
+      "refusal_reason": "",
+      "answer_status": "ok",
+      "claims": [
+        {
+          "claim": "The corpus was split into 80% training, 10% development, and 10% test episodes.",
+          "text": "The corpus was split into 80% training, 10% development, and 10% test episodes.",
+          "evidence_ids": [
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1"
+          ],
+          "citations": [
+            {
+              "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+              "id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+              "type": "text",
+              "page": 4,
+              "bbox": [
+                72.0,
+                316.1,
+                298.8,
+                354.1
+              ],
+              "content": "We built a training set of 80% of the overall episodes, and a development and test set of 10% each.",
+              "text": "We built a training set of 80% of the overall episodes, and a development and test set of 10% each.",
+              "section": "3.1 Corpus",
+              "metadata": {
+                "chunk_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8",
+                "bboxes": [
+                  [
+                    284.5,
+                    316.1,
+                    298.8,
+                    327.0
+                  ],
+                  [
+                    72.0,
+                    329.7,
+                    298.8,
+                    340.6
+                  ],
+                  [
+                    72.0,
+                    343.2,
+                    274.8,
+                    354.1
+                  ]
+                ]
+              }
+            }
+          ],
+          "verification_status": "supported"
+        },
+        {
+          "claim": "The split contained 35,865 training utterances, 3,904 development utterances, and 3,903 test utterances.",
+          "text": "The split contained 35,865 training utterances, 3,904 development utterances, and 3,903 test utterances.",
+          "evidence_ids": [
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s3"
+          ],
+          "citations": [
+            {
+              "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s3",
+              "id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s3",
+              "type": "text",
+              "page": 4,
+              "bbox": [
+                72.0,
+                370.3,
+                298.8,
+                408.3
+              ],
+              "content": "The total number of utterances is 35865 for the training set, 3904 for the development set and 3903 for the test set.",
+              "text": "The total number of utterances is 35865 for the training set, 3904 for the development set and 3903 for the test set.",
+              "section": "3.1 Corpus",
+              "metadata": {
+                "chunk_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8",
+                "bboxes": [
+                  [
+                    151.8,
+                    370.3,
+                    298.8,
+                    381.2
+                  ],
+                  [
+                    72.0,
+                    383.9,
+                    298.8,
+                    394.8
+                  ],
+                  [
+                    72.0,
+                    397.4,
+                    194.1,
+                    408.3
+                  ]
+                ]
+              }
+            }
+          ],
+          "verification_status": "supported"
+        },
+        {
+          "claim": "Table 1 shows the best F-score was 62.9%, achieved by LSTM + high level features.",
+          "text": "Table 1 shows the best F-score was 62.9%, achieved by LSTM + high level features.",
+          "evidence_ids": [
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+          ],
+          "citations": [
+            {
+              "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+              "type": "table",
+              "page": 4,
+              "bbox": [
+                130.2,
+                57.2,
+                481.1,
+                139.2
+              ],
+              "content": "Table 1: Results, percentage.\n\n| Classifier and features         |   Accuracy |   Precision |   Recall |   F-score |\n|---------------------------------|------------|-------------|----------|-----------|\n| CRF n-grams                     |       61.8 |        56.8 |     45.1 |      50.2 |\n| CRF language features           |       67.8 |        67.5 |     47.8 |      56.0 |\n| CRF n-grams + language features |       65.9 |        61.2 |     55.3 |      58.1 |\n| LSTM                            |       63.1 |        56.7 |     58.7 |      57.6 |\n| LSTM + high level features      |       70.0 |        66.7 |     59.4 |      62.9 |",
+              "text": "Table 1: Results, percentage.\n\n| Classifier and features         |   Accuracy |   Precision |   Recall |   F-score |\n|---------------------------------|------------|-------------|----------|-----------|\n| CRF n-grams                     |       61.8 |        56.8 |     45.1 |      50.2 |\n| CRF language features           |       67.8 |        67.5 |     47.8 |      56.0 |\n| CRF n-grams + language features |       65.9 |        61.2 |     55.3 |      58.1 |\n| LSTM                            |       63.1 |        56.7 |     58.7 |      57.6 |\n| LSTM + high level features      |       70.0 |        66.7 |     59.4 |      62.9 |",
+              "section": "3.3 Results and discussion",
+              "metadata": {
+                "caption": "Table 1: Results, percentage.",
+                "image_path": "D:\\Desktop\\job\\demo\\data\\uploads\\2de38bfe-63c1-43d7-b6f3-7de909020853\\figures\\table-1.png",
+                "nearby_text": "3.3 Results and discussion Results of our system and our baselines are shown in table 1. The LSTM with the aid of the high level feature vector generally outperformed all the CRF baselines with the highest accuracy of 70.0% and the highest F-score of 62.9%.",
+                "related_sentence_ids": [
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b7-s0",
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0",
+                  "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1"
+                ],
+                "markdown": "Table 1: Results, percentage.\n\n| Classifier and features         |   Accuracy |   Precision |   Recall |   F-score |\n|---------------------------------|------------|-------------|----------|-----------|\n| CRF n-grams                     |       61.8 |        56.8 |     45.1 |      50.2 |\n| CRF language features           |       67.8 |        67.5 |     47.8 |      56.0 |\n| CRF n-grams + language features |       65.9 |        61.2 |     55.3 |      58.1 |\n| LSTM                            |       63.1 |        56.7 |     58.7 |      57.6 |\n| LSTM + high level features      |       70.0 |        66.7 |     59.4 |      62.9 |",
+                "columns": [
+                  "Classifier and features",
+                  "Accuracy",
+                  "Precision",
+                  "Recall",
+                  "F-score"
+                ],
+                "rows": [
+                  {
+                    "Classifier and features": "CRF n-grams",
+                    "Accuracy": "61.8",
+                    "Precision": "56.8",
+                    "Recall": "45.1",
+                    "F-score": "50.2"
+                  },
+                  {
+                    "Classifier and features": "CRF language features",
+                    "Accuracy": "67.8",
+                    "Precision": "67.5",
+                    "Recall": "47.8",
+                    "F-score": "56.0"
+                  },
+                  {
+                    "Classifier and features": "CRF n-grams + language features",
+                    "Accuracy": "65.9",
+                    "Precision": "61.2",
+                    "Recall": "55.3",
+                    "F-score": "58.1"
+                  },
+                  {
+                    "Classifier and features": "LSTM",
+                    "Accuracy": "63.1",
+                    "Precision": "56.7",
+                    "Recall": "58.7",
+                    "F-score": "57.6"
+                  },
+                  {
+                    "Classifier and features": "LSTM + high level features",
+                    "Accuracy": "70.0",
+                    "Precision": "66.7",
+                    "Recall": "59.4",
+                    "F-score": "62.9"
+                  }
+                ]
+              }
+            }
+          ],
+          "verification_status": "supported"
+        },
+        {
+          "claim": "The LSTM with the high level feature vector achieved the highest accuracy of 70.0% and the highest F-score of 62.9%.",
+          "text": "The LSTM with the high level feature vector achieved the highest accuracy of 70.0% and the highest F-score of 62.9%.",
+          "evidence_ids": [
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1"
+          ],
+          "citations": [
+            {
+              "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1",
+              "id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1",
+              "type": "text",
+              "page": 4,
+              "bbox": [
+                313.2,
+                315.3,
+                540.0,
+                366.9
+              ],
+              "content": "The LSTM with the aid of the high level feature vector generally outperformed all the CRF baselines with the highest accuracy of 70.0% and the highest F-score of 62.9%.",
+              "text": "The LSTM with the aid of the high level feature vector generally outperformed all the CRF baselines with the highest accuracy of 70.0% and the highest F-score of 62.9%.",
+              "section": "3.3 Results and discussion",
+              "metadata": {
+                "chunk_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9",
+                "bboxes": [
+                  [
+                    361.3,
+                    315.3,
+                    540.0,
+                    326.3
+                  ],
+                  [
+                    313.2,
+                    328.9,
+                    540.0,
+                    339.8
+                  ],
+                  [
+                    313.2,
+                    342.4,
+                    540.0,
+                    353.4
+                  ],
+                  [
+                    313.2,
+                    356.0,
+                    442.4,
+                    366.9
+                  ]
+                ]
+              }
+            }
+          ],
+          "verification_status": "supported"
+        }
+      ],
+      "citation_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s3",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+      ],
+      "gold_sentence_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1"
+      ],
+      "gold_sentence_groups": [
+        [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1"
+        ]
+      ],
+      "gold_evidence_groups": [
+        [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+        ]
+      ],
+      "gold_citation_hit": true,
+      "gold_complete_citation_hit": true,
+      "gold_citation_precision": 0.5,
+      "gold_citation_recall": 1.0,
+      "query_plan": {
+        "router": {
+          "complexity": "complex",
+          "route": "agentic_rag",
+          "modalities": [
+            "text",
+            "table"
+          ],
+          "required_modalities": [
+            "text",
+            "table"
+          ],
+          "pure_visual": false,
+          "pure_table": false,
+          "reason": "需要分解任务或读取非文本证据。"
+        },
+        "rewrites": [
+          {
+            "subtask_id": "task_1",
+            "attempt": 0,
+            "query": "Table 1 method result statements Combine corpus description with Table 1 what train dev test split was used which configuration achieved best F-score"
+          },
+          {
+            "subtask_id": "task_2",
+            "attempt": 0,
+            "query": "Table 1 structured table evidence Combine corpus description with 1 what train dev test split was used which configuration achieved best F-score"
+          }
+        ]
+      },
+      "router": {
+        "complexity": "complex",
+        "route": "agentic_rag",
+        "modalities": [
+          "text",
+          "table"
+        ],
+        "required_modalities": [
+          "text",
+          "table"
+        ],
+        "pure_visual": false,
+        "pure_table": false,
+        "reason": "需要分解任务或读取非文本证据。"
+      },
+      "retrieval": {
+        "effective_strategy": "hybrid-rerank+metadata-exact",
+        "effective_strategies": [
+          "hybrid-rerank",
+          "metadata-exact"
+        ],
+        "degraded": false,
+        "warnings": [],
+        "search_count": 2
+      },
+      "trace": {
+        "run_id": "0e7cfa3d-2014-4f4b-aee6-3fbbc41f2d8f",
+        "query": "Combine the corpus description with Table 1: what train/dev/test split was used, and which configuration achieved the best F-score?",
+        "route": "langgraph_agentic_rag",
+        "router": {
+          "complexity": "complex",
+          "route": "agentic_rag",
+          "modalities": [
+            "text",
+            "table"
+          ],
+          "required_modalities": [
+            "text",
+            "table"
+          ],
+          "pure_visual": false,
+          "pure_table": false,
+          "reason": "需要分解任务或读取非文本证据。"
+        },
+        "plan": {
+          "goal": "Combine the corpus description with Table 1: what train/dev/test split was used, and which configuration achieved the best F-score?",
+          "execution": "parallel",
+          "selected_agents": [
+            "text_agent",
+            "table_agent"
+          ],
+          "reason": "需要分解任务或读取非文本证据。",
+          "sub_tasks": [
+            {
+              "task_id": "task_1",
+              "source_task_id": "task_1",
+              "agent": "text_agent",
+              "modality": "text",
+              "instruction": "Find method or result statements relevant to: Combine the corpus description with Table 1: what train/dev/test split was used, and which configuration achieved the best F-score?",
+              "query": "Table 1 method result statements Combine corpus description with Table 1 what train dev test split was used which configuration achieved best F-score",
+              "required_modalities": [
+                "text"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            },
+            {
+              "task_id": "task_2",
+              "source_task_id": "task_2",
+              "agent": "table_agent",
+              "modality": "table",
+              "instruction": "Find structured table evidence relevant to: Combine the corpus description with Table 1: what train/dev/test split was used, and which configuration achieved the best F-score?",
+              "query": "Table 1 structured table evidence Combine corpus description with 1 what train dev test split was used which configuration achieved best F-score",
+              "required_modalities": [
+                "table"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            }
+          ],
+          "budgets": {
+            "max_steps": 10,
+            "max_retries": 1,
+            "max_model_calls": 8,
+            "max_qwen_vl_calls": 2,
+            "timeout_seconds": 120.0
+          }
+        },
+        "rewrites": [
+          {
+            "subtask_id": "task_1",
+            "attempt": 0,
+            "query": "Table 1 method result statements Combine corpus description with Table 1 what train dev test split was used which configuration achieved best F-score"
+          },
+          {
+            "subtask_id": "task_2",
+            "attempt": 0,
+            "query": "Table 1 structured table evidence Combine corpus description with 1 what train dev test split was used which configuration achieved best F-score"
+          }
+        ],
+        "steps": [
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "search_text",
+            "arguments": {
+              "query": "corpus train dev test split Table 1 best F-score configuration",
+              "top_k": 10
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b1-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s2",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b0-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b4-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p3-b24-s0"
+            ],
+            "latency_ms": 27273.8,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 93,
+              "lexical_candidate_count": 32,
+              "semantic_candidate_count": 24,
+              "fusion_candidate_count": 41,
+              "rerank_candidate_count": 8,
+              "reranked": true,
+              "returned_count": 8,
+              "bm25_latency_ms": 13.0,
+              "dense_latency_ms": 18796.3,
+              "rerank_latency_ms": 8463.8
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_TCRLVCOHVOD940cBEadm1332",
+            "step": 1
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_xwOHPylrdQ0bLqyLY9ZT9451",
+            "step": 2
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_Peq5u13HVXhouQSo1j5K5384",
+            "step": 3
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b1-s0"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b1-s0"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_02_QsYclj38Mblc8y0nPPe60517",
+            "step": 4
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "Table 1 train dev test split configuration F-score",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 1,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 1,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_table_numbers": [
+                1
+              ],
+              "exact_table_match_applied": true,
+              "exact_table_ids": [
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_Z4nhaUWa2FJKWdBNZgOr9427",
+            "step": 5
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "read_table",
+            "arguments": {
+              "table_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "latency_ms": 0.2,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_Old1YcUWrWdgQwDqZvea3310",
+            "step": 6
+          }
+        ],
+        "final_evidence_ids": [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s3",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+        ],
+        "total_steps": 6,
+        "total_latency_ms": 33544.5,
+        "token_usage": 11154,
+        "qwen_vl_calls": 0,
+        "sufficiency": {
+          "sufficient": true,
+          "covered_subtasks": [
+            "task_1",
+            "task_2"
+          ],
+          "missing_subtasks": [],
+          "missing_information": []
+        },
+        "evidence_memory": [
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1",
+            "type": "text",
+            "used": true
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b1-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s2",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+            "type": "text",
+            "used": true
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s3",
+            "type": "text",
+            "used": true
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b0-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b4-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p3-b24-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+            "type": "table",
+            "used": true
+          }
+        ],
+        "retrieval": {
+          "effective_strategy": "hybrid-rerank+metadata-exact",
+          "effective_strategies": [
+            "hybrid-rerank",
+            "metadata-exact"
+          ],
+          "degraded": false,
+          "warnings": [],
+          "search_count": 2
+        },
+        "model_calls": 12,
+        "execution_mode": "parallel",
+        "critique": {
+          "decision": "approved",
+          "required_modalities": [
+            "text",
+            "table"
+          ],
+          "usable_modalities": [
+            "table",
+            "text"
+          ],
+          "missing_modalities": [],
+          "conflicts": [],
+          "retry_targets": [],
+          "reasons": []
+        },
+        "conversation_id": null,
+        "turn_index": null,
+        "original_question": "Combine the corpus description with Table 1: what train/dev/test split was used, and which configuration achieved the best F-score?",
+        "resolved_question": "Combine the corpus description with Table 1: what train/dev/test split was used, and which configuration achieved the best F-score?",
+        "referenced_evidence_ids": [],
+        "specialist_execution_mode": "function_calling_with_fallback",
+        "function_calls": [
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "search_text",
+            "arguments": {
+              "query": "corpus train dev test split Table 1 best F-score configuration",
+              "top_k": 10
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b1-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s2",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b0-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b4-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p3-b24-s0"
+            ],
+            "latency_ms": 27273.8,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 93,
+              "lexical_candidate_count": 32,
+              "semantic_candidate_count": 24,
+              "fusion_candidate_count": 41,
+              "rerank_candidate_count": 8,
+              "reranked": true,
+              "returned_count": 8,
+              "bm25_latency_ms": 13.0,
+              "dense_latency_ms": 18796.3,
+              "rerank_latency_ms": 8463.8
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_TCRLVCOHVOD940cBEadm1332",
+            "step": 1
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_xwOHPylrdQ0bLqyLY9ZT9451",
+            "step": 2
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_Peq5u13HVXhouQSo1j5K5384",
+            "step": 3
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b1-s0"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b1-s0"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_02_QsYclj38Mblc8y0nPPe60517",
+            "step": 4
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "Table 1 train dev test split configuration F-score",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 1,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 1,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_table_numbers": [
+                1
+              ],
+              "exact_table_match_applied": true,
+              "exact_table_ids": [
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_Z4nhaUWa2FJKWdBNZgOr9427",
+            "step": 5
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "read_table",
+            "arguments": {
+              "table_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "latency_ms": 0.2,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_Old1YcUWrWdgQwDqZvea3310",
+            "step": 6
+          }
+        ],
+        "function_call_fallbacks": 0,
+        "orchestrator": "langgraph",
+        "node_traces": [
+          {
+            "node": "supervisor_plan",
+            "agent": "supervisor_agent",
+            "status": "success",
+            "latency_ms": 1.5,
+            "selected_agents": [
+              "text_agent",
+              "table_agent"
+            ],
+            "task_ids": [
+              "task_1",
+              "task_2"
+            ],
+            "evidence_ids": [],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "text_agent",
+            "task_id": "task_1",
+            "status": "success",
+            "latency_ms": 30448.5,
+            "evidence_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b1-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s2",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b0-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b4-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p3-b24-s0"
+            ],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "table_agent",
+            "task_id": "task_2",
+            "status": "success",
+            "latency_ms": 3360.8,
+            "evidence_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "errors": []
+          },
+          {
+            "node": "evidence_critic",
+            "agent": "evidence_critic",
+            "status": "approved",
+            "latency_ms": 0.0,
+            "evidence_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b1-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s2",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b0-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b4-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p3-b24-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "missing_modalities": [],
+            "conflicts": [],
+            "errors": []
+          },
+          {
+            "node": "answer_agent",
+            "agent": "answer_agent",
+            "status": "ok",
+            "latency_ms": 3050.3,
+            "evidence_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "errors": []
+          }
+        ],
+        "agent_count": 5,
+        "retry_count": 0,
+        "recovery": {
+          "attempted": false,
+          "successful": false,
+          "final_decision": "approved"
+        }
+      },
+      "agent_trace": {
+        "run_id": "0e7cfa3d-2014-4f4b-aee6-3fbbc41f2d8f",
+        "query": "Combine the corpus description with Table 1: what train/dev/test split was used, and which configuration achieved the best F-score?",
+        "route": "langgraph_agentic_rag",
+        "router": {
+          "complexity": "complex",
+          "route": "agentic_rag",
+          "modalities": [
+            "text",
+            "table"
+          ],
+          "required_modalities": [
+            "text",
+            "table"
+          ],
+          "pure_visual": false,
+          "pure_table": false,
+          "reason": "需要分解任务或读取非文本证据。"
+        },
+        "plan": {
+          "goal": "Combine the corpus description with Table 1: what train/dev/test split was used, and which configuration achieved the best F-score?",
+          "execution": "parallel",
+          "selected_agents": [
+            "text_agent",
+            "table_agent"
+          ],
+          "reason": "需要分解任务或读取非文本证据。",
+          "sub_tasks": [
+            {
+              "task_id": "task_1",
+              "source_task_id": "task_1",
+              "agent": "text_agent",
+              "modality": "text",
+              "instruction": "Find method or result statements relevant to: Combine the corpus description with Table 1: what train/dev/test split was used, and which configuration achieved the best F-score?",
+              "query": "Table 1 method result statements Combine corpus description with Table 1 what train dev test split was used which configuration achieved best F-score",
+              "required_modalities": [
+                "text"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            },
+            {
+              "task_id": "task_2",
+              "source_task_id": "task_2",
+              "agent": "table_agent",
+              "modality": "table",
+              "instruction": "Find structured table evidence relevant to: Combine the corpus description with Table 1: what train/dev/test split was used, and which configuration achieved the best F-score?",
+              "query": "Table 1 structured table evidence Combine corpus description with 1 what train dev test split was used which configuration achieved best F-score",
+              "required_modalities": [
+                "table"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            }
+          ],
+          "budgets": {
+            "max_steps": 10,
+            "max_retries": 1,
+            "max_model_calls": 8,
+            "max_qwen_vl_calls": 2,
+            "timeout_seconds": 120.0
+          }
+        },
+        "rewrites": [
+          {
+            "subtask_id": "task_1",
+            "attempt": 0,
+            "query": "Table 1 method result statements Combine corpus description with Table 1 what train dev test split was used which configuration achieved best F-score"
+          },
+          {
+            "subtask_id": "task_2",
+            "attempt": 0,
+            "query": "Table 1 structured table evidence Combine corpus description with 1 what train dev test split was used which configuration achieved best F-score"
+          }
+        ],
+        "steps": [
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "search_text",
+            "arguments": {
+              "query": "corpus train dev test split Table 1 best F-score configuration",
+              "top_k": 10
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b1-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s2",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b0-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b4-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p3-b24-s0"
+            ],
+            "latency_ms": 27273.8,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 93,
+              "lexical_candidate_count": 32,
+              "semantic_candidate_count": 24,
+              "fusion_candidate_count": 41,
+              "rerank_candidate_count": 8,
+              "reranked": true,
+              "returned_count": 8,
+              "bm25_latency_ms": 13.0,
+              "dense_latency_ms": 18796.3,
+              "rerank_latency_ms": 8463.8
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_TCRLVCOHVOD940cBEadm1332",
+            "step": 1
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_xwOHPylrdQ0bLqyLY9ZT9451",
+            "step": 2
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_Peq5u13HVXhouQSo1j5K5384",
+            "step": 3
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b1-s0"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b1-s0"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_02_QsYclj38Mblc8y0nPPe60517",
+            "step": 4
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "Table 1 train dev test split configuration F-score",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 1,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 1,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_table_numbers": [
+                1
+              ],
+              "exact_table_match_applied": true,
+              "exact_table_ids": [
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_Z4nhaUWa2FJKWdBNZgOr9427",
+            "step": 5
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "read_table",
+            "arguments": {
+              "table_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "latency_ms": 0.2,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_Old1YcUWrWdgQwDqZvea3310",
+            "step": 6
+          }
+        ],
+        "final_evidence_ids": [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s3",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+        ],
+        "total_steps": 6,
+        "total_latency_ms": 33544.5,
+        "token_usage": 11154,
+        "qwen_vl_calls": 0,
+        "sufficiency": {
+          "sufficient": true,
+          "covered_subtasks": [
+            "task_1",
+            "task_2"
+          ],
+          "missing_subtasks": [],
+          "missing_information": []
+        },
+        "evidence_memory": [
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1",
+            "type": "text",
+            "used": true
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b1-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s2",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+            "type": "text",
+            "used": true
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s3",
+            "type": "text",
+            "used": true
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b0-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b4-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p3-b24-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001",
+            "type": "table",
+            "used": true
+          }
+        ],
+        "retrieval": {
+          "effective_strategy": "hybrid-rerank+metadata-exact",
+          "effective_strategies": [
+            "hybrid-rerank",
+            "metadata-exact"
+          ],
+          "degraded": false,
+          "warnings": [],
+          "search_count": 2
+        },
+        "model_calls": 12,
+        "execution_mode": "parallel",
+        "critique": {
+          "decision": "approved",
+          "required_modalities": [
+            "text",
+            "table"
+          ],
+          "usable_modalities": [
+            "table",
+            "text"
+          ],
+          "missing_modalities": [],
+          "conflicts": [],
+          "retry_targets": [],
+          "reasons": []
+        },
+        "conversation_id": null,
+        "turn_index": null,
+        "original_question": "Combine the corpus description with Table 1: what train/dev/test split was used, and which configuration achieved the best F-score?",
+        "resolved_question": "Combine the corpus description with Table 1: what train/dev/test split was used, and which configuration achieved the best F-score?",
+        "referenced_evidence_ids": [],
+        "specialist_execution_mode": "function_calling_with_fallback",
+        "function_calls": [
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "search_text",
+            "arguments": {
+              "query": "corpus train dev test split Table 1 best F-score configuration",
+              "top_k": 10
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b1-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s2",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b0-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b4-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p3-b24-s0"
+            ],
+            "latency_ms": 27273.8,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 93,
+              "lexical_candidate_count": 32,
+              "semantic_candidate_count": 24,
+              "fusion_candidate_count": 41,
+              "rerank_candidate_count": 8,
+              "reranked": true,
+              "returned_count": 8,
+              "bm25_latency_ms": 13.0,
+              "dense_latency_ms": 18796.3,
+              "rerank_latency_ms": 8463.8
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_TCRLVCOHVOD940cBEadm1332",
+            "step": 1
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_xwOHPylrdQ0bLqyLY9ZT9451",
+            "step": 2
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_Peq5u13HVXhouQSo1j5K5384",
+            "step": 3
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b1-s0"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b1-s0"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_02_QsYclj38Mblc8y0nPPe60517",
+            "step": 4
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "Table 1 train dev test split configuration F-score",
+              "top_k": 5
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "latency_ms": 0.1,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 1,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 1,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_table_numbers": [
+                1
+              ],
+              "exact_table_match_applied": true,
+              "exact_table_ids": [
+                "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_Z4nhaUWa2FJKWdBNZgOr9427",
+            "step": 5
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "read_table",
+            "arguments": {
+              "table_id": "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            },
+            "result_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "latency_ms": 0.2,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_Old1YcUWrWdgQwDqZvea3310",
+            "step": 6
+          }
+        ],
+        "function_call_fallbacks": 0,
+        "orchestrator": "langgraph",
+        "node_traces": [
+          {
+            "node": "supervisor_plan",
+            "agent": "supervisor_agent",
+            "status": "success",
+            "latency_ms": 1.5,
+            "selected_agents": [
+              "text_agent",
+              "table_agent"
+            ],
+            "task_ids": [
+              "task_1",
+              "task_2"
+            ],
+            "evidence_ids": [],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "text_agent",
+            "task_id": "task_1",
+            "status": "success",
+            "latency_ms": 30448.5,
+            "evidence_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b1-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s2",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b0-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b4-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p3-b24-s0"
+            ],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "table_agent",
+            "task_id": "task_2",
+            "status": "success",
+            "latency_ms": 3360.8,
+            "evidence_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "errors": []
+          },
+          {
+            "node": "evidence_critic",
+            "agent": "evidence_critic",
+            "status": "approved",
+            "latency_ms": 0.0,
+            "evidence_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b1-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s2",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b0-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b4-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p3-b24-s0",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "missing_modalities": [],
+            "conflicts": [],
+            "errors": []
+          },
+          {
+            "node": "answer_agent",
+            "agent": "answer_agent",
+            "status": "ok",
+            "latency_ms": 3050.3,
+            "evidence_ids": [
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s3",
+              "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+            ],
+            "errors": []
+          }
+        ],
+        "agent_count": 5,
+        "retry_count": 0,
+        "recovery": {
+          "attempted": false,
+          "successful": false,
+          "final_decision": "approved"
+        }
+      },
+      "tool_calls": [
+        "search_text",
+        "read_sentence",
+        "read_sentence",
+        "read_sentence",
+        "search_tables",
+        "read_table"
+      ],
+      "steps": 6,
+      "qwen_vl_calls": 0,
+      "visual_judge_qwen_vl_calls": 0,
+      "total_qwen_vl_calls": 0,
+      "token_usage": 11154,
+      "orchestrator": "langgraph",
+      "agent_count": 5,
+      "retry_count": 0,
+      "recovery": {
+        "attempted": false,
+        "successful": false,
+        "final_decision": "approved"
+      },
+      "node_traces": [
+        {
+          "node": "supervisor_plan",
+          "agent": "supervisor_agent",
+          "status": "success",
+          "latency_ms": 1.5,
+          "selected_agents": [
+            "text_agent",
+            "table_agent"
+          ],
+          "task_ids": [
+            "task_1",
+            "task_2"
+          ],
+          "evidence_ids": [],
+          "errors": []
+        },
+        {
+          "node": "specialist_dispatch",
+          "agent": "text_agent",
+          "task_id": "task_1",
+          "status": "success",
+          "latency_ms": 30448.5,
+          "evidence_ids": [
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b1-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s2",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s3",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b0-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b4-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p3-b24-s0"
+          ],
+          "errors": []
+        },
+        {
+          "node": "specialist_dispatch",
+          "agent": "table_agent",
+          "task_id": "task_2",
+          "status": "success",
+          "latency_ms": 3360.8,
+          "evidence_ids": [
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+          ],
+          "errors": []
+        },
+        {
+          "node": "evidence_critic",
+          "agent": "evidence_critic",
+          "status": "approved",
+          "latency_ms": 0.0,
+          "evidence_ids": [
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b1-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s2",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s3",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b0-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b4-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p3-b24-s0",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+          ],
+          "missing_modalities": [],
+          "conflicts": [],
+          "errors": []
+        },
+        {
+          "node": "answer_agent",
+          "agent": "answer_agent",
+          "status": "ok",
+          "latency_ms": 3050.3,
+          "evidence_ids": [
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s3",
+            "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+          ],
+          "errors": []
+        }
+      ],
+      "expected_tools": [
+        "search_text",
+        "search_tables",
+        "read_table"
+      ],
+      "expected_modalities": [
+        "text",
+        "table"
+      ],
+      "predicted_modalities": [
+        "text",
+        "table"
+      ],
+      "routed_modalities": [
+        "text",
+        "table"
+      ],
+      "required_modalities": [
+        "text",
+        "table"
+      ],
+      "expected_evidence_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+      ],
+      "expected_evidence_groups": [
+        [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+        ]
+      ],
+      "expected_chunk_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8"
+      ],
+      "expected_chunk_groups": [
+        [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8"
+        ]
+      ],
+      "ranked_evidence_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b1-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s2",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s3",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b0-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b4-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p3-b24-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+      ],
+      "ranked_evidence_ids_by_modality": {
+        "text": [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b1-s0",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s0",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s2",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s3",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b0-s0",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b4-s0",
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-p3-b24-s0"
+        ],
+        "figure": [],
+        "table": [
+          "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+        ]
+      },
+      "ranked_text_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b1-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b12-s2",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s3",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b0-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b4-s0",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p3-b24-s0"
+      ],
+      "ranked_figure_ids": [],
+      "ranked_table_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+      ],
+      "returned_evidence_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s3",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+      ],
+      "expected_text_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1"
+      ],
+      "expected_figure_ids": [],
+      "expected_table_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+      ],
+      "returned_text_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s1",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b8-s3",
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-p4-b9-s1"
+      ],
+      "returned_figure_ids": [],
+      "returned_table_ids": [
+        "2de38bfe-63c1-43d7-b6f3-7de909020853-table_001"
+      ],
+      "execution_success": true,
+      "answer_correct": true,
+      "task_success": true,
+      "judge": {
+        "score": 2,
+        "correct": true,
+        "reason": "回答正确给出80/10/10划分，并指出LSTM+high level features取得最佳F-score 62.9；补充的utterance数量与准确率70.0%均由引用证据支持。",
+        "kind": "text"
+      },
+      "latency_ms": 33544.7,
+      "status": "ok"
+    }
+  ]
+}

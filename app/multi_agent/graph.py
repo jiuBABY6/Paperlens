@@ -325,19 +325,11 @@ class LangGraphExecutor:
         def answer_node(state: MultiAgentState) -> dict[str, Any]:
             started = time.perf_counter()
             emit("langgraph.node.started", {"node": "answer_agent"})
-            if int(state.get("model_calls", 0)) >= self.settings.multi_agent_max_model_calls:
-                grounded = {
-                    "answer": "模型调用预算已耗尽，无法继续生成答案。",
-                    "answerable": None,
-                    "claims": [],
-                    "citations": [],
-                    "insufficient_evidence": ["Multi-Agent 模型调用预算已耗尽。"],
-                    "refusal_reason": "",
-                    "status": "generation_unavailable",
-                    "verification": [],
-                }
-            else:
-                grounded = self.answer_agent.run(state)
+            # The configured model-call budget bounds specialist planning and
+            # repair.  Final grounded synthesis is a reserved terminal step:
+            # dropping it after all specialists succeeded wastes the collected
+            # evidence and turns a healthy run into an execution failure.
+            grounded = self.answer_agent.run(state)
             latency = round((time.perf_counter() - started) * 1000, 1)
             emit("answer.verified", {
                 "node": "answer_agent",
@@ -556,8 +548,7 @@ class LangGraphExecutor:
             } for item in state.get("evidence", [])],
             "retrieval": retrieval,
             "model_calls": (
-                int(state.get("model_calls", 0))
-                + max(0, getattr(self.reading, "request_count", 0) - initial_model_requests)
+                max(0, getattr(self.reading, "request_count", 0) - initial_model_requests)
             ),
             "execution_mode": state.get("execution_mode", "sequential"),
             "critique": critique,

@@ -1,0 +1,2613 @@
+{
+  "dataset": "evals\\questions.v4.jsonl",
+  "count": 1,
+  "answerable_count": 1,
+  "unanswerable_count": 0,
+  "decision_count": 1,
+  "execution_success_rate": 1.0,
+  "answer_evaluated_count": 1,
+  "answer_correct_count": 1,
+  "dataset_issue_count": 0,
+  "dataset_issue_case_ids": [],
+  "answer_correct_rate": 1.0,
+  "task_success_rate": 1.0,
+  "answerability_accuracy": 1.0,
+  "refusal_accuracy": 0.0,
+  "answer_delivery_rate": 1.0,
+  "gold_citation_hit_rate": 1.0,
+  "complete_gold_citation_hit_rate": 0.0,
+  "mean_gold_citation_precision": 0.25,
+  "mean_gold_citation_recall": 0.3333,
+  "llm_judged_count": 1,
+  "llm_answer_score_0_to_2": 2.0,
+  "llm_exact_correct_rate": 1.0,
+  "mean_end_to_end_latency_ms": 51802.4,
+  "p95_end_to_end_latency_ms": 51802.4,
+  "max_end_to_end_latency_ms": 51802.4,
+  "mean_agent_count": 5.0,
+  "retry_case_rate": 0.0,
+  "mean_retry_count": 0.0,
+  "node_failure_rate": 0.0,
+  "recovery_attempt_count": 0,
+  "recovery_success_rate": null,
+  "configuration": {
+    "mode": "rag",
+    "split": "dev",
+    "strategy": "hybrid-rerank",
+    "query_rewrite_enabled": true,
+    "claim_verification_enabled": true,
+    "llm_judge_enabled": true,
+    "visual_judge_enabled_for_visual_only": true,
+    "online_visual_judge_enabled": false,
+    "orchestrator": "langgraph",
+    "parallel_enabled": true,
+    "case_id": "simclip-crossmodal-harmp-v4-11",
+    "limit": 5
+  },
+  "agentic_metrics": {
+    "overall": {
+      "count": 1,
+      "retrieval": {
+        "recall_at_k": 0.5,
+        "mrr": 1.0,
+        "k": 5
+      },
+      "evidence": {
+        "precision": 0.25,
+        "recall": 0.3333,
+        "f1": 0.2857
+      },
+      "generation": {
+        "faithfulness": 1.0,
+        "claim_support_rate": 1.0
+      },
+      "agent": {
+        "execution_success_rate": 1.0,
+        "answer_correct_rate": 1.0,
+        "task_success_rate": 1.0,
+        "average_steps": 6.0,
+        "average_tool_calls": 6.0,
+        "repeated_tool_call_rate": 0.3333
+      },
+      "multimodal": {
+        "text_retrieval_recall_at_k": 0.0,
+        "figure_retrieval_recall_at_k": 0.0,
+        "table_retrieval_recall_at_k": 1.0,
+        "text_retrieval_mrr": 0.0,
+        "figure_retrieval_mrr": 0.0,
+        "table_retrieval_mrr": 1.0,
+        "modality_routing_accuracy": 1.0
+      },
+      "engineering": {
+        "average_latency_ms": 51802.4,
+        "average_token_usage": 21058.0,
+        "average_qwen_vl_calls": 0.0,
+        "total_qwen_vl_calls": 0,
+        "average_visual_judge_qwen_vl_calls": 0.0,
+        "total_visual_judge_qwen_vl_calls": 0,
+        "total_qwen_vl_calls_including_judge": 0
+      }
+    },
+    "by_mode": {
+      "standard_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "text_agentic_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "multimodal_agentic_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "text_multi_agent_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "multimodal_multi_agent_rag": {
+        "count": 1,
+        "retrieval": {
+          "recall_at_k": 0.5,
+          "mrr": 1.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.25,
+          "recall": 0.3333,
+          "f1": 0.2857
+        },
+        "generation": {
+          "faithfulness": 1.0,
+          "claim_support_rate": 1.0
+        },
+        "agent": {
+          "execution_success_rate": 1.0,
+          "answer_correct_rate": 1.0,
+          "task_success_rate": 1.0,
+          "average_steps": 6.0,
+          "average_tool_calls": 6.0,
+          "repeated_tool_call_rate": 0.3333
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 1.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 1.0,
+          "modality_routing_accuracy": 1.0
+        },
+        "engineering": {
+          "average_latency_ms": 51802.4,
+          "average_token_usage": 21058.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      }
+    }
+  },
+  "records": [
+    {
+      "case_id": "simclip-crossmodal-harmp-v4-11",
+      "paper_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44",
+      "question": "Relate the method rationale to Table 2: why use product/difference interactions, and which Harm-P variant obtains the best F1 and AUROC?",
+      "mode": "multimodal_multi_agent_rag",
+      "gold_answerable": true,
+      "predicted_answerable": true,
+      "answerability_correct": true,
+      "answer": "The difference's contribution seems minimal but can offer a 2% AUROC increase on some datasets, with real gains appearing when combined with the product.\nThe difference only improves some scenarios while the product improves most, and the full extent of the difference contribution appears when all features are considered.\nOn Harm-P, the Full architecture achieves the best F1 (80.01%) and AUROC (91.31%) among the variants.\nOn Harm-P, Concat + Product reaches F1 78.25% and AUROC 90.20%, below the Full architecture.",
+      "refusal_reason": "",
+      "answer_status": "ok",
+      "claims": [
+        {
+          "claim": "The difference's contribution seems minimal but can offer a 2% AUROC increase on some datasets, with real gains appearing when combined with the product.",
+          "text": "The difference's contribution seems minimal but can offer a 2% AUROC increase on some datasets, with real gains appearing when combined with the product.",
+          "evidence_ids": [
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4"
+          ],
+          "citations": [
+            {
+              "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+              "id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+              "type": "text",
+              "page": 7,
+              "bbox": [
+                72.0,
+                466.5,
+                541.7,
+                487.3
+              ],
+              "content": "The contribution of the difference seems minimal but in some datasets, it offers a 2% increase in AUROC, although the real gains of the difference come when combined with the product.",
+              "text": "The contribution of the difference seems minimal but in some datasets, it offers a 2% increase in AUROC, although the real gains of the difference come when combined with the product.",
+              "section": "5.1 Ablations",
+              "metadata": {
+                "chunk_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10",
+                "bboxes": [
+                  [
+                    266.3,
+                    466.5,
+                    541.2,
+                    476.3
+                  ],
+                  [
+                    72.0,
+                    477.2,
+                    541.7,
+                    487.3
+                  ]
+                ]
+              }
+            }
+          ],
+          "verification_status": "supported"
+        },
+        {
+          "claim": "The difference only improves some scenarios while the product improves most, and the full extent of the difference contribution appears when all features are considered.",
+          "text": "The difference only improves some scenarios while the product improves most, and the full extent of the difference contribution appears when all features are considered.",
+          "evidence_ids": [
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s1"
+          ],
+          "citations": [
+            {
+              "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s1",
+              "id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s1",
+              "type": "text",
+              "page": 7,
+              "bbox": [
+                72.0,
+                515.4,
+                540.0,
+                547.3
+              ],
+              "content": "The difference only improves some scenarios, while the product improves most of them, the full extent of the difference contribution appears when all features are considered.",
+              "text": "The difference only improves some scenarios, while the product improves most of them, the full extent of the difference contribution appears when all features are considered.",
+              "section": "5.1 Ablations",
+              "metadata": {
+                "chunk_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11",
+                "bboxes": [
+                  [
+                    480.2,
+                    515.4,
+                    540.0,
+                    525.5
+                  ],
+                  [
+                    72.0,
+                    526.4,
+                    540.0,
+                    536.4
+                  ],
+                  [
+                    72.0,
+                    537.3,
+                    235.8,
+                    547.3
+                  ]
+                ]
+              }
+            }
+          ],
+          "verification_status": "supported"
+        },
+        {
+          "claim": "On Harm-P, the Full architecture achieves the best F1 (80.01%) and AUROC (91.31%) among the variants.",
+          "text": "On Harm-P, the Full architecture achieves the best F1 (80.01%) and AUROC (91.31%) among the variants.",
+          "evidence_ids": [
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0"
+          ],
+          "citations": [
+            {
+              "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002",
+              "id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002",
+              "type": "table",
+              "page": 7,
+              "bbox": [
+                159.4,
+                88.3,
+                449.0,
+                351.0
+              ],
+              "content": "Table 2: Ablation results on datasets FBHM, Harm-C, Harm-P, MultiOFF and Propaganda.\n\n| Dataset    | Method              | F1 Score   | Accuracy   | AUROC   |\n|------------|---------------------|------------|------------|---------|\n| FBHM       | Concat              | 68.00%     | 68.00%     | 71.90%  |\n|            | Concat + Difference | 66.20%     | 66.20%     | 71.07%  |\n|            | Concat + Product    | 73.58%     | 73.60%     | 79.28%  |\n|            | Full architecture   | 72.51%     | 72.60%     | 79.31%  |\n| Harm-C     | Concat              | 56.09%     | 59.74%     | 83.21%  |\n|            | Concat + Difference | 52.76%     | 57.16%     | 85.08%  |\n|            | Concat + Product    | 54.90%     | 57.36%     | 83.85%  |\n|            | Full architecture   | 55.46%     | 60.20%     | 83.82%  |\n| Harm-P     | Concat              | 63.26%     | 66.10%     | 74.74%  |\n|            | Concat + Difference | 63.41%     | 64.52%     | 76.84%  |\n|            | Concat + Product    | 78.25%     | 78.20%     | 90.20%  |\n|            | Full architecture   | 80.01%     | 76.80%     | 91.31%  |\n| MultiOFF   | Concat              | 64.52%     | 64.79%     | 67.78%  |\n|            | Concat + Difference | 64.71%     | 64.71%     | 67.69%  |\n|            | Concat + Product    | 65.15%     | 66.43%     | 70.18%  |\n|            | Full architecture   | 66.33%     | 67.60%     | 70.39%  |\n| Propaganda | Concat              | 16.69%     | 74.53%     | 51.81%  |\n|            | Concat + Difference | 15.79%     | 80.95%     | 52.12%  |\n|            | Concat + Product    | 13.23%     | 83.26%     | 49.70%  |\n|            | Full architecture   | 11.67%     | 86.65%     | 50.47%  |",
+              "text": "Table 2: Ablation results on datasets FBHM, Harm-C, Harm-P, MultiOFF and Propaganda.\n\n| Dataset    | Method              | F1 Score   | Accuracy   | AUROC   |\n|------------|---------------------|------------|------------|---------|\n| FBHM       | Concat              | 68.00%     | 68.00%     | 71.90%  |\n|            | Concat + Difference | 66.20%     | 66.20%     | 71.07%  |\n|            | Concat + Product    | 73.58%     | 73.60%     | 79.28%  |\n|            | Full architecture   | 72.51%     | 72.60%     | 79.31%  |\n| Harm-C     | Concat              | 56.09%     | 59.74%     | 83.21%  |\n|            | Concat + Difference | 52.76%     | 57.16%     | 85.08%  |\n|            | Concat + Product    | 54.90%     | 57.36%     | 83.85%  |\n|            | Full architecture   | 55.46%     | 60.20%     | 83.82%  |\n| Harm-P     | Concat              | 63.26%     | 66.10%     | 74.74%  |\n|            | Concat + Difference | 63.41%     | 64.52%     | 76.84%  |\n|            | Concat + Product    | 78.25%     | 78.20%     | 90.20%  |\n|            | Full architecture   | 80.01%     | 76.80%     | 91.31%  |\n| MultiOFF   | Concat              | 64.52%     | 64.79%     | 67.78%  |\n|            | Concat + Difference | 64.71%     | 64.71%     | 67.69%  |\n|            | Concat + Product    | 65.15%     | 66.43%     | 70.18%  |\n|            | Full architecture   | 66.33%     | 67.60%     | 70.39%  |\n| Propaganda | Concat              | 16.69%     | 74.53%     | 51.81%  |\n|            | Concat + Difference | 15.79%     | 80.95%     | 52.12%  |\n|            | Concat + Product    | 13.23%     | 83.26%     | 49.70%  |\n|            | Full architecture   | 11.67%     | 86.65%     | 50.47%  |",
+              "section": "4.3 Implementation details",
+              "metadata": {
+                "caption": "Table 2: Ablation results on datasets FBHM, Harm-C, Harm-P, MultiOFF and Propaganda.",
+                "image_path": "D:\\Desktop\\job\\demo\\data\\uploads\\d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44\\figures\\table-2.png",
+                "nearby_text": "F1-score results are varied, but the full SimCLIP architecture tops the ablations on 2 out of 5 datasets, achieving near top score (within 1%) in two others. Accuracy is topped in 3 out of 5 datasets and AUROC on 4 out of 5. Overall the full architecture is the best performing one with some special cases; for example there are trade-offs in Harm-C and Harm-P; Accuracy and F1-Score are traded while AUROC remains high. The contribution of the difference seems minimal but in some datasets, it offers a 2% increase in AUROC, although the real gains of the difference come when combined with the product. Finally, the Propaganda dataset is small and multi-label, and increasing F1-score decreases accuracy and vice-versa while AUROC is within 50% which is close to random, meaning our model fails on this particular task. In FBHM, SimCLIP falls behind by 3% compared to the top performing method noting, however, that top models in this dataset are very hard to beat due to extensive use of ensembling beyond CLIP and other pre-processing techniques, including heavy optimization for the challenge. Some novel techniques like MOMENTA, used in other datasets, are outperformed by our model. The Harm-C and Harm-P models are similar in nature but different in their contents and semantics.",
+                "related_sentence_ids": [
+                  "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s1",
+                  "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s2",
+                  "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s3",
+                  "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+                  "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s5",
+                  "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b13-s1",
+                  "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b13-s2",
+                  "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b14-s0"
+                ],
+                "markdown": "Table 2: Ablation results on datasets FBHM, Harm-C, Harm-P, MultiOFF and Propaganda.\n\n| Dataset    | Method              | F1 Score   | Accuracy   | AUROC   |\n|------------|---------------------|------------|------------|---------|\n| FBHM       | Concat              | 68.00%     | 68.00%     | 71.90%  |\n|            | Concat + Difference | 66.20%     | 66.20%     | 71.07%  |\n|            | Concat + Product    | 73.58%     | 73.60%     | 79.28%  |\n|            | Full architecture   | 72.51%     | 72.60%     | 79.31%  |\n| Harm-C     | Concat              | 56.09%     | 59.74%     | 83.21%  |\n|            | Concat + Difference | 52.76%     | 57.16%     | 85.08%  |\n|            | Concat + Product    | 54.90%     | 57.36%     | 83.85%  |\n|            | Full architecture   | 55.46%     | 60.20%     | 83.82%  |\n| Harm-P     | Concat              | 63.26%     | 66.10%     | 74.74%  |\n|            | Concat + Difference | 63.41%     | 64.52%     | 76.84%  |\n|            | Concat + Product    | 78.25%     | 78.20%     | 90.20%  |\n|            | Full architecture   | 80.01%     | 76.80%     | 91.31%  |\n| MultiOFF   | Concat              | 64.52%     | 64.79%     | 67.78%  |\n|            | Concat + Difference | 64.71%     | 64.71%     | 67.69%  |\n|            | Concat + Product    | 65.15%     | 66.43%     | 70.18%  |\n|            | Full architecture   | 66.33%     | 67.60%     | 70.39%  |\n| Propaganda | Concat              | 16.69%     | 74.53%     | 51.81%  |\n|            | Concat + Difference | 15.79%     | 80.95%     | 52.12%  |\n|            | Concat + Product    | 13.23%     | 83.26%     | 49.70%  |\n|            | Full architecture   | 11.67%     | 86.65%     | 50.47%  |",
+                "columns": [
+                  "Dataset",
+                  "Method",
+                  "F1 Score",
+                  "Accuracy",
+                  "AUROC"
+                ],
+                "rows": [
+                  {
+                    "Dataset": "FBHM",
+                    "Method": "Concat",
+                    "F1 Score": "68.00%",
+                    "Accuracy": "68.00%",
+                    "AUROC": "71.90%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Concat + Difference",
+                    "F1 Score": "66.20%",
+                    "Accuracy": "66.20%",
+                    "AUROC": "71.07%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Concat + Product",
+                    "F1 Score": "73.58%",
+                    "Accuracy": "73.60%",
+                    "AUROC": "79.28%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Full architecture",
+                    "F1 Score": "72.51%",
+                    "Accuracy": "72.60%",
+                    "AUROC": "79.31%"
+                  },
+                  {
+                    "Dataset": "Harm-C",
+                    "Method": "Concat",
+                    "F1 Score": "56.09%",
+                    "Accuracy": "59.74%",
+                    "AUROC": "83.21%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Concat + Difference",
+                    "F1 Score": "52.76%",
+                    "Accuracy": "57.16%",
+                    "AUROC": "85.08%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Concat + Product",
+                    "F1 Score": "54.90%",
+                    "Accuracy": "57.36%",
+                    "AUROC": "83.85%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Full architecture",
+                    "F1 Score": "55.46%",
+                    "Accuracy": "60.20%",
+                    "AUROC": "83.82%"
+                  },
+                  {
+                    "Dataset": "Harm-P",
+                    "Method": "Concat",
+                    "F1 Score": "63.26%",
+                    "Accuracy": "66.10%",
+                    "AUROC": "74.74%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Concat + Difference",
+                    "F1 Score": "63.41%",
+                    "Accuracy": "64.52%",
+                    "AUROC": "76.84%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Concat + Product",
+                    "F1 Score": "78.25%",
+                    "Accuracy": "78.20%",
+                    "AUROC": "90.20%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Full architecture",
+                    "F1 Score": "80.01%",
+                    "Accuracy": "76.80%",
+                    "AUROC": "91.31%"
+                  },
+                  {
+                    "Dataset": "MultiOFF",
+                    "Method": "Concat",
+                    "F1 Score": "64.52%",
+                    "Accuracy": "64.79%",
+                    "AUROC": "67.78%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Concat + Difference",
+                    "F1 Score": "64.71%",
+                    "Accuracy": "64.71%",
+                    "AUROC": "67.69%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Concat + Product",
+                    "F1 Score": "65.15%",
+                    "Accuracy": "66.43%",
+                    "AUROC": "70.18%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Full architecture",
+                    "F1 Score": "66.33%",
+                    "Accuracy": "67.60%",
+                    "AUROC": "70.39%"
+                  },
+                  {
+                    "Dataset": "Propaganda",
+                    "Method": "Concat",
+                    "F1 Score": "16.69%",
+                    "Accuracy": "74.53%",
+                    "AUROC": "51.81%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Concat + Difference",
+                    "F1 Score": "15.79%",
+                    "Accuracy": "80.95%",
+                    "AUROC": "52.12%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Concat + Product",
+                    "F1 Score": "13.23%",
+                    "Accuracy": "83.26%",
+                    "AUROC": "49.70%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Full architecture",
+                    "F1 Score": "11.67%",
+                    "Accuracy": "86.65%",
+                    "AUROC": "50.47%"
+                  }
+                ]
+              }
+            },
+            {
+              "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0",
+              "id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0",
+              "type": "text",
+              "page": 7,
+              "bbox": [
+                160.8,
+                206.5,
+                448.7,
+                249.2
+              ],
+              "content": "Harm-P Concat 63.26% 66.10% 74.74% Concat + Difference 63.41% 64.52% 76.84% Concat + Product 78.25% 78.20% 90.20% Full architecture 80.01% 76.80% 91.31%",
+              "text": "Harm-P Concat 63.26% 66.10% 74.74% Concat + Difference 63.41% 64.52% 76.84% Concat + Product 78.25% 78.20% 90.20% Full architecture 80.01% 76.80% 91.31%",
+              "section": "4.3 Implementation details",
+              "metadata": {
+                "chunk_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5",
+                "bboxes": [
+                  [
+                    160.8,
+                    206.5,
+                    192.4,
+                    216.4
+                  ],
+                  [
+                    219.8,
+                    206.5,
+                    248.0,
+                    216.4
+                  ],
+                  [
+                    318.1,
+                    206.5,
+                    348.8,
+                    216.4
+                  ],
+                  [
+                    367.5,
+                    206.5,
+                    398.2,
+                    216.4
+                  ],
+                  [
+                    417.9,
+                    206.5,
+                    448.7,
+                    216.4
+                  ],
+                  [
+                    219.8,
+                    217.4,
+                    300.9,
+                    227.3
+                  ],
+                  [
+                    318.1,
+                    217.4,
+                    348.8,
+                    227.3
+                  ],
+                  [
+                    367.5,
+                    217.4,
+                    398.2,
+                    227.3
+                  ],
+                  [
+                    417.9,
+                    217.4,
+                    448.7,
+                    227.3
+                  ],
+                  [
+                    219.8,
+                    228.3,
+                    289.6,
+                    238.3
+                  ],
+                  [
+                    318.1,
+                    228.3,
+                    348.8,
+                    238.3
+                  ],
+                  [
+                    365.8,
+                    228.2,
+                    398.2,
+                    238.2
+                  ],
+                  [
+                    417.9,
+                    228.3,
+                    448.7,
+                    238.3
+                  ],
+                  [
+                    219.8,
+                    239.2,
+                    285.4,
+                    249.2
+                  ],
+                  [
+                    316.4,
+                    239.1,
+                    348.8,
+                    249.1
+                  ],
+                  [
+                    367.5,
+                    239.2,
+                    398.2,
+                    249.2
+                  ],
+                  [
+                    416.3,
+                    239.1,
+                    448.7,
+                    249.1
+                  ]
+                ]
+              }
+            }
+          ],
+          "verification_status": "supported"
+        },
+        {
+          "claim": "On Harm-P, Concat + Product reaches F1 78.25% and AUROC 90.20%, below the Full architecture.",
+          "text": "On Harm-P, Concat + Product reaches F1 78.25% and AUROC 90.20%, below the Full architecture.",
+          "evidence_ids": [
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0"
+          ],
+          "citations": [
+            {
+              "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002",
+              "id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002",
+              "type": "table",
+              "page": 7,
+              "bbox": [
+                159.4,
+                88.3,
+                449.0,
+                351.0
+              ],
+              "content": "Table 2: Ablation results on datasets FBHM, Harm-C, Harm-P, MultiOFF and Propaganda.\n\n| Dataset    | Method              | F1 Score   | Accuracy   | AUROC   |\n|------------|---------------------|------------|------------|---------|\n| FBHM       | Concat              | 68.00%     | 68.00%     | 71.90%  |\n|            | Concat + Difference | 66.20%     | 66.20%     | 71.07%  |\n|            | Concat + Product    | 73.58%     | 73.60%     | 79.28%  |\n|            | Full architecture   | 72.51%     | 72.60%     | 79.31%  |\n| Harm-C     | Concat              | 56.09%     | 59.74%     | 83.21%  |\n|            | Concat + Difference | 52.76%     | 57.16%     | 85.08%  |\n|            | Concat + Product    | 54.90%     | 57.36%     | 83.85%  |\n|            | Full architecture   | 55.46%     | 60.20%     | 83.82%  |\n| Harm-P     | Concat              | 63.26%     | 66.10%     | 74.74%  |\n|            | Concat + Difference | 63.41%     | 64.52%     | 76.84%  |\n|            | Concat + Product    | 78.25%     | 78.20%     | 90.20%  |\n|            | Full architecture   | 80.01%     | 76.80%     | 91.31%  |\n| MultiOFF   | Concat              | 64.52%     | 64.79%     | 67.78%  |\n|            | Concat + Difference | 64.71%     | 64.71%     | 67.69%  |\n|            | Concat + Product    | 65.15%     | 66.43%     | 70.18%  |\n|            | Full architecture   | 66.33%     | 67.60%     | 70.39%  |\n| Propaganda | Concat              | 16.69%     | 74.53%     | 51.81%  |\n|            | Concat + Difference | 15.79%     | 80.95%     | 52.12%  |\n|            | Concat + Product    | 13.23%     | 83.26%     | 49.70%  |\n|            | Full architecture   | 11.67%     | 86.65%     | 50.47%  |",
+              "text": "Table 2: Ablation results on datasets FBHM, Harm-C, Harm-P, MultiOFF and Propaganda.\n\n| Dataset    | Method              | F1 Score   | Accuracy   | AUROC   |\n|------------|---------------------|------------|------------|---------|\n| FBHM       | Concat              | 68.00%     | 68.00%     | 71.90%  |\n|            | Concat + Difference | 66.20%     | 66.20%     | 71.07%  |\n|            | Concat + Product    | 73.58%     | 73.60%     | 79.28%  |\n|            | Full architecture   | 72.51%     | 72.60%     | 79.31%  |\n| Harm-C     | Concat              | 56.09%     | 59.74%     | 83.21%  |\n|            | Concat + Difference | 52.76%     | 57.16%     | 85.08%  |\n|            | Concat + Product    | 54.90%     | 57.36%     | 83.85%  |\n|            | Full architecture   | 55.46%     | 60.20%     | 83.82%  |\n| Harm-P     | Concat              | 63.26%     | 66.10%     | 74.74%  |\n|            | Concat + Difference | 63.41%     | 64.52%     | 76.84%  |\n|            | Concat + Product    | 78.25%     | 78.20%     | 90.20%  |\n|            | Full architecture   | 80.01%     | 76.80%     | 91.31%  |\n| MultiOFF   | Concat              | 64.52%     | 64.79%     | 67.78%  |\n|            | Concat + Difference | 64.71%     | 64.71%     | 67.69%  |\n|            | Concat + Product    | 65.15%     | 66.43%     | 70.18%  |\n|            | Full architecture   | 66.33%     | 67.60%     | 70.39%  |\n| Propaganda | Concat              | 16.69%     | 74.53%     | 51.81%  |\n|            | Concat + Difference | 15.79%     | 80.95%     | 52.12%  |\n|            | Concat + Product    | 13.23%     | 83.26%     | 49.70%  |\n|            | Full architecture   | 11.67%     | 86.65%     | 50.47%  |",
+              "section": "4.3 Implementation details",
+              "metadata": {
+                "caption": "Table 2: Ablation results on datasets FBHM, Harm-C, Harm-P, MultiOFF and Propaganda.",
+                "image_path": "D:\\Desktop\\job\\demo\\data\\uploads\\d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44\\figures\\table-2.png",
+                "nearby_text": "F1-score results are varied, but the full SimCLIP architecture tops the ablations on 2 out of 5 datasets, achieving near top score (within 1%) in two others. Accuracy is topped in 3 out of 5 datasets and AUROC on 4 out of 5. Overall the full architecture is the best performing one with some special cases; for example there are trade-offs in Harm-C and Harm-P; Accuracy and F1-Score are traded while AUROC remains high. The contribution of the difference seems minimal but in some datasets, it offers a 2% increase in AUROC, although the real gains of the difference come when combined with the product. Finally, the Propaganda dataset is small and multi-label, and increasing F1-score decreases accuracy and vice-versa while AUROC is within 50% which is close to random, meaning our model fails on this particular task. In FBHM, SimCLIP falls behind by 3% compared to the top performing method noting, however, that top models in this dataset are very hard to beat due to extensive use of ensembling beyond CLIP and other pre-processing techniques, including heavy optimization for the challenge. Some novel techniques like MOMENTA, used in other datasets, are outperformed by our model. The Harm-C and Harm-P models are similar in nature but different in their contents and semantics.",
+                "related_sentence_ids": [
+                  "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s1",
+                  "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s2",
+                  "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s3",
+                  "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+                  "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s5",
+                  "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b13-s1",
+                  "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b13-s2",
+                  "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b14-s0"
+                ],
+                "markdown": "Table 2: Ablation results on datasets FBHM, Harm-C, Harm-P, MultiOFF and Propaganda.\n\n| Dataset    | Method              | F1 Score   | Accuracy   | AUROC   |\n|------------|---------------------|------------|------------|---------|\n| FBHM       | Concat              | 68.00%     | 68.00%     | 71.90%  |\n|            | Concat + Difference | 66.20%     | 66.20%     | 71.07%  |\n|            | Concat + Product    | 73.58%     | 73.60%     | 79.28%  |\n|            | Full architecture   | 72.51%     | 72.60%     | 79.31%  |\n| Harm-C     | Concat              | 56.09%     | 59.74%     | 83.21%  |\n|            | Concat + Difference | 52.76%     | 57.16%     | 85.08%  |\n|            | Concat + Product    | 54.90%     | 57.36%     | 83.85%  |\n|            | Full architecture   | 55.46%     | 60.20%     | 83.82%  |\n| Harm-P     | Concat              | 63.26%     | 66.10%     | 74.74%  |\n|            | Concat + Difference | 63.41%     | 64.52%     | 76.84%  |\n|            | Concat + Product    | 78.25%     | 78.20%     | 90.20%  |\n|            | Full architecture   | 80.01%     | 76.80%     | 91.31%  |\n| MultiOFF   | Concat              | 64.52%     | 64.79%     | 67.78%  |\n|            | Concat + Difference | 64.71%     | 64.71%     | 67.69%  |\n|            | Concat + Product    | 65.15%     | 66.43%     | 70.18%  |\n|            | Full architecture   | 66.33%     | 67.60%     | 70.39%  |\n| Propaganda | Concat              | 16.69%     | 74.53%     | 51.81%  |\n|            | Concat + Difference | 15.79%     | 80.95%     | 52.12%  |\n|            | Concat + Product    | 13.23%     | 83.26%     | 49.70%  |\n|            | Full architecture   | 11.67%     | 86.65%     | 50.47%  |",
+                "columns": [
+                  "Dataset",
+                  "Method",
+                  "F1 Score",
+                  "Accuracy",
+                  "AUROC"
+                ],
+                "rows": [
+                  {
+                    "Dataset": "FBHM",
+                    "Method": "Concat",
+                    "F1 Score": "68.00%",
+                    "Accuracy": "68.00%",
+                    "AUROC": "71.90%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Concat + Difference",
+                    "F1 Score": "66.20%",
+                    "Accuracy": "66.20%",
+                    "AUROC": "71.07%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Concat + Product",
+                    "F1 Score": "73.58%",
+                    "Accuracy": "73.60%",
+                    "AUROC": "79.28%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Full architecture",
+                    "F1 Score": "72.51%",
+                    "Accuracy": "72.60%",
+                    "AUROC": "79.31%"
+                  },
+                  {
+                    "Dataset": "Harm-C",
+                    "Method": "Concat",
+                    "F1 Score": "56.09%",
+                    "Accuracy": "59.74%",
+                    "AUROC": "83.21%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Concat + Difference",
+                    "F1 Score": "52.76%",
+                    "Accuracy": "57.16%",
+                    "AUROC": "85.08%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Concat + Product",
+                    "F1 Score": "54.90%",
+                    "Accuracy": "57.36%",
+                    "AUROC": "83.85%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Full architecture",
+                    "F1 Score": "55.46%",
+                    "Accuracy": "60.20%",
+                    "AUROC": "83.82%"
+                  },
+                  {
+                    "Dataset": "Harm-P",
+                    "Method": "Concat",
+                    "F1 Score": "63.26%",
+                    "Accuracy": "66.10%",
+                    "AUROC": "74.74%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Concat + Difference",
+                    "F1 Score": "63.41%",
+                    "Accuracy": "64.52%",
+                    "AUROC": "76.84%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Concat + Product",
+                    "F1 Score": "78.25%",
+                    "Accuracy": "78.20%",
+                    "AUROC": "90.20%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Full architecture",
+                    "F1 Score": "80.01%",
+                    "Accuracy": "76.80%",
+                    "AUROC": "91.31%"
+                  },
+                  {
+                    "Dataset": "MultiOFF",
+                    "Method": "Concat",
+                    "F1 Score": "64.52%",
+                    "Accuracy": "64.79%",
+                    "AUROC": "67.78%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Concat + Difference",
+                    "F1 Score": "64.71%",
+                    "Accuracy": "64.71%",
+                    "AUROC": "67.69%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Concat + Product",
+                    "F1 Score": "65.15%",
+                    "Accuracy": "66.43%",
+                    "AUROC": "70.18%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Full architecture",
+                    "F1 Score": "66.33%",
+                    "Accuracy": "67.60%",
+                    "AUROC": "70.39%"
+                  },
+                  {
+                    "Dataset": "Propaganda",
+                    "Method": "Concat",
+                    "F1 Score": "16.69%",
+                    "Accuracy": "74.53%",
+                    "AUROC": "51.81%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Concat + Difference",
+                    "F1 Score": "15.79%",
+                    "Accuracy": "80.95%",
+                    "AUROC": "52.12%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Concat + Product",
+                    "F1 Score": "13.23%",
+                    "Accuracy": "83.26%",
+                    "AUROC": "49.70%"
+                  },
+                  {
+                    "Dataset": "",
+                    "Method": "Full architecture",
+                    "F1 Score": "11.67%",
+                    "Accuracy": "86.65%",
+                    "AUROC": "50.47%"
+                  }
+                ]
+              }
+            },
+            {
+              "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0",
+              "id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0",
+              "type": "text",
+              "page": 7,
+              "bbox": [
+                160.8,
+                206.5,
+                448.7,
+                249.2
+              ],
+              "content": "Harm-P Concat 63.26% 66.10% 74.74% Concat + Difference 63.41% 64.52% 76.84% Concat + Product 78.25% 78.20% 90.20% Full architecture 80.01% 76.80% 91.31%",
+              "text": "Harm-P Concat 63.26% 66.10% 74.74% Concat + Difference 63.41% 64.52% 76.84% Concat + Product 78.25% 78.20% 90.20% Full architecture 80.01% 76.80% 91.31%",
+              "section": "4.3 Implementation details",
+              "metadata": {
+                "chunk_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5",
+                "bboxes": [
+                  [
+                    160.8,
+                    206.5,
+                    192.4,
+                    216.4
+                  ],
+                  [
+                    219.8,
+                    206.5,
+                    248.0,
+                    216.4
+                  ],
+                  [
+                    318.1,
+                    206.5,
+                    348.8,
+                    216.4
+                  ],
+                  [
+                    367.5,
+                    206.5,
+                    398.2,
+                    216.4
+                  ],
+                  [
+                    417.9,
+                    206.5,
+                    448.7,
+                    216.4
+                  ],
+                  [
+                    219.8,
+                    217.4,
+                    300.9,
+                    227.3
+                  ],
+                  [
+                    318.1,
+                    217.4,
+                    348.8,
+                    227.3
+                  ],
+                  [
+                    367.5,
+                    217.4,
+                    398.2,
+                    227.3
+                  ],
+                  [
+                    417.9,
+                    217.4,
+                    448.7,
+                    227.3
+                  ],
+                  [
+                    219.8,
+                    228.3,
+                    289.6,
+                    238.3
+                  ],
+                  [
+                    318.1,
+                    228.3,
+                    348.8,
+                    238.3
+                  ],
+                  [
+                    365.8,
+                    228.2,
+                    398.2,
+                    238.2
+                  ],
+                  [
+                    417.9,
+                    228.3,
+                    448.7,
+                    238.3
+                  ],
+                  [
+                    219.8,
+                    239.2,
+                    285.4,
+                    249.2
+                  ],
+                  [
+                    316.4,
+                    239.1,
+                    348.8,
+                    249.1
+                  ],
+                  [
+                    367.5,
+                    239.2,
+                    398.2,
+                    249.2
+                  ],
+                  [
+                    416.3,
+                    239.1,
+                    448.7,
+                    249.1
+                  ]
+                ]
+              }
+            }
+          ],
+          "verification_status": "supported"
+        }
+      ],
+      "citation_ids": [
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s1",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+      ],
+      "gold_sentence_ids": [
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3"
+      ],
+      "gold_sentence_groups": [
+        [
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3"
+        ]
+      ],
+      "gold_evidence_groups": [
+        [
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+        ]
+      ],
+      "gold_citation_hit": true,
+      "gold_complete_citation_hit": false,
+      "gold_citation_precision": 0.25,
+      "gold_citation_recall": 0.3333,
+      "query_plan": {
+        "router": {
+          "complexity": "complex",
+          "route": "agentic_rag",
+          "modalities": [
+            "text",
+            "table"
+          ],
+          "required_modalities": [
+            "text",
+            "table"
+          ],
+          "pure_visual": false,
+          "pure_table": false,
+          "reason": "需要分解任务或读取非文本证据。"
+        },
+        "rewrites": [
+          {
+            "subtask_id": "task_1",
+            "attempt": 0,
+            "query": "Table 2 method result statements Relate rationale Table 2 why use product difference interactions which Harm-P variant obtains best F1 AUROC"
+          },
+          {
+            "subtask_id": "task_2",
+            "attempt": 0,
+            "query": "Table 2 structured table evidence Relate method rationale 2 why use product difference interactions which Harm-P variant obtains best F1 AUROC"
+          }
+        ]
+      },
+      "router": {
+        "complexity": "complex",
+        "route": "agentic_rag",
+        "modalities": [
+          "text",
+          "table"
+        ],
+        "required_modalities": [
+          "text",
+          "table"
+        ],
+        "pure_visual": false,
+        "pure_table": false,
+        "reason": "需要分解任务或读取非文本证据。"
+      },
+      "retrieval": {
+        "effective_strategy": "hybrid-rerank+metadata-exact",
+        "effective_strategies": [
+          "hybrid-rerank",
+          "metadata-exact"
+        ],
+        "degraded": false,
+        "warnings": [],
+        "search_count": 2
+      },
+      "trace": {
+        "run_id": "b029632a-22d2-45cc-8cde-d228c41b3263",
+        "query": "Relate the method rationale to Table 2: why use product/difference interactions, and which Harm-P variant obtains the best F1 and AUROC?",
+        "route": "langgraph_agentic_rag",
+        "router": {
+          "complexity": "complex",
+          "route": "agentic_rag",
+          "modalities": [
+            "text",
+            "table"
+          ],
+          "required_modalities": [
+            "text",
+            "table"
+          ],
+          "pure_visual": false,
+          "pure_table": false,
+          "reason": "需要分解任务或读取非文本证据。"
+        },
+        "plan": {
+          "goal": "Relate the method rationale to Table 2: why use product/difference interactions, and which Harm-P variant obtains the best F1 and AUROC?",
+          "execution": "parallel",
+          "selected_agents": [
+            "text_agent",
+            "table_agent"
+          ],
+          "reason": "需要分解任务或读取非文本证据。",
+          "sub_tasks": [
+            {
+              "task_id": "task_1",
+              "source_task_id": "task_1",
+              "agent": "text_agent",
+              "modality": "text",
+              "instruction": "Find method or result statements relevant to: Relate the method rationale to Table 2: why use product/difference interactions, and which Harm-P variant obtains the best F1 and AUROC?",
+              "query": "Table 2 method result statements Relate rationale Table 2 why use product difference interactions which Harm-P variant obtains best F1 AUROC",
+              "required_modalities": [
+                "text"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            },
+            {
+              "task_id": "task_2",
+              "source_task_id": "task_2",
+              "agent": "table_agent",
+              "modality": "table",
+              "instruction": "Find structured table evidence relevant to: Relate the method rationale to Table 2: why use product/difference interactions, and which Harm-P variant obtains the best F1 and AUROC?",
+              "query": "Table 2 structured table evidence Relate method rationale 2 why use product difference interactions which Harm-P variant obtains best F1 AUROC",
+              "required_modalities": [
+                "table"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            }
+          ],
+          "budgets": {
+            "max_steps": 10,
+            "max_retries": 1,
+            "max_model_calls": 8,
+            "max_qwen_vl_calls": 2,
+            "timeout_seconds": 120.0
+          }
+        },
+        "rewrites": [
+          {
+            "subtask_id": "task_1",
+            "attempt": 0,
+            "query": "Table 2 method result statements Relate rationale Table 2 why use product difference interactions which Harm-P variant obtains best F1 AUROC"
+          },
+          {
+            "subtask_id": "task_2",
+            "attempt": 0,
+            "query": "Table 2 structured table evidence Relate method rationale 2 why use product difference interactions which Harm-P variant obtains best F1 AUROC"
+          }
+        ],
+        "steps": [
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "search_text",
+            "arguments": {
+              "query": "product difference interactions Harm-P variant F1 AUROC Table 2",
+              "top_k": 10
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s3",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b4-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b1-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b3-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b6-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s1",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b2-s0"
+            ],
+            "latency_ms": 45264.2,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 128,
+              "lexical_candidate_count": 48,
+              "semantic_candidate_count": 24,
+              "fusion_candidate_count": 53,
+              "rerank_candidate_count": 8,
+              "reranked": true,
+              "returned_count": 8,
+              "bm25_latency_ms": 12.6,
+              "dense_latency_ms": 38294.0,
+              "rerank_latency_ms": 6955.8
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_TWAfNLKQH8EUnGKNuz4P3976",
+            "step": 1
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s3"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s3"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_QwAmsU4j62V8eBhD5Utv7781",
+            "step": 2
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_yKRYpJNDk43SDMWPfNAZ7071",
+            "step": 3
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_02_gDTexlKht8rqdTnH5cb57208",
+            "step": 4
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "Table 2 Harm-P variant F1 AUROC product difference interactions",
+              "top_k": 5
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+            ],
+            "latency_ms": 0.2,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 1,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 1,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_table_numbers": [
+                2
+              ],
+              "exact_table_match_applied": true,
+              "exact_table_ids": [
+                "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_iA30U4w9FnD9GI7pdP5v2747",
+            "step": 5
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "read_table",
+            "arguments": {
+              "table_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+            ],
+            "latency_ms": 0.3,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_E0d1NY8kobOqaTbAjGX86424",
+            "step": 6
+          }
+        ],
+        "final_evidence_ids": [
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s1",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+        ],
+        "total_steps": 6,
+        "total_latency_ms": 51802.2,
+        "token_usage": 21058,
+        "qwen_vl_calls": 0,
+        "sufficiency": {
+          "sufficient": true,
+          "covered_subtasks": [
+            "task_1",
+            "task_2"
+          ],
+          "missing_subtasks": [],
+          "missing_information": []
+        },
+        "evidence_memory": [
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s3",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+            "type": "text",
+            "used": true
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0",
+            "type": "text",
+            "used": true
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b4-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b1-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b3-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b6-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s1",
+            "type": "text",
+            "used": true
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b2-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002",
+            "type": "table",
+            "used": true
+          }
+        ],
+        "retrieval": {
+          "effective_strategy": "hybrid-rerank+metadata-exact",
+          "effective_strategies": [
+            "hybrid-rerank",
+            "metadata-exact"
+          ],
+          "degraded": false,
+          "warnings": [],
+          "search_count": 2
+        },
+        "model_calls": 7,
+        "execution_mode": "parallel",
+        "critique": {
+          "decision": "approved",
+          "required_modalities": [
+            "text",
+            "table"
+          ],
+          "usable_modalities": [
+            "table",
+            "text"
+          ],
+          "missing_modalities": [],
+          "conflicts": [],
+          "retry_targets": [],
+          "reasons": []
+        },
+        "conversation_id": null,
+        "turn_index": null,
+        "original_question": "Relate the method rationale to Table 2: why use product/difference interactions, and which Harm-P variant obtains the best F1 and AUROC?",
+        "resolved_question": "Relate the method rationale to Table 2: why use product/difference interactions, and which Harm-P variant obtains the best F1 and AUROC?",
+        "referenced_evidence_ids": [],
+        "specialist_execution_mode": "function_calling_with_fallback",
+        "function_calls": [
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "search_text",
+            "arguments": {
+              "query": "product difference interactions Harm-P variant F1 AUROC Table 2",
+              "top_k": 10
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s3",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b4-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b1-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b3-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b6-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s1",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b2-s0"
+            ],
+            "latency_ms": 45264.2,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 128,
+              "lexical_candidate_count": 48,
+              "semantic_candidate_count": 24,
+              "fusion_candidate_count": 53,
+              "rerank_candidate_count": 8,
+              "reranked": true,
+              "returned_count": 8,
+              "bm25_latency_ms": 12.6,
+              "dense_latency_ms": 38294.0,
+              "rerank_latency_ms": 6955.8
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_TWAfNLKQH8EUnGKNuz4P3976",
+            "step": 1
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s3"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s3"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_QwAmsU4j62V8eBhD5Utv7781",
+            "step": 2
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_yKRYpJNDk43SDMWPfNAZ7071",
+            "step": 3
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_02_gDTexlKht8rqdTnH5cb57208",
+            "step": 4
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "Table 2 Harm-P variant F1 AUROC product difference interactions",
+              "top_k": 5
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+            ],
+            "latency_ms": 0.2,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 1,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 1,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_table_numbers": [
+                2
+              ],
+              "exact_table_match_applied": true,
+              "exact_table_ids": [
+                "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_iA30U4w9FnD9GI7pdP5v2747",
+            "step": 5
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "read_table",
+            "arguments": {
+              "table_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+            ],
+            "latency_ms": 0.3,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_E0d1NY8kobOqaTbAjGX86424",
+            "step": 6
+          }
+        ],
+        "function_call_fallbacks": 0,
+        "orchestrator": "langgraph",
+        "node_traces": [
+          {
+            "node": "supervisor_plan",
+            "agent": "supervisor_agent",
+            "status": "success",
+            "latency_ms": 1.4,
+            "selected_agents": [
+              "text_agent",
+              "table_agent"
+            ],
+            "task_ids": [
+              "task_1",
+              "task_2"
+            ],
+            "evidence_ids": [],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "text_agent",
+            "task_id": "task_1",
+            "status": "success",
+            "latency_ms": 47501.7,
+            "evidence_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s3",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b4-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b1-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b3-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b6-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s1",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b2-s0"
+            ],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "table_agent",
+            "task_id": "task_2",
+            "status": "success",
+            "latency_ms": 3807.1,
+            "evidence_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+            ],
+            "errors": []
+          },
+          {
+            "node": "evidence_critic",
+            "agent": "evidence_critic",
+            "status": "approved",
+            "latency_ms": 0.0,
+            "evidence_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s3",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b4-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b1-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b3-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b6-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s1",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b2-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+            ],
+            "missing_modalities": [],
+            "conflicts": [],
+            "errors": []
+          },
+          {
+            "node": "answer_agent",
+            "agent": "answer_agent",
+            "status": "ok",
+            "latency_ms": 4256.6,
+            "evidence_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s1",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+            ],
+            "errors": []
+          }
+        ],
+        "agent_count": 5,
+        "retry_count": 0,
+        "recovery": {
+          "attempted": false,
+          "successful": false,
+          "final_decision": "approved"
+        }
+      },
+      "agent_trace": {
+        "run_id": "b029632a-22d2-45cc-8cde-d228c41b3263",
+        "query": "Relate the method rationale to Table 2: why use product/difference interactions, and which Harm-P variant obtains the best F1 and AUROC?",
+        "route": "langgraph_agentic_rag",
+        "router": {
+          "complexity": "complex",
+          "route": "agentic_rag",
+          "modalities": [
+            "text",
+            "table"
+          ],
+          "required_modalities": [
+            "text",
+            "table"
+          ],
+          "pure_visual": false,
+          "pure_table": false,
+          "reason": "需要分解任务或读取非文本证据。"
+        },
+        "plan": {
+          "goal": "Relate the method rationale to Table 2: why use product/difference interactions, and which Harm-P variant obtains the best F1 and AUROC?",
+          "execution": "parallel",
+          "selected_agents": [
+            "text_agent",
+            "table_agent"
+          ],
+          "reason": "需要分解任务或读取非文本证据。",
+          "sub_tasks": [
+            {
+              "task_id": "task_1",
+              "source_task_id": "task_1",
+              "agent": "text_agent",
+              "modality": "text",
+              "instruction": "Find method or result statements relevant to: Relate the method rationale to Table 2: why use product/difference interactions, and which Harm-P variant obtains the best F1 and AUROC?",
+              "query": "Table 2 method result statements Relate rationale Table 2 why use product difference interactions which Harm-P variant obtains best F1 AUROC",
+              "required_modalities": [
+                "text"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            },
+            {
+              "task_id": "task_2",
+              "source_task_id": "task_2",
+              "agent": "table_agent",
+              "modality": "table",
+              "instruction": "Find structured table evidence relevant to: Relate the method rationale to Table 2: why use product/difference interactions, and which Harm-P variant obtains the best F1 and AUROC?",
+              "query": "Table 2 structured table evidence Relate method rationale 2 why use product difference interactions which Harm-P variant obtains best F1 AUROC",
+              "required_modalities": [
+                "table"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            }
+          ],
+          "budgets": {
+            "max_steps": 10,
+            "max_retries": 1,
+            "max_model_calls": 8,
+            "max_qwen_vl_calls": 2,
+            "timeout_seconds": 120.0
+          }
+        },
+        "rewrites": [
+          {
+            "subtask_id": "task_1",
+            "attempt": 0,
+            "query": "Table 2 method result statements Relate rationale Table 2 why use product difference interactions which Harm-P variant obtains best F1 AUROC"
+          },
+          {
+            "subtask_id": "task_2",
+            "attempt": 0,
+            "query": "Table 2 structured table evidence Relate method rationale 2 why use product difference interactions which Harm-P variant obtains best F1 AUROC"
+          }
+        ],
+        "steps": [
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "search_text",
+            "arguments": {
+              "query": "product difference interactions Harm-P variant F1 AUROC Table 2",
+              "top_k": 10
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s3",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b4-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b1-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b3-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b6-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s1",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b2-s0"
+            ],
+            "latency_ms": 45264.2,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 128,
+              "lexical_candidate_count": 48,
+              "semantic_candidate_count": 24,
+              "fusion_candidate_count": 53,
+              "rerank_candidate_count": 8,
+              "reranked": true,
+              "returned_count": 8,
+              "bm25_latency_ms": 12.6,
+              "dense_latency_ms": 38294.0,
+              "rerank_latency_ms": 6955.8
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_TWAfNLKQH8EUnGKNuz4P3976",
+            "step": 1
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s3"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s3"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_QwAmsU4j62V8eBhD5Utv7781",
+            "step": 2
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_yKRYpJNDk43SDMWPfNAZ7071",
+            "step": 3
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_02_gDTexlKht8rqdTnH5cb57208",
+            "step": 4
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "Table 2 Harm-P variant F1 AUROC product difference interactions",
+              "top_k": 5
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+            ],
+            "latency_ms": 0.2,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 1,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 1,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_table_numbers": [
+                2
+              ],
+              "exact_table_match_applied": true,
+              "exact_table_ids": [
+                "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_iA30U4w9FnD9GI7pdP5v2747",
+            "step": 5
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "read_table",
+            "arguments": {
+              "table_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+            ],
+            "latency_ms": 0.3,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_E0d1NY8kobOqaTbAjGX86424",
+            "step": 6
+          }
+        ],
+        "final_evidence_ids": [
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s1",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+        ],
+        "total_steps": 6,
+        "total_latency_ms": 51802.2,
+        "token_usage": 21058,
+        "qwen_vl_calls": 0,
+        "sufficiency": {
+          "sufficient": true,
+          "covered_subtasks": [
+            "task_1",
+            "task_2"
+          ],
+          "missing_subtasks": [],
+          "missing_information": []
+        },
+        "evidence_memory": [
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s3",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+            "type": "text",
+            "used": true
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0",
+            "type": "text",
+            "used": true
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b4-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b1-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b3-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b6-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s1",
+            "type": "text",
+            "used": true
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b2-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002",
+            "type": "table",
+            "used": true
+          }
+        ],
+        "retrieval": {
+          "effective_strategy": "hybrid-rerank+metadata-exact",
+          "effective_strategies": [
+            "hybrid-rerank",
+            "metadata-exact"
+          ],
+          "degraded": false,
+          "warnings": [],
+          "search_count": 2
+        },
+        "model_calls": 7,
+        "execution_mode": "parallel",
+        "critique": {
+          "decision": "approved",
+          "required_modalities": [
+            "text",
+            "table"
+          ],
+          "usable_modalities": [
+            "table",
+            "text"
+          ],
+          "missing_modalities": [],
+          "conflicts": [],
+          "retry_targets": [],
+          "reasons": []
+        },
+        "conversation_id": null,
+        "turn_index": null,
+        "original_question": "Relate the method rationale to Table 2: why use product/difference interactions, and which Harm-P variant obtains the best F1 and AUROC?",
+        "resolved_question": "Relate the method rationale to Table 2: why use product/difference interactions, and which Harm-P variant obtains the best F1 and AUROC?",
+        "referenced_evidence_ids": [],
+        "specialist_execution_mode": "function_calling_with_fallback",
+        "function_calls": [
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "search_text",
+            "arguments": {
+              "query": "product difference interactions Harm-P variant F1 AUROC Table 2",
+              "top_k": 10
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s3",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b4-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b1-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b3-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b6-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s1",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b2-s0"
+            ],
+            "latency_ms": 45264.2,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 128,
+              "lexical_candidate_count": 48,
+              "semantic_candidate_count": 24,
+              "fusion_candidate_count": 53,
+              "rerank_candidate_count": 8,
+              "reranked": true,
+              "returned_count": 8,
+              "bm25_latency_ms": 12.6,
+              "dense_latency_ms": 38294.0,
+              "rerank_latency_ms": 6955.8
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_TWAfNLKQH8EUnGKNuz4P3976",
+            "step": 1
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s3"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s3"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_QwAmsU4j62V8eBhD5Utv7781",
+            "step": 2
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_yKRYpJNDk43SDMWPfNAZ7071",
+            "step": 3
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_02_gDTexlKht8rqdTnH5cb57208",
+            "step": 4
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "search_tables",
+            "arguments": {
+              "query": "Table 2 Harm-P variant F1 AUROC product difference interactions",
+              "top_k": 5
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+            ],
+            "latency_ms": 0.2,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "metadata-exact",
+              "degraded": false,
+              "warnings": [],
+              "scoped_chunk_count": 1,
+              "lexical_candidate_count": 0,
+              "semantic_candidate_count": 0,
+              "fusion_candidate_count": 0,
+              "rerank_candidate_count": 0,
+              "reranked": false,
+              "returned_count": 1,
+              "bm25_latency_ms": 0.0,
+              "dense_latency_ms": 0.0,
+              "rerank_latency_ms": 0.0,
+              "requested_table_numbers": [
+                2
+              ],
+              "exact_table_match_applied": true,
+              "exact_table_ids": [
+                "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+              ]
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_iA30U4w9FnD9GI7pdP5v2747",
+            "step": 5
+          },
+          {
+            "subtask_id": "task_2",
+            "task_id": "task_2",
+            "agent": "table_agent",
+            "node": "table_agent",
+            "tool": "read_table",
+            "arguments": {
+              "table_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+            ],
+            "latency_ms": 0.3,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_E0d1NY8kobOqaTbAjGX86424",
+            "step": 6
+          }
+        ],
+        "function_call_fallbacks": 0,
+        "orchestrator": "langgraph",
+        "node_traces": [
+          {
+            "node": "supervisor_plan",
+            "agent": "supervisor_agent",
+            "status": "success",
+            "latency_ms": 1.4,
+            "selected_agents": [
+              "text_agent",
+              "table_agent"
+            ],
+            "task_ids": [
+              "task_1",
+              "task_2"
+            ],
+            "evidence_ids": [],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "text_agent",
+            "task_id": "task_1",
+            "status": "success",
+            "latency_ms": 47501.7,
+            "evidence_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s3",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b4-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b1-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b3-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b6-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s1",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b2-s0"
+            ],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "table_agent",
+            "task_id": "task_2",
+            "status": "success",
+            "latency_ms": 3807.1,
+            "evidence_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+            ],
+            "errors": []
+          },
+          {
+            "node": "evidence_critic",
+            "agent": "evidence_critic",
+            "status": "approved",
+            "latency_ms": 0.0,
+            "evidence_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s3",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b4-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b1-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b3-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b6-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s1",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b2-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+            ],
+            "missing_modalities": [],
+            "conflicts": [],
+            "errors": []
+          },
+          {
+            "node": "answer_agent",
+            "agent": "answer_agent",
+            "status": "ok",
+            "latency_ms": 4256.6,
+            "evidence_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s1",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+            ],
+            "errors": []
+          }
+        ],
+        "agent_count": 5,
+        "retry_count": 0,
+        "recovery": {
+          "attempted": false,
+          "successful": false,
+          "final_decision": "approved"
+        }
+      },
+      "tool_calls": [
+        "search_text",
+        "read_sentence",
+        "read_sentence",
+        "read_sentence",
+        "search_tables",
+        "read_table"
+      ],
+      "steps": 6,
+      "qwen_vl_calls": 0,
+      "visual_judge_qwen_vl_calls": 0,
+      "total_qwen_vl_calls": 0,
+      "token_usage": 21058,
+      "orchestrator": "langgraph",
+      "agent_count": 5,
+      "retry_count": 0,
+      "recovery": {
+        "attempted": false,
+        "successful": false,
+        "final_decision": "approved"
+      },
+      "node_traces": [
+        {
+          "node": "supervisor_plan",
+          "agent": "supervisor_agent",
+          "status": "success",
+          "latency_ms": 1.4,
+          "selected_agents": [
+            "text_agent",
+            "table_agent"
+          ],
+          "task_ids": [
+            "task_1",
+            "task_2"
+          ],
+          "evidence_ids": [],
+          "errors": []
+        },
+        {
+          "node": "specialist_dispatch",
+          "agent": "text_agent",
+          "task_id": "task_1",
+          "status": "success",
+          "latency_ms": 47501.7,
+          "evidence_ids": [
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s3",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b4-s0",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b1-s0",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b3-s0",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b6-s0",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s1",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s0",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b2-s0"
+          ],
+          "errors": []
+        },
+        {
+          "node": "specialist_dispatch",
+          "agent": "table_agent",
+          "task_id": "task_2",
+          "status": "success",
+          "latency_ms": 3807.1,
+          "evidence_ids": [
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+          ],
+          "errors": []
+        },
+        {
+          "node": "evidence_critic",
+          "agent": "evidence_critic",
+          "status": "approved",
+          "latency_ms": 0.0,
+          "evidence_ids": [
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s3",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b4-s0",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b1-s0",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b3-s0",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b6-s0",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s1",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s0",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b2-s0",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+          ],
+          "missing_modalities": [],
+          "conflicts": [],
+          "errors": []
+        },
+        {
+          "node": "answer_agent",
+          "agent": "answer_agent",
+          "status": "ok",
+          "latency_ms": 4256.6,
+          "evidence_ids": [
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s1",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+          ],
+          "errors": []
+        }
+      ],
+      "expected_tools": [
+        "search_text",
+        "search_tables",
+        "read_table"
+      ],
+      "expected_modalities": [
+        "text",
+        "table"
+      ],
+      "predicted_modalities": [
+        "text",
+        "table"
+      ],
+      "routed_modalities": [
+        "text",
+        "table"
+      ],
+      "required_modalities": [
+        "text",
+        "table"
+      ],
+      "expected_evidence_ids": [
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+      ],
+      "expected_evidence_groups": [
+        [
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+        ]
+      ],
+      "expected_chunk_ids": [
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4"
+      ],
+      "expected_chunk_groups": [
+        [
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4"
+        ]
+      ],
+      "ranked_evidence_ids": [
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s3",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b4-s0",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b1-s0",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b3-s0",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b6-s0",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s1",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s0",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b2-s0",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+      ],
+      "ranked_evidence_ids_by_modality": {
+        "text": [
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s3",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b4-s0",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b1-s0",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b3-s0",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b6-s0",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s1",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s0",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b2-s0"
+        ],
+        "figure": [],
+        "table": [
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+        ]
+      },
+      "ranked_text_ids": [
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s3",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b4-s0",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b1-s0",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b3-s0",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p8-b6-s0",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s1",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s0",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b2-s0"
+      ],
+      "ranked_figure_ids": [],
+      "ranked_table_ids": [
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+      ],
+      "returned_evidence_ids": [
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s1",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+      ],
+      "expected_text_ids": [
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3"
+      ],
+      "expected_figure_ids": [],
+      "expected_table_ids": [
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+      ],
+      "returned_text_ids": [
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b10-s4",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b11-s1",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p7-b5-s0"
+      ],
+      "returned_figure_ids": [],
+      "returned_table_ids": [
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-table_002"
+      ],
+      "execution_success": true,
+      "answer_correct": true,
+      "task_success": true,
+      "judge": {
+        "score": 2,
+        "correct": true,
+        "reason": "回答正确说明了product/difference交互能暴露跨模态交互且不增加可训练权重，并指出Harm-P上Full architecture取得最佳F1 80.01%和AUROC 91.31%，与标准答案一致。",
+        "kind": "text"
+      },
+      "latency_ms": 51802.4,
+      "status": "ok"
+    }
+  ]
+}

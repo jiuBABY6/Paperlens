@@ -1,0 +1,1580 @@
+{
+  "dataset": "evals\\questions.v4.jsonl",
+  "count": 1,
+  "answerable_count": 1,
+  "unanswerable_count": 0,
+  "decision_count": 1,
+  "execution_success_rate": 1.0,
+  "answer_evaluated_count": 1,
+  "answer_correct_count": 1,
+  "dataset_issue_count": 0,
+  "dataset_issue_case_ids": [],
+  "answer_correct_rate": 1.0,
+  "task_success_rate": 1.0,
+  "answerability_accuracy": 1.0,
+  "refusal_accuracy": 0.0,
+  "answer_delivery_rate": 1.0,
+  "gold_citation_hit_rate": 1.0,
+  "complete_gold_citation_hit_rate": 1.0,
+  "mean_gold_citation_precision": 1.0,
+  "mean_gold_citation_recall": 1.0,
+  "llm_judged_count": 1,
+  "llm_answer_score_0_to_2": 2.0,
+  "llm_exact_correct_rate": 1.0,
+  "mean_end_to_end_latency_ms": 30830.0,
+  "p95_end_to_end_latency_ms": 30830.0,
+  "max_end_to_end_latency_ms": 30830.0,
+  "mean_agent_count": 4.0,
+  "retry_case_rate": 0.0,
+  "mean_retry_count": 0.0,
+  "node_failure_rate": 0.0,
+  "recovery_attempt_count": 0,
+  "recovery_success_rate": null,
+  "configuration": {
+    "mode": "rag",
+    "split": "dev",
+    "strategy": "hybrid-rerank",
+    "query_rewrite_enabled": true,
+    "claim_verification_enabled": true,
+    "llm_judge_enabled": true,
+    "visual_judge_enabled_for_visual_only": true,
+    "online_visual_judge_enabled": false,
+    "orchestrator": "langgraph",
+    "parallel_enabled": true,
+    "case_id": "simclip-efficient-interactions-v4-08",
+    "limit": 5
+  },
+  "agentic_metrics": {
+    "overall": {
+      "count": 1,
+      "retrieval": {
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "k": 5
+      },
+      "evidence": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "generation": {
+        "faithfulness": 1.0,
+        "claim_support_rate": 1.0
+      },
+      "agent": {
+        "execution_success_rate": 1.0,
+        "answer_correct_rate": 1.0,
+        "task_success_rate": 1.0,
+        "average_steps": 4.0,
+        "average_tool_calls": 4.0,
+        "repeated_tool_call_rate": 0.5
+      },
+      "multimodal": {
+        "text_retrieval_recall_at_k": 0.0,
+        "figure_retrieval_recall_at_k": 0.0,
+        "table_retrieval_recall_at_k": 0.0,
+        "text_retrieval_mrr": 0.0,
+        "figure_retrieval_mrr": 0.0,
+        "table_retrieval_mrr": 0.0,
+        "modality_routing_accuracy": 1.0
+      },
+      "engineering": {
+        "average_latency_ms": 30830.0,
+        "average_token_usage": 4441.0,
+        "average_qwen_vl_calls": 0.0,
+        "total_qwen_vl_calls": 0,
+        "average_visual_judge_qwen_vl_calls": 0.0,
+        "total_visual_judge_qwen_vl_calls": 0,
+        "total_qwen_vl_calls_including_judge": 0
+      }
+    },
+    "by_mode": {
+      "standard_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "text_agentic_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "multimodal_agentic_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "text_multi_agent_rag": {
+        "count": 1,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "generation": {
+          "faithfulness": 1.0,
+          "claim_support_rate": 1.0
+        },
+        "agent": {
+          "execution_success_rate": 1.0,
+          "answer_correct_rate": 1.0,
+          "task_success_rate": 1.0,
+          "average_steps": 4.0,
+          "average_tool_calls": 4.0,
+          "repeated_tool_call_rate": 0.5
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 1.0
+        },
+        "engineering": {
+          "average_latency_ms": 30830.0,
+          "average_token_usage": 4441.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      },
+      "multimodal_multi_agent_rag": {
+        "count": 0,
+        "retrieval": {
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "k": 5
+        },
+        "evidence": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "generation": {
+          "faithfulness": 0.0,
+          "claim_support_rate": 0.0
+        },
+        "agent": {
+          "execution_success_rate": null,
+          "answer_correct_rate": null,
+          "task_success_rate": null,
+          "average_steps": 0.0,
+          "average_tool_calls": 0.0,
+          "repeated_tool_call_rate": 0.0
+        },
+        "multimodal": {
+          "text_retrieval_recall_at_k": 0.0,
+          "figure_retrieval_recall_at_k": 0.0,
+          "table_retrieval_recall_at_k": 0.0,
+          "text_retrieval_mrr": 0.0,
+          "figure_retrieval_mrr": 0.0,
+          "table_retrieval_mrr": 0.0,
+          "modality_routing_accuracy": 0.0
+        },
+        "engineering": {
+          "average_latency_ms": 0.0,
+          "average_token_usage": 0.0,
+          "average_qwen_vl_calls": 0.0,
+          "total_qwen_vl_calls": 0,
+          "average_visual_judge_qwen_vl_calls": 0.0,
+          "total_visual_judge_qwen_vl_calls": 0,
+          "total_qwen_vl_calls_including_judge": 0
+        }
+      }
+    }
+  },
+  "records": [
+    {
+      "case_id": "simclip-efficient-interactions-v4-08",
+      "paper_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44",
+      "question": "Why do SimCLIP's product and difference operations reduce the burden on the trainable network?",
+      "mode": "text_multi_agent_rag",
+      "gold_answerable": true,
+      "predicted_answerable": true,
+      "answerability_correct": true,
+      "answer": "The product and difference of embeddings allow the model to quickly compute interactions between modalities without additional weights and parameters.\nThis efficient comparison of embeddings reduces the need for the network to learn them, cutting down on the trainable parameters.",
+      "refusal_reason": "",
+      "answer_status": "ok",
+      "claims": [
+        {
+          "claim": "The product and difference of embeddings allow the model to quickly compute interactions between modalities without additional weights and parameters.",
+          "text": "The product and difference of embeddings allow the model to quickly compute interactions between modalities without additional weights and parameters.",
+          "evidence_ids": [
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2"
+          ],
+          "citations": [
+            {
+              "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+              "id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+              "type": "text",
+              "page": 4,
+              "bbox": [
+                71.6,
+                327.2,
+                540.0,
+                359.0
+              ],
+              "content": "The product and difference of embeddings allows the model to quickly compute interactions between modalities without additional weights and parameters.",
+              "text": "The product and difference of embeddings allows the model to quickly compute interactions between modalities without additional weights and parameters.",
+              "section": "3 SimCLIP",
+              "metadata": {
+                "chunk_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4",
+                "bboxes": [
+                  [
+                    474.8,
+                    327.2,
+                    540.0,
+                    337.2
+                  ],
+                  [
+                    72.0,
+                    338.1,
+                    540.0,
+                    348.1
+                  ],
+                  [
+                    71.6,
+                    349.0,
+                    171.0,
+                    359.0
+                  ]
+                ]
+              }
+            }
+          ],
+          "verification_status": "supported"
+        },
+        {
+          "claim": "This efficient comparison of embeddings reduces the need for the network to learn them, cutting down on the trainable parameters.",
+          "text": "This efficient comparison of embeddings reduces the need for the network to learn them, cutting down on the trainable parameters.",
+          "evidence_ids": [
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3"
+          ],
+          "citations": [
+            {
+              "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3",
+              "id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3",
+              "type": "text",
+              "page": 4,
+              "bbox": [
+                72.0,
+                349.0,
+                541.2,
+                369.9
+              ],
+              "content": "This efficient comparison of embeddings reduces the need for the network to learn them, cutting down on the trainable parameters.",
+              "text": "This efficient comparison of embeddings reduces the need for the network to learn them, cutting down on the trainable parameters.",
+              "section": "3 SimCLIP",
+              "metadata": {
+                "chunk_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4",
+                "bboxes": [
+                  [
+                    175.5,
+                    349.0,
+                    541.2,
+                    359.0
+                  ],
+                  [
+                    72.0,
+                    359.9,
+                    241.7,
+                    369.9
+                  ]
+                ]
+              }
+            }
+          ],
+          "verification_status": "supported"
+        }
+      ],
+      "citation_ids": [
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3"
+      ],
+      "gold_sentence_ids": [
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3"
+      ],
+      "gold_sentence_groups": [
+        [
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3"
+        ]
+      ],
+      "gold_evidence_groups": [
+        [
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3"
+        ]
+      ],
+      "gold_citation_hit": true,
+      "gold_complete_citation_hit": true,
+      "gold_citation_precision": 1.0,
+      "gold_citation_recall": 1.0,
+      "query_plan": {
+        "router": {
+          "complexity": "complex",
+          "route": "agentic_rag",
+          "modalities": [
+            "text"
+          ],
+          "required_modalities": [
+            "text"
+          ],
+          "pure_visual": false,
+          "pure_table": false,
+          "reason": "需要分解任务或读取非文本证据。"
+        },
+        "rewrites": [
+          {
+            "subtask_id": "task_1",
+            "attempt": 0,
+            "query": "method result statements Why do SimCLIP s product difference operations reduce burden on trainable network"
+          }
+        ]
+      },
+      "router": {
+        "complexity": "complex",
+        "route": "agentic_rag",
+        "modalities": [
+          "text"
+        ],
+        "required_modalities": [
+          "text"
+        ],
+        "pure_visual": false,
+        "pure_table": false,
+        "reason": "需要分解任务或读取非文本证据。"
+      },
+      "retrieval": {
+        "effective_strategy": "hybrid-rerank",
+        "effective_strategies": [
+          "hybrid-rerank"
+        ],
+        "degraded": false,
+        "warnings": [],
+        "search_count": 1
+      },
+      "trace": {
+        "run_id": "aa7cc3ec-fc48-4fd2-957e-97466214027a",
+        "query": "Why do SimCLIP's product and difference operations reduce the burden on the trainable network?",
+        "route": "langgraph_agentic_rag",
+        "router": {
+          "complexity": "complex",
+          "route": "agentic_rag",
+          "modalities": [
+            "text"
+          ],
+          "required_modalities": [
+            "text"
+          ],
+          "pure_visual": false,
+          "pure_table": false,
+          "reason": "需要分解任务或读取非文本证据。"
+        },
+        "plan": {
+          "goal": "Why do SimCLIP's product and difference operations reduce the burden on the trainable network?",
+          "execution": "sequential",
+          "selected_agents": [
+            "text_agent"
+          ],
+          "reason": "需要分解任务或读取非文本证据。",
+          "sub_tasks": [
+            {
+              "task_id": "task_1",
+              "source_task_id": "task_1",
+              "agent": "text_agent",
+              "modality": "text",
+              "instruction": "Find method or result statements relevant to: Why do SimCLIP's product and difference operations reduce the burden on the trainable network?",
+              "query": "method result statements Why do SimCLIP s product difference operations reduce burden on trainable network",
+              "required_modalities": [
+                "text"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            }
+          ],
+          "budgets": {
+            "max_steps": 10,
+            "max_retries": 1,
+            "max_model_calls": 8,
+            "max_qwen_vl_calls": 2,
+            "timeout_seconds": 120.0
+          }
+        },
+        "rewrites": [
+          {
+            "subtask_id": "task_1",
+            "attempt": 0,
+            "query": "method result statements Why do SimCLIP s product difference operations reduce burden on trainable network"
+          }
+        ],
+        "steps": [
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "search_text",
+            "arguments": {
+              "query": "SimCLIP product and difference operations reduce burden trainable network",
+              "top_k": 10
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s1",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s1",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s3",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s2",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s8",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s7"
+            ],
+            "latency_ms": 25979.3,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 128,
+              "lexical_candidate_count": 81,
+              "semantic_candidate_count": 24,
+              "fusion_candidate_count": 81,
+              "rerank_candidate_count": 8,
+              "reranked": true,
+              "returned_count": 8,
+              "bm25_latency_ms": 10.0,
+              "dense_latency_ms": 18420.4,
+              "rerank_latency_ms": 7544.8
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_9r8WHkir7nylVHhPVeoo0083",
+            "step": 1
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s0"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s0"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_ZvMK3WQDSxRx7HljjkFQ1299",
+            "step": 2
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s1"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s1"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_MNGDFCCNKFPuguGlV8PG9911",
+            "step": 3
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_02_Q3l6CobEIbKIPH3r8syc1238",
+            "step": 4
+          }
+        ],
+        "final_evidence_ids": [
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2"
+        ],
+        "total_steps": 4,
+        "total_latency_ms": 30829.8,
+        "token_usage": 4441,
+        "qwen_vl_calls": 0,
+        "sufficiency": {
+          "sufficient": true,
+          "covered_subtasks": [
+            "task_1"
+          ],
+          "missing_subtasks": [],
+          "missing_information": []
+        },
+        "evidence_memory": [
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s1",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3",
+            "type": "text",
+            "used": true
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+            "type": "text",
+            "used": true
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s1",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s3",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s2",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s8",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s7",
+            "type": "text",
+            "used": false
+          }
+        ],
+        "retrieval": {
+          "effective_strategy": "hybrid-rerank",
+          "effective_strategies": [
+            "hybrid-rerank"
+          ],
+          "degraded": false,
+          "warnings": [],
+          "search_count": 1
+        },
+        "model_calls": 6,
+        "execution_mode": "sequential",
+        "critique": {
+          "decision": "approved",
+          "required_modalities": [
+            "text"
+          ],
+          "usable_modalities": [
+            "text"
+          ],
+          "missing_modalities": [],
+          "conflicts": [],
+          "retry_targets": [],
+          "reasons": []
+        },
+        "conversation_id": null,
+        "turn_index": null,
+        "original_question": "Why do SimCLIP's product and difference operations reduce the burden on the trainable network?",
+        "resolved_question": "Why do SimCLIP's product and difference operations reduce the burden on the trainable network?",
+        "referenced_evidence_ids": [],
+        "specialist_execution_mode": "function_calling_with_fallback",
+        "function_calls": [
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "search_text",
+            "arguments": {
+              "query": "SimCLIP product and difference operations reduce burden trainable network",
+              "top_k": 10
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s1",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s1",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s3",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s2",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s8",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s7"
+            ],
+            "latency_ms": 25979.3,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 128,
+              "lexical_candidate_count": 81,
+              "semantic_candidate_count": 24,
+              "fusion_candidate_count": 81,
+              "rerank_candidate_count": 8,
+              "reranked": true,
+              "returned_count": 8,
+              "bm25_latency_ms": 10.0,
+              "dense_latency_ms": 18420.4,
+              "rerank_latency_ms": 7544.8
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_9r8WHkir7nylVHhPVeoo0083",
+            "step": 1
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s0"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s0"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_ZvMK3WQDSxRx7HljjkFQ1299",
+            "step": 2
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s1"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s1"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_MNGDFCCNKFPuguGlV8PG9911",
+            "step": 3
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_02_Q3l6CobEIbKIPH3r8syc1238",
+            "step": 4
+          }
+        ],
+        "function_call_fallbacks": 0,
+        "orchestrator": "langgraph",
+        "node_traces": [
+          {
+            "node": "supervisor_plan",
+            "agent": "supervisor_agent",
+            "status": "success",
+            "latency_ms": 1.3,
+            "selected_agents": [
+              "text_agent"
+            ],
+            "task_ids": [
+              "task_1"
+            ],
+            "evidence_ids": [],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "text_agent",
+            "task_id": "task_1",
+            "status": "success",
+            "latency_ms": 28159.4,
+            "evidence_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s1",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s1",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s3",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s2",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s8",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s7"
+            ],
+            "errors": []
+          },
+          {
+            "node": "evidence_critic",
+            "agent": "evidence_critic",
+            "status": "approved",
+            "latency_ms": 0.0,
+            "evidence_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s1",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s1",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s3",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s2",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s8",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s7"
+            ],
+            "missing_modalities": [],
+            "conflicts": [],
+            "errors": []
+          },
+          {
+            "node": "answer_agent",
+            "agent": "answer_agent",
+            "status": "ok",
+            "latency_ms": 2629.4,
+            "evidence_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2"
+            ],
+            "errors": []
+          }
+        ],
+        "agent_count": 4,
+        "retry_count": 0,
+        "recovery": {
+          "attempted": false,
+          "successful": false,
+          "final_decision": "approved"
+        }
+      },
+      "agent_trace": {
+        "run_id": "aa7cc3ec-fc48-4fd2-957e-97466214027a",
+        "query": "Why do SimCLIP's product and difference operations reduce the burden on the trainable network?",
+        "route": "langgraph_agentic_rag",
+        "router": {
+          "complexity": "complex",
+          "route": "agentic_rag",
+          "modalities": [
+            "text"
+          ],
+          "required_modalities": [
+            "text"
+          ],
+          "pure_visual": false,
+          "pure_table": false,
+          "reason": "需要分解任务或读取非文本证据。"
+        },
+        "plan": {
+          "goal": "Why do SimCLIP's product and difference operations reduce the burden on the trainable network?",
+          "execution": "sequential",
+          "selected_agents": [
+            "text_agent"
+          ],
+          "reason": "需要分解任务或读取非文本证据。",
+          "sub_tasks": [
+            {
+              "task_id": "task_1",
+              "source_task_id": "task_1",
+              "agent": "text_agent",
+              "modality": "text",
+              "instruction": "Find method or result statements relevant to: Why do SimCLIP's product and difference operations reduce the burden on the trainable network?",
+              "query": "method result statements Why do SimCLIP s product difference operations reduce burden on trainable network",
+              "required_modalities": [
+                "text"
+              ],
+              "dependencies": [],
+              "status": "pending"
+            }
+          ],
+          "budgets": {
+            "max_steps": 10,
+            "max_retries": 1,
+            "max_model_calls": 8,
+            "max_qwen_vl_calls": 2,
+            "timeout_seconds": 120.0
+          }
+        },
+        "rewrites": [
+          {
+            "subtask_id": "task_1",
+            "attempt": 0,
+            "query": "method result statements Why do SimCLIP s product difference operations reduce burden on trainable network"
+          }
+        ],
+        "steps": [
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "search_text",
+            "arguments": {
+              "query": "SimCLIP product and difference operations reduce burden trainable network",
+              "top_k": 10
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s1",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s1",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s3",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s2",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s8",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s7"
+            ],
+            "latency_ms": 25979.3,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 128,
+              "lexical_candidate_count": 81,
+              "semantic_candidate_count": 24,
+              "fusion_candidate_count": 81,
+              "rerank_candidate_count": 8,
+              "reranked": true,
+              "returned_count": 8,
+              "bm25_latency_ms": 10.0,
+              "dense_latency_ms": 18420.4,
+              "rerank_latency_ms": 7544.8
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_9r8WHkir7nylVHhPVeoo0083",
+            "step": 1
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s0"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s0"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_ZvMK3WQDSxRx7HljjkFQ1299",
+            "step": 2
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s1"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s1"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_MNGDFCCNKFPuguGlV8PG9911",
+            "step": 3
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_02_Q3l6CobEIbKIPH3r8syc1238",
+            "step": 4
+          }
+        ],
+        "final_evidence_ids": [
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2"
+        ],
+        "total_steps": 4,
+        "total_latency_ms": 30829.8,
+        "token_usage": 4441,
+        "qwen_vl_calls": 0,
+        "sufficiency": {
+          "sufficient": true,
+          "covered_subtasks": [
+            "task_1"
+          ],
+          "missing_subtasks": [],
+          "missing_information": []
+        },
+        "evidence_memory": [
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s1",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3",
+            "type": "text",
+            "used": true
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+            "type": "text",
+            "used": true
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s0",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s1",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s3",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s2",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s8",
+            "type": "text",
+            "used": false
+          },
+          {
+            "evidence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s7",
+            "type": "text",
+            "used": false
+          }
+        ],
+        "retrieval": {
+          "effective_strategy": "hybrid-rerank",
+          "effective_strategies": [
+            "hybrid-rerank"
+          ],
+          "degraded": false,
+          "warnings": [],
+          "search_count": 1
+        },
+        "model_calls": 6,
+        "execution_mode": "sequential",
+        "critique": {
+          "decision": "approved",
+          "required_modalities": [
+            "text"
+          ],
+          "usable_modalities": [
+            "text"
+          ],
+          "missing_modalities": [],
+          "conflicts": [],
+          "retry_targets": [],
+          "reasons": []
+        },
+        "conversation_id": null,
+        "turn_index": null,
+        "original_question": "Why do SimCLIP's product and difference operations reduce the burden on the trainable network?",
+        "resolved_question": "Why do SimCLIP's product and difference operations reduce the burden on the trainable network?",
+        "referenced_evidence_ids": [],
+        "specialist_execution_mode": "function_calling_with_fallback",
+        "function_calls": [
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "search_text",
+            "arguments": {
+              "query": "SimCLIP product and difference operations reduce burden trainable network",
+              "top_k": 10
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s1",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s1",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s3",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s2",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s8",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s7"
+            ],
+            "latency_ms": 25979.3,
+            "cached": false,
+            "retrieval": {
+              "requested_strategy": "hybrid-rerank",
+              "effective_strategy": "hybrid-rerank",
+              "degraded": false,
+              "warnings": [],
+              "index_version": 3,
+              "scoped_chunk_count": 128,
+              "lexical_candidate_count": 81,
+              "semantic_candidate_count": 24,
+              "fusion_candidate_count": 81,
+              "rerank_candidate_count": 8,
+              "reranked": true,
+              "returned_count": 8,
+              "bm25_latency_ms": 10.0,
+              "dense_latency_ms": 18420.4,
+              "rerank_latency_ms": 7544.8
+            },
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_9r8WHkir7nylVHhPVeoo0083",
+            "step": 1
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s0"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s0"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_00_ZvMK3WQDSxRx7HljjkFQ1299",
+            "step": 2
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s1"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s1"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_01_MNGDFCCNKFPuguGlV8PG9911",
+            "step": 3
+          },
+          {
+            "subtask_id": "task_1",
+            "task_id": "task_1",
+            "agent": "text_agent",
+            "node": "text_agent",
+            "tool": "read_sentence",
+            "arguments": {
+              "sentence_id": "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3"
+            },
+            "result_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3"
+            ],
+            "latency_ms": 0.0,
+            "cached": false,
+            "retrieval": {},
+            "status": "success",
+            "error": null,
+            "protocol": "function_calling",
+            "tool_call_id": "call_02_Q3l6CobEIbKIPH3r8syc1238",
+            "step": 4
+          }
+        ],
+        "function_call_fallbacks": 0,
+        "orchestrator": "langgraph",
+        "node_traces": [
+          {
+            "node": "supervisor_plan",
+            "agent": "supervisor_agent",
+            "status": "success",
+            "latency_ms": 1.3,
+            "selected_agents": [
+              "text_agent"
+            ],
+            "task_ids": [
+              "task_1"
+            ],
+            "evidence_ids": [],
+            "errors": []
+          },
+          {
+            "node": "specialist_dispatch",
+            "agent": "text_agent",
+            "task_id": "task_1",
+            "status": "success",
+            "latency_ms": 28159.4,
+            "evidence_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s1",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s1",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s3",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s2",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s8",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s7"
+            ],
+            "errors": []
+          },
+          {
+            "node": "evidence_critic",
+            "agent": "evidence_critic",
+            "status": "approved",
+            "latency_ms": 0.0,
+            "evidence_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s1",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s0",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s1",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s3",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s2",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s8",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s7"
+            ],
+            "missing_modalities": [],
+            "conflicts": [],
+            "errors": []
+          },
+          {
+            "node": "answer_agent",
+            "agent": "answer_agent",
+            "status": "ok",
+            "latency_ms": 2629.4,
+            "evidence_ids": [
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3",
+              "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2"
+            ],
+            "errors": []
+          }
+        ],
+        "agent_count": 4,
+        "retry_count": 0,
+        "recovery": {
+          "attempted": false,
+          "successful": false,
+          "final_decision": "approved"
+        }
+      },
+      "tool_calls": [
+        "search_text",
+        "read_sentence",
+        "read_sentence",
+        "read_sentence"
+      ],
+      "steps": 4,
+      "qwen_vl_calls": 0,
+      "visual_judge_qwen_vl_calls": 0,
+      "total_qwen_vl_calls": 0,
+      "token_usage": 4441,
+      "orchestrator": "langgraph",
+      "agent_count": 4,
+      "retry_count": 0,
+      "recovery": {
+        "attempted": false,
+        "successful": false,
+        "final_decision": "approved"
+      },
+      "node_traces": [
+        {
+          "node": "supervisor_plan",
+          "agent": "supervisor_agent",
+          "status": "success",
+          "latency_ms": 1.3,
+          "selected_agents": [
+            "text_agent"
+          ],
+          "task_ids": [
+            "task_1"
+          ],
+          "evidence_ids": [],
+          "errors": []
+        },
+        {
+          "node": "specialist_dispatch",
+          "agent": "text_agent",
+          "task_id": "task_1",
+          "status": "success",
+          "latency_ms": 28159.4,
+          "evidence_ids": [
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s0",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s1",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s0",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s1",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s3",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s2",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s8",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s7"
+          ],
+          "errors": []
+        },
+        {
+          "node": "evidence_critic",
+          "agent": "evidence_critic",
+          "status": "approved",
+          "latency_ms": 0.0,
+          "evidence_ids": [
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s0",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s1",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s0",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s1",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s3",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s2",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s8",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s7"
+          ],
+          "missing_modalities": [],
+          "conflicts": [],
+          "errors": []
+        },
+        {
+          "node": "answer_agent",
+          "agent": "answer_agent",
+          "status": "ok",
+          "latency_ms": 2629.4,
+          "evidence_ids": [
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3",
+            "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2"
+          ],
+          "errors": []
+        }
+      ],
+      "expected_tools": [
+        "search_text"
+      ],
+      "expected_modalities": [
+        "text"
+      ],
+      "predicted_modalities": [
+        "text"
+      ],
+      "routed_modalities": [
+        "text"
+      ],
+      "required_modalities": [
+        "text"
+      ],
+      "expected_evidence_ids": [
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3"
+      ],
+      "expected_evidence_groups": [
+        [
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3"
+        ]
+      ],
+      "expected_chunk_ids": [
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4"
+      ],
+      "expected_chunk_groups": [
+        [
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4"
+        ]
+      ],
+      "ranked_evidence_ids": [
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s0",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s1",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s0",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s1",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s3",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s2",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s8",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s7"
+      ],
+      "ranked_evidence_ids_by_modality": {
+        "text": [
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s0",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s1",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s0",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s1",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s3",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s2",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s8",
+          "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s7"
+        ],
+        "figure": [],
+        "table": []
+      },
+      "ranked_text_ids": [
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s0",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p10-b7-s1",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s0",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b7-s1",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s3",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p5-b29-s2",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s8",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b3-s7"
+      ],
+      "ranked_figure_ids": [],
+      "ranked_table_ids": [],
+      "returned_evidence_ids": [
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3"
+      ],
+      "expected_text_ids": [
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3"
+      ],
+      "expected_figure_ids": [],
+      "expected_table_ids": [],
+      "returned_text_ids": [
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s2",
+        "d2377f62-c2ab-4a06-aff7-d5a8fe0e3c44-p4-b4-s3"
+      ],
+      "returned_figure_ids": [],
+      "returned_table_ids": [],
+      "execution_success": true,
+      "answer_correct": true,
+      "task_success": true,
+      "judge": {
+        "score": 2,
+        "correct": true,
+        "reason": "回答准确说明乘积与差分操作无需额外权重即可预计算/快速计算模态间交互，从而减少网络学习这些比较的负担并降低可训练参数，与标准答案及证据一致。",
+        "kind": "text"
+      },
+      "latency_ms": 30830.0,
+      "status": "ok"
+    }
+  ]
+}
