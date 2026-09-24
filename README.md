@@ -9,9 +9,9 @@ Evidence-Grounded Multimodal Agentic RAG for Scientific Paper Reading。
 - [PaperLens 数据流转与运行机制](docs/paperlens-data-flow-and-runtime-guide.md)：从上传、三模态解析、索引、路由、多智能体执行、证据校验、SSE、记忆到 LLMOps 的完整数据流。
 - [PaperLens AI 应用开发技术面试题库](docs/paperlens-ai-application-interview-qa.md)：60 道基于当前代码与真实边界编写的问答。
 - [LLMOps 与长期记忆工程指南](docs/llmops-and-long-term-memory.md)：观测组件、指标、Trace、记忆生命周期与验收方式。
-- [对话式多智能体升级进度](docs/conversational-upgrade-progress.md)：升级阶段、自动化测试和评测结果。
+- [简历项目描述](docs/resume-project-description.md)：面向 AI 应用开发实习的项目表述、指标口径与面试边界。
 
-当前版本全量自动化回归结果为 **159 passed**，覆盖解析与检索契约、多智能体编排、Function Calling 与熔断、对话持久化、SSE、长期记忆、评测指标、Trace 关联字段和 Grafana 查询口径。该结果表示代码回归通过，不等同于真实业务问题准确率；模型质量指标见后文冻结 Dev/Test 报告。
+当前冻结版本全量自动化回归结果为 **177 passed**，覆盖解析与检索契约、多智能体编排、Function Calling 与熔断、对话持久化、SSE、长期记忆、评测指标、Trace 关联字段和 Grafana 查询口径。扩展后的 v4 Benchmark 共 60 条，其中完整运行的 Dev 为 36 条；该结果表示固定数据集上的回归与模型评测表现，不等同于真实业务场景的普遍准确率。
 
 ## 系统架构与 Agentic RAG 流程
 
@@ -273,7 +273,7 @@ python scripts\evaluate_memory.py --dataset evals\memory.cases.jsonl --output ev
 
 Agent Tool 层提供：`search_text`、`search_figures`、`search_tables`、`read_text`、`read_sentence`、`read_section`、`read_figure`、`analyze_figure_for_query`、`read_table`、`get_evidence`。
 
-详细节点、边与恢复路径见 [LangGraph 多智能体架构](docs/langgraph-multi-agent-architecture.md)，实施决策见 [升级技术方案](docs/langgraph-multi-agent-upgrade-plan.md)。
+详细节点、数据流、恢复路径与实现入口见 [PaperLens 数据流转与运行机制](docs/paperlens-data-flow-and-runtime-guide.md)。
 
 ## 索引与评测
 
@@ -301,90 +301,52 @@ python scripts\evaluate_agentic.py evals\agentic-results.jsonl --top-k 5
 
 ## 评测方法与最终结果
 
-冻结主评测集 `questions.v2.jsonl` 由 5 篇论文的 20 条人工标注问题组成，并按论文划分为 `dev` 12 条和 `test` 8 条，同一篇论文不会同时进入两个 split。新增 `questions.v3.jsonl` 扩展为 30 条，经统一 Sentence/Figure/Table Evidence 校验通过，暂不作为最终对外指标。题目覆盖简单文本事实、复杂文本推理、结构化表格、必须观察原图的视觉问题，以及论文未报告目标信息时的拒答问题。
+当前主评测集 `questions.v4.jsonl` 覆盖 5 篇论文、60 条带结构化 Gold 标注的问题，每篇 12 条；其中 Dev 36 条、Test 24 条，可回答 50 条、不可回答 10 条。题型覆盖简单文本事实、复杂文本推理、结构化表格、必须观察原图的视觉问题、跨模态综合题和论文未报告信息的拒答题。数据集已通过结构、Evidence ID、页码与原文引用的确定性校验。
 
 - Retrieval 使用人工标注的 Chunk/Figure/Table ID 计算 Recall@5 与 MRR；最终 Citation 使用 Sentence/Figure/Table Evidence ID 计算 Precision、Recall 和完整证据组命中率。
 - 同一问题存在多处等价原文时，可使用 `expected_evidence_groups` 表示可替代 Gold 证据组。
 - `execution_success` 只衡量链路是否正常完成；`answer_correct` 只在 Judge 可用时确定；`task_success` 要求执行与答案均正确。
 - 文本答案由 DeepSeek 根据标准答案、Gold 原文和实际引用证据进行 0–2 分裁判；`visual-only` 问题由独立 Qwen-VL 重新查看 Gold Figure，避免使用回答链路的视觉分析自证。
-- 所有参数先在 `dev` 上确定，随后冻结配置并只运行一次 `test`；没有根据最终 test 报告继续调参。
+- 当前 v4 仅完整运行 Dev；24 条 v4 Test 保留为后续一次性冻结评测，不能把 Dev 结果表述成 Test 成绩。历史 v2 的 8 条 Test 结果只作为早期版本的独立对照。
 
-### PaperLens 6.0 对话式多智能体结果
+### 冻结版本 v4 Dev 结果
 
-本轮没有扩充正式 Benchmark；仍使用 5 篇论文、20 条冻结 v2 单轮题（Dev 12 / Test 8）。新增多轮 Smoke 只验证指代、会话隔离、取消和流式业务闭环，不包装成正式指标。完整报告见 [Conversation Dev](evals/report-dev-conversation-upgrade-final.json) 与 [Conversation Test](evals/report-test-conversation-upgrade-final.json)。
+最终报告见 [v4 Dev Final](evals/report-dev-v4-final.json)，修复前对照见 [v4 Dev Baseline](evals/report-dev-v4-baseline.json)。两份报告使用相同 36 条 Dev、`hybrid-rerank`、LangGraph 并行编排与 Judge 口径。
 
-| 指标 | Dev（12 条） | 冻结 Test（8 条） |
+| 指标 | 修复前基线 | 冻结结果 |
 |---|---:|---:|
-| Execution Success | 100% | 100% |
-| Task Success / Answer Correct | 100%（12/12） | 100%（8/8） |
-| Answerability / Refusal Accuracy | 100% / 100% | 100% / 100% |
-| Retrieval Recall@5 | 1.000 | 0.833 |
-| Evidence Precision / Recall / F1 | 0.944 / 1.000 / 0.963 | 0.833 / 0.833 / 0.833 |
-| 平均 / P95 延迟 | 11.28 s / 33.43 s | 15.06 s / 42.11 s |
-| 平均 Token Usage | 9895.17 | 8556.63 |
-| Qwen-VL 总调用（含 Judge） | 5 | 4 |
-| 原生 Function Calls / Fixed Fallbacks | 19 / 1 | 14 / 2 |
+| Execution Success | 100% | **100%** |
+| Task Success / Answer Correct | 91.67%（33/36） | **100%（36/36）** |
+| Answerability Accuracy | 94.44% | **100%** |
+| Refusal Accuracy | 100% | **100%** |
+| Answer Delivery Rate | 93.33% | **100%** |
+| Gold Citation Hit | 86.67% | **100%** |
+| Complete Gold Citation Hit | 76.67% | **93.33%** |
+| Evidence Precision / Recall | 0.8367 / 0.8194 | **0.9254 / 0.9694** |
+| Modality Routing Accuracy | — | **100%** |
+| Judge 平均分 | — | **2.0 / 2.0** |
+| 平均端到端延迟 | 12.98 s | **10.53 s** |
+| P95 端到端延迟 | 41.35 s | **36.67 s** |
+| 最大端到端延迟 | 48.86 s | 52.84 s |
 
-Function Calling 增加了工具选择模型轮次，因此延迟和 Token 不应与旧 fixed 报告直接当作纯性能优化对比；它的收益主要是可审计的模型工具协议、参数约束和动态工具选择。冻结 Test 的严格 Gold ID Recall 为 0.833，但 8 条答案均通过独立 Judge；不能把它表述成“检索 100%”。
+平均延迟降低 18.93%，P95 降低 11.32%；最大延迟受单次 Provider 长尾影响上升 8.14%。最终两条跨模态题使用了语义等价的替代正文证据，所以 Task Success、Judge 和 Citation Hit 均通过，但严格完整 Gold ID 命中为 93.33%。这属于证据 ID 口径差异，不能改写成“答案错误”，也不应为了固定 ID 继续过拟合检索。
 
-### Legacy 单 Agent 基线
+本轮同时完成 **177 项自动化回归测试**；v4 Dev 没有任务失败、路由不匹配、数据集问题、节点失败或重试。Function Calling 在两条视觉题上触发固定流程回退并最终成功，说明回退机制按设计生效，而不是整轮请求失败。
 
-Legacy 最终配置使用 `hybrid-rerank`、Rerank Top-8、最大输入长度 256、版本 2 Figure 查询缓存，并关闭在线二次视觉检查。旧版完整原始报告见 [Legacy Dev](evals/report-dev-rag-optimized-cold.json) 和 [Legacy Test](evals/report-test-final.json)。
+### 历史冻结 Test
 
-| 指标 | Dev（12 条） | Test（8 条） |
-|---|---:|---:|
-| 执行成功率 | 100% | 100% |
-| Task Success | 100%（12/12） | 100%（8/8） |
-| Answerability Accuracy | 100% | 100% |
-| Refusal Accuracy | 100% | 100% |
-| Modality Routing Accuracy | 100% | 100% |
-| Retrieval Recall@5 / MRR | 1.000 / 1.000 | 0.833 / 0.833 |
-| Exact Gold Citation Hit | 100% | 83.33%（5/6 个可回答问题） |
-| Evidence Precision / Recall | 0.944 / 1.000 | 0.833 / 0.833 |
-| Answerable-case Judge 平均分 | 2.0 / 2.0 | 2.0 / 2.0 |
-| 平均端到端延迟 | 8.22 s | 8.50 s |
-| P95 端到端延迟 | 23.39 s | 28.85 s |
-| Dataset Issue | 0 | 0 |
-
-### LangGraph 多智能体 Dev/Test
-
-LangGraph 使用相同的冻结 v2 数据集、检索配置与 Judge 口径。所有参数先在 Dev 上确定；随后保持配置不变，只运行一次 8 题 Test，未根据 Test 结果继续调参。完整报告见 [并行 Dev](evals/report-dev-langgraph-final.json)、[串行 Dev](evals/report-dev-langgraph-serial.json)、[最终 Test](evals/report-test-langgraph-final.json) 和 [消融摘要](evals/report-langgraph-ablation.json)。
-
-| 指标 | Dev Serial（12 条） | Dev Parallel（12 条） | Final Test（8 条） |
-|---|---:|---:|---:|
-| Task Success / Answer Correct | 100% / 100% | 100% / 100% | 100% / 100% |
-| Retrieval Recall@5 / MRR | 1.000 / 1.000 | 1.000 / 1.000 | 0.833 / 0.833 |
-| Evidence Precision / Recall / F1 | 0.944 / 1.000 / 0.963 | 0.944 / 1.000 / 0.963 | 0.833 / 0.833 / 0.833 |
-| Modality Routing Accuracy | 100% | 100% | 100% |
-| Refusal Accuracy | 100% | 100% | 100% |
-| Node Failure Rate | 0% | 0% | 0% |
-| 平均 Agent 数 | 2.33 | 2.33 | 3.00 |
-| 平均 Token Usage | 5180.92 | 5128.08 | 2852.88 |
-| Qwen-VL 总调用（含独立视觉 Judge） | 2 | 2 | 2 |
-| 平均端到端延迟 | 6.79 s | 6.54 s | 7.66 s |
-| P95 端到端延迟 | 28.27 s | 24.27 s | 31.89 s |
-
-并行相对串行保持质量指标完全一致，平均延迟下降 3.7%，P95 下降 14.1%。相对历史 Legacy Dev，LangGraph 并行平均延迟低 20.4%，但两份报告生成时间与缓存状态不同，该差值只作为方向性工程观察，不作为严格因果结论。最终 Test 的 8/8 条执行成功且答案判定正确，两个不可回答问题均正确拒答；测试期间没有节点失败、恢复或 Critic 返工。
-
-Test 中唯一未命中精确 Gold 的 `minda-zero-shot-text-01` 检索到了其他直接支持答案的论文句子，Claim verifier 与文本 Judge 均判定答案正确。因此 83.33% 是 6 个可回答问题上的严格 ID 匹配结果，不能表述为答案错误；冻结后的 Test 报告保持不变，未来评测集版本可将这些位置标注为可替代 Evidence Group。
-
-### 性能优化结果
-
-在相同 12 条 dev RAG 评测上，显式 Figure/Table 编号改为元数据精确定位，纯 Table 路由不再附带 Text Retrieval，CrossEncoder 精排候选由 16 个降至 8 个，并限制为 256 tokens。优化后平均端到端延迟从 21.10 s 降至 8.22 s，下降 61.1%；P95 从 45.97 s 降至 23.39 s，下降 49.1%，同时保持 dev Task Success、路由准确率和 Retrieval Recall@5 均为 100%。Trace 进一步表明，热态文本检索的主要耗时仍来自 CrossEncoder，首次访问新论文时还包含本地 Dense/Qdrant 冷启动成本。
+早期 `questions.v2.jsonl` 包含 20 条题，按论文隔离为 Dev 12 / Test 8。保持配置冻结后，历史 Test 取得 8/8 Task Success，严格 Retrieval Recall@5 为 0.833。该结果可用于说明项目做过独立 Test，但不能与 v4 的 36 条 Dev 合并成一个“44/44”指标；数据集版本和题目难度不同。原始报告见 [v2 LangGraph Test](evals/report-test-langgraph-final.json)。
 
 ### 复现最终评测
 
 使用本地 Qdrant 时先停止 Uvicorn，避免两个进程同时占用本地存储。命令会将相关论文证据发送到已配置的 DeepSeek/Qwen-VL API：
 
 ```powershell
-python scripts\validate_dataset.py --dataset evals\questions.v2.jsonl
-python scripts\validate_dataset.py --dataset evals\questions.v3.jsonl
-python scripts\evaluate.py --dataset evals\questions.v2.jsonl --split dev --mode rag --strategy hybrid-rerank --orchestrator langgraph --parallel --judge --output evals\report-dev-langgraph-final.json
-# 冻结 Test 已按此命令运行一次；不要用 Test 继续调参：
-python scripts\evaluate.py --dataset evals\questions.v2.jsonl --split test --mode rag --strategy hybrid-rerank --orchestrator langgraph --parallel --judge --output evals\report-test-langgraph-final.json
+python scripts\validate_dataset.py --dataset evals\questions.v4.jsonl --json
+python scripts\evaluate.py --dataset evals\questions.v4.jsonl --split dev --mode rag --strategy hybrid-rerank --orchestrator langgraph --parallel --judge --output evals\report-dev-v4-final.json
 ```
 
-说明：20 条题目适合展示端到端工程闭环和回归能力，但不足以代表大规模统计结论。简历和项目介绍应同时写明论文数量、样本量以及 Judge 类型。
+说明：60 条问题仍只覆盖 5 篇论文，且最新完整模型报告来自 36 条 Dev。简历和项目介绍应同时写明论文数量、样本量、split 和 Judge 类型，不得外推为生产场景 100% 准确率。
 
 ## 已知边界
 

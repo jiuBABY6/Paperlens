@@ -51,6 +51,22 @@ flowchart LR
 
 `app/observability.py` 在日志和 Span 写入前执行字段清洗。命中 key、authorization、token、secret、password 的值被替换为 `[REDACTED]`；Prompt、messages、content、paper_text、evidence_text 只保留长度，不记录正文。该保护只约束本项目的结构化字段，生产接入第三方日志 SDK 时仍应复核其默认采集策略。
 
+### Grafana Dashboard
+
+项目通过 provisioning 自动创建三张 Dashboard：
+
+- **System Overview**：查看 Run 吞吐、HTTP 失败、活跃任务、端到端 P95、运行结果和模型 P95。
+- **Agents & Tools**：查看 Tool 状态、LangGraph 节点 P95、Function Calling 回退、拒绝调用和熔断状态。
+- **Models & Memory**：查看 DeepSeek/Qwen-VL 请求与 Token、记忆生命周期以及记忆写入/回填操作。
+
+标题带 `/ 5m` 的面板使用 `increase(...[5m])`，表示最近五分钟真实新增次数；Fallback、拒绝调用和熔断属于低频故障信号，使用进程生命周期累计值。`No data` 必须结合查询口径判断，不能自动解释为服务故障。
+
+![System Overview](assets/grafana-system-overview.png)
+
+![Agents and Tools](assets/grafana-agents-tools.png)
+
+![Models and Memory](assets/grafana-models-memory.png)
+
 ## 3. 长期记忆数据流
 
 ```mermaid
@@ -125,9 +141,10 @@ docker compose up -d prometheus tempo otel-collector grafana
 
 自动化测试覆盖指标端点、请求 ID、日志脱敏、可靠/未解决记忆分流、幂等写入、置顶、备注、主动遗忘、TTL、论文版本失效、API 操作和记忆质量指标。
 
+冻结版本已完成 177 项自动化回归，并通过文本、Figure、Table、跨模态和拒答请求的人工验收。Prometheus 能采集 PaperLens 指标，Tempo 能用 `run_id` 定位 `paperlens.conversation_run` 及其 LangGraph、Tool、DeepSeek/Qwen-VL 子链路，三张 Grafana Dashboard 均已产生真实观测数据。
+
 当前边界：
 
-- 当前运行环境未安装 Docker 时，只能静态校验 Compose/YAML/JSON，无法证明容器已实际启动；应在装有 Docker Desktop 的机器完成第 4 节验收。
 - Prometheus、Tempo 与 Grafana 当前是单机开发配置，没有 TLS、鉴权、告警路由和长期存储策略。
 - `user_scope=local` 不是认证后的多租户隔离；接入登录后需要把 user_id 写入 conversation、run、memory 查询条件并做越权测试。
 - Provider Token 只统计 API 响应中实际返回的 usage；没有 usage 的请求无法推算精确成本。

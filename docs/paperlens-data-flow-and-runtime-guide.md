@@ -343,7 +343,7 @@ JSON 日志携带 request/run/conversation/paper 关联字段，但 Prometheus L
 
 ## 15. Evaluation 数据流
 
-冻结 v2 Benchmark 包含5篇论文、20条人工标注问题，按论文划分为 Dev 12条和 Test 8条。题型覆盖文本、表格、视觉、跨模态和拒答。
+当前 v4 Benchmark 包含 5 篇论文、60 条带结构化 Gold 标注的问题，每篇 12 条；Dev 36 条、Test 24 条，可回答 50 条、不可回答 10 条。题型覆盖文本、表格、纯视觉、跨模态和拒答。数据集已完成结构、Evidence ID、页码和原文引用校验；当前只完整运行了 36 条 Dev，24 条 v4 Test 保留为后续冻结评测。
 
 评测分别计算：
 
@@ -356,7 +356,9 @@ JSON 日志携带 request/run/conversation/paper 关联字段，但 Prometheus L
 - Answerability/Refusal Accuracy
 - 延迟、Token、Agent、Tool 和 Qwen-VL 调用
 
-视觉题使用独立 Qwen-VL Judge 重新查看 Gold Figure，避免回答链路使用自己的视觉分析自证。Test 配置在 Dev 调参后冻结，只运行一次，不继续根据 Test 调参。
+视觉题使用独立 Qwen-VL Judge 重新查看 Gold Figure，避免回答链路使用自己的视觉分析自证。最新 v4 Dev 最终结果为 36/36 Task Success，Answerability、Refusal 和 Modality Routing Accuracy 均为 100%，Gold Citation Hit 为 100%，Complete Gold Citation Hit 为 93.33%，平均/P95 延迟为 10.53 s / 36.67 s。两条跨模态题使用了语义等价的替代正文证据，因此严格完整 Gold ID 未达到 100%，但语义答案和实际引用均通过 Judge。
+
+历史 v2 曾按论文隔离为 Dev 12 / Test 8，并在冻结配置后运行一次 Test；该结果用于证明独立 Test 流程，不能与 v4 Dev 合并统计。后续若运行 v4 Test，应保持当前配置不变、只运行一次，并保留原始报告。
 
 ## 16. 三个端到端示例
 
@@ -414,5 +416,5 @@ JSON 日志携带 request/run/conversation/paper 关联字段，但 Prometheus L
 - SSE 是应用层答案分片，不是提供商原生 Token Streaming。
 - Qwen-VL 是跨模态问题的主要延迟来源，复杂问题可能触发两次视觉调用。
 - Function Calling 可能因空 Evidence 或协议错误回退，但固定流程能够恢复。
-- 冻结 Benchmark 只有20条，适合验证工程闭环，不能代表大规模统计结论。
+- v4 Benchmark 有 60 条但仍只覆盖 5 篇论文，且当前最终模型结果来自 36 条 Dev，不能代表大规模统计结论或生产准确率。
 - 本地 SQLite、Qdrant 和进程内事件缓冲不适合直接水平扩展，多实例部署需要任务队列、共享状态和集中日志。
